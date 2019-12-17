@@ -1,4 +1,4 @@
-Contratto CO4: insertCamera
+Contratto CO4-1: insertCamera
 
 Operazione: insertCamera(Camera : Camera)
 Riferimenti: caso d’uso: Prenotazioni
@@ -8,3 +8,25 @@ Post-condizioni:
 	- è stata creata un’istanza di Camera (creazione di istanza)
 	- Camera.prenotato è impostato a false (modifica di attributo)
 	- la nuova istanza di Camera è stata associata al GestoreCamere (asociazione formata).
+
+
+
+Contratto CO4-2: modifyCamera
+
+Operazione: modifyCamera(CameraID : CameraID, Content : Content)
+Riferimenti: caso d’uso: Prenotazioni
+Pre-condizioni: nessuna
+
+Post-condizioni:
+	- la Camera con l’ID ricevuto viene modificata; Camera.Content diventa Content (modifica di attributo)
+
+
+
+Contratto CO4-3: deleteCamera
+
+Operazione: deleteCamera(CameraID : CameraID)
+Riferimenti: caso d’uso: Prenotazioni
+Pre-condizioni: nessuna
+
+Post-condizioni:
+	- la camera con l’ID ricevuto viene eliminata; GestoreCamere viene dissociato dall’istanza appena eliminata (?)
