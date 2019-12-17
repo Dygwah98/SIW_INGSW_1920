@@ -1,0 +1,10 @@
+Contratto CO4: insertCamera
+
+Operazione: insertCamera(Camera : Camera)
+Riferimenti: caso d’uso: Prenotazioni
+Pre-condizioni: nessuna
+
+Post-condizioni: 
+	- è stata creata un’istanza di Camera (creazione di istanza)
+	- Camera.prenotato è impostato a false (modifica di attributo)
+	- la nuova istanza di Camera è stata associata al GestoreCamere (asociazione formata).
