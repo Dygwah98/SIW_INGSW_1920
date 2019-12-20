@@ -1,0 +1,17 @@
+Integrazione con il template the river:
+	aggiunta della pagina rooms mancante
+	aggiunta funzione implementativa blog
+	trasformazione del tasto book online(in alto a destra) in carrello(in aggiunta fare un piccolo pallino nel riquadro che indica le camere prenotate.
+	ho notato che nella pagina contact c'è api google maps(possibile riuso:mettere l'indirizzo di sarella e prendere tutte le comodità/esigenze in zona(es:ristoranti/punto market/ospedali)
+	e come dinamicità potremmo estendere/diminuire  il range di ricerca.
+	eliminare la possibilita di effettuare una prenotazione nella home come nelle altre pagine mettere piuttosto una breve gallery delle attivita e delle camere.
+	mettere la prenotazioni nella nuova pagine delle camere,le camere saranno suddivise in tipologia (una possibile strutture potra essere immagine-descrizione).
+	sotto ogni tipologia di camera ci saranno due pulsanti la prima per il piano di soggiorno(senza aprire/o creare un ulteriore pagina)se ci si clicca apriamo un mini riquadro 
+	a scroll-bar orizzontale con alcuni pacchetti e una mini descrizione ad ognuno + il relativo prezzo,il secondo pulsante invece è la prenotazione che se non si imposta nulla rimarra
+	a pacchetto base.
+	Una volta scelta la camera e il relativo piano il cliente se vuole può prenotarla,a livello visivo non succederà niente tranne un incremento del pallino(riga 4)
+	mentre a livello logico ogni camera prenotata verrà spostata nel carrello.
+	IL carrello avrà un breve riquadro delle camere prenotate insieme al prezzo in basso.
+	nella pagina about us c'è un tool su alcune statistiche di tutti quelli che hanno scelto come sede del  matrimonio theriver olte sul matrimonio possiamo repicarlo su altri servizi.
+	Ah possiamo anche noi fare servizi di navetta/bus/auto replicando la pagina ca per ciascun cliente e altri servizi verra semplicemente aggiunto al carrello ma come servizio speciale.
+	
