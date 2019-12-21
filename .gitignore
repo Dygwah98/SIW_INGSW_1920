@@ -1,6 +1,9 @@
 ~*.docx
 .project
 *.docx#
-*/bin
-*/build
 *.class
+.settings
+.classpath
+.target
+.bin
+.build
