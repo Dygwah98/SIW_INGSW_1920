@@ -1,0 +1,23 @@
+
+body {
+	margin-top: 8px;
+	margin-bottom: 50px;
+	background: none;
+}
+
+.full {
+  background: url(calendar1.jpg) no-repeat center center fixed; 
+  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.panel-danger
+{
+color: red;
+}
+.panel-success
+{
+color:green;
+}
