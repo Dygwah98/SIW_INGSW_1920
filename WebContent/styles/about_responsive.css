@@ -401,13 +401,13 @@
 	}
 	.logo
 	{
-		width: 107px;
-		height: 36px;
+		width: 200px;
+		height: 200px;
 	}
 	.logo a
 	{
-		font-size: 18px;
-		line-height: 32px;
+		font-size: 36px;
+		line-height: 64px;
 	}
 	.home
 	{
