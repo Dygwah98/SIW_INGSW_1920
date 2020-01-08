@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>The River</title>
+<title>Agriturismo Sarella</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="The River template project">
@@ -28,11 +28,13 @@
 			<div class="ml-auto d-flex flex-row align-items-center justify-content-start">
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li class="active"><a href="index.html">Home</a></li>
+						<li><a href="LoginForm.html">Login</a></li>
+						<li class="active"><a href="index.jsp">Home</a></li>
 						<li><a href="about.html">About us</a></li>
 						<li><a href="booking.html">Rooms</a></li>
 						<li><a href="blog.html">Blog</a></li>
 						<li><a href="contact.html">Contact</a></li>
+						
 					</ul>
 				</nav>
 				<div class="book_button"><a href="#">Carrello</a></div>
@@ -54,7 +56,7 @@
 		<div class="menu_content">
 			<nav class="menu_nav text-right">
 				<ul>
-					<li><a href="index.html">Home</a></li>
+					<li><a href="index.jsp">Home</a></li>
 					<li><a href="about.html">About us</a></li>
 					<li><a href="booking.html">Rooms</a></li>
 					<li><a href="blog.html">Blog</a></li>

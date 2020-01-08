@@ -2,13 +2,14 @@
 <html class="full" lang="en">
 <head>
     <title>Google Calendar API</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/Calendar.css" rel="stylesheet" />
+    <link href="styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles/Calendar.css" rel="stylesheet" />
     <script src="js/jquery.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js"></script>
 	
     <script type="text/javascript">
         // date variables
+        
         var now = new Date();
         today = now.toISOString();
 
@@ -16,8 +17,8 @@
         twoHoursLater = twoHoursLater.toISOString();
 
         // Google api console clientID and apiKey 
-        var clientId = '951693375323-mlnt2rkf5hb7nqghraojr40t46v4hktt.apps.googleusercontent.com';
-        var apiKey = 'Gre6Jw1ULwSKZ8hlnNIH-w9y';
+        var clientId = '';
+        var apiKey = 'AIzaSyCtcP0f-pfqYcfAZR1H_cSopbVpv79ETwI';
 
         // enter the scope of current project (this API must be turned on in the Google console)
         var scopes = 'https://www.googleapis.com/auth/calendar';
@@ -74,7 +75,7 @@
             gapi.client.load('calendar', 'v3', function () {					// load the calendar api (version 3)
                 var request = gapi.client.calendar.events.insert
                 ({
-                    'calendarId': 'classroom109295990814179716347@group.calendar.google.com', // calendar ID
+                    'calendarId': 'riuzaki9797@gmail.com', // calendar ID
                     "resource": resource							// pass event details with api call
                 });
                 
@@ -93,34 +94,34 @@
         }
         var resource = {
             "summary": "My Event",
+            "description":"We are organizing events",
+            "location":"US",
 			"start": {
                 "dateTime": today
             },
             "end": {
                 "dateTime": twoHoursLater
             },
-            "description":"We are organizing events",
-            "location":"US",
             "attendees":[
 			{
-					"email":"xyz@gmail.com",
+					"email":"riuzaki9797@gmail.com",
 					"displayName":"Shaveta",
 					"organizer":true,
-					"self":false,
-					"resource":false,
-					"optional":false,
+					"self":true,
+					"resource":true,
+					"optional":true,
 					"responseStatus":"needsAction",
 					"comment":"This is event first",
 					"additionalGuests":3
 					
 			},
 			{	
-				"email":"abc@gmail.com",
+				"email":"riuzaki9797@gmail.com",
 					"displayName":"Chatak",
 					"organizer":true,
-					"self":false,
-					"resource":false,
-					"optional":false,
+					"self":true,
+					"resource":true,
+					"optional":true,
 					"responseStatus":"needsAction",
 					"comment":"This is office event",
 					"additionalGuests":3
@@ -132,7 +133,7 @@
 	   function deleteEvent() {
 		 gapi.client.load('calendar', 'v3', function() {  
 		   var request = gapi.client.calendar.events.delete({
-			 'calendarId': 'classroom109295990814179716347@group.calendar.google.com',
+			 'calendarId': 'riuzaki9797@gmail.com',
 			 'eventId': 'Hdusrtsbs8'
 		   });
 		 request.execute(function(resp) {
@@ -200,7 +201,7 @@
                 <div id="event-response">
                 </div>
                 <div id="divifm">
-<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%233F51B5&amp;ctz=Europe%2FRome&amp;src=cml1emFraTk3OTdAZ21haWwuY29t&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=aXQuaXRhbGlhbiNob2xpZGF5QGdyb3VwLnYuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=Y2xhc3Nyb29tMTA5Mjk1OTkwODE0MTc5NzE2MzQ3QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%2322AA99&amp;color=%23329262&amp;color=%231F753C&amp;color=%230349aa" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>                </div>
+<iframe src="https://calendar.google.com/calendar/embed?src=riuzaki9797%40gmail.com&ctz=Europe%2FRome" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe></div>
             </div>
         </div>
     </div>
