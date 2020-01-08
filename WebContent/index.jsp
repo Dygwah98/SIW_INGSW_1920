@@ -40,7 +40,7 @@
 				<div class="book_button"><a href="#">Carrello</a></div>
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
 					<img src="images/phone.png" alt="">
-					<span>3339290840</span>
+					<span>0000000000</span>
 				</div>
 
 				<!-- Hamburger Menu -->
@@ -65,10 +65,10 @@
 			</nav>
 		</div>
 		<div class="menu_extra">
-			<div class="menu_book text-right"><a href="#">Book online</a></div>
+			<div class="menu_book text-right"><a href="#">Carrello</a></div>
 			<div class="menu_phone d-flex flex-row align-items-center justify-content-center">
 				<img src="images/phone-2.png" alt="">
-				<span>3339290840</span>
+				<span>0000000000</span>
 			</div>
 		</div>
 	</div>
