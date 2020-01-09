@@ -27,10 +27,7 @@ public class Login extends HttpServlet {
             req.getSession().setAttribute("logged",true);
             resp.addCookie(new Cookie("logged", "true"));
             req.getSession().setAttribute("userId", userId);
-            RequestDispatcher rd;
-            rd=new RequestDispatcher();
-            rd.forward("index.jsp");
-            //resp.sendRedirect(req.getHeader("referer"));
+            resp.sendRedirect(req.getHeader("referer"));
         }else{
             //TODO: Forse si può fare con ajax che ricevi un errore, poi controllo
             o.println("Credenziali sbagliate");
