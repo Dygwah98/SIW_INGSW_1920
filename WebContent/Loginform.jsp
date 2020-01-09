@@ -7,7 +7,7 @@
   <title>Nuovo</title>
   <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
   <link href="styles/LoginForm.css" rel="stylesheet" type="text/css" />
-</head>s
+</head>
 
 <body>
 
@@ -28,10 +28,11 @@
   <p class="message">Already registered? <a href="#">Sign In</a></p>
 </form>
 
-<form class="login-form">
+
+<form class="login-form" method="post" action="${pageContext.request.contextPath}/login">
    <input type="text" placeholder="username"/>
       <input type="password" placeholder="password"/>
-      <button>login</button>
+       <button type="submit" id="btnLogin">LOGIN!</button>
       <p class="message">Not registered? <a href="RegistrationForm.html">Create an account</a></p>
     </form>
   </div>

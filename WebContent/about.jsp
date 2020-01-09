@@ -27,11 +27,17 @@
 			<div class="ml-auto d-flex flex-row align-items-center justify-content-start">
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
+						 <% if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
+						<li><a href="Loginform.jsp">Login</a></li>
+						 <%}
+						  else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+						  <li><a href="#">Logaout</a></li>
+						  <%}%>
 						<li><a href="index.jsp">Home</a></li>
-						<li class="active"><a href="about.html">About us</a></li>
-						<li><a href="booking.html">Rooms</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="contact.html">Contact</a></li>
+						<li class="active"><a href="about.jsp">About us</a></li>
+						<li><a href="booking.jsp">Rooms</a></li>
+						<li><a href="blog.jsp">Blog</a></li>
+						<li><a href="contact.jsp">Contact</a></li>
 					</ul>
 				</nav>
 				<div class="book_button"><a href="#">Carrello</a></div>
@@ -53,11 +59,17 @@
 		<div class="menu_content">
 			<nav class="menu_nav text-right">
 				<ul>
+					 <% if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
+						<li><a href="Loginform.jsp">Login</a></li>
+						 <%}
+						  else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+						  <li><a href="#">Logaout</a></li>
+						  <%}%>
 					<li><a href="index.jsp">Home</a></li>
-					<li><a href="about.html">About us</a></li>
-					<li><a href="booking.html">Rooms</a></li>
-					<li><a href="blog.html">Blog</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					<li><a href="about.jsp">About us</a></li>
+					<li><a href="booking.jsp">Rooms</a></li>
+					<li><a href="blog.jsp">Blog</a></li>
+					<li><a href="contact.jsp">Contact</a></li>
 				</ul>
 			</nav>
 		</div>
