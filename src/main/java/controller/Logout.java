@@ -1,5 +1,6 @@
-package controller.auth;
+package controller;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -16,7 +17,9 @@ public class Logout extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().setAttribute("logged", false);
         resp.addCookie(new Cookie("logged", "false"));
-        resp.sendRedirect(req.getHeader("referer"));
+        RequestDispatcher rd=req.getRequestDispatcher("index.jsp");
+        rd.forward(req, resp);
+        //resp.sendRedirect(req.getHeader("referer"));
     }
 
     @Override

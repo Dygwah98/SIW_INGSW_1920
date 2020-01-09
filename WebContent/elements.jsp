@@ -32,7 +32,7 @@
 						<li><a href="Loginform.jsp">Login</a></li>
 						 <%}
 						  else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-						  <li><a href="#">Logaout</a></li>
+						  <li><a href="logout">Logout</a></li>
 						  <%}%>
 						<li><a href="index.jsp">Home</a></li>
 						<li><a href="about.jsp">About us</a></li>
@@ -64,7 +64,7 @@
 						<li><a href="Loginform.jsp">Login</a></li>
 						 <%}
 						  else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-					<li><a href="#">Logaout</a></li>
+					<li><a href="logout">Logout</a></li>
 					<%}%>
 					<li><a href="index.jsp">Home</a></li>
 					<li><a href="about.jsp">About us</a></li>
@@ -465,13 +465,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						<li><a href="Loginform.jsp">Login</a></li>
 						 <%}
 						  else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-						  <li><a href="#">Logaout</a></li>
+						  <li><a href="logout">Logout</a></li>
 						  <%}%>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html">About us</a></li>
-						<li><a href="booking.html">Rooms</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="index.jsp">Home</a></li>
+						<li><a href="about.jsp">About us</a></li>
+						<li><a href="booking.jsp">Rooms</a></li>
+						<li><a href="blog.jsp">Blog</a></li>
+						<li><a href="contact.jsp">Contact</a></li>
 					</ul>
 				</nav>
 				<div class="book_button"><a href="#">Carrello</a></div>
@@ -497,13 +497,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						<li><a href="Loginform.jsp">Login</a></li>
 						 <%}
 						  else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-						  <li><a href="#">Logaout</a></li>
+						  <li><a href="logout">Logout</a></li>
 						  <%}%>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="about.html">About us</a></li>
-					<li><a href="booking.html">Rooms</a></li>
-					<li><a href="blog.html">Blog</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					<li><a href="index.jsp">Home</a></li>
+					<li><a href="about.jsp">About us</a></li>
+					<li><a href="booking.jsp">Rooms</a></li>
+					<li><a href="blog.jsp">Blog</a></li>
+					<li><a href="contact.jsp">Contact</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -511,7 +511,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<div class="menu_book text-right"><a href="#">Carrello</a></div>
 			<div class="menu_phone d-flex flex-row align-items-center justify-content-center">
 				<img src="images/phone-2.png" alt="">
-				<span>0000000000</span>
+				<span>3339290840</span>
 			</div>
 		</div>
 	</div>

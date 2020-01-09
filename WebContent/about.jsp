@@ -31,7 +31,7 @@
 						<li><a href="Loginform.jsp">Login</a></li>
 						 <%}
 						  else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-						  <li><a href="#">Logaout</a></li>
+						  <li><a href="logout">Logaout</a></li>
 						  <%}%>
 						<li><a href="index.jsp">Home</a></li>
 						<li class="active"><a href="about.jsp">About us</a></li>
@@ -63,7 +63,7 @@
 						<li><a href="Loginform.jsp">Login</a></li>
 						 <%}
 						  else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-						  <li><a href="#">Logaout</a></li>
+						  <li><a href="logout">Logout</a></li>
 						  <%}%>
 					<li><a href="index.jsp">Home</a></li>
 					<li><a href="about.jsp">About us</a></li>

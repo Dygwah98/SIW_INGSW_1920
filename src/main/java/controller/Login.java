@@ -1,5 +1,6 @@
-package controller.auth;
+package controller;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -26,7 +27,10 @@ public class Login extends HttpServlet {
             req.getSession().setAttribute("logged",true);
             resp.addCookie(new Cookie("logged", "true"));
             req.getSession().setAttribute("userId", userId);
-            resp.sendRedirect(req.getHeader("referer"));
+            RequestDispatcher rd=req.getRequestDispatcher("index.jsp");
+            rd.forward(req, resp);
+            //resp.sendRedirect(req.getHeader("referer"));
+            
         }else{
             //TODO: Forse si può fare con ajax che ricevi un errore, poi controllo
             o.println("Credenziali sbagliate");
