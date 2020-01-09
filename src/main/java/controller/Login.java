@@ -1,6 +1,5 @@
-package controller;
+package controller.auth;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -20,7 +19,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter o = resp.getWriter();
-        resp.setContentType("text/jsp");
+        resp.setContentType("text/html");
         if(true){ //TODO: Database query
             //Back to the same page as before
             int userId = 5;
