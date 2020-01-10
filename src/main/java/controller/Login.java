@@ -25,7 +25,7 @@ public class Login extends HttpServlet {
             //Back to the same page as before
             int userId = 5;
             req.getSession().setAttribute("logged",true);
-            resp.addCookie(new Cookie("logged", "true"));
+         
             req.getSession().setAttribute("userId", userId);
             RequestDispatcher rd=req.getRequestDispatcher("index.jsp");
             rd.forward(req, resp);

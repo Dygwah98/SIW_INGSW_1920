@@ -37,10 +37,10 @@
 						<li><a href="about.jsp">About us</a></li>
 						<li><a href="booking.jsp">Rooms</a></li>
 						<li><a href="blog.jsp">Blog</a></li>
-						<li class="active"><a href="contact.jsp">Contact</a></li>
+						<li><a href="contact.jsp">Contact</a></li>
 					</ul>
 				</nav>
-				<div class="book_button"><a href="#">Carrello</a></div>
+			<div class="book_button"><li class="active"><a href="carrello.jsp">Carrello</a></li></div>
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
 					<img src="images/phone.png" alt="">
 					<span>3339290840</span>
@@ -74,7 +74,7 @@
 			</nav>
 		</div>
 		<div class="menu_extra">
-			<div class="menu_book text-right"><a href="#">Carrello</a></div>
+			<div class="menu_book text-right"><a href="carrello.jsp">Carrello</a></div>
 			<div class="menu_phone d-flex flex-row align-items-center justify-content-center">
 				<img src="images/phone-2.png" alt="">
 				<span>3339290840</span>
@@ -85,13 +85,13 @@
 	<!-- Home -->
 
 	<div class="home">
-		<div class="background_image" style="background-image:url(images/contact.jpg)"></div>
+		<div class="background_image" style="background-image:url(images/shoppingcart.png)"></div>
 		<div class="home_container">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<div class="home_content text-center">
-							<div class="home_title">Contact</div>
+							<div class="home_title">shopping cart</div>
 							<div class="booking_form_container">
 								<form action="#" class="booking_form" id="booking_form">
 									<div class="d-flex flex-xl-row flex-column align-items-start justify-content-start">
