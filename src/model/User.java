@@ -9,7 +9,6 @@ public class User {
 	private String password;
 	private String image;
 	private String email;
-	//private ArrayList<Game> library;
 
 	public User(String username, String password,String email) {
 		id = contId++;

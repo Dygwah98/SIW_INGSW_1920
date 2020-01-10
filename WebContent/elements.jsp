@@ -41,7 +41,9 @@
 						<li><a href="contact.jsp">Contact</a></li>
 					</ul>
 				</nav>
+			 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				<div class="book_button"><a href="#">Carrello</a></div>
+				 <%}%>
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
 					<img src="images/phone.png" alt="">
 					<span>3339290840</span>
@@ -75,7 +77,10 @@
 			</nav>
 		</div>
 		<div class="menu_extra">
+		 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 			<div class="menu_book text-right"><a href="#">Carrello</a></div>
+				 <%}%>
+			
 			<div class="menu_phone d-flex flex-row align-items-center justify-content-center">
 				<img src="images/phone-2.png" alt="">
 				<span>3339290840</span>
@@ -474,7 +479,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						<li><a href="contact.jsp">Contact</a></li>
 					</ul>
 				</nav>
+				 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				<div class="book_button"><a href="#">Carrello</a></div>
+				 <%}%>
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
 					<img src="images/phone.png" alt="">
 					<span>3339290840</span>
@@ -508,6 +515,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			</nav>
 		</div>
 		<div class="menu_extra">
+		 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+				<div class="menu_book text-right"><a href="#">Carrello</a></div>
+				 <%}%>
 			<div class="menu_book text-right"><a href="#">Carrello</a></div>
 			<div class="menu_phone d-flex flex-row align-items-center justify-content-center">
 				<img src="images/phone-2.png" alt="">

@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +31,7 @@
 						<li><a href="Loginform.jsp">Login</a></li>
 						 <%}
 						  else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-						  <li><a href="logout">Logaout</a></li>
+						  <li><a href="logout">Logout</a></li>
 						  <%}%>
 						<li><a href="index.jsp">Home</a></li>
 						<li class="active"><a href="about.jsp">About us</a></li>
@@ -42,7 +40,9 @@
 						<li><a href="contact.jsp">Contact</a></li>
 					</ul>
 				</nav>
+				 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				<div class="book_button"><a href="#">Carrello</a></div>
+				 <%}%>
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
 					<img src="images/phone.png" alt="">
 					<span>3339290840</span>
@@ -76,7 +76,8 @@
 			</nav>
 		</div>
 		<div class="menu_extra">
-			<div class="menu_book text-right"><a href="#">Carrello</a></div>
+			 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+				<div class="menu_book text-right"><a href="#">Carrello</a></div>				 <%}%>
 			<div class="menu_phone d-flex flex-row align-items-center justify-content-center">
 				<img src="images/phone-2.png" alt="">
 				<span>3339290840</span>
@@ -321,7 +322,7 @@
 						<div class="footer_logo_container text-center">
 							<div class="footer_logo">
 								<a href="#"></a>
-								<div>Agriturismo  Sarella</div>
+								<div>The River</div>
 								<div>since 1945</div>
 							</div>
 						</div>
