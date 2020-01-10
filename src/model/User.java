@@ -9,6 +9,7 @@ public class User {
 	private String password;
 	private String image;
 	private String email;
+	//private ArrayList<Game> library;
 
 	public User(String username, String password,String email) {
 		id = contId++;
@@ -54,9 +55,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public void setLibrary(ArrayList<Game> library) {
-		this.library = library;
-	}
+	
 	
 	
 
