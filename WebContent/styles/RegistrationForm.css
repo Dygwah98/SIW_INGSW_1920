@@ -1,5 +1,5 @@
 {box-sizing: border-box;}
-body {background: #70f56c;}
+body {background:#ffa37b;}
 .decor {
   position: relative;
   max-width: 400px;
@@ -72,8 +72,8 @@ body {background: #70f56c;}
 }
 .form-inner input[type="submit"] {
   margin-top: 30px;
-  background: #73f689;
-  border-bottom: 4px solid #7fed7b;
+  background: #ffa37b;
+  border-bottom: 4px solid #ffa37b;
   color: white;
   font-size: 14px;
 }
