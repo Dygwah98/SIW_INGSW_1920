@@ -24,7 +24,7 @@ public class UserDaoJDBC implements UserDao{
 			int id = getNextId(connection);
 			connection = this.dataSource.getConnection();
 			
-			String insert = "insert into utente(id_utente, nome, cognome,date, email,username,password,image) values (?,?,?,?,?,?,?,?)";
+			String insert = "insert into User(id_utente, nome, cognome,date, email,username,password,image) values (?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, id);
 			statement.setString(2, utente.getName());
@@ -55,12 +55,12 @@ public class UserDaoJDBC implements UserDao{
 	private final int getNextId(final Connection connection){
 		try {
 			PreparedStatement statement;
-			final String query = "select id_utente from utente;";
+			final String query = "select id from User;";
 			statement = connection.prepareStatement(query,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 			ResultSet result = statement.executeQuery();
 			
 			if(result.last()){
-				int tmp = result.getInt("id_utente");
+				int tmp = result.getInt("id");
 				return ++tmp;
 			}
 			return 0;
@@ -83,7 +83,7 @@ public class UserDaoJDBC implements UserDao{
 		try {
 			//query che mi trova l'ultente con l'email corrispondente a quella ricercata
 			String query = " select * "
-							+ "from utente as u "
+							+ "from User as u "
 							+ "where u.email=?";
 			
 			PreparedStatement statement = connection.prepareStatement(query);
@@ -91,7 +91,7 @@ public class UserDaoJDBC implements UserDao{
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
 				User u  = new User();
-				u.setId(result.getInt("id_utente"));
+				u.setId(result.getInt("id"));
 				u.SetName(result.getString("nome"));
 				u.SetSurname(result.getString("cognome"));
 				u.SetNascita(result.getDate("Date"));

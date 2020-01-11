@@ -20,12 +20,12 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	public ProdottoDaoJDBC(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
-
-	public void Save(Prodotto prodotto) {
+	
+	public void save(Prodotto prodotto) {
 		Connection connection = null;
 		try {
 			connection = this.dataSource.getConnection();
-			String insert = "insert into prodotto(Id, nome, prezzo,descrizione,img) values (?,?,?,?,?)";
+			String insert = "insert into Prodotto(id, nome, prezzo,descrizione,img) values (?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1, prodotto.getId());
 			statement.setString(2, prodotto.getNome());
@@ -43,14 +43,14 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			}
 		}
 	}  
-
+	@Override
 	public Prodotto findByPrimaryKey(int id) {
 		Connection connection = null;
 		Prodotto prodotto = null;
 		try {
 			connection = this.dataSource.getConnection();
 			PreparedStatement statement;
-			String query = "select * from prodotto where matricola = ?";
+			String query = "select * from Prodotto where id = ?";
 			statement = connection.prepareStatement(query);
 			statement.setInt(1, id);
 			ResultSet result = statement.executeQuery();
@@ -74,7 +74,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		return prodotto;
 	}
 	
-
+	@Override
 	public List<Prodotto> findAll() {
 		Connection connection = null;
 		List<Prodotto> prodotti = new LinkedList<>();
@@ -82,7 +82,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			connection = this.dataSource.getConnection();
 			Prodotto prodotto;
 			PreparedStatement statement;
-			String query = "select * from prodotto";
+			String query = "select * from Prodotto";
 			statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
@@ -106,14 +106,13 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		}
 		return prodotti;
 	}
-
+	@Override
 	public void update(Prodotto prodotto) {
 		Connection connection = null;
 		try {
 			connection = this.dataSource.getConnection();
-			String update = "update prodotto SET nome = ?, cognome = ?, data_nascita = ?, scuola = ?, corsodilaurea = ? WHERE matricola=?";
+			String update = "update Prodotto SET nome = ?, descrizione=?,prezzo=?,img=? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setInt(1, prodotto.getId());
 			statement.setString(2, prodotto.getNome());
 			statement.setString(3, prodotto.getDescrizione());
 			statement.setInt(4, prodotto.getPrezzo());
@@ -129,12 +128,12 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			}
 		}
 	}
-
+	@Override
 	public void delete(Prodotto prodotto) {
 		Connection connection = null;
 		try {
 			connection = this.dataSource.getConnection();
-			String delete = "delete FROM prodotto WHERE matricola = ? ";
+			String delete = "delete FROM Prodotto WHERE id = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setInt(1, prodotto.getId());
 			statement.executeUpdate();
@@ -150,16 +149,9 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	}
 
 
-	@Override
-	public model.Prodotto findByPrimaryKey(String Id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public void save(Prodotto Prodotto) {
-		// TODO Auto-generated method stub
-		
-	}
+
+	
+
 	
 }

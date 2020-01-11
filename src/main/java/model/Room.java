@@ -10,7 +10,8 @@ public class Room{
 	private int MaxPersoneStanza;
 	private boolean occupata;
 	private int prezzo;
-	public Room(int Id,String tipo, String descrizione, int maxPersoneStanza, boolean occupata, int prezzo) {
+	private String Img;
+	public Room(int Id,String tipo, String descrizione, int maxPersoneStanza, boolean occupata, int prezzo,String Img) {
 		super();
 		this.Id=Id;
 		this.tipo = tipo;
@@ -18,6 +19,7 @@ public class Room{
 		MaxPersoneStanza = maxPersoneStanza;
 		this.occupata = occupata;
 		this.prezzo = prezzo;
+		this.setImg(Img);
 	}
 	public Room() {
 		super();
@@ -27,6 +29,7 @@ public class Room{
 		MaxPersoneStanza = 0;
 		this.occupata = false;
 		this.prezzo = 0;
+		this.Img="";
 	}
 	public String getTipo() {
 		return tipo;
@@ -64,6 +67,12 @@ public class Room{
 
 	public void setId(int id) {
 		Id = id;
+	}
+	public String getImg() {
+		return Img;
+	}
+	public void setImg(String img) {
+		Img = img;
 	}
 	
 }
