@@ -73,16 +73,12 @@ public class Prenotazione {
 	public void setIdCliente(int idCliente) {
 		IdCliente = idCliente;
 	}
-<<<<<<< HEAD
+
 	public int getIdordine() {
 		return idordine;
 	}
+	
 	public void setIdordine(int idordine) {
 		this.idordine = idordine;
 	}
-
-	
-	
-=======
->>>>>>> 019dc97cd33e5f25e23614db722b9ad57315c0fd
 }
