@@ -12,15 +12,16 @@ public class Prodotto {
 	private int prezzo;
 	private String descrizione;
 	private String img;
-	
+	private int idordine;
 	public Prodotto() {}
 	
-	public Prodotto(int id, String nome, int prezzo, String descrizione, String img) {
+	public Prodotto(int id, String nome, int prezzo, String descrizione, String img,int idordine) {
 		this.id = contId++;
 		this.nome = nome;
 		this.prezzo = prezzo;
 		this.descrizione = descrizione;
 		this.img = img;
+		this.idordine=idordine;
 	}
 
 	public String getImg() {
@@ -69,6 +70,14 @@ public class Prodotto {
 
 	public static void setContId(int contId) {
 		Prodotto.contId = contId;
+	}
+
+	public int getIdordine() {
+		return idordine;
+	}
+
+	public void setIdordine(int idordine) {
+		this.idordine = idordine;
 	}
 	
 	

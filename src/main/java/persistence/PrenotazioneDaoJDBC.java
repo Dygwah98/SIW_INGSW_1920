@@ -23,13 +23,14 @@ private DataSource dataSource;
 		Connection connection = null;
 		try {
 			connection = this.dataSource.getConnection();
-			String insert = "insert into Prenotazione(idprenotazione,checkin,checkout,idcamera,idcliente) values (?,?,?,?,?)";
+			String insert = "insert into Prenotazione(idprenotazione,checkin,checkout,idcamera,idcliente,idordine) values (?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1,book.getIdPrenotazione());
 			statement.setDate(2,book.getCheckin());
 			statement.setDate(3, book.getCheckout());
 			statement.setInt(4,book.getIdCamera());
 			statement.setInt(5,book.getIdCliente());
+			statement.setInt(6, book.getIdordine());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -61,7 +62,7 @@ private DataSource dataSource;
 				book.setCheckout(result.getDate("checkout"));
 				book.setIdCamera(result.getInt("idcamera"));
 				book.setIdCliente(result.getInt("idcliente"));
-				
+				book.setIdordine(result.getInt("idordine"));
 				books.add(book);
 			}
 		} catch (SQLException e) {
@@ -81,12 +82,13 @@ private DataSource dataSource;
 		Connection connection = null;
 		try {
 			connection = this.dataSource.getConnection();
-			String update = "update Prenotazione SET , checkin = ?,checkout= ?,idcamera= ?,idcliente=? WHERE idprenotazione=?";
+			String update = "update Prenotazione SET , checkin = ?,checkout= ?,idcamera= ?,idcliente=? idordine=? WHERE idprenotazione=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setDate(2, book.getCheckin());
 			statement.setDate(3, book.getCheckout());
 			statement.setInt(4, book.getIdCamera());
 			statement.setInt(5, book.getIdCliente());
+			statement.setInt(6, book.getIdordine());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());

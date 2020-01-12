@@ -9,13 +9,16 @@ public class Prenotazione {
 	private java.sql.Date checkout;
 	private int IdCamera;
 	private int IdCliente;
-	public Prenotazione(Date checkin, Date checkout, int idCamera, int idCliente) {
+	private int idordine;
+	public Prenotazione(Date checkin, Date checkout, int idCamera, int idCliente,int idordine) {
 		super();
 		IdPrenotazione=contId++;
 		this.checkin = checkin;
 		this.checkout = checkout;
-		IdCamera = idCamera;
-		IdCliente = idCliente;
+		this.IdCamera = idCamera;
+		this.IdCliente = idCliente;
+		this.idordine=idordine;
+		
 	}
 	public Prenotazione() {
 		super();
@@ -24,6 +27,7 @@ public class Prenotazione {
 		this.checkout = null;
 		IdCamera =0;
 		IdCliente = 0;
+		idordine=0;
 	}
 	public int getIdPrenotazione() {
 		return IdPrenotazione;
@@ -55,6 +59,12 @@ public class Prenotazione {
 	}
 	public void setIdCliente(int idCliente) {
 		IdCliente = idCliente;
+	}
+	public int getIdordine() {
+		return idordine;
+	}
+	public void setIdordine(int idordine) {
+		this.idordine = idordine;
 	}
 
 	

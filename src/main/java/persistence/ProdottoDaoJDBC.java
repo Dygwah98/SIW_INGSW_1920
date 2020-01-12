@@ -25,13 +25,14 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		Connection connection = null;
 		try {
 			connection = this.dataSource.getConnection();
-			String insert = "insert into Prodotto(id, nome, prezzo,descrizione,img) values (?,?,?,?,?)";
+			String insert = "insert into Prodotto(id, nome, prezzo,descrizione,img,idordine) values (?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1, prodotto.getId());
 			statement.setString(2, prodotto.getNome());
 			statement.setString(3, prodotto.getDescrizione());
 			statement.setInt(4, prodotto.getPrezzo());
 			statement.setString(5, prodotto.getImg());
+			statement.setInt(6, prodotto.getIdordine());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -61,6 +62,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 				prodotto.setDescrizione(result.getString("descrizione"));
 				prodotto.setPrezzo(result.getInt("prezzo"));
 				prodotto.setImg(result.getString("img"));
+				prodotto.setIdordine(result.getInt("idordine"));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -92,6 +94,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 				prodotto.setDescrizione(result.getString("descrizione"));
 				prodotto.setPrezzo(result.getInt("prezzo"));
 				prodotto.setImg(result.getString("img"));
+				prodotto.setIdordine(result.getInt("idordine"));
 				
 				prodotti.add(prodotto);
 			}
@@ -111,12 +114,13 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		Connection connection = null;
 		try {
 			connection = this.dataSource.getConnection();
-			String update = "update Prodotto SET nome = ?, descrizione=?,prezzo=?,img=? WHERE id=?";
+			String update = "update Prodotto SET nome = ?, descrizione=?,prezzo=?,img=? idordine=? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(2, prodotto.getNome());
 			statement.setString(3, prodotto.getDescrizione());
 			statement.setInt(4, prodotto.getPrezzo());
 			statement.setString(5, prodotto.getImg());
+			statement.setInt(6, prodotto.getIdordine());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());

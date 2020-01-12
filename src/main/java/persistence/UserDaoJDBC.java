@@ -24,9 +24,9 @@ public class UserDaoJDBC implements UserDao{
 			int id = getNextId(connection);
 			connection = this.dataSource.getConnection();
 			
-			String insert = "insert into User(id_utente, nome, cognome,date, email,username,password,image) values (?,?,?,?,?,?,?,?)";
+			String insert = "insert into User(id, nome, cognome,date, email,username,password,image) values (?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setLong(1, id);
+			statement.setInt(1, utente.getId());
 			statement.setString(2, utente.getName());
 			statement.setString(3, utente.getSurname());
 			statement.setDate(4,utente.getNascita());
