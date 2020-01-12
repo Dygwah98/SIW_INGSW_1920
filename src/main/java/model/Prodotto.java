@@ -6,18 +6,15 @@ import java.util.Date;
 
 public class Prodotto {
 	
-	static private int contId = 0;
-	
-	private int id;
+	private Integer id;
 	private String nome;
-	private int prezzo;
+	private Integer prezzo;
 	private String descrizione;
 	private String img;
-	private int idordine;
-	public Prodotto() {}
+	private Integer idordine;
 	
 	public Prodotto(int id, String nome, int prezzo, String descrizione, String img,int idordine) {
-		this.id = contId++;
+		this.id = id;
 		this.nome = nome;
 		this.prezzo = prezzo;
 		this.descrizione = descrizione;
@@ -25,6 +22,16 @@ public class Prodotto {
 		this.idordine=idordine;
 	}
 
+	public Prodotto() {
+		this.id = null;
+		this.nome = null;
+		this.prezzo = null;
+		this.descrizione = null;
+		this.img = null;
+		this.idordine = null;
+	}
+	
+	
 	public String getImg() {
 		return img;
 	}

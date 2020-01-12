@@ -5,9 +5,7 @@ import java.util.ArrayList;
 
 public class User {
 	
-	static private int contId = 0;
-	
-	private int id;
+	private Integer id;
 	private String name;
 	private String surname;
 	private String username;
@@ -16,9 +14,9 @@ public class User {
 	private String image;
 	private String email;
 
-	public User(String username, String password,String email,String name,String surname,java.sql.Date  datadinascita) {
+	public User(int id, String username, String password, String email, String name, String surname,java.sql.Date  datadinascita) {
 		super();
-		id = contId++;
+		this.id = id;
 		this.name=name;
 		this.surname=surname;
 		this.datadinascita=datadinascita;
@@ -28,21 +26,16 @@ public class User {
 		image = null;
 	}
 	public User() {
-		id = contId++;
-		this.name="";
-		this.surname="";
-		this.datadinascita=null;
-		this.email = "";
-		this.username = "";
-		this.password ="";
+		id = null;
+		this.name = null;
+		this.surname = null;
+		this.datadinascita = null;
+		this.email = null;
+		this.username = null;
+		this.password = null;
 		image = null;
 	}
-	public static int getContId() {
-		return contId;
-	}
-	public static void setContId(int contId) {
-		User.contId = contId;
-	}
+	
 	public int getId() {
 		return id;
 	}
@@ -92,9 +85,4 @@ public class User {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
-	
-	
-	
-
 }

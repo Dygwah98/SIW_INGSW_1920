@@ -5,39 +5,37 @@ import java.util.ArrayList;
 
 public class Prenotazione {
 
-	static private int contId = 0;
-	
-	private int IdPrenotazione;
-	private  java.sql.Date checkin;
+	private Integer IdPrenotazione;
+	private java.sql.Date checkin;
 	private java.sql.Date checkout;
-	private int IdCamera;
-	private int IdCliente;
-	private int idordine;
+	private Integer IdCamera;
+	private Integer IdCliente;
+	private Integer idordine;
 	
-	public Prenotazione(Date checkin, Date checkout, int idCamera, int idCliente,int idordine) {
+	public Prenotazione(int idPrenotazione, Date checkin, Date checkout, int idCamera, int idCliente,int idordine) {
 		super();
-		IdPrenotazione=contId++;
+		IdPrenotazione = idPrenotazione;
 		this.checkin = checkin;
 		this.checkout = checkout;
 		this.IdCamera = idCamera;
 		this.IdCliente = idCliente;
-		this.idordine=idordine;
-		
+		this.idordine = idordine;
 	}
 	
 	public Prenotazione() {
 		super();
-		IdPrenotazione = contId++;
+		IdPrenotazione = null;
 		this.checkin = null;
 		this.checkout = null;
-		IdCamera =0;
-		IdCliente = 0;
-		idordine=0;
+		IdCamera = null;
+		IdCliente = null;
+		idordine = null;
 	}
 	
 	public int getIdPrenotazione() {
 		return IdPrenotazione;
 	}
+	
 	public void setIdPrenotazione(int idPrenotazione) {
 		IdPrenotazione = idPrenotazione;
 	}

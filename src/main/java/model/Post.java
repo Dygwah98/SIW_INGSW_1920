@@ -20,8 +20,14 @@ public class Post {
 	}
 
 
-	public Post() {}
-	
+	public Post() {
+		this.title = null;
+		this.idPost = null;
+		this.messaggio = null;
+		this.utente = null;
+		this.imgname = null;
+		this.data = null;
+	}
 	
 	public Post(long i, String t, String messaggio, String l, String strimg, java.sql.Date date) {
 		this.title = t;
