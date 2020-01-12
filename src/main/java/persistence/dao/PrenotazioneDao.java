@@ -1,9 +1,10 @@
 package persistence.dao;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Prenotazione;
-import model.Room;
 
 public interface PrenotazioneDao {
 	
@@ -11,4 +12,6 @@ public interface PrenotazioneDao {
 	public List<Prenotazione> findAll();       
 	public void update(Prenotazione book); //Update
 	public void delete(Prenotazione book); //Delete	
+	public ArrayList<Prenotazione> retrieve(Integer nPren, Integer maxPren) throws SQLException;
+
 }

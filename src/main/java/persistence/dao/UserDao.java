@@ -9,5 +9,4 @@ public interface UserDao {
 	public void save(User utente) throws SQLException;
 	public User findByEmail(String email) throws SQLException;
 	
-	
 }

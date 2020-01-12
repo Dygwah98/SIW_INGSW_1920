@@ -96,7 +96,8 @@ public class PostDaoJDBC implements PostDao {
 	}
 
 	@Override
-	public ArrayList<Post> retrieve(Integer nPost, Integer maxPost) {
+	public ArrayList<Post> retrieve(Integer nPost, Integer maxPost) throws SQLException {
+		
 		ArrayList<Post> result = null;
 		Connection connection = null;
 		try {
@@ -113,8 +114,8 @@ public class PostDaoJDBC implements PostDao {
 			if ((maxPost + nPost) == idMax)
 				return null;
 
-			Integer from = idMax - maxPost;
-			Integer to = from - nPost;
+			Integer from = idMax - maxPost; //maxPost + nPost - maxPost => nPost
+			Integer to = from - nPost;      //nPost - nPost             => 0
 
 			PreparedStatement create = connection.prepareStatement("SELECT * FROM post WHERE id_post <= ? and id_post > ?");
 			create.setInt(1, from);
@@ -127,7 +128,6 @@ public class PostDaoJDBC implements PostDao {
 				if (found) {
 					result = new ArrayList<>();
 					found = false;
-
 				}
 
 				Long id = rs.getLong("id_post");
@@ -147,19 +147,18 @@ public class PostDaoJDBC implements PostDao {
 				post.setData(data);
 				// Add the retrived user to the list
 				result.add(post);
-
 			}
 
 			if (result != null) {
 
-				ArrayList<Post> orderedPost = new ArrayList<>();
+				ArrayList<Post> orderedPost = new ArrayList<Post>();
 				for (int i = result.size() - 1; i >= 0; i--) {
 					orderedPost.add(result.get(i));
-
 				}
 				return orderedPost;
 			}
 			return null;
+			
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		} finally {
@@ -169,7 +168,5 @@ public class PostDaoJDBC implements PostDao {
 				throw new PersistenceException(e.getMessage());
 			}
 		}
-
 	}
-
 }

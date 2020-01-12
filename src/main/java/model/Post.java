@@ -14,11 +14,9 @@ public class Post {
 		return data;
 	}
 
-
 	public void setData(java.sql.Date data) {
 		this.data = data;
 	}
-
 
 	public Post() {
 		this.title = null;
