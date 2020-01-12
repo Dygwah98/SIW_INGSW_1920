@@ -7,6 +7,7 @@ import java.util.Date;
 public class Prodotto {
 	
 	static private int contId = 0;
+	
 	private int id;
 	private String nome;
 	private int prezzo;
