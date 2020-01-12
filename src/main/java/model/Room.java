@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 public class Room{
+	
 	private int Id;
 	private String tipo;
 	private String descrizione;
@@ -11,6 +12,7 @@ public class Room{
 	private boolean occupata;
 	private int prezzo;
 	private String Img;
+	
 	public Room(int Id,String tipo, String descrizione, int maxPersoneStanza, boolean occupata, int prezzo,String Img) {
 		super();
 		this.Id=Id;

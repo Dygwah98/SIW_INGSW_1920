@@ -2,7 +2,6 @@ package model;
 
 public class Post {
 	
-
 	private String messaggio;
 
 	private String title;
@@ -37,12 +36,15 @@ public class Post {
 	public Long getIdPost() {
 		return idPost;
 	}
+	
 	public void setIdPost(Long idPost) {
 		this.idPost = idPost;
 	}
+	
 	public String getMessaggio() {
 		return messaggio;
 	}
+	
 	public void setMessaggio(String messaggio) {
 		this.messaggio = messaggio;
 	}
@@ -70,10 +72,4 @@ public class Post {
 	public void setUtente(String utente) {
 		this.utente = utente;
 	}
-	
-
-
-	
-
-
 }

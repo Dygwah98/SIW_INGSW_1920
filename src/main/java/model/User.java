@@ -4,7 +4,9 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 public class User {
+	
 	static private int contId = 0;
+	
 	private int id;
 	private String name;
 	private String surname;
