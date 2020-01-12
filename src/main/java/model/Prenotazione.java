@@ -12,13 +12,9 @@ public class Prenotazione {
 	private java.sql.Date checkout;
 	private int IdCamera;
 	private int IdCliente;
-<<<<<<< HEAD
 	private int idordine;
-	public Prenotazione(Date checkin, Date checkout, int idCamera, int idCliente,int idordine) {
-=======
 	
-	public Prenotazione(Date checkin, Date checkout, int idCamera, int idCliente) {
->>>>>>> 019dc97cd33e5f25e23614db722b9ad57315c0fd
+	public Prenotazione(Date checkin, Date checkout, int idCamera, int idCliente,int idordine) {
 		super();
 		IdPrenotazione=contId++;
 		this.checkin = checkin;
