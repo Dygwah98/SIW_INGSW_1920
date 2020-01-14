@@ -5,6 +5,7 @@ import persistence.dao.PrenotazioneDao;
 import persistence.dao.ProdottoDao;
 import persistence.dao.RoomDao;
 import persistence.dao.UserDao;
+
 public abstract class DAOFactory {
 
 	/**
@@ -35,7 +36,6 @@ public abstract class DAOFactory {
 		
 	public abstract UserDao getUtenteDAO();
 	
-	
 	public abstract PostDao getPostDao();
 
 	public abstract PrenotazioneDao getPrenotazioneDao();
@@ -44,5 +44,4 @@ public abstract class DAOFactory {
 
 	public abstract ProdottoDao getProdottoDao();
 	
-
 }
