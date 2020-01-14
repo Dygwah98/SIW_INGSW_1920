@@ -20,9 +20,9 @@ private DataSource dataSource;
 	}
 	@Override
 	public void save(Prenotazione book) {
-		Connection connection = null;
-		try {
-			connection = this.dataSource.getConnection();
+
+		try(Connection connection = this.dataSource.getConnection()) {
+			
 			String insert = "insert into Prenotazione(idprenotazione,checkin,checkout,idcamera,idcliente,idordine) values (?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1,book.getIdPrenotazione());
@@ -33,21 +33,16 @@ private DataSource dataSource;
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
 		}
 	}
 
 	@Override
 	public List<Prenotazione> findAll() {
-		Connection connection = null;
-		List<Prenotazione> books = new LinkedList<>();
-		try {
-			connection = this.dataSource.getConnection();
+		
+		try(Connection connection = this.dataSource.getConnection()) {
+			
+			List<Prenotazione> books = new LinkedList<>();
+			
 			Prenotazione book;
 			PreparedStatement statement;
 			String query = "select * from Prenotazione";
@@ -62,23 +57,19 @@ private DataSource dataSource;
 				book.setIdordine(result.getInt("idordine"));
 				books.add(book);
 			}
+			
+			return books;
+			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
-		}	 finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
 		}
-		return books;
 	}
 
 	@Override
 	public void update(Prenotazione book) {
-		Connection connection = null;
-		try {
-			connection = this.dataSource.getConnection();
+
+		try(Connection connection = this.dataSource.getConnection()) {
+			
 			String update = "update Prenotazione SET , checkin = ?,checkout= ?,idcamera= ?,idcliente=? idordine=? WHERE idprenotazione=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setDate(2, book.getCheckin());
@@ -86,49 +77,33 @@ private DataSource dataSource;
 			statement.setInt(4, book.getIdCamera());
 			statement.setInt(5, book.getIdordine());
 			statement.executeUpdate();
+			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
 		}
 	}
 
 	@Override
 	public void delete(Prenotazione book) {
-		Connection connection = null;
-		try {
-			connection = this.dataSource.getConnection();
+		
+		try(Connection connection = this.dataSource.getConnection()) {
+			
 			String delete = "delete FROM Prenotazione WHERE idprenotazione = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setInt(1,book.getIdPrenotazione());
 			statement.executeUpdate();
+		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
 		}	
 	}
 	
 	@Override
 	public ArrayList<Prenotazione> retrieve(Integer nPren, Integer maxPren) throws SQLException {
 		
-		ArrayList<Prenotazione> result = null;
-		Connection connection = null;
-		try {
-			connection = this.dataSource.getConnection();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
+		try(Connection connection = this.dataSource.getConnection()) {
+			
+			ArrayList<Prenotazione> result = null;
 			PreparedStatement maxpost = connection.prepareStatement("SELECT max(idprenotazione) AS max FROM prenotazione");
 			ResultSet rsMax = maxpost.executeQuery();
 			rsMax.next();
@@ -173,12 +148,6 @@ private DataSource dataSource;
 			
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
 		}
 	}
 }

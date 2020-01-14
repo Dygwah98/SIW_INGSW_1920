@@ -22,9 +22,9 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	}
 	
 	public void save(Prodotto prodotto) {
-		Connection connection = null;
-		try {
-			connection = this.dataSource.getConnection();
+
+		try(Connection connection = this.dataSource.getConnection()) {
+			
 			String insert = "insert into Prodotto(id, nome, prezzo,descrizione,img,idordine) values (?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1, prodotto.getId());
@@ -34,22 +34,19 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			statement.setString(5, prodotto.getImg());
 			statement.setInt(6, prodotto.getIdordine());
 			statement.executeUpdate();
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
 		}
 	}  
+	
 	@Override
 	public Prodotto findByPrimaryKey(int id) {
-		Connection connection = null;
-		Prodotto prodotto = null;
-		try {
-			connection = this.dataSource.getConnection();
+
+		try(Connection connection = this.dataSource.getConnection()) {
+
+			Prodotto prodotto = null;
+			
 			PreparedStatement statement;
 			String query = "select * from Prodotto where id = ?";
 			statement = connection.prepareStatement(query);
@@ -64,24 +61,21 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 				prodotto.setImg(result.getString("img"));
 				prodotto.setIdordine(result.getInt("idordine"));
 			}
+	
+			return prodotto;
+			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
-		}	
-		return prodotto;
+		}
 	}
 	
 	@Override
 	public List<Prodotto> findAll() {
-		Connection connection = null;
-		List<Prodotto> prodotti = new LinkedList<>();
-		try {
-			connection = this.dataSource.getConnection();
+		
+		try(Connection connection = this.dataSource.getConnection()) {
+		
+			List<Prodotto> prodotti = new LinkedList<>();
+			
 			Prodotto prodotto;
 			PreparedStatement statement;
 			String query = "select * from Prodotto";
@@ -98,22 +92,19 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 				
 				prodotti.add(prodotto);
 			}
+		
+			return prodotti;
+			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
-		}	 finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
 		}
-		return prodotti;
 	}
+	
 	@Override
 	public void update(Prodotto prodotto) {
-		Connection connection = null;
-		try {
-			connection = this.dataSource.getConnection();
+		
+		try(Connection connection = this.dataSource.getConnection()) {
+			
 			String update = "update Prodotto SET nome = ?, descrizione=?,prezzo=?,img=? idordine=? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(2, prodotto.getNome());
@@ -122,48 +113,34 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			statement.setString(5, prodotto.getImg());
 			statement.setInt(6, prodotto.getIdordine());
 			statement.executeUpdate();
+		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
 		}
 	}
+	
 	@Override
 	public void delete(Prodotto prodotto) {
-		Connection connection = null;
-		try {
-			connection = this.dataSource.getConnection();
+
+		try(Connection connection = this.dataSource.getConnection()) {
+			
 			String delete = "delete FROM Prodotto WHERE id = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setInt(1, prodotto.getId());
 			statement.executeUpdate();
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
 		}
 	}
 
 	@Override
 	public ArrayList<Prodotto> retrieve(Integer nProd, Integer maxProd) {
 		
-		ArrayList<Prodotto> result = null;
-		Connection connection = null;
-		try {
-			connection = this.dataSource.getConnection();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
+		try(Connection connection = this.dataSource.getConnection()) {
+		
+			ArrayList<Prodotto> result = null;
+			
 			PreparedStatement maxpost = connection.prepareStatement("SELECT max(id) AS max FROM prodotto");
 			ResultSet rsMax = maxpost.executeQuery();
 			rsMax.next();
@@ -211,12 +188,6 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
 		}
 	}
 }

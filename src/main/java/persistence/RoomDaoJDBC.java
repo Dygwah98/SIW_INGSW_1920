@@ -22,9 +22,9 @@ private DataSource dataSource;
 	
 	@Override
 	public void save(Room Room) {
-		Connection connection = null;
-		try {
-			connection = this.dataSource.getConnection();
+		
+		try(Connection connection = this.dataSource.getConnection()) {
+		
 			String insert = "insert into stanza(id, tipo, descrizione,maxpersonestanze,occupata,prezzo,img) values (?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1,Room.getId());
@@ -35,25 +35,20 @@ private DataSource dataSource;
 			statement.setInt(6,Room.getPrezzo());
 			statement.setString(7,Room.getImg());
 			statement.executeUpdate();
+			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
 		}
-		
 	}
 
 
 	@Override
 	public List<Room> findAll() {
-		Connection connection = null;
-		List<Room> rooms = new LinkedList<>();
-		try {
-			connection = this.dataSource.getConnection();
+		
+		try(Connection connection = this.dataSource.getConnection()) {
+		
+			List<Room> rooms = new LinkedList<>();
+			
 			Room room;
 			PreparedStatement statement;
 			String query = "select * from Room";
@@ -71,23 +66,19 @@ private DataSource dataSource;
 				
 				rooms.add(room);
 			}
+			
+			return rooms;
+		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
-		}	 finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
 		}
-		return rooms;
 	}
 
 	@Override
 	public void update(Room Room) {
-		Connection connection = null;
-		try {
-			connection = this.dataSource.getConnection();
+		
+		try(Connection connection = this.dataSource.getConnection()) {
+	
 			String update = "update Room SET  tipo = ?, descrizione = ?,maxpersonestanza= ?,occupata= ?,prezzo=?,img=? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(2, Room.getTipo());
@@ -97,51 +88,33 @@ private DataSource dataSource;
 			statement.setInt(6, Room.getPrezzo());
 			statement.setString(7, Room.getImg());
 			statement.executeUpdate();
+		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
 		}
-		
 	}
 
 	@Override
 	public void delete(Room Room) {
-		Connection connection = null;
-		try {
-			connection = this.dataSource.getConnection();
+		
+		try(Connection connection = this.dataSource.getConnection()) {
+			
 			String delete = "delete FROM Room WHERE id = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setInt(1,Room.getId());
 			statement.executeUpdate();
+		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
 		}
-		
 	}
 	
 	@Override
 	public ArrayList<Room> retrieve(Integer nRoom, Integer maxRoom) {
 		
-		ArrayList<Room> result = null;
-		Connection connection = null;
-		try {
-			connection = this.dataSource.getConnection();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
+		try(Connection connection = this.dataSource.getConnection()) {
+		
+			ArrayList<Room> result = null;
 			PreparedStatement maxpost = connection.prepareStatement("SELECT max(id) AS max FROM room");
 			ResultSet rsMax = maxpost.executeQuery();
 			rsMax.next();
@@ -192,12 +165,6 @@ private DataSource dataSource;
 			
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
 		}
 	}
 }

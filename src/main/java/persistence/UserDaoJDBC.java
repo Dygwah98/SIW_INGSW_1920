@@ -18,11 +18,10 @@ public class UserDaoJDBC implements UserDao{
 	}
 	@Override
 	public void save(User utente) throws SQLException {
-		Connection connection = this.dataSource.getConnection();
-		try {
+		
+		try(Connection connection = this.dataSource.getConnection()) {
 			
 			int id = getNextId(connection);
-			connection = this.dataSource.getConnection();
 			
 			String insert = "insert into User(id, nome, cognome,date, username,password,image,email) values (?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
@@ -36,17 +35,10 @@ public class UserDaoJDBC implements UserDao{
 			statement.setString(8, utente.getEmail());
 
 			statement.executeUpdate();
+			
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
 		}
-		
-		
 	}
 	/** 
 	 * 	This method is used to generate next user ID
@@ -78,8 +70,8 @@ public class UserDaoJDBC implements UserDao{
 
 	@Override
 	public User findByEmail(String email) throws SQLException {
-		Connection connection = dataSource.getConnection();
-		try {
+
+		try(Connection connection = dataSource.getConnection()) {
 			//query che mi trova l'ultente con l'email corrispondente a quella ricercata
 			String query = " select * "
 							+ "from User as u "
@@ -88,8 +80,10 @@ public class UserDaoJDBC implements UserDao{
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, email);
 			ResultSet result = statement.executeQuery();
+			
+			User u = null;
 			if (result.next()) {
-				User u  = new User();
+				u  = new User();
 				u.setId(result.getInt("id"));
 				u.SetName(result.getString("nome"));
 				u.SetSurname(result.getString("cognome"));
@@ -98,22 +92,11 @@ public class UserDaoJDBC implements UserDao{
 				u.setPassword(result.getString("password"));
 				u.setImage(result.getString("image"));
 				u.setEmail(result.getString("email"));
-				return u;
 			}
+			return u;
+			
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
-		} finally {
-			try {
-				if(connection!=null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
 		}
-	
-		
-		return null;
 	}
-	
-
 }

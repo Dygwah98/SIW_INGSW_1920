@@ -21,25 +21,19 @@ private DataSource dataSource;
 	}
 	@Override
 	public void save(Ordine ordine) {
-		Connection connection = null;
-		try {
-			connection = this.dataSource.getConnection();
+		
+		try(Connection connection = this.dataSource.getConnection()) {
+			
 			String insert = "insert into ordine(idordine,idutente) values (?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1,ordine.getIdOrdine());
 			statement.setInt(2, ordine.getIdUtente());
 			
 			statement.executeUpdate();
+		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
 		}
-		
 	}
 
 	@Override
@@ -63,15 +57,10 @@ private DataSource dataSource;
 	@Override
 	public ArrayList<Ordine> retrieve(Integer nOrdine, Integer maxOrdine) throws SQLException {
 		
-		ArrayList<Ordine> result = null;
-		Connection connection = null;
-		try {
-			connection = this.dataSource.getConnection();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
+		try(Connection connection = this.dataSource.getConnection()) {
+			
+			ArrayList<Ordine> result = null;
+			
 			PreparedStatement maxpost = connection.prepareStatement("SELECT max(idOrdine) AS max FROM ordine");
 			ResultSet rsMax = maxpost.executeQuery();
 			rsMax.next();
@@ -113,27 +102,16 @@ private DataSource dataSource;
 			
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
 		}
 	}
 
 	@Override
 	public ArrayList<Prenotazione> retrieve1(Integer nOrdine, Integer maxOrdine) throws SQLException {
 		
-		ArrayList<Prenotazione> result = null;
-		Connection connection = null;
-		try {
-			connection = this.dataSource.getConnection();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
+		try(Connection connection = this.dataSource.getConnection()) {
+			
+			ArrayList<Prenotazione> result = null;
+			
 			PreparedStatement maxpost = connection.prepareStatement("SELECT max(idprenotazione) AS max FROM prenotazione");
 			ResultSet rsMax = maxpost.executeQuery();
 			rsMax.next();
@@ -178,12 +156,6 @@ private DataSource dataSource;
 			
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
 		}
 	}
 }
