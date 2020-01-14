@@ -72,14 +72,6 @@ public class Prodotto {
 		this.descrizione = descrizione;
 	}
 
-	public static int getContId() {
-		return contId;
-	}
-
-	public static void setContId(int contId) {
-		Prodotto.contId = contId;
-	}
-
 	public int getIdordine() {
 		return idordine;
 	}
