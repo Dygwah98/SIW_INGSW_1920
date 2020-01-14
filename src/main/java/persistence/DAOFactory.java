@@ -5,6 +5,7 @@ import persistence.dao.PrenotazioneDao;
 import persistence.dao.ProdottoDao;
 import persistence.dao.RoomDao;
 import persistence.dao.UserDao;
+
 public abstract class DAOFactory {
 
 	/**
@@ -34,7 +35,6 @@ public abstract class DAOFactory {
 	// --- Factory specification: concrete factories implementing this spec must provide this methods! ---
 		
 	public abstract UserDao getUtenteDAO();
-	
 	
 	public abstract PostDao getPostDao();
 
