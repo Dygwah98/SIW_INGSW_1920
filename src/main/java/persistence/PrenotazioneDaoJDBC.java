@@ -29,8 +29,7 @@ private DataSource dataSource;
 			statement.setDate(2,book.getCheckin());
 			statement.setDate(3, book.getCheckout());
 			statement.setInt(4,book.getIdCamera());
-			statement.setInt(5,book.getIdCliente());
-			statement.setInt(6, book.getIdordine());
+			statement.setInt(5, book.getIdordine());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -60,7 +59,6 @@ private DataSource dataSource;
 				book.setCheckin(result.getDate("checkin"));
 				book.setCheckout(result.getDate("checkout"));
 				book.setIdCamera(result.getInt("idcamera"));
-				book.setIdCliente(result.getInt("idcliente"));
 				book.setIdordine(result.getInt("idordine"));
 				books.add(book);
 			}
@@ -86,8 +84,7 @@ private DataSource dataSource;
 			statement.setDate(2, book.getCheckin());
 			statement.setDate(3, book.getCheckout());
 			statement.setInt(4, book.getIdCamera());
-			statement.setInt(5, book.getIdCliente());
-			statement.setInt(6, book.getIdordine());
+			statement.setInt(5, book.getIdordine());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -160,7 +157,6 @@ private DataSource dataSource;
 				book.setCheckin(rs.getDate("checkin"));
 				book.setCheckout(rs.getDate("checkout"));
 				book.setIdCamera(rs.getInt("idcamera"));
-				book.setIdCliente(rs.getInt("idcliente"));
 				book.setIdordine(rs.getInt("idordine"));
 				result.add(book);
 			}

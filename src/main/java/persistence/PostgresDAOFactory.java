@@ -14,7 +14,7 @@ public class PostgresDAOFactory extends DAOFactory {
 		
 		try {
 			Class.forName("org.postgresql.Driver").newInstance();
-			dataSource = new DataSource("jdbc:postgresql://:5050/sarella", "postgres", "postgres");
+			dataSource = new DataSource("jdbc:postgresql://sarella.cqenbowd50kg.eu-central-1.rds.amazonaws.com:5050/sarella", "riuzaki9797", "*Francesco1.,");
 //			dataSource = new DataSource("jdbc:postgresql://stampy.db.elephantsql.com:5432/imdyiyek", "imdyiyek", "5v4DWc03gjBVZ2NEV9RdZKM4T7Wwch3w");
 		} catch (Exception e) {
 			System.err.println("PostgresDAOFactory.class: failed to load MySQL JDBC driver\n" + e);

@@ -24,17 +24,16 @@ public class UserDaoJDBC implements UserDao{
 			int id = getNextId(connection);
 			connection = this.dataSource.getConnection();
 			
-			String insert = "insert into User(id, nome, cognome,date, email,username,password,image) values (?,?,?,?,?,?,?,?)";
+			String insert = "insert into User(id, nome, cognome,date, username,password,image,email) values (?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1, utente.getId());
 			statement.setString(2, utente.getName());
 			statement.setString(3, utente.getSurname());
 			statement.setDate(4,utente.getNascita());
-			statement.setString(5, utente.getEmail());
-			statement.setString(6, utente.getUsername());
-			statement.setString(7, utente.getPassword());
-			statement.setString(8, null);
-
+			statement.setString(5, utente.getUsername());
+			statement.setString(6, utente.getPassword());
+			statement.setString(7, null);
+			statement.setString(8, utente.getEmail());
 
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -95,10 +94,10 @@ public class UserDaoJDBC implements UserDao{
 				u.SetName(result.getString("nome"));
 				u.SetSurname(result.getString("cognome"));
 				u.SetNascita(result.getDate("Date"));
-				u.setEmail(result.getString("email"));
 				u.setUsername(result.getString("username"));
 				u.setPassword(result.getString("password"));
 				u.setImage(result.getString("image"));
+				u.setEmail(result.getString("email"));
 				return u;
 			}
 		} catch (SQLException e) {
