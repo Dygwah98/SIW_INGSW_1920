@@ -47,8 +47,5 @@ public class PostgresDAOFactory extends DAOFactory {
 	public RoomDao getRoomDao() {
 		return new RoomDaoJDBC(dataSource);
 	}
-	
-
-
 
 }
