@@ -31,9 +31,6 @@ public class Login extends HttpServlet {
             rd.forward(req, resp);
             //resp.sendRedirect(req.getHeader("referer"));
             
-        }else{
-            //TODO: Forse si può fare con ajax che ricevi un errore, poi controllo
-            o.println("Credenziali sbagliate");
         }
     }
 }

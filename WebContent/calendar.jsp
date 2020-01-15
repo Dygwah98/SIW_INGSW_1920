@@ -201,7 +201,7 @@
                 <div id="event-response">
                 </div>
                 <div id="divifm">
-<iframe src="https://calendar.google.com/calendar/embed?src=riuzaki9797%40gmail.com&ctz=Europe%2FRome" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe></div>
+<iframe src="https://calendar.google.com/calendar/embed?src=riuzaki9797%40gmail.com&ctz=Europe%2FRome" style="border: 0; border-style: none" width="800" height="600"></iframe></div>
             </div>
         </div>
     </div>

@@ -138,7 +138,7 @@
 
 					<!-- Accordions & Tabs -->
 					<div class="acc_tabs">
-						<div class="elements_title"><h2>Accordions & Tabs</h2></div>
+						<div class="elements_title"><h2>Accordions &amp; Tabs</h2></div>
 						<div class="row acc_tabs_row">
 							<div class="col-lg-6">
 
@@ -436,7 +436,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="plugins/jquery-datepicker/jquery-ui.js"></script>
 <script src="js/elements.js"></script>
 </body>
-=======
+</html>
+<%-- =======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -874,4 +875,4 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="plugins/jquery-datepicker/jquery-ui.js"></script>
 <script src="js/elements.js"></script>
 </body>
-</html>
+</html> --%>

@@ -40,7 +40,7 @@
 						<li ><a href="contact.jsp">Contact</a></li>
 					</ul>
 				</nav>
-				<div class="book_button""active"><a href="carrello.jsp">Carrello</a></div>
+				<div class="book_button"><!-- active --><a href="carrello.jsp">Carrello</a></div>
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
 					<img src="images/phone.png" alt="">
 					<span>3339290840</span>
