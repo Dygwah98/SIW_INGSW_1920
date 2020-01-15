@@ -1,5 +1,9 @@
-{box-sizing: border-box;}
-body {background:#ffa37b;}
+* {
+	box-sizing: border-box;
+}
+body {
+	background:#ffa37b;
+}
 .decor {
   position: relative;
   max-width: 400px;

@@ -36,8 +36,8 @@
   padding: 15px;
   color: #FFFFFF;
   font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
@@ -89,11 +89,11 @@
   color: #EF3B3A;
 }
 body {
-  background: ##ffa37b; /* fallback for old browsers */
+  background: #ffa37b; /* fallback for old browsers */
   background: -webkit-linear-gradient(right, #ffa37b, #ffa37b);
   background: -moz-linear-gradient(right, #ffa37b, #ffa37b);
   background: -o-linear-gradient(right, #ffa37b, #ffa37b);
-  background: linear-gradient(to left, #ffa37b,#ffa37bs);
+  background: linear-gradient(to left, #ffa37b,#ffa37b);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      

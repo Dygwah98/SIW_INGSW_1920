@@ -931,7 +931,7 @@ form.example::after {
 	font-weight: 500 !important;
 	color: #6d6d6d !important;
 }
-.newsletter_input::input-placeholder
+.newsletter_input::placeholder
 {
 	font-size: 15px !important;
 	font-weight: 500 !important;

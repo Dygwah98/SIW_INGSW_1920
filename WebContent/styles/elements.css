@@ -713,7 +713,7 @@ input[type=number]::-webkit-outer-spin-button
 	font-weight: 500 !important;
 	color: #FFFFFF !important;
 }
-.booking_input::input-placeholder
+.booking_input::placeholder
 {
 	font-size: 14px !important;
 	font-weight: 500 !important;
@@ -1280,7 +1280,7 @@ input[type=number]::-webkit-outer-spin-button
 	font-weight: 500 !important;
 	color: #6d6d6d !important;
 }
-.newsletter_input::input-placeholder
+.newsletter_input::placeholder
 {
 	font-size: 15px !important;
 	font-weight: 500 !important;
