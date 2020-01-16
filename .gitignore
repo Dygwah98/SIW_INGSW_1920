@@ -2,7 +2,7 @@
 *.docx#
 
 /target/
-
+/.idea/
 .classpath
 .factorypath
 .project
@@ -34,3 +34,8 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 /build/
+.idea/misc.xml
+.idea/modules.xml
+.idea/SIW_INGSW_1920.iml
+.idea/vcs.xml
+.idea/workspace.xml

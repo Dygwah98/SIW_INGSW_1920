@@ -11,7 +11,7 @@ import java.io.IOException;
 
 
 //FIXME: davvero dobbiamo fare così per ogni link?
-@WebServlet(value = "/logout")
+@WebServlet("/logout")
 public class Logout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
