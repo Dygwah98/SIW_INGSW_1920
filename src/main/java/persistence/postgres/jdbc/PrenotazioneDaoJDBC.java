@@ -1,27 +1,22 @@
-package persistence;
+package persistence.postgres.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import model.Prenotazione;
-import persistence.dao.PrenotazioneDao;
+import persistence.DBManager;
+import persistence.Dao;
 
-public class PrenotazioneDaoJDBC implements PrenotazioneDao{
+public class PrenotazioneDaoJDBC implements Dao<Prenotazione>{
 
-private DataSource dataSource;
-	
-	public PrenotazioneDaoJDBC(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
 	@Override
 	public void save(Prenotazione book) {
 
-		try(Connection connection = this.dataSource.getConnection()) {
+		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
 			
 			String insert = "insert into Prenotazione(idprenotazione,checkin,checkout,idcamera,idcliente,idordine) values (?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
@@ -31,15 +26,16 @@ private DataSource dataSource;
 			statement.setInt(4,book.getIdCamera());
 			statement.setInt(5, book.getIdordine());
 			statement.executeUpdate();
+		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		}
 	}
 
 	@Override
-	public List<Prenotazione> findAll() {
+	public List<Prenotazione> retrieveAll() {
 		
-		try(Connection connection = this.dataSource.getConnection()) {
+		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
 			
 			List<Prenotazione> books = new LinkedList<>();
 			
@@ -68,7 +64,7 @@ private DataSource dataSource;
 	@Override
 	public void update(Prenotazione book) {
 
-		try(Connection connection = this.dataSource.getConnection()) {
+		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
 			
 			String update = "update Prenotazione SET  checkin = ?,checkout= ?,idcamera= ?,idcliente=? idordine=? WHERE idprenotazione=?";
 			PreparedStatement statement = connection.prepareStatement(update);
@@ -86,7 +82,7 @@ private DataSource dataSource;
 	@Override
 	public void delete(Prenotazione book) {
 		
-		try(Connection connection = this.dataSource.getConnection()) {
+		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
 			
 			String delete = "delete FROM Prenotazione WHERE idprenotazione = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
@@ -97,7 +93,7 @@ private DataSource dataSource;
 			throw new RuntimeException(e.getMessage());
 		}	
 	}
-	
+/*	
 	@Override
 	public ArrayList<Prenotazione> retrieve(Integer nPren, Integer maxPren) throws SQLException {
 		
@@ -149,5 +145,17 @@ private DataSource dataSource;
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
+	}
+*/
+	@Override
+	public List<Prenotazione> retrieve(Prenotazione object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public List<Prenotazione> retrieveBy(String column, Object value) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

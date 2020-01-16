@@ -1,28 +1,21 @@
-package persistence;
+package persistence.postgres.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 
 import model.Ordine;
-import model.Prenotazione;
-import persistence.dao.OrdineDao;
-import persistence.dao.PrenotazioneDao;
-public class OrdineDaoJDBC implements OrdineDao{
-private DataSource dataSource;
-	
-	public OrdineDaoJDBC(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
+import persistence.DBManager;
+import persistence.Dao;
+
+public class OrdineDaoJDBC implements Dao<Ordine>{
+
 	@Override
 	public void save(Ordine ordine) {
 		
-		try(Connection connection = this.dataSource.getConnection()) {
+		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
 			
 			String insert = "insert into ordine(idordine,idutente) values (?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
@@ -37,12 +30,6 @@ private DataSource dataSource;
 	}
 
 	@Override
-	public List<Ordine> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void update(Ordine ordine) {
 		// TODO Auto-generated method stub
 		
@@ -53,7 +40,7 @@ private DataSource dataSource;
 		// TODO Auto-generated method stub
 		
 	}
-
+/*
 	@Override
 	public ArrayList<Ordine> retrieve(Integer nOrdine, Integer maxOrdine) throws SQLException {
 		
@@ -157,5 +144,21 @@ private DataSource dataSource;
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
+	}
+*/
+	@Override
+	public List<Ordine> retrieve(Ordine object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<Ordine> retrieveBy(String column, Object value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<Ordine> retrieveAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

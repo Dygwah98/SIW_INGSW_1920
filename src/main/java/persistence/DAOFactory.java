@@ -1,10 +1,7 @@
 package persistence;
 
-import persistence.dao.PostDao;
-import persistence.dao.PrenotazioneDao;
-import persistence.dao.ProdottoDao;
-import persistence.dao.RoomDao;
-import persistence.dao.UserDao;
+import model.*;
+import persistence.postgres.jdbc.PostgresDAOFactory;
 
 public abstract class DAOFactory {
 
@@ -34,14 +31,14 @@ public abstract class DAOFactory {
 	
 	// --- Factory specification: concrete factories implementing this spec must provide this methods! ---
 		
-	public abstract UserDao getUtenteDAO();
+	public abstract Dao<User> getUtenteDAO();
 	
-	public abstract PostDao getPostDao();
+	public abstract Dao<Post> getPostDao();
 
-	public abstract PrenotazioneDao getPrenotazioneDao();
+	public abstract Dao<Prenotazione> getPrenotazioneDao();
 	
-	public abstract RoomDao getRoomDao();
+	public abstract Dao<Room> getRoomDao();
 
-	public abstract ProdottoDao getProdottoDao();
+	public abstract Dao<Prodotto> getProdottoDao();
 	
 }

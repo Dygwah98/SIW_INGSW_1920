@@ -1,50 +1,17 @@
-package persistence;
+package persistence.postgres.jdbc;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 import model.Post;
-import persistence.dao.PostDao;
+import persistence.DBManager;
+import persistence.Dao;
+import persistence.PersistenceException;
 
-public class PostDaoJDBC implements PostDao {
-
-	private DataSource dataSource;
-
-	public PostDaoJDBC(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
-
-	@Override
-	public void save(Post post) throws SQLException {
-		Connection connection = this.dataSource.getConnection();
-		try {
-			int id = getNextId(connection);
-			connection = this.dataSource.getConnection();
-			String insert = "insert into post(id_post, title, messaggio, id_utente, imgsrc, date) values (?,?,?,?,?,?)";
-			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setLong(1, id);
-			statement.setString(2, post.getTitle());
-			statement.setString(3, post.getMessaggio());
-			statement.setString(4, post.getUtente());
-			statement.setString(5, post.getImgname());
-			statement.setDate(6, post.getData());
-
-			statement.executeUpdate();
-		} catch (SQLException e) {
-			throw new PersistenceException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
-
-	}
+public class PostDaoJDBC implements Dao<Post> {
 
 	private final int getNextId(final Connection connection) {
 		try {
@@ -69,15 +36,36 @@ public class PostDaoJDBC implements PostDao {
 			}
 		}
 	}
+	
+	@Override
+	public void save(Post post) {
+		
+		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+			
+			int id = getNextId(connection);
+			String insert = "insert into post(id_post, title, messaggio, id_utente, imgsrc, date) values (?,?,?,?,?,?)";
+			PreparedStatement statement = connection.prepareStatement(insert);
+			statement.setLong(1, id);
+			statement.setString(2, post.getTitle());
+			statement.setString(3, post.getMessaggio());
+			statement.setString(4, post.getUtente());
+			statement.setString(5, post.getImgname());
+			statement.setDate(6, post.getData());
+
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		}
+
+	}
 
 	@Override
-	public void delete(Long idPost) throws SQLException {
-		System.out.println("sono nella delete del post");
-		Connection connection = this.dataSource.getConnection();
-		try {
+	public void delete(Post object) {
+		
+		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
 
-			String delete = "delete from post where id_post = " + idPost;
-			String delete2 = "delete from commento where id_post = " +idPost;
+			String delete = "delete from post where id_post = " + object.getIdPost();
+			String delete2 = "delete from commento where id_post = " + object.getIdPost();
 			PreparedStatement statement = connection.prepareStatement(delete);
 			PreparedStatement statement2 = connection.prepareStatement(delete2);
 			statement.executeUpdate();
@@ -85,16 +73,9 @@ public class PostDaoJDBC implements PostDao {
 
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
 		}
-
 	}
-
+/*
 	@Override
 	public ArrayList<Post> retrieve(Integer nPost, Integer maxPost) throws SQLException {
 		
@@ -168,5 +149,25 @@ public class PostDaoJDBC implements PostDao {
 				throw new PersistenceException(e.getMessage());
 			}
 		}
+	}
+*/
+	@Override
+	public List<Post> retrieve(Post object) {
+		return null;
+	}
+
+	@Override
+	public List<Post> retrieveBy(String column, Object value) {
+		return null;
+	}
+
+	@Override
+	public List<Post> retrieveAll() {
+		return null;
+	}
+
+	@Override
+	public void update(Post object) {
+		
 	}
 }

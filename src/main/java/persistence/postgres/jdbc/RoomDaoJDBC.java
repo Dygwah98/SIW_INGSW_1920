@@ -1,29 +1,22 @@
-package persistence;
+package persistence.postgres.jdbc;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import model.Post;
 import model.Room;
-import persistence.dao.RoomDao;
+import persistence.DBManager;
+import persistence.Dao;
 
-public class RoomDaoJDBC implements RoomDao{
-private DataSource dataSource;
-	
-	public RoomDaoJDBC(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
+public class RoomDaoJDBC implements Dao<Room>{
 	
 	@Override
 	public void save(Room Room) {
 		
-		try(Connection connection = this.dataSource.getConnection()) {
+		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
 		
 			String insert = "insert into stanza(id, tipo, descrizione,maxpersonestanze,occupata,prezzo,img) values (?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
@@ -43,9 +36,9 @@ private DataSource dataSource;
 
 
 	@Override
-	public List<Room> findAll() {
+	public List<Room> retrieveAll() {
 		
-		try(Connection connection = this.dataSource.getConnection()) {
+		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
 		
 			List<Room> rooms = new LinkedList<>();
 			
@@ -77,7 +70,7 @@ private DataSource dataSource;
 	@Override
 	public void update(Room Room) {
 		
-		try(Connection connection = this.dataSource.getConnection()) {
+		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
 	
 			String update = "update Room SET  tipo = ?, descrizione = ?,maxpersonestanza= ?,occupata= ?,prezzo=?,img=? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(update);
@@ -97,7 +90,7 @@ private DataSource dataSource;
 	@Override
 	public void delete(Room Room) {
 		
-		try(Connection connection = this.dataSource.getConnection()) {
+		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
 			
 			String delete = "delete FROM Room WHERE id = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
@@ -108,7 +101,7 @@ private DataSource dataSource;
 			throw new RuntimeException(e.getMessage());
 		}
 	}
-	
+/*
 	@Override
 	public ArrayList<Room> retrieve(Integer nRoom, Integer maxRoom) {
 		
@@ -166,5 +159,17 @@ private DataSource dataSource;
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
+	}
+*/
+	@Override
+	public List<Room> retrieve(Room object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Room> retrieveBy(String column, Object value) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

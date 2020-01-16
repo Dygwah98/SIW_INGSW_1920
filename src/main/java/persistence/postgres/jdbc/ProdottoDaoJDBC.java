@@ -1,29 +1,21 @@
-package persistence;
+package persistence.postgres.jdbc;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
-import model.Post;
 import model.Prodotto;
-import persistence.dao.ProdottoDao;
-import persistence.DataSource;
+import persistence.DBManager;
+import persistence.Dao;
 
-public class ProdottoDaoJDBC implements ProdottoDao {
-	private DataSource dataSource;
-
-	public ProdottoDaoJDBC(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
+public class ProdottoDaoJDBC implements Dao<Prodotto> {
 	
 	public void save(Prodotto prodotto) {
 
-		try(Connection connection = this.dataSource.getConnection()) {
+		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
 			
 			String insert = "insert into Prodotto(id, nome, prezzo,descrizione,img,idordine) values (?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
@@ -41,27 +33,35 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	}  
 	
 	@Override
-	public Prodotto findByPrimaryKey(int id) {
+	public List<Prodotto> retrieveBy(String column, Object value) {
 
-		try(Connection connection = this.dataSource.getConnection()) {
+		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
 
-			Prodotto prodotto = null;
+			List<Prodotto> prodotto = null;
+			Prodotto temp = null;
 			
 			PreparedStatement statement;
-			String query = "select * from Prodotto where id = ?";
+			String query = "select * from Prodotto where ? = ?";
 			statement = connection.prepareStatement(query);
-			statement.setInt(1, id);
+			statement.setString(1, column);
+			statement.setObject(2, value);
+			
 			ResultSet result = statement.executeQuery();
-			if (result.next()) {
-				prodotto = new Prodotto();
-				prodotto.setId(result.getInt("id"));				
-				prodotto.setNome(result.getString("nome"));
-				prodotto.setDescrizione(result.getString("descrizione"));
-				prodotto.setPrezzo(result.getInt("prezzo"));
-				prodotto.setImg(result.getString("img"));
-				prodotto.setIdordine(result.getInt("idordine"));
+			
+			if(result.isBeforeFirst()) {
+				prodotto = new ArrayList<Prodotto>();
+				
+					while(result.next()) {
+						temp = new Prodotto();
+						temp.setId(result.getInt("id"));				
+						temp.setNome(result.getString("nome"));
+						temp.setDescrizione(result.getString("descrizione"));
+						temp.setPrezzo(result.getInt("prezzo"));
+						temp.setImg(result.getString("img"));
+						temp.setIdordine(result.getInt("idordine"));
+						prodotto.add(temp);
+					}
 			}
-	
 			return prodotto;
 			
 		} catch (SQLException e) {
@@ -70,27 +70,31 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	}
 	
 	@Override
-	public List<Prodotto> findAll() {
+	public List<Prodotto> retrieveAll() {
 		
-		try(Connection connection = this.dataSource.getConnection()) {
+		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
 		
-			List<Prodotto> prodotti = new LinkedList<>();
+			List<Prodotto> prodotti = null;
+			Prodotto prodotto = null;
 			
-			Prodotto prodotto;
 			PreparedStatement statement;
 			String query = "select * from Prodotto";
 			statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
-			while (result.next()) {
-				prodotto = new Prodotto();
-				prodotto.setId(result.getInt("id"));				
-				prodotto.setNome(result.getString("nome"));
-				prodotto.setDescrizione(result.getString("descrizione"));
-				prodotto.setPrezzo(result.getInt("prezzo"));
-				prodotto.setImg(result.getString("img"));
-				prodotto.setIdordine(result.getInt("idordine"));
-				
-				prodotti.add(prodotto);
+			
+			if(result.isBeforeFirst()) {
+				prodotti = new ArrayList<Prodotto>();
+			
+				while(result.next()) {
+					prodotto = new Prodotto();
+					prodotto.setId(result.getInt("id"));				
+					prodotto.setNome(result.getString("nome"));
+					prodotto.setDescrizione(result.getString("descrizione"));
+					prodotto.setPrezzo(result.getInt("prezzo"));
+					prodotto.setImg(result.getString("img"));
+					prodotto.setIdordine(result.getInt("idordine"));
+					prodotti.add(prodotto);
+				}
 			}
 		
 			return prodotti;
@@ -103,7 +107,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public void update(Prodotto prodotto) {
 		
-		try(Connection connection = this.dataSource.getConnection()) {
+		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
 			
 			String update = "update Prodotto SET nome = ?, descrizione=?,prezzo=?,img=? idordine=? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(update);
@@ -122,7 +126,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public void delete(Prodotto prodotto) {
 
-		try(Connection connection = this.dataSource.getConnection()) {
+		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
 			
 			String delete = "delete FROM Prodotto WHERE id = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
@@ -133,7 +137,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			throw new RuntimeException(e.getMessage());
 		}
 	}
-
+/*
 	@Override
 	public ArrayList<Prodotto> retrieve(Integer nProd, Integer maxProd) {
 		
@@ -189,5 +193,11 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
+	}
+*/
+	@Override
+	public List<Prodotto> retrieve(Prodotto object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
