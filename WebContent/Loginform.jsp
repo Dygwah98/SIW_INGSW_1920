@@ -30,10 +30,10 @@
 
 
 <form class="login-form" method="post" action="${pageContext.request.contextPath}/login">
-   <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
+   <input type="text" name="username" placeholder="username"/>
+      <input type="password" name="password" placeholder="password"/>
        <button type="submit" id="btnLogin">LOGIN!</button>
-      <p class="message">Not registered? <a href="RegistrationForm.html">Create an account</a></p>
+      <p class="message">Not registered? <a href="RegistrationForm.jsp">Create an account</a></p>
     </form>
   </div>
 </div>

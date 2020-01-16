@@ -70,7 +70,7 @@ private DataSource dataSource;
 
 		try(Connection connection = this.dataSource.getConnection()) {
 			
-			String update = "update Prenotazione SET , checkin = ?,checkout= ?,idcamera= ?,idcliente=? idordine=? WHERE idprenotazione=?";
+			String update = "update Prenotazione SET  checkin = ?,checkout= ?,idcamera= ?,idcliente=? idordine=? WHERE idprenotazione=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setDate(2, book.getCheckin());
 			statement.setDate(3, book.getCheckout());

@@ -157,6 +157,9 @@ package persistence;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import model.User;
+import persistence.dao.UserDao;
+
 public class DBManager {
 	
 	private DataSource dataSource = null;
@@ -191,16 +194,20 @@ public class DBManager {
 	}
 	
 	//FIXME: da rimuovere in later versions
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		
-		try(Connection c = getInstance().getDataSource().getConnection()) {
+		
+			User s=new User();
 			
-			System.out.println("DIOCANE FUNZIONA");
+			Connection c = getInstance().getDataSource().getConnection();
+//			new UserDaoJDBC(dataSource)
+			c.setAutoCommit(true);
+			getInstance().getUtenteDAO().save(s);
 			
-		} catch(SQLException e) {
-			
-			System.out.println("DIOCANE NON FUNZIONA");
-		}
 		
 	}
+	public UserDao getUtenteDAO() {
+		return new UserDaoJDBC(dataSource);
+	}
+	
 }

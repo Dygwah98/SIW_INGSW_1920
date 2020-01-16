@@ -8,13 +8,13 @@ public class User {
 	private Integer id;
 	private String name;
 	private String surname;
-	private java.sql.Date  datadinascita;
+	private String  datadinascita;
 	private String username;
 	private String password;
 	private String image;
 	private String email;
 
-	public User(int id, String username, String password, String email, String name, String surname,java.sql.Date  datadinascita) {
+	public User(int id, String username, String password, String email, String name, String surname,String  datadinascita) {
 		super();
 		this.id = id;
 		this.name=name;
@@ -55,11 +55,11 @@ public class User {
 	{
 		return surname;
 	}
-	public java.sql.Date  getNascita(){
+	public String  getNascita(){
 		return datadinascita;
 	}
-	public void SetNascita(java.sql.Date  datadinascita) {
-		this.datadinascita=datadinascita;
+	public void SetNascita(String  date1) {
+		this.datadinascita=date1;
 	}
 	public String getEmail() {
 		return email;
