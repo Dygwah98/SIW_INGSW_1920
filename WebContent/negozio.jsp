@@ -10,9 +10,11 @@
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.2/bootstrap.min.css">
+
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.3.4/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="styles/Negozio.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+
 
 <link rel="stylesheet" href="styles/icomoon.css">
 <link rel="stylesheet" href="styles/ionicons.min.css">
@@ -20,6 +22,7 @@
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="plugins/OwlCarousel2-2.3.4/owl.carousel.js"></script>
 <script src="js/custom.js"></script>
+
 
 </head>
 
@@ -43,11 +46,14 @@
 						<li ><a href="index.jsp">Home</a></li>
 						<li><a href="negozio.jsp">Negozio</a></li>
 						<li><a href="#">Lista dei desideri</a></li>
-						<li><a  href="#"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
 					</ul>
 			   </nav>
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-					<div class="book_button"><a href="carrello.jsp">Carrello</a></div>
+				 <nav class="main_nav">
+					<ul class="d-flex flex-row align-items-start justify-content-start">
+						<li><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+					</ul>
+				</nav>
 			   <%}%>
 			</div>
 		</div>
@@ -73,13 +79,16 @@
 					<li ><a href="index.jsp">Home</a></li>
 					<li><a href="negozio.jsp">Negozio</a></li>
 					<li><a href="#">Lista dei desideri</a></li>
-					<li><a href="#">Carrello [0]</a></li>
 			   </ul>
 		   </nav>
 		</div>
 		<div class="menu_extra">
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-			<div class=" text-right"><a href="carrello.jsp">Carrello</a></div>
+				<nav class="main_nav">
+					<ul class="d-flex flex-row align-items-start justify-content-start">
+						<li><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+					</ul>
+				</nav>
 	    <%}%>
 		</div>
 	</div>
@@ -102,13 +111,7 @@
 										<p class="descrizione">Le nostre verdure sono frutto di una coltivazione mirata e accurata....
 											<br>Offriamo i migliori prodotti vegetariani sul mercato.
 										</p>
-										<div >
-											<form action="#" class="bottone">
-												<div class="d-flex flex-xl-row flex-column align-items-start justify-content-start">
-													<div><button class="dettagli_bottone trans_200">DETTAGLI</button></div>
-												</div>
-											</form>
-										</div>
+										<a href="#piu" class="bottone trans_200">DETTAGLI</a>
 									</div>
 								</div>
 							</div>
@@ -128,13 +131,7 @@
 										<p class="descrizione">I nostri ortaggi sono frutto di una coltivazione mirata e accurata....
 											<br>Offriamo i migliori prodotti vegetariani sul mercato.
 										</p>
-										<div >
-											<form action="#" class="bottone">
-												<div class="d-flex flex-xl-row flex-column align-items-start justify-content-start">
-													<div><button class="dettagli_bottone trans_200">DETTAGLI</button></div>
-												</div>
-											</form>
-										</div>
+										<a href="#piu" class="bottone trans_200">DETTAGLI</a>
 									</div>
 								</div>
 							</div>
@@ -154,13 +151,7 @@
 										<p class="descrizione">I nostri animali pascolano liberamente!!
 											<br>Offriamo i migliori prodotti di carne sul mercato.
 										</p>
-										<div >
-											<form action="#" class="bottone">
-												<div class="d-flex flex-xl-row flex-column align-items-start justify-content-start">
-													<div><button class="dettagli_bottone_carne trans_200">DETTAGLI</button></div>
-												</div>
-											</form>
-										</div>
+										<a href="#piu" class="bottone_carne trans_200">DETTAGLI</a>
 									</div>
 								</div>
 							</div>
@@ -180,13 +171,7 @@
 										<p class="descrizione">Formaggi a lunga stagionatura...
 											<br>Formaggi e latticini sempre freschi!!
 										</p>
-										<div >
-											<form action="#" class="bottone">
-												<div class="d-flex flex-xl-row flex-column align-items-start justify-content-start">
-													<div><button class="dettagli_bottone_carne trans_200">DETTAGLI</button></div>
-												</div>
-											</form>
-										</div>
+										<a href="#piu" class="bottone_carne trans_200">DETTAGLI</a>
 									</div>
 								</div>
 							</div>
@@ -214,7 +199,7 @@
 
 	<!-- body -->
 	
-	<section class="ftco-section">
+	<section id="piu" class="ftco-section">
     	<div class="container">
 				<div class="row justify-content-center mb-3 pb-3">
           <div class="col-md-12 heading-section text-center ">
@@ -426,7 +411,7 @@
     	</div>
 	
 	<!-- Footer -->
-
+	</div>
 	<footer  class="footer">
 		<div class="footer_content">
 			<div class="container">
@@ -462,7 +447,7 @@
 							<ul>
 								<li>Tel: 345 5667 889</li>
 								<li>Fax; 6783 4567 889</li>
-								<li>contattoo@hotelSarella.com</li>
+								<li>contatto@hotelSarella.com</li>
 							</ul>
 						</div>
 					</div>
@@ -488,8 +473,8 @@
 				</div>
 			</div>
 		</div>
-		</footer>
-	</div>
+	</footer>
+	
 <script src="js/Negozio.js"></script>
 </body>
 </html>
