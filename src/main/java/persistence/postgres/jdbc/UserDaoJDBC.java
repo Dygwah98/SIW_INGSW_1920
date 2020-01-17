@@ -87,10 +87,9 @@ public class UserDaoJDBC implements Dao<User>{
 	}
 	
 	@Override
-	public List<User> retrieve(User object) {
+	public User retrieve(User object) {
 
 		String query = "SELECT * FROM utente WHERE u.idUtente = ?";
-		List<User> user = null;
 		User u = null;
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
@@ -109,10 +108,9 @@ public class UserDaoJDBC implements Dao<User>{
 				u.setPassword(result.getString("password"));
 				u.setImage(result.getString("image"));
 				u.setEmail(result.getString("email"));
-				user.add(u);
 			}
 			
-			return user;
+			return u;
 			
 		} catch(SQLException e) {
 			throw new RuntimeException(e.getMessage());

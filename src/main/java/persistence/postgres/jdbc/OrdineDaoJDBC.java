@@ -1,13 +1,9 @@
 package persistence.postgres.jdbc;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-
 import model.Ordine;
-import persistence.DBManager;
 import persistence.Dao;
 
 public class OrdineDaoJDBC implements Dao<Ordine>{
@@ -147,7 +143,7 @@ public class OrdineDaoJDBC implements Dao<Ordine>{
 	}
 */
 	@Override
-	public List<Ordine> retrieve(Ordine object) {
+	public Ordine retrieve(Ordine object) {
 		// TODO Auto-generated method stub
 		return null;
 	}
