@@ -15,11 +15,12 @@
 <link href="plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
-<link rel="stylesheet" href="styles/icomoon.css">
-<link rel="stylesheet" href="styles/ionicons.min.css">
-</head>
+
 </head>
 <body>
+	
+	<div class="super_container">
+	
 	<!-- Header -->
 	<header class="header">
 		<div class="header_content d-flex flex-row align-items-center justify-content-start">
@@ -33,7 +34,6 @@
 						  <li><a href="logout">Logout</a></li>
 						  <%}%>
 						<li><a href="index.jsp">Home</a></li>
-						<li><a href="negozio.jsp">Negozio</a></li>
 						<li><a href="about.jsp">About us</a></li>
 						<li><a href="booking.jsp">Rooms</a></li>
 						<li><a href="blog.jsp">Blog</a></li>
@@ -43,16 +43,11 @@
 			 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
-					</ul>
-				</nav>
-				 <%}%>
-				 <!--  
+						<div class="book_button"><a href="carrello.jsp">Carrello</a></div>
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
 					<img src="images/phone.png" alt="">
 					<span>3339290840</span>
 				</div>
-				-->
 
 				<!-- Hamburger Menu -->
 				<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -74,7 +69,6 @@
 						  <li><a href="logout">Logout</a></li>
 						  <%}%>
 					<li><a href="index.jsp">Home</a></li>
-					<li ><a href="negozio.jsp">Negozio</a></li>
 					<li><a href="about.jsp">About us</a></li>
 					<li><a href="booking.jsp">Rooms</a></li>
 					<li><a href="blog.jsp">Blog</a></li>
@@ -84,18 +78,12 @@
 		</div>
 		<div class="menu_extra">
 		 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				<nav class="main_nav">
-					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
-					</ul>
-				</nav>
-				 <%}%>
-			<!--  
+			<div class="menu_book text-right"><a href="carrello.jsp">Carrello</a></div>	
+				 <%}%> 
 			<div class="menu_phone d-flex flex-row align-items-center justify-content-center">
 				<img src="images/phone-2.png" alt="">
 				<span>3339290840</span>
 			</div>
-			-->
 		</div>
 	</div>
 
@@ -520,6 +508,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 </div>
 	</footer>
+</div>
 
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="styles/bootstrap-4.1.2/popper.js"></script>
