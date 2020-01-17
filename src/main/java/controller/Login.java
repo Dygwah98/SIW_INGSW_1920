@@ -29,7 +29,6 @@ public class Login extends HttpServlet {
     	PrintWriter o = resp.getWriter();
         resp.setContentType("text/jsp");
     	String userid = req.getParameter("username");
-    	System.out.println("sesso");
 		String password = req.getParameter("password");
 		HttpSession session =  req.getSession();
 
