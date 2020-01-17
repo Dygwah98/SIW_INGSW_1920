@@ -21,21 +21,19 @@
 </head>
 <body>
 	<!-- Header -->
-
 	<header class="header">
 		<div class="header_content d-flex flex-row align-items-center justify-content-start">
 			<div class="logo"><a href="#">Agriturismo Sarella</a></div>
 			<div class="ml-auto d-flex flex-row align-items-center justify-content-start">
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-							 <% if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
+						<% if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
 						<li><a href="Loginform.jsp">Login</a></li>
-						 <%}
-						  else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+						 <%}else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 						  <li><a href="logout">Logout</a></li>
 						  <%}%>
-						<li ><a href="index.jsp">Home</a></li>
-						<li ><a href="negozio.jsp">Negozio</a></li>
+						<li><a href="index.jsp">Home</a></li>
+						<li><a href="negozio.jsp">Negozio</a></li>
 						<li><a href="about.jsp">About us</a></li>
 						<li><a href="booking.jsp">Rooms</a></li>
 						<li><a href="blog.jsp">Blog</a></li>
