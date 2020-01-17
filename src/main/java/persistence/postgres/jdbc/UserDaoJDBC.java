@@ -91,7 +91,7 @@ public class UserDaoJDBC implements Dao<User>{
 
 		String query = "SELECT * FROM utente WHERE u.idUtente = ?";
 		List<User> user = null;
-		User user = null;
+		User u = null;
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 			
@@ -99,8 +99,20 @@ public class UserDaoJDBC implements Dao<User>{
 			handler.executeQuery();
 		
 			if(handler.existsResultSet()) {
-				ResultSet 
+				ResultSet result = handler.getResultSet();
+				result.next();
+				u = new User();
+				u.SetName(result.getString("nome"));
+				u.SetSurname(result.getString("cognome"));
+				u.SetNascita(result.getString("datadinascita"));
+				u.setUsername(result.getString("username"));
+				u.setPassword(result.getString("password"));
+				u.setImage(result.getString("image"));
+				u.setEmail(result.getString("email"));
+				user.add(u);
 			}
+			
+			return user;
 			
 		} catch(SQLException e) {
 			throw new RuntimeException(e.getMessage());
