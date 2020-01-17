@@ -12,35 +12,15 @@ import javax.servlet.http.HttpSession;
 import model.User;
 
 import persistence.DBManager;
-import persistence.DataSource;
-import persistence.UserDaoJDBC;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 
 @WebServlet(value = "/login", name = "login")
 public class Login extends HttpServlet {
-	private UserDaoJDBC userdaojdbc;
-	private DataSource dataSource = null;
 	String password;
 	User utente;
-	private static DBManager instance = null;
-	public void init() {
-		
-		try {
-			Class.forName("org.postgresql.Driver").newInstance();
-			dataSource = new DataSource(
-					"jdbc:postgresql://sarella.cqenbowd50kg.eu-central-1.rds.amazonaws.com:5050/sarella",
-					"riuzaki9797",
-					"*Francesco1.,");
-		
-		} catch (Exception e) {
-			System.err.println("PostgresDAOFactory.class: failed to load MySQL JDBC driver\n"+e);
-			e.printStackTrace();
-		}
-		userdaojdbc=new UserDaoJDBC(dataSource);
-	}
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setStatus(403); // Permission danied, only POST here
@@ -54,12 +34,11 @@ public class Login extends HttpServlet {
     	System.out.println("sesso");
 		password = req.getParameter("password");
 		HttpSession session =  req.getSession();
-		try {
-			utente = userdaojdbc.findByEmail(userid);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		User utente = null;
+		
+		utente = DBManager.getInstance().getDAOFactory().getUtenteDAO().retrieveBy("username", userid).get(0);
+		
 		if (utente != null) {
 			
 			req.getSession().setAttribute("logged",true);
