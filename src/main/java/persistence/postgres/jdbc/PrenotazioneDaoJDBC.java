@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,16 +17,17 @@ public class PrenotazioneDaoJDBC implements Dao<Prenotazione>{
 	@Override
 	public void save(Prenotazione book) {
 
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		String insert = "insert into Prenotazione(idprenotazione,checkin,checkout,idcamera,idcliente,idordine) values (?,?,?,?,?,?)";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
-			String insert = "insert into Prenotazione(idprenotazione,checkin,checkout,idcamera,idcliente,idordine) values (?,?,?,?,?,?)";
-			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setInt(1,book.getIdPrenotazione());
-			statement.setDate(2,book.getCheckin());
-			statement.setDate(3, book.getCheckout());
-			statement.setInt(4,book.getIdCamera());
-			statement.setInt(5, book.getIdordine());
-			statement.executeUpdate();
+			PreparedStatement smt = handler.getStatement();
+			smt.setInt(1,book.getIdPrenotazione());
+			smt.setDate(2,book.getCheckin());
+			smt.setDate(3, book.getCheckout());
+			smt.setInt(4,book.getIdCamera());
+			smt.setInt(5, book.getIdordine());
+			handler.executeUpdate();
 		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -34,24 +36,27 @@ public class PrenotazioneDaoJDBC implements Dao<Prenotazione>{
 
 	@Override
 	public List<Prenotazione> retrieveAll() {
+
+		String query = "select * from Prenotazione";
+		List<Prenotazione> books = null;
+		Prenotazione book = null;
 		
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 			
-			List<Prenotazione> books = new LinkedList<>();
+			handler.executeQuery();
 			
-			Prenotazione book;
-			PreparedStatement statement;
-			String query = "select * from Prenotazione";
-			statement = connection.prepareStatement(query);
-			ResultSet result = statement.executeQuery();
-			while (result.next()) {
-				book = new Prenotazione();
-				book.setIdPrenotazione(result.getInt("idprenotazione"));				
-				book.setCheckin(result.getDate("checkin"));
-				book.setCheckout(result.getDate("checkout"));
-				book.setIdCamera(result.getInt("idcamera"));
-				book.setIdordine(result.getInt("idordine"));
-				books.add(book);
+			if(handler.existsResultSet()) {
+				books = new ArrayList<Prenotazione>();
+				ResultSet result = handler.getResultSet();
+				while (result.next()) {
+					book = new Prenotazione();
+					book.setIdPrenotazione(result.getInt("idprenotazione"));				
+					book.setCheckin(result.getDate("checkin"));
+					book.setCheckout(result.getDate("checkout"));
+					book.setIdCamera(result.getInt("idcamera"));
+					book.setIdordine(result.getInt("idordine"));
+					books.add(book);
+				}
 			}
 			
 			return books;
@@ -64,15 +69,16 @@ public class PrenotazioneDaoJDBC implements Dao<Prenotazione>{
 	@Override
 	public void update(Prenotazione book) {
 
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		String update = "update Prenotazione SET  checkin = ?,checkout= ?,idcamera= ?,idcliente=? idordine=? WHERE idprenotazione=?";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 			
-			String update = "update Prenotazione SET  checkin = ?,checkout= ?,idcamera= ?,idcliente=? idordine=? WHERE idprenotazione=?";
-			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setDate(2, book.getCheckin());
-			statement.setDate(3, book.getCheckout());
-			statement.setInt(4, book.getIdCamera());
-			statement.setInt(5, book.getIdordine());
-			statement.executeUpdate();
+			PreparedStatement smt = handler.getStatement();
+			smt.setDate(2, book.getCheckin());
+			smt.setDate(3, book.getCheckout());
+			smt.setInt(4, book.getIdCamera());
+			smt.setInt(5, book.getIdordine());
+			handler.executeUpdate();
 			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -82,12 +88,12 @@ public class PrenotazioneDaoJDBC implements Dao<Prenotazione>{
 	@Override
 	public void delete(Prenotazione book) {
 		
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		String delete = "delete FROM Prenotazione WHERE idprenotazione = ? ";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			
-			String delete = "delete FROM Prenotazione WHERE idprenotazione = ? ";
-			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setInt(1,book.getIdPrenotazione());
-			statement.executeUpdate();
+			handler.getStatement().setInt(1,book.getIdPrenotazione());
+			handler.getStatement().executeUpdate();
 		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());

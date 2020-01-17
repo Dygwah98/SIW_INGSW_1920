@@ -39,20 +39,21 @@ public class PostDaoJDBC implements Dao<Post> {
 	
 	@Override
 	public void save(Post post) {
-		
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
-			
-			int id = getNextId(connection);
-			String insert = "insert into post(id_post, title, messaggio, id_utente, imgsrc, date) values (?,?,?,?,?,?)";
-			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setLong(1, id);
-			statement.setString(2, post.getTitle());
-			statement.setString(3, post.getMessaggio());
-			statement.setString(4, post.getUtente());
-			statement.setString(5, post.getImgname());
-			statement.setDate(6, post.getData());
 
-			statement.executeUpdate();
+		String insert = "insert into post(id_post, title, messaggio, id_utente, imgsrc, date) values (?,?,?,?,?,?)";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
+			
+			int id = getNextId(handler.getConnection());
+			PreparedStatement smt = handler.getStatement();
+			smt.setLong(1, id);
+			smt.setString(2, post.getTitle());
+			smt.setString(3, post.getMessaggio());
+			smt.setString(4, post.getUtente());
+			smt.setString(5, post.getImgname());
+			smt.setDate(6, post.getData());
+			handler.executeUpdate();
+			
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
@@ -62,15 +63,12 @@ public class PostDaoJDBC implements Dao<Post> {
 	@Override
 	public void delete(Post object) {
 		
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		String delete = "delete from post where id_post = " + object.getIdPost();
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 
-			String delete = "delete from post where id_post = " + object.getIdPost();
-			String delete2 = "delete from commento where id_post = " + object.getIdPost();
-			PreparedStatement statement = connection.prepareStatement(delete);
-			PreparedStatement statement2 = connection.prepareStatement(delete2);
-			statement.executeUpdate();
-			statement2.executeUpdate();
-
+			handler.getStatement().executeUpdate();
+		
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}

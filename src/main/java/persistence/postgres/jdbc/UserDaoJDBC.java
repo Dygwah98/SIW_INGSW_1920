@@ -15,6 +15,7 @@ import persistence.PersistenceException;
 public class UserDaoJDBC implements Dao<User>{
 		
 	private final int getNextId(final Connection connection){
+		
 		try {
 			PreparedStatement statement;
 			final String query = "select id from user;";
@@ -42,19 +43,20 @@ public class UserDaoJDBC implements Dao<User>{
 	@Override
 	public void save(User utente) {
 		
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		String insert = "insert into utente(nome, cognome,datadinascita, username,password,image,email) values (?,?,?,?,?,?,?)";
 		
-			String insert = "insert into utente(nome, cognome,datadinascita, username,password,image,email) values (?,?,?,?,?,?,?)";
-			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setString(1, utente.getName());
-			statement.setString(2, utente.getSurname());
-			statement.setString(3,utente.getNascita());
-			statement.setString(4, utente.getUsername());
-			statement.setString(5, utente.getPassword());
-			statement.setString(6, null);
-			statement.setString(7, utente.getEmail());
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 
-			statement.executeUpdate();
+			PreparedStatement smt = handler.getStatement();
+			smt.setString(1, utente.getName());
+			smt.setString(2, utente.getSurname());
+			smt.setString(3,utente.getNascita());
+			smt.setString(4, utente.getUsername());
+			smt.setString(5, utente.getPassword());
+			smt.setString(6, null);
+			smt.setString(7, utente.getEmail());
+
+			handler.executeUpdate();
 			
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -63,18 +65,21 @@ public class UserDaoJDBC implements Dao<User>{
 
 	@Override
 	public void update(User Utente) {
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		
+		String update = "update utente SET  nome=?,cognome=?,datadinascita=?,username=?,password=?,image=?,email=? WHERE username=?";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 			
-			String update = "update utente SET  nome=?,cognome=?,datadinascita=?,username=?,password=?,image=?,email=? WHERE username=?";
-			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setString(2, Utente.getName());
-			statement.setString(3, Utente.getSurname());
-			statement.setString(4, Utente.getNascita());
-			statement.setString(5, Utente.getUsername());
-			statement.setString(6, Utente.getPassword());
-			statement.setString(7, Utente.getImage());
-			statement.setString(8, Utente.getImage());
-			statement.executeUpdate();
+			PreparedStatement smt = handler.getStatement();
+			smt.setString(2, Utente.getName());
+			smt.setString(3, Utente.getSurname());
+			smt.setString(4, Utente.getNascita());
+			smt.setString(5, Utente.getUsername());
+			smt.setString(6, Utente.getPassword());
+			smt.setString(7, Utente.getImage());
+			smt.setString(8, Utente.getImage());
+			
+			handler.executeUpdate();
 			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -83,24 +88,40 @@ public class UserDaoJDBC implements Dao<User>{
 	
 	@Override
 	public List<User> retrieve(User object) {
-		// TODO Auto-generated method stub
-		return null;
+
+		String query = "SELECT * FROM utente WHERE u.idUtente = ?";
+		List<User> user = null;
+		User user = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			handler.getStatement().setInt(1, object.getId());
+			handler.executeQuery();
+		
+			if(handler.existsResultSet()) {
+				ResultSet 
+			}
+			
+		} catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 	
 	@Override
 	public List<User> retrieveBy(String column, Object value) {
 		
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		String query = "SELECT * FROM utente AS u WHERE u." + column + "=?";
+		List<User> ret = null;
+		User u = null;
 		
-			List<User> ret = null;
-			User u = null;
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 			
-			String query = "SELECT * FROM utente AS u WHERE u." + column + "=?";
-			PreparedStatement statement = connection.prepareStatement(query);
-			statement.setString(1, (String) value);
-			ResultSet result = statement.executeQuery();
+			handler.getStatement().setString(1, (String) value);
+			handler.executeQuery();
 			
-			if(result.isBeforeFirst()) {
+			if(handler.existsResultSet()) {
+				
+				ResultSet result = handler.getResultSet();
 				ret = new ArrayList<User>();
 				while(result.next()) {
 					u  = new User();
@@ -125,17 +146,17 @@ public class UserDaoJDBC implements Dao<User>{
 	@Override
 	public List<User> retrieveAll() {
 		
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()){
+		String query = "select * from utente";
+		List<User> utenti = null;
+		User utente = null;
 		
-			List<User> utenti = null;
-			User utente = null;
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 		
-			PreparedStatement statement;
-			String query = "select * from utente";
-			statement = connection.prepareStatement(query);
-			ResultSet result = statement.executeQuery();
-		
-			if(result.isBeforeFirst()) {
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				
+				ResultSet result = handler.getResultSet();
 				utenti = new ArrayList<User>();
 				while (result.next()) {
 					utente = new User();		
@@ -159,13 +180,13 @@ public class UserDaoJDBC implements Dao<User>{
 
 	@Override
 	public void delete(User object) {
+
+		String delete = "delete FROM utente WHERE username = ? ";
 		
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			
-			String delete = "delete FROM utente WHERE username = ? ";
-			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setString(1, object.getUsername());
-			statement.executeUpdate();
+			handler.getStatement().setString(1, object.getUsername());
+			handler.executeUpdate();
 		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());

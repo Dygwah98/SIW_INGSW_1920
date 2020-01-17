@@ -15,17 +15,18 @@ public class ProdottoDaoJDBC implements Dao<Prodotto> {
 	
 	public void save(Prodotto prodotto) {
 
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		String insert = "insert into Prodotto(id, nome, prezzo,descrizione,img,idordine) values (?,?,?,?,?,?)";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
-			String insert = "insert into Prodotto(id, nome, prezzo,descrizione,img,idordine) values (?,?,?,?,?,?)";
-			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setInt(1, prodotto.getId());
-			statement.setString(2, prodotto.getNome());
-			statement.setString(3, prodotto.getDescrizione());
-			statement.setInt(4, prodotto.getPrezzo());
-			statement.setString(5, prodotto.getImg());
-			statement.setInt(6, prodotto.getIdordine());
-			statement.executeUpdate();
+			PreparedStatement smt = handler.getStatement();
+			smt.setInt(1, prodotto.getId());
+			smt.setString(2, prodotto.getNome());
+			smt.setString(3, prodotto.getDescrizione());
+			smt.setInt(4, prodotto.getPrezzo());
+			smt.setString(5, prodotto.getImg());
+			smt.setInt(6, prodotto.getIdordine());
+			handler.executeUpdate();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -35,33 +36,32 @@ public class ProdottoDaoJDBC implements Dao<Prodotto> {
 	@Override
 	public List<Prodotto> retrieveBy(String column, Object value) {
 
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		String query = "select * from Prodotto where ? = ?";
+		List<Prodotto> prodotto = null;
+		Prodotto temp = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 
-			List<Prodotto> prodotto = null;
-			Prodotto temp = null;
+			handler.getStatement().setString(1, column);
+			handler.getStatement().setObject(2, value);
+			handler.executeQuery();
 			
-			PreparedStatement statement;
-			String query = "select * from Prodotto where ? = ?";
-			statement = connection.prepareStatement(query);
-			statement.setString(1, column);
-			statement.setObject(2, value);
-			
-			ResultSet result = statement.executeQuery();
-			
-			if(result.isBeforeFirst()) {
+			if(handler.existsResultSet()) {
 				prodotto = new ArrayList<Prodotto>();
+				ResultSet result = handler.getResultSet();
 				
-					while(result.next()) {
-						temp = new Prodotto();
-						temp.setId(result.getInt("id"));				
-						temp.setNome(result.getString("nome"));
-						temp.setDescrizione(result.getString("descrizione"));
-						temp.setPrezzo(result.getInt("prezzo"));
-						temp.setImg(result.getString("img"));
-						temp.setIdordine(result.getInt("idordine"));
-						prodotto.add(temp);
-					}
+				while(result.next()) {
+					temp = new Prodotto();
+					temp.setId(result.getInt("id"));				
+					temp.setNome(result.getString("nome"));
+					temp.setDescrizione(result.getString("descrizione"));
+					temp.setPrezzo(result.getInt("prezzo"));
+					temp.setImg(result.getString("img"));
+					temp.setIdordine(result.getInt("idordine"));
+					prodotto.add(temp);
+				}
 			}
+			
 			return prodotto;
 			
 		} catch (SQLException e) {
@@ -72,19 +72,18 @@ public class ProdottoDaoJDBC implements Dao<Prodotto> {
 	@Override
 	public List<Prodotto> retrieveAll() {
 		
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		String query = "select * from Prodotto";
+		List<Prodotto> prodotti = null;
+		Prodotto prodotto = null;
 		
-			List<Prodotto> prodotti = null;
-			Prodotto prodotto = null;
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+		
+			handler.executeQuery();
 			
-			PreparedStatement statement;
-			String query = "select * from Prodotto";
-			statement = connection.prepareStatement(query);
-			ResultSet result = statement.executeQuery();
-			
-			if(result.isBeforeFirst()) {
+			if(handler.existsResultSet()) {
 				prodotti = new ArrayList<Prodotto>();
-			
+				ResultSet result = handler.getResultSet();
+				
 				while(result.next()) {
 					prodotto = new Prodotto();
 					prodotto.setId(result.getInt("id"));				
@@ -107,16 +106,17 @@ public class ProdottoDaoJDBC implements Dao<Prodotto> {
 	@Override
 	public void update(Prodotto prodotto) {
 		
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		String update = "update Prodotto SET nome = ?, descrizione=?,prezzo=?,img=? idordine=? WHERE id=?";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 			
-			String update = "update Prodotto SET nome = ?, descrizione=?,prezzo=?,img=? idordine=? WHERE id=?";
-			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setString(2, prodotto.getNome());
-			statement.setString(3, prodotto.getDescrizione());
-			statement.setInt(4, prodotto.getPrezzo());
-			statement.setString(5, prodotto.getImg());
-			statement.setInt(6, prodotto.getIdordine());
-			statement.executeUpdate();
+			PreparedStatement smt = handler.getStatement();
+			smt.setString(2, prodotto.getNome());
+			smt.setString(3, prodotto.getDescrizione());
+			smt.setInt(4, prodotto.getPrezzo());
+			smt.setString(5, prodotto.getImg());
+			smt.setInt(6, prodotto.getIdordine());
+			handler.executeUpdate();
 		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -126,12 +126,12 @@ public class ProdottoDaoJDBC implements Dao<Prodotto> {
 	@Override
 	public void delete(Prodotto prodotto) {
 
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		String delete = "delete FROM Prodotto WHERE id = ? ";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			
-			String delete = "delete FROM Prodotto WHERE id = ? ";
-			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setInt(1, prodotto.getId());
-			statement.executeUpdate();
+			handler.getStatement().setInt(1, prodotto.getId());
+			handler.executeUpdate();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,18 +17,20 @@ public class RoomDaoJDBC implements Dao<Room>{
 	@Override
 	public void save(Room Room) {
 		
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		String insert = "insert into stanza(id, tipo, descrizione,maxpersonestanze,occupata,prezzo,img) values (?,?,?,?,?,?,?)";
 		
-			String insert = "insert into stanza(id, tipo, descrizione,maxpersonestanze,occupata,prezzo,img) values (?,?,?,?,?,?,?)";
-			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setInt(1,Room.getId());
-			statement.setString(2,Room.getTipo());
-			statement.setString(3, Room.getDescrizione());
-			statement.setInt(4,Room.getMaxPersoneStanza());
-			statement.setBoolean(5,Room.isOccupata());
-			statement.setInt(6,Room.getPrezzo());
-			statement.setString(7,Room.getImg());
-			statement.executeUpdate();
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
+		
+			PreparedStatement smt = handler.getStatement();
+			smt.setInt(1,Room.getId());
+			smt.setString(2,Room.getTipo());
+			smt.setString(3, Room.getDescrizione());
+			smt.setInt(4,Room.getMaxPersoneStanza());
+			smt.setBoolean(5,Room.isOccupata());
+			smt.setInt(6,Room.getPrezzo());
+			smt.setString(7,Room.getImg());
+			
+			handler.executeUpdate();
 			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -38,26 +41,29 @@ public class RoomDaoJDBC implements Dao<Room>{
 	@Override
 	public List<Room> retrieveAll() {
 		
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		String query = "select * from Room";
+		List<Room> rooms = null;
+		Room room = null;
 		
-			List<Room> rooms = new LinkedList<>();
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+		
+			handler.executeQuery();
 			
-			Room room;
-			PreparedStatement statement;
-			String query = "select * from Room";
-			statement = connection.prepareStatement(query);
-			ResultSet result = statement.executeQuery();
-			while (result.next()) {
-				room = new Room();
-				room.setId(result.getInt("id"));				
-				room.setTipo(result.getString("tipo"));
-				room.setDescrizione(result.getString("descrizione"));
-				room.setMaxPersoneStanza(result.getInt("maxpersonestanza"));
-				room.setOccupata(result.getBoolean("occupata"));
-				room.setPrezzo(result.getInt("prezzo"));
-				room.setImg(result.getString("img"));
+			if(handler.existsResultSet()) {
+				rooms = new ArrayList<Room>();
+				ResultSet result = handler.getResultSet();
 				
-				rooms.add(room);
+				while (result.next()) {
+					room = new Room();
+					room.setId(result.getInt("id"));				
+					room.setTipo(result.getString("tipo"));
+					room.setDescrizione(result.getString("descrizione"));
+					room.setMaxPersoneStanza(result.getInt("maxpersonestanza"));
+					room.setOccupata(result.getBoolean("occupata"));
+					room.setPrezzo(result.getInt("prezzo"));
+					room.setImg(result.getString("img"));
+					rooms.add(room);
+				}
 			}
 			
 			return rooms;
@@ -70,17 +76,18 @@ public class RoomDaoJDBC implements Dao<Room>{
 	@Override
 	public void update(Room Room) {
 		
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		String update = "update Room SET  tipo = ?, descrizione = ?,maxpersonestanza= ?,occupata= ?,prezzo=?,img=? WHERE id=?";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 	
-			String update = "update Room SET  tipo = ?, descrizione = ?,maxpersonestanza= ?,occupata= ?,prezzo=?,img=? WHERE id=?";
-			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setString(2, Room.getTipo());
-			statement.setString(3, Room.getDescrizione());
-			statement.setInt(4, Room.getMaxPersoneStanza());
-			statement.setBoolean(5, Room.isOccupata());
-			statement.setInt(6, Room.getPrezzo());
-			statement.setString(7, Room.getImg());
-			statement.executeUpdate();
+			PreparedStatement smt = handler.getStatement();
+			smt.setString(2, Room.getTipo());
+			smt.setString(3, Room.getDescrizione());
+			smt.setInt(4, Room.getMaxPersoneStanza());
+			smt.setBoolean(5, Room.isOccupata());
+			smt.setInt(6, Room.getPrezzo());
+			smt.setString(7, Room.getImg());
+			smt.executeUpdate();
 		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -90,12 +97,12 @@ public class RoomDaoJDBC implements Dao<Room>{
 	@Override
 	public void delete(Room Room) {
 		
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		String delete = "delete FROM Room WHERE id = ? ";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			
-			String delete = "delete FROM Room WHERE id = ? ";
-			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setInt(1,Room.getId());
-			statement.executeUpdate();
+			handler.getStatement().setInt(1,Room.getId());
+			handler.getStatement().executeUpdate();
 		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());

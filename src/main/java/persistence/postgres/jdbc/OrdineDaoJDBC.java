@@ -15,14 +15,14 @@ public class OrdineDaoJDBC implements Dao<Ordine>{
 	@Override
 	public void save(Ordine ordine) {
 		
-		try(Connection connection = DBManager.getInstance().getDataSource().getConnection()) {
+		String insert = "insert into ordine(idordine,idutente) values (?,?)";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
-			String insert = "insert into ordine(idordine,idutente) values (?,?)";
-			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setInt(1,ordine.getIdOrdine());
-			statement.setInt(2, ordine.getIdUtente());
+			handler.getStatement().setInt(1,ordine.getIdOrdine());
+			handler.getStatement().setInt(2, ordine.getIdUtente());
 			
-			statement.executeUpdate();
+			handler.executeUpdate();
 		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
