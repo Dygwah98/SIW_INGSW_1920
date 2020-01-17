@@ -154,17 +154,14 @@ public class DBManager {
 */
 package persistence;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
-import model.User;
-import persistence.dao.UserDao;
+import persistence.postgres.jdbc.PostgresDAOFactory;
 
 public class DBManager {
 	
-	private DataSource dataSource = null;
-	
 	private static DBManager instance = null;
+	
+	private DAOFactory factory = null;
+	private DataSource dataSource = null;
 	
 	private DBManager() {
 		
@@ -179,13 +176,14 @@ public class DBManager {
 			System.err.println("PostgresDAOFactory.class: failed to load MySQL JDBC driver\n"+e);
 			e.printStackTrace();
 		}
+		
+		factory = new PostgresDAOFactory();
 	}
 	
 	public static DBManager getInstance() {
 		
-		if(instance == null) {
+		if(instance == null)
 			instance = new DBManager();
-		}
 		return instance;
 	}
 	
@@ -193,21 +191,7 @@ public class DBManager {
 		return dataSource;
 	}
 	
-	//FIXME: da rimuovere in later versions
-	public static void main(String[] args) throws SQLException {
-		
-		
-			User s=new User();
-			
-			Connection c = getInstance().getDataSource().getConnection();
-//			new UserDaoJDBC(dataSource)
-			c.setAutoCommit(true);
-			getInstance().getUtenteDAO().save(s);
-			
-		
+	public DAOFactory getDAOFactory() {
+		return factory;
 	}
-	public UserDao getUtenteDAO() {
-		return new UserDaoJDBC(dataSource);
-	}
-	
 }

@@ -18,8 +18,6 @@ import java.io.PrintWriter;
 
 @WebServlet(value = "/login", name = "login")
 public class Login extends HttpServlet {
-	String password;
-	User utente;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,12 +30,10 @@ public class Login extends HttpServlet {
         resp.setContentType("text/jsp");
     	String userid = req.getParameter("username");
     	System.out.println("sesso");
-		password = req.getParameter("password");
+		String password = req.getParameter("password");
 		HttpSession session =  req.getSession();
-		
-		User utente = null;
-		
-		utente = DBManager.getInstance().getDAOFactory().getUtenteDAO().retrieveBy("username", userid).get(0);
+
+		User utente = DBManager.getInstance().getDAOFactory().getUtenteDAO().retrieveBy("username", userid).get(0);
 		
 		if (utente != null) {
 			

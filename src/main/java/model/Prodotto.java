@@ -1,9 +1,5 @@
 package model;
 
-import java.awt.Image;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class Prodotto {
 	
 	private Integer id;

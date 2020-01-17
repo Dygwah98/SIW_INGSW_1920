@@ -1,4 +1,4 @@
-package persistence;
+package persistence.postgres.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,53 +9,54 @@ import java.util.LinkedList;
 import java.util.List;
 
 import model.Prenotazione;
-import persistence.dao.PrenotazioneDao;
+import persistence.DBManager;
+import persistence.Dao;
 
-public class PrenotazioneDaoJDBC implements PrenotazioneDao{
+public class PrenotazioneDaoJDBC implements Dao<Prenotazione>{
 
-private DataSource dataSource;
-	
-	public PrenotazioneDaoJDBC(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
 	@Override
 	public void save(Prenotazione book) {
 
-		try(Connection connection = this.dataSource.getConnection()) {
+		String insert = "insert into Prenotazione(idprenotazione,checkin,checkout,idcamera,idcliente,idordine) values (?,?,?,?,?,?)";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
-			String insert = "insert into Prenotazione(idprenotazione,checkin,checkout,idcamera,idcliente,idordine) values (?,?,?,?,?,?)";
-			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setInt(1,book.getIdPrenotazione());
-			statement.setDate(2,book.getCheckin());
-			statement.setDate(3, book.getCheckout());
-			statement.setInt(4,book.getIdCamera());
-			statement.setInt(5, book.getIdordine());
-			statement.executeUpdate();
+			PreparedStatement smt = handler.getStatement();
+			smt.setInt(1,book.getIdPrenotazione());
+			smt.setDate(2,book.getCheckin());
+			smt.setDate(3, book.getCheckout());
+			smt.setInt(4,book.getIdCamera());
+			smt.setInt(5, book.getIdordine());
+			handler.executeUpdate();
+		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		}
 	}
 
 	@Override
-	public List<Prenotazione> findAll() {
+	public List<Prenotazione> retrieveAll() {
+
+		String query = "select * from Prenotazione";
+		List<Prenotazione> books = null;
+		Prenotazione book = null;
 		
-		try(Connection connection = this.dataSource.getConnection()) {
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 			
-			List<Prenotazione> books = new LinkedList<>();
+			handler.executeQuery();
 			
-			Prenotazione book;
-			PreparedStatement statement;
-			String query = "select * from Prenotazione";
-			statement = connection.prepareStatement(query);
-			ResultSet result = statement.executeQuery();
-			while (result.next()) {
-				book = new Prenotazione();
-				book.setIdPrenotazione(result.getInt("idprenotazione"));				
-				book.setCheckin(result.getDate("checkin"));
-				book.setCheckout(result.getDate("checkout"));
-				book.setIdCamera(result.getInt("idcamera"));
-				book.setIdordine(result.getInt("idordine"));
-				books.add(book);
+			if(handler.existsResultSet()) {
+				books = new ArrayList<Prenotazione>();
+				ResultSet result = handler.getResultSet();
+				while (result.next()) {
+					book = new Prenotazione();
+					book.setIdPrenotazione(result.getInt("idprenotazione"));				
+					book.setCheckin(result.getDate("checkin"));
+					book.setCheckout(result.getDate("checkout"));
+					book.setIdCamera(result.getInt("idcamera"));
+					book.setIdordine(result.getInt("idordine"));
+					books.add(book);
+				}
 			}
 			
 			return books;
@@ -68,15 +69,16 @@ private DataSource dataSource;
 	@Override
 	public void update(Prenotazione book) {
 
-		try(Connection connection = this.dataSource.getConnection()) {
+		String update = "update Prenotazione SET  checkin = ?,checkout= ?,idcamera= ?,idcliente=? idordine=? WHERE idprenotazione=?";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 			
-			String update = "update Prenotazione SET  checkin = ?,checkout= ?,idcamera= ?,idcliente=? idordine=? WHERE idprenotazione=?";
-			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setDate(2, book.getCheckin());
-			statement.setDate(3, book.getCheckout());
-			statement.setInt(4, book.getIdCamera());
-			statement.setInt(5, book.getIdordine());
-			statement.executeUpdate();
+			PreparedStatement smt = handler.getStatement();
+			smt.setDate(2, book.getCheckin());
+			smt.setDate(3, book.getCheckout());
+			smt.setInt(4, book.getIdCamera());
+			smt.setInt(5, book.getIdordine());
+			handler.executeUpdate();
 			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -86,18 +88,18 @@ private DataSource dataSource;
 	@Override
 	public void delete(Prenotazione book) {
 		
-		try(Connection connection = this.dataSource.getConnection()) {
+		String delete = "delete FROM Prenotazione WHERE idprenotazione = ? ";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			
-			String delete = "delete FROM Prenotazione WHERE idprenotazione = ? ";
-			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setInt(1,book.getIdPrenotazione());
-			statement.executeUpdate();
+			handler.getStatement().setInt(1,book.getIdPrenotazione());
+			handler.getStatement().executeUpdate();
 		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		}	
 	}
-	
+/*	
 	@Override
 	public ArrayList<Prenotazione> retrieve(Integer nPren, Integer maxPren) throws SQLException {
 		
@@ -149,5 +151,17 @@ private DataSource dataSource;
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
+	}
+*/
+	@Override
+	public List<Prenotazione> retrieve(Prenotazione object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public List<Prenotazione> retrieveBy(String column, Object value) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
