@@ -150,7 +150,7 @@ public class PostDaoJDBC implements Dao<Post> {
 	}
 */
 	@Override
-	public List<Post> retrieve(Post object) {
+	public Post retrieve(Post object) {
 		return null;
 	}
 

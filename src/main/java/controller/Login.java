@@ -15,6 +15,7 @@ import persistence.DBManager;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet(value = "/login", name = "login")
 public class Login extends HttpServlet {
@@ -26,16 +27,18 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	
     	PrintWriter o = resp.getWriter();
         resp.setContentType("text/jsp");
     	String userid = req.getParameter("username");
 		String password = req.getParameter("password");
 		HttpSession session =  req.getSession();
 
-		User utente = DBManager.getInstance().getDAOFactory().getUtenteDAO().retrieveBy("username", userid).get(0);
+		List<User> u = DBManager.getInstance().getDAOFactory().getUtenteDAO().retrieveBy("username", userid);
 		
-		if (utente != null) {
+		if (u != null) {
 			
+			User utente = u.get(0);
 			req.getSession().setAttribute("logged",true);
 	        resp.addCookie(new Cookie("logged", "true"));
 			session.setAttribute("username", userid);
@@ -50,6 +53,5 @@ public class Login extends HttpServlet {
 			resp.setStatus(401);
 		}
 	}
-		
 
 }
