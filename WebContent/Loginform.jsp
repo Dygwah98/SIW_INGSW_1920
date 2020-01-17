@@ -7,34 +7,26 @@
   <title>Nuovo</title>
   <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
   <link href="styles/LoginForm.css" rel="stylesheet" type="text/css" />
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="js/login1.js"></script>
 </head>
 
 <body>
 
-<script type="text/javascript" src="js/1.js">
-</script>
 
 <div class="login-page">
 
 <div class="form">
 
-<form class="register-form">
-
- <input type="text" placeholder="name">
- <input type="password" placeholder="password">
- <input type="text" placeholder="email address">
- <button>create</button>
-
-  <p class="message">Already registered? <a href="#">Sign In</a></p>
-</form>
 
 
-<form class="login-form" method="post" action="${pageContext.request.contextPath}/login">
-   <input type="text" name="username" placeholder="username"/>
-      <input type="password" name="password" placeholder="password"/>
-       <button type="submit" id="btnLogin">LOGIN!</button>
+
+<div class="login-form">
+   <input type="text" name="username" id="username" placeholder="username"/>
+      <input type="password" name="password" id="password" placeholder="password"/>
+       <button type="submit" id="btnLogin" onclick="logi(event)">LOGIN!</button>
       <p class="message">Not registered? <a href="RegistrationForm.jsp">Create an account</a></p>
-    </form>
+    </div>
   </div>
 </div>
 

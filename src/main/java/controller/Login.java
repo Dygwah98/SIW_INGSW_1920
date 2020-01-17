@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-@WebServlet("/login")
+@WebServlet(value = "/login", name = "login")
 public class Login extends HttpServlet {
 	private UserDaoJDBC userdaojdbc;
 	private DataSource dataSource = null;
@@ -51,6 +51,7 @@ public class Login extends HttpServlet {
     	PrintWriter o = resp.getWriter();
         resp.setContentType("text/jsp");
     	String userid = req.getParameter("username");
+    	System.out.println("sesso");
 		password = req.getParameter("password");
 		HttpSession session =  req.getSession();
 		try {
@@ -61,18 +62,20 @@ public class Login extends HttpServlet {
 		}
 		if (utente != null) {
 			
-				req.getSession().setAttribute("logged",true);
-	            resp.addCookie(new Cookie("logged", "true"));
+			req.getSession().setAttribute("logged",true);
+	        resp.addCookie(new Cookie("logged", "true"));
 			session.setAttribute("username", userid);
-			session.setAttribute("loggato", utente.getEmail());
+			session.setAttribute("loggato", utente.getUsername());
 			
 			session.setAttribute("email", utente.getEmail());
 			session.setAttribute("nome", utente.getName());
 			session.setAttribute("cognome", utente.getSurname());
-			RequestDispatcher rd=req.getRequestDispatcher("index.jsp");
-            rd.forward(req, resp);
+			resp.setStatus(201);
 			}
+		else {
+			resp.setStatus(401);
 		}
+	}
 		
 
 }
