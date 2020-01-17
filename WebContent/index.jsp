@@ -15,7 +15,6 @@
 <link href="plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
-
 </head>
 <body>
 	
@@ -28,11 +27,11 @@
 			<div class="ml-auto d-flex flex-row align-items-center justify-content-start">
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<% if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
+					<% if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
 						<li><a href="Loginform.jsp">Login</a></li>
-						 <%}else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+					<% }else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 						  <li><a href="logout">Logout</a></li>
-						  <%}%>
+					<% } %>
 						<li><a href="index.jsp">Home</a></li>
 						<li><a href="about.jsp">About us</a></li>
 						<li><a href="booking.jsp">Rooms</a></li>
@@ -40,10 +39,9 @@
 						<li><a href="contact.jsp">Contact</a></li>
 					</ul>
 				</nav>
-			 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				<nav class="main_nav">
-					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<div class="book_button"><a href="carrello.jsp">Carrello</a></div>
+				<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+				<div class="book_button"><a href="carrello.jsp">Carrello</a></div>
+				<%}%>
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
 					<img src="images/phone.png" alt="">
 					<span>3339290840</span>
@@ -62,12 +60,11 @@
 		<div class="menu_content">
 			<nav class="menu_nav text-right">
 				<ul>
-					 <% if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
+					<% if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
 						<li><a href="Loginform.jsp">Login</a></li>
-						 <%}
-						  else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+					<%} else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 						  <li><a href="logout">Logout</a></li>
-						  <%}%>
+					<%}%>
 					<li><a href="index.jsp">Home</a></li>
 					<li><a href="about.jsp">About us</a></li>
 					<li><a href="booking.jsp">Rooms</a></li>
@@ -77,9 +74,9 @@
 			</nav>
 		</div>
 		<div class="menu_extra">
-		 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-			<div class="menu_book text-right"><a href="carrello.jsp">Carrello</a></div>	
-				 <%}%> 
+		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")) { %>
+			<div class="menu_book text-right"><a href="carrello.jsp"> Carrello </a></div>	 
+		<% } %>
 			<div class="menu_phone d-flex flex-row align-items-center justify-content-center">
 				<img src="images/phone-2.png" alt="">
 				<span>3339290840</span>
