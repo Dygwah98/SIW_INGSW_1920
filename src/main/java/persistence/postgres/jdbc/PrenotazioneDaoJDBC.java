@@ -1,15 +1,12 @@
 package persistence.postgres.jdbc;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import model.Prenotazione;
-import persistence.DBManager;
 import persistence.Dao;
 
 public class PrenotazioneDaoJDBC implements Dao<Prenotazione>{
@@ -154,7 +151,7 @@ public class PrenotazioneDaoJDBC implements Dao<Prenotazione>{
 	}
 */
 	@Override
-	public List<Prenotazione> retrieve(Prenotazione object) {
+	public Prenotazione retrieve(Prenotazione object) {
 		// TODO Auto-generated method stub
 		return null;
 	}

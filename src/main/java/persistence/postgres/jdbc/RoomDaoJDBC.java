@@ -1,15 +1,12 @@
 package persistence.postgres.jdbc;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import model.Room;
-import persistence.DBManager;
 import persistence.Dao;
 
 public class RoomDaoJDBC implements Dao<Room>{
@@ -169,7 +166,7 @@ public class RoomDaoJDBC implements Dao<Room>{
 	}
 */
 	@Override
-	public List<Room> retrieve(Room object) {
+	public Room retrieve(Room object) {
 		// TODO Auto-generated method stub
 		return null;
 	}
