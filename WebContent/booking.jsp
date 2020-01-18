@@ -17,6 +17,8 @@
 <link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/booking.css">
 <link rel="stylesheet" type="text/css" href="styles/booking_responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/Carrello.css">
+
 </head>
 <body>
 
@@ -120,30 +122,66 @@
 		</div>
 	</div>
 	<!-- Room -->
-	<table cellpadding="2" cellspacing="2" border="1">
-		<tr>
-			<th>tipo</th>
-			<th>descrizione</th>
-			<th>maxpersone</th>
-			<th>occupata</th>
-			<th>prezzo</th>
-			<th>img</th>
-		</tr>
-		<c:forEach var="room" items="${room}">
-			<tr>
-				<td>${room.tipo}</td>
-				<td>${room.descrizione}</td>
-				<td>${room.maxpersone}</td>
-				<td>${room.occupata}</td>
-				<td>${room.prezzo}</td>
-				<td>
-					<img src="${room.img }.jpg" width="106">
-				</td>
-				
-			</tr>
-		</c:forEach>
-	</table>
-	
+	<div class="row">
+    			<div class="col-md-12">
+    				<div class="cart-list">
+	    				<table class="table">
+						    <thead class="thead-secondary">
+						      <tr class="text-center">
+						        <th>&nbsp;</th>
+						        <th>&nbsp;</th>
+						        <th>Tipo</th>
+						        <th>Tipo</th>
+						        <th>Descrizione</th>
+						        <th>maxpersone</th>
+						        <th>occupata</th>
+						        <th>prezzo</th>
+						      
+						      </tr>
+						    </thead>
+						    <c:forEach var="room" items="${room}">
+						    <tbody style="background-color: white;">
+						      <tr class="text-center">
+						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+						        
+						        <td class="image-prod"><div class="img" style="background-image:url(${room.img }.jpg);"></div></td>
+						        <td >
+						        	<p>${room.tipo}</p>
+						        </td>
+						        
+						        <td >
+						        	<p>${room.tipo}</p>
+						        </td>
+						        
+						        <td >
+						        	<p> 
+						        		<ul>
+						        			${room.descrizione}
+						        		</ul>
+						        	</p>
+						        </td>
+						         <td >
+						        	<p> 
+						        		<ul>
+						        			${room.maxpersone}
+						        		</ul>
+						        	</p>
+						        </td>
+						          <td >
+						        	<p> 
+						        		<ul>
+						        			${room.occupata}
+						        		</ul>
+						        	</p>
+						        </td>
+						        <td class="prezzo">${room.prezzo}</td>
+						      </tr><!-- END TR-->
+						    </tbody>
+						    </c:forEach>
+						  </table>
+					  </div>
+    			</div>
+    		</div>
 	
 
 	<!-- Footer -->

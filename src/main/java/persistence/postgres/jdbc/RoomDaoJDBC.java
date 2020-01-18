@@ -15,18 +15,18 @@ public class RoomDaoJDBC implements RoomDao {
 	@Override
 	public void save(Room Room) {
 		
-		String insert = "INSERT INTO room(tipo,descrizione,maxpersone,occupata,prezzo,img) VALUES (?,?,?,?,?,?)";
+		String insert = "INSERT INTO room(idcamera,tipo,descrizione,maxpersone,occupata,prezzo,img) VALUES (?,?,?,?,?,?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 		
 			PreparedStatement smt = handler.getStatement();
-			
-			smt.setString(1,Room.getTipo());
-			smt.setString(2, Room.getDescrizione());
-			smt.setInt(3,Room.getMaxpersone());
-			smt.setBoolean(4,Room.isOccupata());
-			smt.setInt(5,Room.getPrezzo());
-			smt.setString(6,Room.getImg());
+			smt.setInt(1, Room.getId());
+			smt.setString(2,Room.getTipo());
+			smt.setString(3, Room.getDescrizione());
+			smt.setInt(4,Room.getMaxpersone());
+			smt.setBoolean(5,Room.isOccupata());
+			smt.setInt(6,Room.getPrezzo());
+			smt.setString(7,Room.getImg());
 			
 			handler.executeUpdate();
 			
@@ -53,7 +53,7 @@ public class RoomDaoJDBC implements RoomDao {
 				
 				while (result.next()) {
 					room = new Room();
-							
+					room.setId(result.getInt("idcamera"));		
 					room.setTipo(result.getString("tipo"));
 					room.setDescrizione(result.getString("descrizione"));
 					room.setMaxpersone(result.getInt("maxpersone"));
@@ -74,7 +74,7 @@ public class RoomDaoJDBC implements RoomDao {
 	@Override
 	public void update(Room Room) {
 		
-		String update = "UPDATE Room SET tipo = ?, descrizione = ?, maxpersone = ?,occupata = ?,prezzo = ?,img = ? WHERE id = ?";
+		String update = "UPDATE Room SET tipo = ?, descrizione = ?, maxpersone = ?,occupata = ?,prezzo = ?,img = ? WHERE idcamera = ?";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 	
@@ -96,7 +96,7 @@ public class RoomDaoJDBC implements RoomDao {
 	@Override
 	public void delete(Room Room) {
 		
-		String delete = "DELETE FROM room WHERE id = ? ";
+		String delete = "DELETE FROM room WHERE idcamera = ? ";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			
