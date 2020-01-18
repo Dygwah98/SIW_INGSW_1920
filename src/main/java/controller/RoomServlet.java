@@ -38,7 +38,7 @@ public class RoomServlet extends HttpServlet {
         if(tipo.equals("singola")) {
         	r.setImg("images/s1");
         }
-        if(tipo.equals("singola")) {
+        if(tipo.equals("doppia")) {
         	r.setImg("images/2");
         }
         Dao<Room> roomdao = DBManager.getInstance().getDAOFactory().getRoomDao();
