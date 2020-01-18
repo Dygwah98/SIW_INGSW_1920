@@ -1,4 +1,4 @@
-package controller;
+package controller.pageLoader;
 
 import java.io.IOException;
 

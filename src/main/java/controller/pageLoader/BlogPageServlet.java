@@ -1,4 +1,4 @@
-package controller;
+package controller.pageLoader;
 
 import java.io.IOException;
 
@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(value = "/shop", name = "shop")
-public class ShopServlet extends HttpServlet {
+@WebServlet(value = "/blog", name = "blog")
+public class BlogPageServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		req.getRequestDispatcher("negozio.jsp").include(req, resp);
+	
+		req.getRequestDispatcher("blog.jsp").include(req, resp);
 		
 //		resp.setContentType("text/html");
 //		
