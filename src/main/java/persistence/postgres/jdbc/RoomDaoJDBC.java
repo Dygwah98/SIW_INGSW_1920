@@ -17,18 +17,18 @@ public class RoomDaoJDBC implements Dao<Room>{
 	@Override
 	public void save(Room Room) {
 		
-		String insert = "insert into stanza(id, tipo, descrizione,maxpersonestanze,occupata,prezzo,img) values (?,?,?,?,?,?,?)";
+		String insert = "insert into room( tipo, descrizione,maxpersone,occupata,prezzo,img) values (?,?,?,?,?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 		
 			PreparedStatement smt = handler.getStatement();
-			smt.setInt(1,Room.getId());
-			smt.setString(2,Room.getTipo());
-			smt.setString(3, Room.getDescrizione());
-			smt.setInt(4,Room.getMaxPersoneStanza());
-			smt.setBoolean(5,Room.isOccupata());
-			smt.setInt(6,Room.getPrezzo());
-			smt.setString(7,Room.getImg());
+			
+			smt.setString(1,Room.getTipo());
+			smt.setString(2, Room.getDescrizione());
+			smt.setInt(3,Room.getMaxPersoneStanza());
+			smt.setBoolean(4,Room.isOccupata());
+			smt.setInt(5,Room.getPrezzo());
+			smt.setString(6,Room.getImg());
 			
 			handler.executeUpdate();
 			
