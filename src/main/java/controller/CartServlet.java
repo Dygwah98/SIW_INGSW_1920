@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(value = "/cart_servlet", name = "cart_servlet")
+@WebServlet(value = "/cart", name = "cart")
 public class CartServlet extends HttpServlet {
 
 	@Override

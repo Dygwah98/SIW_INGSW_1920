@@ -11,7 +11,7 @@ import model.Room;
 import persistence.DBManager;
 import persistence.Dao;
 
-@WebServlet(value = "/rooms_servlet", name = "rooms_servlet")
+@WebServlet(value = "/addRooms", name = "addRooms")
 public class RoomServlet extends HttpServlet {
 
 	@Override
