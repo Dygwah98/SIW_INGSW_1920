@@ -6,20 +6,20 @@ public class Room{
 	private Integer Id;
 	private String tipo;
 	private String descrizione;
-	private Integer MaxPersoneStanza;
+	private int maxpersone;
 	private boolean occupata;
-	private Integer prezzo;
-	private String Img;
+	private int prezzo;
+	private String img;
 	
-	public Room(int Id,String tipo, String descrizione, int maxPersoneStanza, boolean occupata, int prezzo,String Img) {
+	public Room(int Id,String tipo, String descrizione, int maxpersone, boolean occupata, int prezzo,String img) {
 		super();
 		this.Id=Id;
 		this.tipo = tipo;
 		this.descrizione = descrizione;
-		MaxPersoneStanza = maxPersoneStanza;
+		this.maxpersone = maxpersone;
 		this.occupata = occupata;
 		this.prezzo = prezzo;
-		this.setImg(Img);
+		this.img = img;
 	}
 	
 	public Room() {
@@ -27,10 +27,10 @@ public class Room{
 		this.Id=null;
 		this.tipo = null;
 		this.descrizione = null;
-		MaxPersoneStanza = null;
+		this.maxpersone = 0;
 		this.occupata = false;
-		this.prezzo = null;
-		this.Img = null;
+		this.prezzo = 0;
+		this.img = null;
 	}
 	
 	public String getTipo() {
@@ -49,12 +49,12 @@ public class Room{
 		this.descrizione = descrizione;
 	}
 	
-	public int getMaxPersoneStanza() {
-		return MaxPersoneStanza;
+	public int getMaxpersone() {
+		return maxpersone;
 	}
 	
-	public void setMaxPersoneStanza(int maxPersoneStanza) {
-		MaxPersoneStanza = maxPersoneStanza;
+	public void setMaxpersone(int maxpersone) {
+		this.maxpersone = maxpersone;
 	}
 	
 	public boolean isOccupata() {
@@ -82,11 +82,11 @@ public class Room{
 	}
 	
 	public String getImg() {
-		return Img;
+		return img;
 	}
 	
 	public void setImg(String img) {
-		Img = img;
+		this.img = img;
 	}
 	
 }

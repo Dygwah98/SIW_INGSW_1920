@@ -30,16 +30,16 @@ public class RoomServlet extends HttpServlet {
         r.setDescrizione(descrizione);
         String numero =numMaxPersone;
         int intero = Integer.parseInt(numero);
-        r.setMaxPersoneStanza(intero);
+        r.setMaxpersone(intero);
         r.setOccupata(false);
         String numero1 =prezzo;
         int intero1 = Integer.parseInt(numero1);
         r.setPrezzo(intero1);
         if(tipo.equals("singola")) {
-        	r.setImg("images/s1");
+        	r.setImg("images/user_1");
         }
         if(tipo.equals("doppia")) {
-        	r.setImg("images/2");
+        	r.setImg("/images/user_1");
         }
         Dao<Room> roomdao = DBManager.getInstance().getDAOFactory().getRoomDao();
         roomdao.save(r);

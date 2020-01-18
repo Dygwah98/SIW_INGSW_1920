@@ -34,7 +34,7 @@
 					<% } %>
 						<li><a href="index.jsp">Home</a></li>
 						<li><a href="about.jsp">About us</a></li>
-						<li><a href="booking.jsp">Rooms</a></li>
+						<li><a href="viewroom">Rooms</a></li>
 						<li><a href="blog.jsp">Blog</a></li>
 						<li><a href="contact.jsp">Contact</a></li>
 					</ul>
@@ -67,7 +67,7 @@
 					<%}%>
 					<li><a href="index.jsp">Home</a></li>
 					<li><a href="about.jsp">About us</a></li>
-					<li><a href="booking.jsp">Rooms</a></li>
+					<li><a href="viewroom">Rooms</a></li>
 					<li><a href="blog.jsp">Blog</a></li>
 					<li><a href="contact.jsp">Contact</a></li>
 				</ul>
