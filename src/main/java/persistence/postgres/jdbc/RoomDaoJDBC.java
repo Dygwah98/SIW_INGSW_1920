@@ -8,9 +8,8 @@ import java.util.List;
 
 import model.Room;
 import persistence.Dao;
-import persistence.dao.RoomDao;
 
-public class RoomDaoJDBC implements RoomDao {
+public class RoomDaoJDBC implements Dao<Room>{
 	
 	@Override
 	public void save(Room Room) {
@@ -23,7 +22,7 @@ public class RoomDaoJDBC implements RoomDao {
 			
 			smt.setString(1,Room.getTipo());
 			smt.setString(2, Room.getDescrizione());
-			smt.setInt(3,Room.getMaxPersoneStanza());
+			smt.setInt(3,Room.getMaxpersone());
 			smt.setBoolean(4,Room.isOccupata());
 			smt.setInt(5,Room.getPrezzo());
 			smt.setString(6,Room.getImg());
@@ -53,10 +52,10 @@ public class RoomDaoJDBC implements RoomDao {
 				
 				while (result.next()) {
 					room = new Room();
-					room.setId(result.getInt("id"));				
+							
 					room.setTipo(result.getString("tipo"));
 					room.setDescrizione(result.getString("descrizione"));
-					room.setMaxPersoneStanza(result.getInt("maxpersonestanza"));
+					room.setMaxpersone(result.getInt("maxpersone"));
 					room.setOccupata(result.getBoolean("occupata"));
 					room.setPrezzo(result.getInt("prezzo"));
 					room.setImg(result.getString("img"));
@@ -74,14 +73,14 @@ public class RoomDaoJDBC implements RoomDao {
 	@Override
 	public void update(Room Room) {
 		
-		String update = "UPDATE Room SET tipo = ?, descrizione = ?, maxpersonestanza = ?,occupata = ?,prezzo = ?,img = ? WHERE id = ?";
+		String update = "UPDATE Room SET tipo = ?, descrizione = ?, maxpersone = ?,occupata = ?,prezzo = ?,img = ? WHERE id = ?";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 	
 			PreparedStatement smt = handler.getStatement();
 			smt.setString(1, Room.getTipo());
 			smt.setString(2, Room.getDescrizione());
-			smt.setInt(3, Room.getMaxPersoneStanza());
+			smt.setInt(3, Room.getMaxpersone());
 			smt.setBoolean(4, Room.isOccupata());
 			smt.setInt(5, Room.getPrezzo());
 			smt.setString(6, Room.getImg());
@@ -169,6 +168,12 @@ public class RoomDaoJDBC implements RoomDao {
 */
 	@Override
 	public Room retrieve(Room object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Room> retrieveBy(String column, Object value) {
 		// TODO Auto-generated method stub
 		return null;
 	}
