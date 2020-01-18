@@ -14,7 +14,7 @@ public class PrenotazioneDaoJDBC implements Dao<Prenotazione>{
 	@Override
 	public void save(Prenotazione book) {
 
-		String insert = "insert into Prenotazione(idprenotazione,checkin,checkout,idcamera,idcliente,idordine) values (?,?,?,?,?,?)";
+		String insert = "INSERT INTO prenotazioni(idprenotazione,checkin,checkout,idcamera,idcliente,idordine) VALUES (?,?,?,?,?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
@@ -34,7 +34,7 @@ public class PrenotazioneDaoJDBC implements Dao<Prenotazione>{
 	@Override
 	public List<Prenotazione> retrieveAll() {
 
-		String query = "select * from Prenotazione";
+		String query = "SELECT * FROM prenotazioni";
 		List<Prenotazione> books = null;
 		Prenotazione book = null;
 		
@@ -66,15 +66,16 @@ public class PrenotazioneDaoJDBC implements Dao<Prenotazione>{
 	@Override
 	public void update(Prenotazione book) {
 
-		String update = "update Prenotazione SET  checkin = ?,checkout= ?,idcamera= ?,idcliente=? idordine=? WHERE idprenotazione=?";
+		String update = "UPDATE prenotazioni SET checkin = ?,checkout = ?,idcamera = ?, idordine = ? WHERE idprenotazione = ?";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 			
 			PreparedStatement smt = handler.getStatement();
-			smt.setDate(2, book.getCheckin());
-			smt.setDate(3, book.getCheckout());
-			smt.setInt(4, book.getIdCamera());
-			smt.setInt(5, book.getIdordine());
+			smt.setDate(1, book.getCheckin());
+			smt.setDate(2, book.getCheckout());
+			smt.setInt(3, book.getIdCamera());
+			smt.setInt(4, book.getIdordine());
+			smt.setInt(5, book.getIdPrenotazione());
 			handler.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -85,7 +86,7 @@ public class PrenotazioneDaoJDBC implements Dao<Prenotazione>{
 	@Override
 	public void delete(Prenotazione book) {
 		
-		String delete = "delete FROM Prenotazione WHERE idprenotazione = ? ";
+		String delete = "DELETE FROM prenotazioni WHERE idprenotazione = ? ";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			

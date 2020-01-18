@@ -14,7 +14,7 @@ public class RoomDaoJDBC implements Dao<Room>{
 	@Override
 	public void save(Room Room) {
 		
-		String insert = "insert into room( tipo, descrizione,maxpersone,occupata,prezzo,img) values (?,?,?,?,?,?)";
+		String insert = "INSERT INTO room(tipo,descrizione,maxpersone,occupata,prezzo,img) VALUES (?,?,?,?,?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 		
@@ -38,7 +38,7 @@ public class RoomDaoJDBC implements Dao<Room>{
 	@Override
 	public List<Room> retrieveAll() {
 		
-		String query = "select * from Room";
+		String query = "SELECT * FROM room";
 		List<Room> rooms = null;
 		Room room = null;
 		
@@ -73,17 +73,18 @@ public class RoomDaoJDBC implements Dao<Room>{
 	@Override
 	public void update(Room Room) {
 		
-		String update = "update Room SET  tipo = ?, descrizione = ?,maxpersonestanza= ?,occupata= ?,prezzo=?,img=? WHERE id=?";
+		String update = "UPDATE Room SET tipo = ?, descrizione = ?, maxpersonestanza = ?,occupata = ?,prezzo = ?,img = ? WHERE id = ?";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 	
 			PreparedStatement smt = handler.getStatement();
-			smt.setString(2, Room.getTipo());
-			smt.setString(3, Room.getDescrizione());
-			smt.setInt(4, Room.getMaxPersoneStanza());
-			smt.setBoolean(5, Room.isOccupata());
-			smt.setInt(6, Room.getPrezzo());
-			smt.setString(7, Room.getImg());
+			smt.setString(1, Room.getTipo());
+			smt.setString(2, Room.getDescrizione());
+			smt.setInt(3, Room.getMaxPersoneStanza());
+			smt.setBoolean(4, Room.isOccupata());
+			smt.setInt(5, Room.getPrezzo());
+			smt.setString(6, Room.getImg());
+			smt.setInt(7, Room.getId());
 			smt.executeUpdate();
 		
 		} catch (SQLException e) {
@@ -94,7 +95,7 @@ public class RoomDaoJDBC implements Dao<Room>{
 	@Override
 	public void delete(Room Room) {
 		
-		String delete = "delete FROM Room WHERE id = ? ";
+		String delete = "DELETE FROM room WHERE id = ? ";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			

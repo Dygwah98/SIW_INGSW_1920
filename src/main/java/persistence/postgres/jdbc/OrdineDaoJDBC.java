@@ -11,7 +11,7 @@ public class OrdineDaoJDBC implements Dao<Ordine>{
 	@Override
 	public void save(Ordine ordine) {
 		
-		String insert = "insert into ordine(idordine,idutente) values (?,?)";
+		String insert = "INSERT INTO order(idOrder,idClient) VALUES (?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			

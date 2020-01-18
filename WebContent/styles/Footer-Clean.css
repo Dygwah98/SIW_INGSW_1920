@@ -1,3 +1,7 @@
+.hide {
+	display: none;
+}
+
 .footer-clean {
   padding: 0 7% 0 7%;
   background-color: #fff;

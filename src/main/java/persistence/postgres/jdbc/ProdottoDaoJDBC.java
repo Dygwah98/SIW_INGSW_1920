@@ -13,7 +13,7 @@ public class ProdottoDaoJDBC implements Dao<Prodotto> {
 	
 	public void save(Prodotto prodotto) {
 
-		String insert = "insert into Prodotto(id, nome, prezzo,descrizione,img,idordine) values (?,?,?,?,?,?)";
+		String insert = "INSERT INTO Prodotto(id, nome, prezzo,descrizione,img,idordine) VALUES (?,?,?,?,?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
