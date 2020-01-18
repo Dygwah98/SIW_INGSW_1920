@@ -3,31 +3,32 @@ package persistence.postgres.jdbc;
 import model.*;
 import persistence.DAOFactory;
 import persistence.Dao;
+import persistence.dao.*;
 
 public class PostgresDAOFactory extends DAOFactory {
 
 	@Override
-	public Dao<User> getUtenteDAO() {
+	public UserDao getUtenteDAO() {
 		return new UserDaoJDBC();
 	}
 
 	@Override
-	public Dao<Prodotto> getProdottoDao() {
+	public ProdottoDao getProdottoDao() {
 		return new ProdottoDaoJDBC();
 	}
 
 	@Override
-	public Dao<Post> getPostDao() {
+	public PostDao getPostDao() {
 		return new PostDaoJDBC();
 	}
 
 	@Override
-	public Dao<Prenotazione> getPrenotazioneDao() {
+	public PrenotazioneDao getPrenotazioneDao() {
 		return new PrenotazioneDaoJDBC();
 	}
 
 	@Override
-	public Dao<Room> getRoomDao() {
+	public RoomDao getRoomDao() {
 		return new RoomDaoJDBC();
 	}
 }

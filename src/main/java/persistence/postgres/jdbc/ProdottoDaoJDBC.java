@@ -8,12 +8,13 @@ import java.util.List;
 
 import model.Prodotto;
 import persistence.Dao;
+import persistence.dao.ProdottoDao;
 
-public class ProdottoDaoJDBC implements Dao<Prodotto> {
+public class ProdottoDaoJDBC implements ProdottoDao {
 	
 	public void save(Prodotto prodotto) {
 
-		String insert = "insert into Prodotto(id, nome, prezzo,descrizione,img,idordine) values (?,?,?,?,?,?)";
+		String insert = "INSERT INTO Prodotto(id, nome, prezzo,descrizione,img,idordine) VALUES (?,?,?,?,?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
@@ -30,7 +31,7 @@ public class ProdottoDaoJDBC implements Dao<Prodotto> {
 			throw new RuntimeException(e.getMessage());
 		}
 	}  
-	
+/*	
 	@Override
 	public List<Prodotto> retrieveBy(String column, Object value) {
 
@@ -66,7 +67,7 @@ public class ProdottoDaoJDBC implements Dao<Prodotto> {
 			throw new RuntimeException(e.getMessage());
 		}
 	}
-	
+*/
 	@Override
 	public List<Prodotto> retrieveAll() {
 		

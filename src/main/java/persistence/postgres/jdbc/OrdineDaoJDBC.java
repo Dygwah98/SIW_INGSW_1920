@@ -5,13 +5,14 @@ import java.util.List;
 
 import model.Ordine;
 import persistence.Dao;
+import persistence.dao.OrdineDao;
 
-public class OrdineDaoJDBC implements Dao<Ordine>{
+public class OrdineDaoJDBC implements OrdineDao {
 
 	@Override
 	public void save(Ordine ordine) {
 		
-		String insert = "insert into ordine(idordine,idutente) values (?,?)";
+		String insert = "INSERT INTO order(idOrder,idClient) VALUES (?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
@@ -147,11 +148,7 @@ public class OrdineDaoJDBC implements Dao<Ordine>{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
-	public List<Ordine> retrieveBy(String column, Object value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	@Override
 	public List<Ordine> retrieveAll() {
 		// TODO Auto-generated method stub

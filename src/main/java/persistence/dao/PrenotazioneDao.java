@@ -5,13 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Prenotazione;
+import persistence.Dao;
 
-public interface PrenotazioneDao {
+public interface PrenotazioneDao extends Dao<Prenotazione> {
 	
-	public void save(Prenotazione book);  // Create
-	public List<Prenotazione> findAll();       
-	public void update(Prenotazione book); //Update
-	public void delete(Prenotazione book); //Delete	
-	public ArrayList<Prenotazione> retrieve(Integer nPren, Integer maxPren) throws SQLException;
-
 }

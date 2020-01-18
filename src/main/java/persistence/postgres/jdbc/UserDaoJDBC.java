@@ -11,14 +11,15 @@ import model.User;
 import persistence.DBManager;
 import persistence.Dao;
 import persistence.PersistenceException;
+import persistence.dao.UserDao;
 
-public class UserDaoJDBC implements Dao<User>{
+public class UserDaoJDBC implements UserDao {
 		
 	private final int getNextId(final Connection connection){
 		
 		try {
 			PreparedStatement statement;
-			final String query = "select id from user;";
+			final String query = "SELECT id FROM utente;";
 			statement = connection.prepareStatement(query,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 			ResultSet result = statement.executeQuery();
 			
@@ -43,7 +44,7 @@ public class UserDaoJDBC implements Dao<User>{
 	@Override
 	public void save(User utente) {
 		
-		String insert = "insert into utente(nome, cognome,datadinascita, username,password,image,email) values (?,?,?,?,?,?,?)";
+		String insert = "INSERT INTO utente(nome,cognome,datadinascita,username,password,image,email) VALUES (?,?,?,?,?,?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 
@@ -66,18 +67,19 @@ public class UserDaoJDBC implements Dao<User>{
 	@Override
 	public void update(User Utente) {
 		
-		String update = "update utente SET  nome=?,cognome=?,datadinascita=?,username=?,password=?,image=?,email=? WHERE username=?";
+		String update = "UPDATE utente SET nome=?,cognome=?,datadinascita=?,username=?,password=?,image=?,email=? WHERE username=?";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 			
 			PreparedStatement smt = handler.getStatement();
-			smt.setString(2, Utente.getName());
-			smt.setString(3, Utente.getSurname());
-			smt.setString(4, Utente.getNascita());
-			smt.setString(5, Utente.getUsername());
-			smt.setString(6, Utente.getPassword());
+			smt.setString(1, Utente.getName());
+			smt.setString(2, Utente.getSurname());
+			smt.setString(3, Utente.getNascita());
+			smt.setString(4, Utente.getUsername());
+			smt.setString(5, Utente.getPassword());
+			smt.setString(6, Utente.getImage());
 			smt.setString(7, Utente.getImage());
-			smt.setString(8, Utente.getImage());
+			smt.setInt(8, Utente.getId());
 			
 			handler.executeUpdate();
 			
@@ -89,7 +91,7 @@ public class UserDaoJDBC implements Dao<User>{
 	@Override
 	public User retrieve(User object) {
 
-		String query = "SELECT * FROM utente WHERE u.idUtente = ?";
+		String query = "SELECT * FROM utente AS u WHERE u.id = ?";
 		User u = null;
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
@@ -118,45 +120,9 @@ public class UserDaoJDBC implements Dao<User>{
 	}
 	
 	@Override
-	public List<User> retrieveBy(String column, Object value) {
-		
-		String query = "SELECT * FROM utente AS u WHERE u." + column + "=?";
-		List<User> ret = null;
-		User u = null;
-		
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-			
-			handler.getStatement().setString(1, (String) value);
-			handler.executeQuery();
-			
-			if(handler.existsResultSet()) {
-				
-				ResultSet result = handler.getResultSet();
-				ret = new ArrayList<User>();
-				while(result.next()) {
-					u  = new User();
-					u.SetName(result.getString("nome"));
-					u.SetSurname(result.getString("cognome"));
-					u.SetNascita(result.getString("datadinascita"));
-					u.setUsername(result.getString("username"));
-					u.setPassword(result.getString("password"));
-					u.setImage(result.getString("image"));
-					u.setEmail(result.getString("email"));
-					ret.add(u);
-				}
-			}
-			
-			return ret;
-			
-		} catch (SQLException e) {
-			throw new PersistenceException(e.getMessage());
-		}
-	}
-	
-	@Override
 	public List<User> retrieveAll() {
 		
-		String query = "select * from utente";
+		String query = "SELECT * FROM utente";
 		List<User> utenti = null;
 		User utente = null;
 		
@@ -191,7 +157,7 @@ public class UserDaoJDBC implements Dao<User>{
 	@Override
 	public void delete(User object) {
 
-		String delete = "delete FROM utente WHERE username = ? ";
+		String delete = "DELEtE FROM utente WHERE username = ? ";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			
@@ -200,6 +166,40 @@ public class UserDaoJDBC implements Dao<User>{
 		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
+		}
+	}
+
+	@Override
+	public User loginQuery(String username, String password) {
+		
+		String query = "SELECT * FROM utente WHERE username=? AND password=?";
+		User u = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			PreparedStatement smt = handler.getStatement();
+			smt.setString(1, username);
+			smt.setString(2, password);
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				
+				ResultSet result = handler.getResultSet();
+				result.next();
+				u  = new User();
+				u.SetName(result.getString("nome"));
+				u.SetSurname(result.getString("cognome"));
+				u.SetNascita(result.getString("datadinascita"));
+				u.setUsername(result.getString("username"));
+				u.setPassword(result.getString("password"));
+				u.setImage(result.getString("image"));
+				u.setEmail(result.getString("email"));
+			}
+			
+			return u;
+			
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
 		}
 	}
 	
