@@ -5,13 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Prodotto;
+import persistence.Dao;
 
-public interface ProdottoDao {
+public interface ProdottoDao extends Dao<Prodotto> {
 	
-	public void save(Prodotto Prodotto);  // Create
-	public Prodotto findByPrimaryKey(int Id);     // Retrieve
-	public List<Prodotto> findAll();       
-	public void update(Prodotto Prodotto); //Update
-	public void delete(Prodotto Prodotto); //Delete	
-	public ArrayList<Prodotto> retrieve(Integer nProd, Integer maxProd) throws SQLException;
 }

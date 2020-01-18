@@ -8,8 +8,9 @@ import java.util.List;
 
 import model.Room;
 import persistence.Dao;
+import persistence.dao.RoomDao;
 
-public class RoomDaoJDBC implements Dao<Room>{
+public class RoomDaoJDBC implements RoomDao {
 	
 	@Override
 	public void save(Room Room) {
@@ -168,12 +169,6 @@ public class RoomDaoJDBC implements Dao<Room>{
 */
 	@Override
 	public Room retrieve(Room object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Room> retrieveBy(String column, Object value) {
 		// TODO Auto-generated method stub
 		return null;
 	}
