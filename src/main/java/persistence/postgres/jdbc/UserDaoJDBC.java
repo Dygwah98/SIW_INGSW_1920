@@ -11,8 +11,9 @@ import model.User;
 import persistence.DBManager;
 import persistence.Dao;
 import persistence.PersistenceException;
+import persistence.dao.UserDao;
 
-public class UserDaoJDBC implements Dao<User>{
+public class UserDaoJDBC implements UserDao {
 		
 	private final int getNextId(final Connection connection){
 		
@@ -119,42 +120,6 @@ public class UserDaoJDBC implements Dao<User>{
 	}
 	
 	@Override
-	public List<User> retrieveBy(String column, Object value) {
-		
-		String query = "SELECT * FROM utente AS u WHERE u." + column + "=?";
-		List<User> ret = null;
-		User u = null;
-		
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-			
-			handler.getStatement().setString(1, (String) value);
-			handler.executeQuery();
-			
-			if(handler.existsResultSet()) {
-				
-				ResultSet result = handler.getResultSet();
-				ret = new ArrayList<User>();
-				while(result.next()) {
-					u  = new User();
-					u.SetName(result.getString("nome"));
-					u.SetSurname(result.getString("cognome"));
-					u.SetNascita(result.getString("datadinascita"));
-					u.setUsername(result.getString("username"));
-					u.setPassword(result.getString("password"));
-					u.setImage(result.getString("image"));
-					u.setEmail(result.getString("email"));
-					ret.add(u);
-				}
-			}
-			
-			return ret;
-			
-		} catch (SQLException e) {
-			throw new PersistenceException(e.getMessage());
-		}
-	}
-	
-	@Override
 	public List<User> retrieveAll() {
 		
 		String query = "SELECT * FROM utente";
@@ -201,6 +166,40 @@ public class UserDaoJDBC implements Dao<User>{
 		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
+		}
+	}
+
+	@Override
+	public User loginQuery(String username, String password) {
+		
+		String query = "SELECT * FROM utente WHERE username=? AND password=?";
+		User u = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			PreparedStatement smt = handler.getStatement();
+			smt.setString(1, username);
+			smt.setString(2, password);
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				
+				ResultSet result = handler.getResultSet();
+				result.next();
+				u  = new User();
+				u.SetName(result.getString("nome"));
+				u.SetSurname(result.getString("cognome"));
+				u.SetNascita(result.getString("datadinascita"));
+				u.setUsername(result.getString("username"));
+				u.setPassword(result.getString("password"));
+				u.setImage(result.getString("image"));
+				u.setEmail(result.getString("email"));
+			}
+			
+			return u;
+			
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
 		}
 	}
 	

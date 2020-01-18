@@ -10,8 +10,9 @@ import model.Post;
 import persistence.DBManager;
 import persistence.Dao;
 import persistence.PersistenceException;
+import persistence.dao.PostDao;
 
-public class PostDaoJDBC implements Dao<Post> {
+public class PostDaoJDBC implements PostDao {
 
 	private final int getNextId(final Connection connection) {
 		try {
@@ -154,10 +155,6 @@ public class PostDaoJDBC implements Dao<Post> {
 		return null;
 	}
 
-	@Override
-	public List<Post> retrieveBy(String column, Object value) {
-		return null;
-	}
 
 	@Override
 	public List<Post> retrieveAll() {

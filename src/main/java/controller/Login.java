@@ -34,11 +34,10 @@ public class Login extends HttpServlet {
 		String password = req.getParameter("password");
 		HttpSession session =  req.getSession();
 
-		List<User> u = DBManager.getInstance().getDAOFactory().getUtenteDAO().retrieveBy("username", userid);
+		User utente = DBManager.getInstance().getDAOFactory().getUtenteDAO().loginQuery(userid, password);
 		
-		if (u != null) {
+		if (utente != null) {
 			
-			User utente = u.get(0);
 			req.getSession().setAttribute("logged",true);
 	        resp.addCookie(new Cookie("logged", "true"));
 			session.setAttribute("username", userid);

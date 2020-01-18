@@ -7,7 +7,6 @@ public interface Dao<T> {
 	void save(T object);
 	
 	T retrieve(T object);
-	List<T> retrieveBy(String column, Object value);
 	List<T> retrieveAll();
 	
 	void update(T object);

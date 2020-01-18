@@ -8,8 +8,9 @@ import java.util.List;
 
 import model.Prenotazione;
 import persistence.Dao;
+import persistence.dao.PrenotazioneDao;
 
-public class PrenotazioneDaoJDBC implements Dao<Prenotazione>{
+public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 
 	@Override
 	public void save(Prenotazione book) {
@@ -157,9 +158,4 @@ public class PrenotazioneDaoJDBC implements Dao<Prenotazione>{
 		return null;
 	}
 	
-	@Override
-	public List<Prenotazione> retrieveBy(String column, Object value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
