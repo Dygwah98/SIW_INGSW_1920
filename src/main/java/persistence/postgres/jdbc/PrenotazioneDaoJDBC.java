@@ -13,6 +13,26 @@ import persistence.dao.PrenotazioneDao;
 public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 
 	@Override
+	public void saveAndLink(Prenotazione input, Integer idUtente) {
+		
+		String insert = "INSERT INTO prenotazioni(idprenotazione,checkin,checkout,idcamera,idordine) SELECT ? AS idprenotazione, ? AS checkin, ? AS checkout, ? AS idcamera, o.idOrder AS idordine FROM order AS o WHERE o.idClient = ? AND NOT o.pagato";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
+			
+			PreparedStatement smt = handler.getStatement();
+			smt.setInt(1, input.getIdPrenotazione());
+			smt.setDate(2, input.getCheckin());
+			smt.setDate(3, input.getCheckout());
+			smt.setInt(4, input.getIdCamera());
+			smt.setInt(5, idUtente);
+			handler.executeUpdate();
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+	
+	@Override
 	public void save(Prenotazione book) {
 
 		String insert = "INSERT INTO prenotazioni(idprenotazione,checkin,checkout,idcamera,idcliente,idordine) VALUES (?,?,?,?,?,?)";
@@ -157,5 +177,4 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 }

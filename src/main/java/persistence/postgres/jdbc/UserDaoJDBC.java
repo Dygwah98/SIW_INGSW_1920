@@ -187,6 +187,7 @@ public class UserDaoJDBC implements UserDao {
 				ResultSet result = handler.getResultSet();
 				result.next();
 				u  = new User();
+				u.setId(result.getInt("id"));
 				u.SetName(result.getString("nome"));
 				u.SetSurname(result.getString("cognome"));
 				u.SetNascita(result.getString("datadinascita"));

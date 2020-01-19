@@ -30,25 +30,27 @@ public class Login extends HttpServlet {
     	
     	PrintWriter o = resp.getWriter();
         resp.setContentType("text/jsp");
-    	String userid = req.getParameter("username");
+    	String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		HttpSession session =  req.getSession();
 
-		User utente = DBManager.getInstance().getDAOFactory().getUtenteDAO().loginQuery(userid, password);
+		User utente = DBManager.getInstance().getDAOFactory().getUtenteDAO().loginQuery(username, password);
 		
 		if (utente != null) {
 			
 			req.getSession().setAttribute("logged",true);
 	        resp.addCookie(new Cookie("logged", "true"));
-			session.setAttribute("username", userid);
+			session.setAttribute("username", username);
 			session.setAttribute("loggato", utente.getUsername());
 			
 			session.setAttribute("email", utente.getEmail());
 			session.setAttribute("nome", utente.getName());
 			session.setAttribute("cognome", utente.getSurname());
 			resp.setStatus(201);
-			}
-		else {
+		
+			req.getSession().setAttribute("userId", utente.getId());
+			
+		} else {
 			resp.setStatus(401);
 		}
 	}
