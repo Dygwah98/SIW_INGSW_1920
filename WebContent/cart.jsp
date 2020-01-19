@@ -119,6 +119,29 @@
 			 </div>
 		</div>		
 	</div>
+	
+	<table cellpadding="2" cellspacing="2" border="1">
+		<tr>
+			<th>tipo</th>
+			<th>descrizione</th>
+			<th>maxpersone</th>
+			<th>occupata</th>
+			<th>prezzo</th>
+			<th>img</th>
+		</tr>
+		<c:forEach var="prodottoutente" items="${prodotto}">
+			<tr>
+				<td>${prodotto.tipo}</td>
+				<td>${prodotto.descrizione}</td>
+				<td>${prodotto.maxpersone}</td>
+				<td>${prodotto.occupata}</td>
+				<td>${prodotto.prezzo}</td>
+				<td>
+					<img src="${prodotto.img }.jpg" width="106">
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
 
     <section id="piu" class="ftco-section ftco-cart">
 			<div class="container">
