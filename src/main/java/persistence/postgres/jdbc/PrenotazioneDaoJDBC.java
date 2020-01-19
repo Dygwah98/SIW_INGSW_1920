@@ -40,9 +40,9 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
 			PreparedStatement smt = handler.getStatement();
-			smt.setInt(1,book.getIdPrenotazione());
-			smt.setDate(2,book.getCheckin());
-			smt.setDate(3, book.getCheckout());
+			smt.setInt(1,book.getIdprenotazione());
+			smt.setString(2,book.getCheckin());
+			smt.setString(3, book.getCheckout());
 			smt.setInt(4,book.getIdCamera());
 			smt.setInt(5, book.getIdordine());
 			handler.executeUpdate();
@@ -68,9 +68,9 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 				ResultSet result = handler.getResultSet();
 				while (result.next()) {
 					book = new Prenotazione();
-					book.setIdPrenotazione(result.getInt("idprenotazione"));				
-					book.setCheckin(result.getDate("checkin"));
-					book.setCheckout(result.getDate("checkout"));
+					book.setIdprenotazione(result.getInt("idprenotazione"));				
+					book.setCheckin(result.getString("checkin"));
+					book.setCheckout(result.getString("checkout"));
 					book.setIdCamera(result.getInt("idcamera"));
 					book.setIdordine(result.getInt("idordine"));
 					books.add(book);
@@ -92,11 +92,11 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 			
 			PreparedStatement smt = handler.getStatement();
-			smt.setDate(1, book.getCheckin());
-			smt.setDate(2, book.getCheckout());
+			smt.setString(1, book.getCheckin());
+			smt.setString(2, book.getCheckout());
 			smt.setInt(3, book.getIdCamera());
 			smt.setInt(4, book.getIdordine());
-			smt.setInt(5, book.getIdPrenotazione());
+			smt.setInt(5, book.getIdprenotazione());
 			handler.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -111,7 +111,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			
-			handler.getStatement().setInt(1,book.getIdPrenotazione());
+			handler.getStatement().setInt(1,book.getIdprenotazione());
 			handler.getStatement().executeUpdate();
 		
 		} catch (SQLException e) {
