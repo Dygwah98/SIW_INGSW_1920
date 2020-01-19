@@ -1,6 +1,5 @@
 package controller;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -15,7 +14,6 @@ import persistence.DBManager;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 @WebServlet(value = "/login", name = "login")
 public class Login extends HttpServlet {

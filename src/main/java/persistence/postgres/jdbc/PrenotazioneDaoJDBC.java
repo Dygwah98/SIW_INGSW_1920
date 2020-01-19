@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Prenotazione;
-import persistence.Dao;
 import persistence.dao.PrenotazioneDao;
 
 public class PrenotazioneDaoJDBC implements PrenotazioneDao {
@@ -15,16 +14,15 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	@Override
 	public void saveAndLink(Prenotazione input, Integer idUtente) {
 		
-		String insert = "INSERT INTO prenotazioni(idprenotazione,checkin,checkout,idcamera,idordine) SELECT ? AS idprenotazione, ? AS checkin, ? AS checkout, ? AS idcamera, o.idOrder AS idordine FROM order AS o WHERE o.idClient = ? AND NOT o.pagato";
+		String insert = "INSERT INTO prenotazioni(checkin,checkout,idcamera,idordine) SELECT ? AS checkin, ? AS checkout, ? AS idcamera, o.idOrder AS idordine FROM order AS o WHERE o.idClient = ? AND NOT o.pagato";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
 			PreparedStatement smt = handler.getStatement();
-			smt.setInt(1, input.getIdPrenotazione());
-			smt.setDate(2, input.getCheckin());
-			smt.setDate(3, input.getCheckout());
-			smt.setInt(4, input.getIdCamera());
-			smt.setInt(5, idUtente);
+			smt.setString(1, input.getCheckin());
+			smt.setString(2, input.getCheckout());
+			smt.setInt(3, input.getIdCamera());
+			smt.setInt(4, idUtente);
 			handler.executeUpdate();
 		
 		} catch (SQLException e) {

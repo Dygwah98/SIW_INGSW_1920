@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Prodotto;
-import persistence.Dao;
 import persistence.dao.ProdottoDao;
 
 public class ProdottoDaoJDBC implements ProdottoDao {

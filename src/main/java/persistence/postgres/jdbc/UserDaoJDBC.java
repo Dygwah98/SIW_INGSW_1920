@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.User;
-import persistence.DBManager;
-import persistence.Dao;
 import persistence.PersistenceException;
 import persistence.dao.UserDao;
 

@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import model.Post;
-import persistence.DBManager;
-import persistence.Dao;
 import persistence.PersistenceException;
 import persistence.dao.PostDao;
 

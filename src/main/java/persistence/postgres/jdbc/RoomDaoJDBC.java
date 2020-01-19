@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Room;
-import persistence.Dao;
 import persistence.dao.RoomDao;
 
 public class RoomDaoJDBC implements RoomDao {
