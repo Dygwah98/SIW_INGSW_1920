@@ -21,7 +21,8 @@ function showSlides() {
 }
 
 // PRODOTTI
-filterSelection("all")
+filterSelection("Ortaggi")
+
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("divProdotto");
@@ -41,7 +42,7 @@ function w3AddClass(element, name) {
   }
 }
 
-function w3RemoveClass(element, name) {
+function w3RemoveClass(element, name){
   var i, arr1, arr2;
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");
