@@ -28,7 +28,7 @@ public class deleteroom extends HttpServlet {
         int intero2 = Integer.parseInt(numero2);
         r.setId(intero2);
         Dao<Room> roomdao = DBManager.getInstance().getDAOFactory().getRoomDao();
-        roomdao.delete(r);;
+        roomdao.delete(r);
         resp.sendRedirect("deleteroom.jsp");
 
 	}

@@ -39,6 +39,7 @@
 						  <li><a href="logout">Logout</a></li>
 						  <%}%>
 						<li><a href="index.jsp">Home</a></li>
+						<li ><a href="negozio.jsp">Negozio</a></li>
 						<li><a href="about.jsp">About us</a></li>
 						<li><a href="booking.jsp">Rooms</a></li>
 						<li><a href="blog.jsp">Blog</a></li>
@@ -73,6 +74,7 @@
 						  <li><a href="logout">Logout</a></li>
 						  <%}%>
 					<li><a href="index.jsp">Home</a></li>
+					<li ><a href="negozio.jsp">Negozio</a></li>
 					<li><a href="about.jsp">About us</a></li>
 					<li><a href="booking.jsp">Rooms</a></li>
 					<li><a href="blog.jsp">Blog</a></li>
