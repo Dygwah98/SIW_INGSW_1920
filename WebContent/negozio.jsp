@@ -45,7 +45,7 @@
 					  		<li><a href="logout">Logout</a></li>
 					  	 <%}%>
 						<li ><a href="index.jsp">Home</a></li>
-						<li><a href="negozio.jsp">Negozio</a></li>
+						<li class="active"><a href="negozio.jsp">Negozio</a></li>
 						<li><a href="#">Lista dei desideri</a></li>
 					</ul>
 			   </nav>
