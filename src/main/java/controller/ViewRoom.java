@@ -18,12 +18,6 @@ import persistence.DBManager;
 @WebServlet(value="/viewroom",name="viewroom")
 public class ViewRoom extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
-
-	public ViewRoom() {
-		super();
-	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<Room> r = DBManager.getInstance().getDAOFactory().getRoomDao().retrieveAll();
