@@ -1,6 +1,7 @@
 package controller;
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +12,7 @@ import model.User;
 import persistence.DBManager;
 import persistence.Dao;
 
-@WebServlet("/RegisterUser")
+@WebServlet(value = "/RegisterUser", name = "RegisterUser")
 public class RegisterUser extends HttpServlet {
 	
 	//TODO
@@ -38,6 +39,11 @@ public class RegisterUser extends HttpServlet {
         
         Dao<User> userdao = DBManager.getInstance().getDAOFactory().getUtenteDAO();
         userdao.save(u);
+
+//        RequestDispatcher rd = request.getRequestDispatcher("/login");
+//        request.setAttribute("username", u.getUsername());
+//        request.setAttribute("password", u.getPassword());
+//        rd.forward(request, response);
         
         response.sendRedirect("Loginform.jsp");
     }
