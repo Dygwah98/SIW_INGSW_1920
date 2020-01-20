@@ -2,61 +2,55 @@ package model;
 
 public class Prodotto {
 	
-	private Integer id;
-	private String nome;
+	private Integer idProdotto;
+	private String tipo;
 	private Integer prezzo;
 	private String descrizione;
+	private Boolean disponibile;
 	private String img;
-	private Integer idordine;
+	private Integer idOrdine;
 	
-	public Prodotto(int id, String nome, int prezzo, String descrizione, String img,int idordine) {
-		this.id = id;
-		this.nome = nome;
+	public Prodotto(int idProdotto, String tipo, int prezzo, String descrizione, Boolean disponibile, String img,int idOrdine) {
+		this.idProdotto = idProdotto;
+		this.tipo = tipo;
 		this.prezzo = prezzo;
 		this.descrizione = descrizione;
+		this.disponibile = disponibile;
 		this.img = img;
-		this.idordine=idordine;
+		this.idOrdine=idOrdine;
 	}
 
 	public Prodotto() {
-		this.id = null;
-		this.nome = null;
+		this.idProdotto = null;
+		this.tipo = null;
 		this.prezzo = null;
 		this.descrizione = null;
+		this.disponibile = null;
 		this.img = null;
-		this.idordine = null;
-	}
-	
-	
-	public String getImg() {
-		return img;
+		this.idOrdine = null;
 	}
 
-	public void setImg(String img) {
-		this.img = img;
+	public Integer getIdProdotto() {
+		return idProdotto;
 	}
 
-	public int getId() {
-		return id;
+	public void setIdProdotto(Integer idProdotto) {
+		this.idProdotto = idProdotto;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public String getNome() {
-		return nome;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public int getPrezzo() {
+	public Integer getPrezzo() {
 		return prezzo;
 	}
 
-	public void setPrezzo(int prezzo) {
+	public void setPrezzo(Integer prezzo) {
 		this.prezzo = prezzo;
 	}
 
@@ -68,15 +62,32 @@ public class Prodotto {
 		this.descrizione = descrizione;
 	}
 
+	public Boolean getDisponibile() {
+		return disponibile;
+	}
+
+	public void setDisponibile(Boolean disponibile) {
+		this.disponibile = disponibile;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public Integer getIdOrdine() {
+		return idOrdine;
+	}
+
+	public void setIdOrdine(Integer idOrdine) {
+		this.idOrdine = idOrdine;
+	}
 	
-
-	public int getIdordine() {
-		return idordine;
-	}
-
-	public void setIdordine(int idordine) {
-		this.idordine = idordine;
-	}
+	
+	
 	
 	
 	
