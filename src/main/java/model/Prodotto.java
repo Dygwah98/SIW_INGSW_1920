@@ -2,32 +2,44 @@ package model;
 
 public class Prodotto {
 	
-	private Integer id;
-	private String nome;
-	private Integer prezzo;
+	private Integer idProdotto;
+	private String tipo;
 	private String descrizione;
+	private Integer prezzo;
+	private Boolean disponibile;
 	private String img;
-	private Integer idordine;
+	private Integer idOrdine;
 	
-	public Prodotto(int id, String nome, int prezzo, String descrizione, String img,int idordine) {
-		this.id = id;
-		this.nome = nome;
+	
+	public Prodotto(int idProdotto, String nome, int prezzo, String descrizione, String img,int idordine, Boolean disponibile) {
+		this.idProdotto = idProdotto;
+		this.tipo = nome;
 		this.prezzo = prezzo;
 		this.descrizione = descrizione;
 		this.img = img;
-		this.idordine=idordine;
+		this.idOrdine=idordine;
+		this.disponibile = disponibile;
 	}
 
 	public Prodotto() {
-		this.id = null;
-		this.nome = null;
+		this.idProdotto = null;
+		this.tipo = null;
 		this.prezzo = null;
 		this.descrizione = null;
 		this.img = null;
-		this.idordine = null;
+		this.idOrdine = null;
+		this.disponibile = null;
 	}
 	
 	
+	public Boolean getDisponibile() {
+		return disponibile;
+	}
+
+	public void setDisponibile(Boolean disponibile) {
+		this.disponibile = disponibile;
+	}
+
 	public String getImg() {
 		return img;
 	}
@@ -36,20 +48,20 @@ public class Prodotto {
 		this.img = img;
 	}
 
-	public int getId() {
-		return id;
+	public int getIdProdotto() {
+		return idProdotto;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdProdotto(int id) {
+		this.idProdotto = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public int getPrezzo() {
@@ -70,12 +82,12 @@ public class Prodotto {
 
 	
 
-	public int getIdordine() {
-		return idordine;
+	public int getIdOrdine() {
+		return idOrdine;
 	}
 
-	public void setIdordine(int idordine) {
-		this.idordine = idordine;
+	public void setIdOrdine(int idordine) {
+		this.idOrdine = idordine;
 	}
 	
 	

@@ -16,12 +16,12 @@ import model.Room;
 import persistence.DBManager;
 
 
-@WebServlet(value="/viewcart",name="viewcart")
-public class ViewCart extends HttpServlet {
+@WebServlet(value="/addcart",name="addcart")
+public class AddCart extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public ViewCart() {
+	public AddCart() {
 		super();
 	}
 
@@ -29,13 +29,15 @@ public class ViewCart extends HttpServlet {
 			throws ServletException, IOException {
 		
 		Integer idUser = (Integer)request.getSession().getAttribute("userId");
-		List<Prenotazione> r = DBManager.getInstance().getDAOFactory().getPrenotazioneDao().retrieveByUserID(idUser);
+		//List<Prenotazione> r = DBManager.getInstance().getDAOFactory().getPrenotazioneDao().
 		
-		request.setAttribute("roomutente",r);
+		//al click nella jsp negozio o/e nella jsp camera va ritornato un idProdotto e mandato come secondo parametro  
+		//così cambia il parametro IDORDINE tramite connectedByUser(e lo associa all'utente)
 		
-		List<Prodotto> p = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByUserID(idUser);
+		//DBManager.getInstance().getDAOFactory().getProdottoDao().connectByUserID(idUser, p);
+		//List<Prenotazione> r = DBManager.getInstance().getDAOFactory().getPrenotazioneDao().
 		
-		request.setAttribute("prodottoutente", p);
+		//request.setAttribute("aggiungiprodotto", p);
 		
 		request.getRequestDispatcher("cart.jsp").forward(request, response);
 	}

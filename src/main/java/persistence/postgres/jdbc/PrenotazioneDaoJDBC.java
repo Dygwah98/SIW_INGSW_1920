@@ -63,6 +63,10 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 			throw new RuntimeException(e.getMessage());
 		}
 	}
+	/*public List<Prenotazione> retrieveByUserID(Integer userId){
+		String query = "SELECT * FROM prenotazioni AS p, order AS o WHERE o.userId == ? AND p.idordine== o.idOrder AND NOT o.pagato";
+	}
+	*/
 
 	@Override
 	public void update(Prenotazione book) {
@@ -98,6 +102,39 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 			throw new RuntimeException(e.getMessage());
 		}	
 	}
+	
+	
+	public List<Prenotazione> retrieveByUserID(Integer ID) {
+
+		String query = "SELECT * FROM prenotazioni AS p, order AS o WHERE o.idClient == ? AND p.idordine== o.idOrder AND NOT o.pagato";
+		List<Prenotazione> books = null;
+		Prenotazione book = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				books = new ArrayList<Prenotazione>();
+				ResultSet result = handler.getResultSet();
+				while (result.next()) {
+					book = new Prenotazione();
+					book.setIdPrenotazione(result.getInt("idprenotazione"));				
+					book.setCheckin(result.getDate("checkin"));
+					book.setCheckout(result.getDate("checkout"));
+					book.setIdCamera(result.getInt("idcamera"));
+					book.setIdordine(result.getInt("idordine"));
+					books.add(book);
+				}
+			}
+			
+			return books;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+	
 /*	
 	@Override
 	public ArrayList<Prenotazione> retrieve(Integer nPren, Integer maxPren) throws SQLException {
