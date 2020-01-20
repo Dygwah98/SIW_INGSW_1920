@@ -6,27 +6,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Prenotazione;
 import model.Prodotto;
-import persistence.Dao;
 import persistence.dao.ProdottoDao;
 
 public class ProdottoDaoJDBC implements ProdottoDao {
 	
 	public void save(Prodotto prodotto) {
 
-		String insert = "INSERT INTO Prodotto(id, nome, prezzo,descrizione,img,idordine) VALUES (?,?,?,?,?,?)";
+		String insert = "INSERT INTO prodotto(idProdotto,tipo,descrizione,prezzo,disponibile,img) VALUES (?,?,?,?,?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
 			PreparedStatement smt = handler.getStatement();
+			
 			smt.setInt(1, prodotto.getIdProdotto());
 			smt.setString(2, prodotto.getTipo());
 			smt.setString(3, prodotto.getDescrizione());
 			smt.setInt(4, prodotto.getPrezzo());
-			smt.setString(5, prodotto.getImg());
-			smt.setInt(6, prodotto.getIdOrdine());
-			smt.setBoolean(7, prodotto.getDisponibile());
+			smt.setBoolean(5, prodotto.getDisponibile());
+			smt.setString(6, prodotto.getImg());
+			
 			handler.executeUpdate();
 
 		} catch (SQLException e) {
