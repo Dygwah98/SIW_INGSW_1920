@@ -19,12 +19,6 @@ import persistence.DBManager;
 @WebServlet(value="/addcart",name="addcart")
 public class AddCart extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
-
-	public AddCart() {
-		super();
-	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -33,26 +27,8 @@ public class AddCart extends HttpServlet {
 		
 		DBManager.getInstance().getDAOFactory().getProdottoDao().connectByUserID(idUser, idProd);
 		
-		//List<Prenotazione> r = DBManager.getInstance().getDAOFactory().getPrenotazioneDao().
-		
-		//al click nella jsp negozio o/e nella jsp camera va ritornato un idProdotto e mandato come secondo parametro  
-		//così cambia il parametro IDORDINE tramite connectedByUser(e lo associa all'utente)
-		
-		//DBManager.getInstance().getDAOFactory().getProdottoDao().connectByUserID(idUser, p);
-		//List<Prenotazione> r = DBManager.getInstance().getDAOFactory().getPrenotazioneDao().
-		
-		//request.setAttribute("aggiungiprodotto", p);
-		
 		request.getRequestDispatcher("cart.jsp").forward(request, response);
 	}
-	
-
-	
-
-	
-
-	 
-	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
