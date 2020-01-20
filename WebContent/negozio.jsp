@@ -41,6 +41,7 @@
 							<li><a href="Loginform.jsp">Login</a></li>
 						 <%}
 					  	 else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+					  		<li><a href="createProduct.jsp">creaProdotto</a></li>
 					  		<li><a href="logout">Logout</a></li>
 					  	 <%}%>
 						<li ><a href="index.jsp">Home</a></li>
@@ -74,6 +75,7 @@
 						<li><a href="Loginform.jsp">Login</a></li>
 				     <%}
 				     else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+						  <li><a href="createProduct.jsp">creaProdotto</a></li>
 						  <li><a href="logout">Logout</a></li>
 					 <%}%>
 					<li ><a href="index.jsp">Home</a></li>
