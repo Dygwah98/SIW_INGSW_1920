@@ -1,4 +1,4 @@
-package controller;
+package controller.logging;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
