@@ -13,6 +13,25 @@ import persistence.dao.PrenotazioneDao;
 public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 
 	@Override
+	public void saveAndLink(Prenotazione input, Integer idUtente) {
+		
+		String insert = "INSERT INTO prenotazioni(checkin,checkout,idcamera,idordine) SELECT ? AS checkin, ? AS checkout, ? AS idcamera, o.idOrder AS idordine FROM order AS o WHERE o.idClient = ? AND NOT o.pagato";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
+			
+			PreparedStatement smt = handler.getStatement();
+			smt.setString(1, input.getCheckin());
+			smt.setString(2, input.getCheckout());
+			smt.setInt(3, input.getIdCamera());
+			smt.setInt(4, idUtente);
+			handler.executeUpdate();
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+	
+	@Override
 	public void save(Prenotazione book) {
 
 		String insert = "INSERT INTO prenotazioni(idprenotazione,checkin,checkout,idcamera,idcliente,idordine) VALUES (?,?,?,?,?,?)";
@@ -20,9 +39,9 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
 			PreparedStatement smt = handler.getStatement();
-			smt.setInt(1,book.getIdPrenotazione());
-			smt.setDate(2,book.getCheckin());
-			smt.setDate(3, book.getCheckout());
+			smt.setInt(1,book.getIdprenotazione());
+			smt.setString(2,book.getCheckin());
+			smt.setString(3, book.getCheckout());
 			smt.setInt(4,book.getIdCamera());
 			smt.setInt(5, book.getIdordine());
 			handler.executeUpdate();
@@ -48,9 +67,9 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 				ResultSet result = handler.getResultSet();
 				while (result.next()) {
 					book = new Prenotazione();
-					book.setIdPrenotazione(result.getInt("idprenotazione"));				
-					book.setCheckin(result.getDate("checkin"));
-					book.setCheckout(result.getDate("checkout"));
+					book.setIdprenotazione(result.getInt("idprenotazione"));				
+					book.setCheckin(result.getString("checkin"));
+					book.setCheckout(result.getString("checkout"));
 					book.setIdCamera(result.getInt("idcamera"));
 					book.setIdordine(result.getInt("idordine"));
 					books.add(book);
@@ -63,10 +82,6 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 			throw new RuntimeException(e.getMessage());
 		}
 	}
-	/*public List<Prenotazione> retrieveByUserID(Integer userId){
-		String query = "SELECT * FROM prenotazioni AS p, order AS o WHERE o.userId == ? AND p.idordine== o.idOrder AND NOT o.pagato";
-	}
-	*/
 
 	@Override
 	public void update(Prenotazione book) {
@@ -76,11 +91,11 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 			
 			PreparedStatement smt = handler.getStatement();
-			smt.setDate(1, book.getCheckin());
-			smt.setDate(2, book.getCheckout());
+			smt.setString(1, book.getCheckin());
+			smt.setString(2, book.getCheckout());
 			smt.setInt(3, book.getIdCamera());
 			smt.setInt(4, book.getIdordine());
-			smt.setInt(5, book.getIdPrenotazione());
+			smt.setInt(5, book.getIdprenotazione());
 			handler.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -95,46 +110,13 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			
-			handler.getStatement().setInt(1,book.getIdPrenotazione());
+			handler.getStatement().setInt(1,book.getIdprenotazione());
 			handler.getStatement().executeUpdate();
 		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		}	
 	}
-	
-	
-	public List<Prenotazione> retrieveByUserID(Integer ID) {
-
-		String query = "SELECT * FROM prenotazioni AS p, order AS o WHERE o.idClient == ? AND p.idordine== o.idOrder AND NOT o.pagato";
-		List<Prenotazione> books = null;
-		Prenotazione book = null;
-		
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-			
-			handler.executeQuery();
-			
-			if(handler.existsResultSet()) {
-				books = new ArrayList<Prenotazione>();
-				ResultSet result = handler.getResultSet();
-				while (result.next()) {
-					book = new Prenotazione();
-					book.setIdPrenotazione(result.getInt("idprenotazione"));				
-					book.setCheckin(result.getDate("checkin"));
-					book.setCheckout(result.getDate("checkout"));
-					book.setIdCamera(result.getInt("idcamera"));
-					book.setIdordine(result.getInt("idordine"));
-					books.add(book);
-				}
-			}
-			
-			return books;
-			
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
-		}
-	}
-	
 /*	
 	@Override
 	public ArrayList<Prenotazione> retrieve(Integer nPren, Integer maxPren) throws SQLException {
@@ -195,4 +177,35 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 		return null;
 	}
 	
+	@Override
+	public List<Prenotazione> retrieveByUserID(Integer ID) {
+
+		String query = "SELECT * FROM prenotazioni AS p, order AS o WHERE o.idClient == ? AND p.idordine== o.idOrder AND NOT o.pagato";
+		List<Prenotazione> books = null;
+		Prenotazione book = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				books = new ArrayList<Prenotazione>();
+				ResultSet result = handler.getResultSet();
+				while (result.next()) {
+					book = new Prenotazione();
+					book.setIdprenotazione(result.getInt("idprenotazione"));				
+					book.setCheckin(result.getString("checkin"));
+					book.setCheckout(result.getString("checkout"));
+					book.setIdCamera(result.getInt("idcamera"));
+					book.setIdordine(result.getInt("idordine"));
+					books.add(book);
+				}
+			}
+			
+			return books;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
 }

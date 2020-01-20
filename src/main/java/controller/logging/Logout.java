@@ -1,4 +1,4 @@
-package controller;
+package controller.logging;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,11 +15,10 @@ public class Logout extends HttpServlet {
     
 	@Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().setAttribute("logged", false);
+        
+		req.getSession().setAttribute("logged", false);
         resp.addCookie(new Cookie("logged", "false"));
-        RequestDispatcher rd=req.getRequestDispatcher("index.jsp");
-        rd.forward(req, resp);
-        //resp.sendRedirect(req.getHeader("referer"));
+        req.getRequestDispatcher("/home").forward(req, resp);
     }
 
     @Override

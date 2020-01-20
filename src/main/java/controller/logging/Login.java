@@ -1,4 +1,4 @@
-package controller;
+package controller.logging;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,17 +28,15 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	
-    	PrintWriter o = resp.getWriter();
-        resp.setContentType("text/jsp");
-    	String userid = req.getParameter("username");
-		String password = req.getParameter("password");
+        String userid =   req.getParameter("username") == null ? (String)req.getAttribute("username") : req.getParameter("username");
+		String password = req.getParameter("password") == null ? (String)req.getAttribute("password") : req.getParameter("password");
 		HttpSession session =  req.getSession();
 
 		User utente = DBManager.getInstance().getDAOFactory().getUtenteDAO().loginQuery(userid, password);
 		
 		if (utente != null) {
 			
-			req.getSession().setAttribute("logged",true);
+			session.setAttribute("logged",true);
 	        resp.addCookie(new Cookie("logged", "true"));
 			session.setAttribute("username", userid);
 			session.setAttribute("loggato", utente.getUsername());
@@ -47,8 +45,10 @@ public class Login extends HttpServlet {
 			session.setAttribute("nome", utente.getName());
 			session.setAttribute("cognome", utente.getSurname());
 			resp.setStatus(201);
-			}
-		else {
+			
+			req.getRequestDispatcher("/home").forward(req, resp);
+			
+		} else {
 			resp.setStatus(401);
 		}
 	}

@@ -5,12 +5,12 @@ import java.sql.Date;
 public class Prenotazione {
 
 	private Integer IdPrenotazione;
-	private java.sql.Date checkin;
-	private java.sql.Date checkout;
+	private String checkin;
+	private String checkout;
 	private Integer IdCamera;
 	private Integer idordine;
 	
-	public Prenotazione(int idPrenotazione, Date checkin, Date checkout, int idCamera,int idordine) {
+	public Prenotazione(int idPrenotazione, String checkin, String checkout, int idCamera,int idordine) {
 		super();
 		IdPrenotazione = idPrenotazione;
 		this.checkin = checkin;
@@ -28,27 +28,27 @@ public class Prenotazione {
 		idordine = null;
 	}
 	
-	public int getIdPrenotazione() {
+	public int getIdprenotazione() {
 		return IdPrenotazione;
 	}
 	
-	public void setIdPrenotazione(int idPrenotazione) {
+	public void setIdprenotazione(int idPrenotazione) {
 		IdPrenotazione = idPrenotazione;
 	}
 	
-	public java.sql.Date getCheckin() {
+	public String getCheckin() {
 		return checkin;
 	}
 	
-	public void setCheckin(java.sql.Date checkin) {
+	public void setCheckin(String checkin) {
 		this.checkin = checkin;
 	}
 	
-	public java.sql.Date getCheckout() {
+	public String getCheckout() {
 		return checkout;
 	}
 	
-	public void setCheckout(java.sql.Date checkout) {
+	public void setCheckout(String  checkout) {
 		this.checkout = checkout;
 	}
 	
