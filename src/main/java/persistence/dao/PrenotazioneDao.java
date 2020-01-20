@@ -8,5 +8,7 @@ import model.Prenotazione;
 import persistence.Dao;
 
 public interface PrenotazioneDao extends Dao<Prenotazione> {
-	abstract public List<Prenotazione> retrieveByUserID(Integer ID);
+	
+	public void saveAndLink(Prenotazione input, Integer idUtente);
+	public List<Prenotazione> retrieveByUserID(Integer ID);
 }
