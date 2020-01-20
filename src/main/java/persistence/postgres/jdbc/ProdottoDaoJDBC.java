@@ -11,7 +11,7 @@ import persistence.dao.ProdottoDao;
 
 public class ProdottoDaoJDBC implements ProdottoDao {
 	
-	public void save(Prodotto prodotto) {
+	public void save(Prodotto p) {
 
 		String insert = "INSERT INTO prodotto(idProdotto,tipo,descrizione,prezzo,disponibile,img,idOrdine) VALUES (?,?,?,?,?,?,?)";
 		
@@ -19,12 +19,13 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			
 			PreparedStatement smt = handler.getStatement();
 			
-			smt.setInt(1, prodotto.getIdProdotto());
-			smt.setString(2, prodotto.getTipo());
-			smt.setString(3, prodotto.getDescrizione());
-			smt.setInt(4, prodotto.getPrezzo());
-			smt.setBoolean(5, prodotto.getDisponibile());
-			smt.setString(6, prodotto.getImg());
+			smt.setInt(1, p.getIdProdotto());
+			smt.setString(2, p.getTipo());
+			smt.setString(3, p.getDescrizione());
+			smt.setInt(4, p.getPrezzo());
+			smt.setBoolean(5, p.getDisponibile());
+			smt.setString(6, p.getImg());
+			smt.setInt(7, 0);
 			
 			handler.executeUpdate();
 

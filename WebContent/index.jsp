@@ -15,6 +15,11 @@
 <link href="plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+
+<link rel="stylesheet" href="styles/icomoon.css">
+<link rel="stylesheet" href="styles/ionicons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
 	
@@ -32,7 +37,7 @@
 					<% }else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 						  <li><a href="logout">Logout</a></li>
 					<% } %>
-						<li><a href="index.jsp">Home</a></li>
+						<li class="active"><a href="index.jsp">Home</a></li>
 						<li ><a href="negozio.jsp">Negozio</a></li>
 						<li><a href="about.jsp">About us</a></li>
 						<li><a href="viewroom">Rooms</a></li>
@@ -41,13 +46,19 @@
 					</ul>
 				</nav>
 				<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				<div class="book_button"><a href="carrello.jsp">Carrello</a></div>
+				<!--  <div class="book_button"><a href="carrello.jsp">Carrello</a></div> -->
+				<nav class="main_nav">
+					<ul class="d-flex flex-row align-items-start justify-content-start">
+						<li><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+					</ul>
+				</nav>
 				<%}%>
+				<!--  
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
 					<img src="images/phone.png" alt="">
 					<span>3339290840</span>
 				</div>
-
+				-->
 				<!-- Hamburger Menu -->
 				<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
 			</div>
@@ -66,7 +77,7 @@
 					<%} else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 						  <li><a href="logout">Logout</a></li>
 					<%}%>
-					<li><a href="index.jsp">Home</a></li>
+					<li class="active"><a href="index.jsp">Home</a></li>
 					<li ><a href="negozio.jsp">Negozio</a></li>
 					<li><a href="about.jsp">About us</a></li>
 					<li><a href="viewroom">Rooms</a></li>
@@ -77,12 +88,19 @@
 		</div>
 		<div class="menu_extra">
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")) { %>
-			<div class="menu_book text-right"><a href="carrello.jsp"> Carrello </a></div>	 
-		<% } %>
-			<div class="menu_phone d-flex flex-row align-items-center justify-content-center">
-				<img src="images/phone-2.png" alt="">
-				<span>3339290840</span>
-			</div>
+			<!--  <div class="book_button"><a href="carrello.jsp">Carrello</a></div> -->
+				<nav class="main_nav">
+					<ul class="d-flex flex-row align-items-start justify-content-start">
+						<li><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+					</ul>
+				</nav>
+				<%}%>
+				<!--  
+				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
+					<img src="images/phone.png" alt="">
+					<span>3339290840</span>
+				</div>
+				-->
 		</div>
 	</div>
 
