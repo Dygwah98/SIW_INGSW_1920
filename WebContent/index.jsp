@@ -32,7 +32,7 @@
 						 <%}else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 						  <li><a href="logout">Logout</a></li>
 						  <%}%>
-						<li><a href="home">Home</a></li>
+						<li class="active"><a href="home">Home</a></li>
 						<li><a href="shop">Negozio</a></li>
 						<li><a href="aboutUs">About us</a></li>
 						<li><a href="roomPage">Rooms</a></li>
