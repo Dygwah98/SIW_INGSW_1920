@@ -10,5 +10,5 @@ import persistence.Dao;
 
 public interface ProdottoDao extends Dao<Prodotto> {
 	abstract public List<Prodotto> retrieveByUserID(Integer ID);
-	abstract public void connectByUserID(Integer ID, Prodotto p);
+	abstract public void connectByUserID(Integer ID, Integer idProd);
 }

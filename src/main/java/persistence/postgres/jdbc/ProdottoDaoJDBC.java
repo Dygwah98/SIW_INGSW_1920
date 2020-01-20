@@ -139,15 +139,15 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		}
 	}
 	
-	public void connectByUserID(Integer id, Prodotto prodotto) {
+	public void connectByUserID(Integer id, Integer idProd) {
 		
-		String update = "update Prodotto SET idordine=? WHERE id=?";
+		String update = "UPDATE Prodotto AS p SET idordine = val SELECT idordine AS val FROM order AS o WHERE idProd = ? AND o.idOrder = p.idordine AND o.idClient = ?";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 			
 			PreparedStatement smt = handler.getStatement();
-			smt.setInt(2, prodotto.getIdProdotto());
-			smt.setInt(1,id);
+			smt.setInt(1, id);
+			smt.setInt(2, idProd);
 			handler.executeUpdate();
 		
 		} catch (SQLException e) {
