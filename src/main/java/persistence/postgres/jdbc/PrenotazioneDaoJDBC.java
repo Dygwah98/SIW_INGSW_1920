@@ -193,9 +193,9 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 				ResultSet result = handler.getResultSet();
 				while (result.next()) {
 					book = new Prenotazione();
-					book.setIdPrenotazione(result.getInt("idprenotazione"));				
-					book.setCheckin(result.getDate("checkin"));
-					book.setCheckout(result.getDate("checkout"));
+					book.setIdprenotazione(result.getInt("idprenotazione"));				
+					book.setCheckin(result.getString("checkin"));
+					book.setCheckout(result.getString("checkout"));
 					book.setIdCamera(result.getInt("idcamera"));
 					book.setIdordine(result.getInt("idordine"));
 					books.add(book);
