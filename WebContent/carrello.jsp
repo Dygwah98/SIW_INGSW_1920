@@ -1,10 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Booking</title>
+<title>Carrello</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="The River template project">
@@ -15,10 +12,8 @@
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.3.4/owl.theme.default.css">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.3.4/animate.css">
 <link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/booking.css">
-<link rel="stylesheet" type="text/css" href="styles/booking_responsive.css">
-<link rel="stylesheet" type="text/css" href="styles/Carrello.css">
-
+<link rel="stylesheet" type="text/css" href="styles/contact.css">
+<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
 </head>
 <body>
 
@@ -42,12 +37,10 @@
 						<li><a href="about.jsp">About us</a></li>
 						<li><a href="booking.jsp">Rooms</a></li>
 						<li><a href="blog.jsp">Blog</a></li>
-						<li><a href="contact.jsp">Contact</a></li>
+						<li ><a href="contact.jsp">Contact</a></li>
 					</ul>
 				</nav>
-			 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				<div class="book_button"><a href="carrello.jsp">Carrello</a></div>
-				 <%}%>
+				<div class="book_button"><!-- active --><a href="carrello.jsp">Carrello</a></div>
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
 					<img src="images/phone.png" alt="">
 					<span>3339290840</span>
@@ -81,10 +74,7 @@
 			</nav>
 		</div>
 		<div class="menu_extra">
-		 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				<div class="menu_book text-right"><a href="carrello.jsp">Carrello</a></div>
-				 <%}%>
-			<div class="menu_book text-right"><a href="#">Carrello</a></div>
+			<div class="menu_book text-right"><a href="carrello.jsp">Carrello</a></div>
 			<div class="menu_phone d-flex flex-row align-items-center justify-content-center">
 				<img src="images/phone-2.png" alt="">
 				<span>3339290840</span>
@@ -95,13 +85,13 @@
 	<!-- Home -->
 
 	<div class="home">
-		<div class="background_image" style="background-image:url(images/booking.jpg)"></div>
+		<div class="background_image" style="background-image:url(images/carrello.jpg)"></div>
 		<div class="home_container">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<div class="home_content text-center">
-							<div class="home_title">Book a room</div>
+							<div class="home_title">Carrello</div>
 							<div class="booking_form_container">
 								<form action="#" class="booking_form" id="booking_form">
 									<div class="d-flex flex-xl-row flex-column align-items-start justify-content-start">
@@ -121,68 +111,8 @@
 			</div>
 		</div>
 	</div>
-	<!-- Room -->
-	<div class="row">
-    			<div class="col-md-12">
-    				<div class="cart-list">
-	    				<table class="table">
-						    <thead class="thead-secondary">
-						      <tr class="text-center">
-						        <th>&nbsp;</th>
-						        <th>&nbsp;</th>
-						        <th>Tipo</th>
-						        <th>Tipo</th>
-						        <th>Descrizione</th>
-						        <th>maxpersone</th>
-						        <th>occupata</th>
-						        <th>prezzo</th>
-						      
-						      </tr>
-						    </thead>
-						    <c:forEach var="room" items="${room}">
-						    <tbody style="background-color: white;">
-						      <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-						        
-						        <td class="image-prod"><div class="img" style="background-image:url(${room.img }.jpg);"></div></td>
-						        <td >
-						        	<p>${room.tipo}</p>
-						        </td>
-						        
-						        <td >
-						        	<p>${room.tipo}</p>
-						        </td>
-						        
-						        <td >
-						        	<p> 
-						        		<ul>
-						        			${room.descrizione}
-						        		</ul>
-						        	</p>
-						        </td>
-						         <td >
-						        	<p> 
-						        		<ul>
-						        			${room.maxpersone}
-						        		</ul>
-						        	</p>
-						        </td>
-						          <td >
-						        	<p> 
-						        		<ul>
-						        			${room.occupata}
-						        		</ul>
-						        	</p>
-						        </td>
-						        <td class="prezzo">${room.prezzo}</td>
-						      </tr><!-- END TR-->
-						    </tbody>
-						    </c:forEach>
-						  </table>
-					  </div>
-    			</div>
-    		</div>
-	
+
+
 
 	<!-- Footer -->
 
@@ -194,7 +124,7 @@
 						<div class="footer_logo_container text-center">
 							<div class="footer_logo">
 								<a href="#"></a>
-								<div>Agriturismo  Sarella</div>
+								<div>Agriturismo Sarella</div>
 								<div>since 1945</div>
 							</div>
 						</div>
@@ -268,6 +198,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="plugins/progressbar/progressbar.min.js"></script>
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
 <script src="plugins/jquery-datepicker/jquery-ui.js"></script>
-<script src="js/booking.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+<script src="js/contact.js"></script>
 </body>
 </html>

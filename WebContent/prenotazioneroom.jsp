@@ -4,7 +4,7 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-  <title>RegistrationForm</title>
+  <title>booking</title>
   <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
   <link href="styles/RegistrationForm.css" rel="stylesheet" type="text/css" />
 </head>
@@ -14,13 +14,10 @@
   <div class="form-right-decoration"></div>
   <div class="circle"></div>
   <div class="form-inner">
-    <h3>Registrazione</h3>
-    <input type="text" name="name"placeholder="Nome">
-    <input type="text" name="cognome" placeholder="Cognome">
-    <input type="date" name="data"placeholder="DataDiNascita"> 
-    <input type="text"name="username" placeholder="Username">
-    <input type="password" name="password"placeholder="Password">
-    <input type="email" name="email" placeholder="Email">
+    <h3>booking_room</h3>
+    <input type="date" name="checkin"placeholder="checkin"> 
+    <input type="date" name="checkout"placeholder="checkout"> 
+    <input type="text" name="n_camera"placeholder="n_camera"> 
     <input type="submit" value="Inviare">
   </div>
 </form>

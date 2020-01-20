@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import model.Ordine;
-import persistence.Dao;
 import persistence.dao.OrdineDao;
 
 public class OrdineDaoJDBC implements OrdineDao {
