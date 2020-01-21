@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -232,7 +235,7 @@
 						        <th>occupata</th>						      
 						      </tr>
 						    </thead>
-						    <c:forEach var="prodotto" items="${prodotto}">
+						   <c:forEach var="prodotto" items="${prodotto}">
 						    <tbody>
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>

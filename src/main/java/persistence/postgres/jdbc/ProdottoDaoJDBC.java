@@ -14,19 +14,19 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public void save(Prodotto p) {
 
-		String insert = "INSERT INTO prodotto(idProdotto,tipo,descrizione,prezzo,disponibile,img,idOrdine) VALUES (?,?,?,?,?,?,?)";
+		String insert = "INSERT INTO prodotto(idprodotto,tipo,descrizione,prezzo,disponibile,img,idordine) VALUES (?,?,?,?,?,?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
 			PreparedStatement smt = handler.getStatement();
 			
-			smt.setInt(1, p.getIdProdotto());
+			smt.setInt(1, p.getIdprodotto());
 			smt.setString(2, p.getTipo());
 			smt.setString(3, p.getDescrizione());
 			smt.setInt(4, p.getPrezzo());
 			smt.setBoolean(5, p.getDisponibile());
 			smt.setString(6, p.getImg());
-			smt.setInt(7,p.getIdOrdine());
+			smt.setInt(7,p.getIdordine());
 			
 			handler.executeUpdate();
 
@@ -89,13 +89,13 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 				ResultSet result = handler.getResultSet();
 				while (result.next()) {
 					book = new Prodotto();
-					book.setIdProdotto(result.getInt("idProdotto"));				
+					book.setIdprodotto(result.getInt("idprodotto"));				
 					book.setTipo(result.getString("tipo"));
 					book.setDescrizione(result.getString("descrizione"));
 					book.setPrezzo(result.getInt("prezzo"));
 					book.setDisponibile(result.getBoolean("disponibile"));
 					book.setTipo(result.getString("img"));
-					book.setIdOrdine(result.getInt("idOrdine"));
+					book.setIdordine(result.getInt("idordine"));
 					books.add(book);
 				}
 			}
@@ -124,7 +124,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 					
 					while (result.next()) {
 						p = new Prodotto();
-						p.setIdProdotto(result.getInt("idprodotto"));		
+						p.setIdprodotto(result.getInt("idprodotto"));		
 						p.setTipo(result.getString("tipo"));
 						p.setDescrizione(result.getString("descrizione"));
 						p.setPrezzo(result.getInt("prezzo"));
@@ -166,12 +166,12 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 			
 			PreparedStatement smt = handler.getStatement();
-			smt.setInt(1, prodotto.getIdProdotto());
+			smt.setInt(1, prodotto.getIdprodotto());
 			smt.setString(2, prodotto.getTipo());
 			smt.setString(3, prodotto.getDescrizione());
 			smt.setInt(4, prodotto.getPrezzo());
 			smt.setString(5, prodotto.getImg());
-			smt.setInt(7, prodotto.getIdOrdine());
+			smt.setInt(7, prodotto.getIdordine());
 			smt.setBoolean(6, prodotto.getDisponibile());
 			handler.executeUpdate();
 		
@@ -187,7 +187,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			
-			handler.getStatement().setInt(1, prodotto.getIdProdotto());
+			handler.getStatement().setInt(1, prodotto.getIdprodotto());
 			handler.executeUpdate();
 
 		} catch (SQLException e) {

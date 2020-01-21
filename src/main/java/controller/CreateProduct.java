@@ -31,7 +31,7 @@ public class CreateProduct extends HttpServlet {
         
         String ID = id;
         int intero1 = Integer.parseInt(ID);
-        p.setIdProdotto(intero1);
+        p.setIdprodotto(intero1);
        
         p.setTipo(tipo);
         
