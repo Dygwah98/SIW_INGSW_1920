@@ -26,7 +26,6 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	
-    	PrintWriter o = resp.getWriter();
         resp.setContentType("text/jsp");
     	String username = req.getParameter("username");
 		String password = req.getParameter("password");

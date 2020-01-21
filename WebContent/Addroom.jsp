@@ -16,7 +16,7 @@
   <div class="circle"></div>
   <div class="form-inner">
     <h3>AddRoom</h3>
-     <input type="text" name="id"placeholder="id">
+    <input type="text" name="id"placeholder="id">
     <input type="text" name="Tipo"placeholder="Tipo">
     <input type="text" name="Descrizione" placeholder="Descrizione">
     <input type="text" name="numMaxPersone"placeholder="numMaxPersone"> 
