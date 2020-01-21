@@ -7,13 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Prodotto;
+import model.Room;
 import persistence.dao.ProdottoDao;
 
 public class ProdottoDaoJDBC implements ProdottoDao {
 	
 	public void save(Prodotto p) {
 
-		String insert = "INSERT INTO prodotto(idProdotto,tipo,descrizione,prezzo,disponibile,img,idOrdine) VALUES (?,?,?,?,?,?,?)";
+		String insert = "INSERT INTO prodotto(idprodotto,tipo,descrizione,prezzo,disponibile,img) VALUES (?,?,?,?,?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
@@ -25,7 +26,6 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			smt.setInt(4, p.getPrezzo());
 			smt.setBoolean(5, p.getDisponibile());
 			smt.setString(6, p.getImg());
-			smt.setInt(7, 0);
 			
 			handler.executeUpdate();
 
@@ -107,37 +107,37 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	
 	@Override
 	public List<Prodotto> retrieveAll() {
-		
-		String query = "select * from Prodotto";
-		List<Prodotto> prodotti = null;
-		Prodotto prodotto = null;
-		
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-		
-			handler.executeQuery();
+					
+			String query = "SELECT * FROM prodotto";
+			List<Prodotto> prodotti = null;
+			Prodotto p = null;
 			
-			if(handler.existsResultSet()) {
-				prodotti = new ArrayList<Prodotto>();
-				ResultSet result = handler.getResultSet();
+			try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+				handler.executeQuery();
 				
-				while(result.next()) {
-					prodotto = new Prodotto();
-					prodotto.setIdProdotto(result.getInt("id"));				
-					prodotto.setTipo(result.getString("nome"));
-					prodotto.setDescrizione(result.getString("descrizione"));
-					prodotto.setPrezzo(result.getInt("prezzo"));
-					prodotto.setImg(result.getString("img"));
-					prodotto.setIdOrdine(result.getInt("idordine"));
-					prodotti.add(prodotto);
+				if(handler.existsResultSet()) {
+					prodotti = new ArrayList<Prodotto>();
+					ResultSet result = handler.getResultSet();
+					
+					while (result.next()) {
+						p = new Prodotto();
+						p.setIdProdotto(result.getInt("idprodotto"));		
+						p.setTipo(result.getString("tipo"));
+						p.setDescrizione(result.getString("descrizione"));
+						p.setPrezzo(result.getInt("prezzo"));
+						p.setDisponibile(result.getBoolean("disponibile"));
+						p.setImg(result.getString("img"));
+						prodotti.add(p);
+					}
 				}
-			}
-		
-			return prodotti;
+				
+				return prodotti;
 			
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
 		}
-	}
 	
 	public void connectByUserID(Integer id, Integer idProd) {
 		
