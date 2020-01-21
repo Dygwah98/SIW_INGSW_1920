@@ -15,7 +15,7 @@ public class RoomsLoader extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		req.getRequestDispatcher("booking.jsp").include(req, resp);
+		req.getRequestDispatcher("/viewroom").include(req, resp);
 		
 //		resp.setContentType("text/html");
 //		

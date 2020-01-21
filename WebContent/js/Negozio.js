@@ -8,7 +8,7 @@ function showSlides() {
 	  var slides = document.getElementsByClassName("slide");
 	  var dots = document.getElementsByClassName("home_slider_custom_dot");
 	  for (i = 0; i < slides.length; i++) {
-	    //slides[i].style.display = "none";  
+	   // slides[i].style.display = "none";  
 	  }
 	  slideIndex++;
 	  if (slideIndex > slides.length) {slideIndex = 1}    

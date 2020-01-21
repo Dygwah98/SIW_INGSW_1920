@@ -357,7 +357,7 @@ section
 	color: #ffffff;
 	line-height: 37px;
 }
-.main_nav ul li:not(:last-of-type)
+.main_nav ul li
 {
 	margin-right: 49px;
 }

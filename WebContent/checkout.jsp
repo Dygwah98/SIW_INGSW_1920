@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,7 +25,7 @@
 <script src="js/custom.js"></script>
 <script src="js/carrello.js"></script>
   </head>
-  <body class="goto-here">
+  <body>
   
   	<header class="header">
 		<div class="header_content d-flex flex-row align-items-center justify-content-start">
@@ -131,8 +129,8 @@
             <input type="text" id="email" name="email" placeholder= "antonio@example.com">
             <label for="adr"><i class="fa fa-address-card-o"></i> Indirizzo *</label>
             <input type="text" id="adr" name="address" placeholder="via e numero civico" required>
-            <label for="city"><i class="fa fa-institution"></i> Città *</label>
-            <input type="text" id="city" name="city" placeholder="città">
+            <label for="city"><i class="fa fa-institution"></i> Cittï¿½ *</label>
+            <input type="text" id="city" name="city" placeholder="cittï¿½">
 
             <div class="riga_pagamento_principale">
               <div class="colonna_pagamento_secondaria">
@@ -257,26 +255,6 @@
 			</div>
 		</div>
 		</footer>
-
-		
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-
-  
     
   </body>
 </html>

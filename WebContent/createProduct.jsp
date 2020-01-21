@@ -10,18 +10,17 @@
   <link href="styles/RegistrationForm.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<form class="decor"  method="post" action="${pageContext.request.contextPath}/rooms_servlet" >
+<form class="decor"  method="post" action="${pageContext.request.contextPath}/product_servlet" >
   <div class="form-left-decoration"></div>
   <div class="form-right-decoration"></div>
   <div class="circle"></div>
   <div class="form-inner">
-    <h3>AddRoom</h3>
-    <input type="text" name="id"placeholder="id">
-    <input type="text" name="Tipo"placeholder="Tipo">
+    <h3>INSERISCI UN NUOVO PRODOTTO</h3>
+     <input type="text" name="Id" placeholder="id">
+    <input type="text" name="Tipo"placeholder="nome">
     <input type="text" name="Descrizione" placeholder="Descrizione">
-    <input type="text" name="numMaxPersone"placeholder="numMaxPersone"> 
-    <input type="text" name="prezzo"placeholder="prezzo">
-    <input type="submit" value="Inviare">
+    <input type="text" name="Prezzo"placeholder="prezzo">
+    <input type="submit" value="Invia">
   </div>
 </form>
 </body>

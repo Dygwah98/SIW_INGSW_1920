@@ -15,7 +15,6 @@
 <link rel="stylesheet" type="text/css" href="styles/Negozio.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 
-
 <link rel="stylesheet" href="styles/icomoon.css">
 <link rel="stylesheet" href="styles/ionicons.min.css">
 
@@ -41,10 +40,11 @@
 							<li><a href="Loginform.jsp">Login</a></li>
 						 <%}
 					  	 else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+					  		<li><a href="createProduct.jsp">creaProdotto</a></li>
 					  		<li><a href="logout">Logout</a></li>
 					  	 <%}%>
 						<li ><a href="index.jsp">Home</a></li>
-						<li><a href="negozio.jsp">Negozio</a></li>
+						<li class="active"><a href="negozio.jsp">Negozio</a></li>
 						<li><a href="#">Lista dei desideri</a></li>
 					</ul>
 			   </nav>
@@ -74,10 +74,11 @@
 						<li><a href="Loginform.jsp">Login</a></li>
 				     <%}
 				     else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+						  <li><a href="createProduct.jsp">creaProdotto</a></li>
 						  <li><a href="logout">Logout</a></li>
 					 <%}%>
 					<li ><a href="index.jsp">Home</a></li>
-					<li><a href="negozio.jsp">Negozio</a></li>
+					<li class="active"><a href="negozio.jsp">Negozio</a></li>
 					<li><a href="#">Lista dei desideri</a></li>
 			   </ul>
 		   </nav>
@@ -214,6 +215,56 @@
   		<button type="submit"><i class="fa fa-search"></i></button>
 		</form>
     </section>
+    
+    <!-- lista prodotti db -->
+	<div class="row">
+    			<div class="col-md-12">
+    				<div class="cart-list">
+	    				<table class="table">
+						    <thead class="thead-secondary">
+						      <tr class="text-center">
+						        <th>&nbsp;</th>
+						        <th>&nbsp;</th>
+						        <th>id</th>
+						        <th>Tipo</th>
+						        <th>Descrizione</th>
+						        <th>prezzo</th>
+						        <th>occupata</th>						      
+						      </tr>
+						    </thead>
+						    <c:forEach var="prodotto" items="${prodotto}">
+						    <tbody>
+						      <tr class="text-center">
+						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+						        
+						        <td class="image-prod"><div class="img" style="background-image:url(${prodotto.img }.jpg);"></div></td>
+						        <td >
+						        	<p>${prodotto.idprodotto}</p>
+						        </td>
+						        
+						        <td >
+						        	<p>${prodotto.tipo}</p>
+						        </td>
+						        
+						        <td >
+						        
+						        			<p>${prodotto.descrizione}</p>
+						        
+						        </td>
+						          <td >
+						        	
+						        			<p>${prodotto.disponibile}</p>
+						        	
+						        </td>
+						        <td class="prezzo">${prodotto.prezzo}</td>
+						      </tr><!-- END TR-->
+						    </tbody>
+						    </c:forEach>
+						  </table>
+					  </div>
+    			</div>
+    		</div>
+    	<!-- fine lista -->
     
    
 	<div id="cate" class="categorie">

@@ -16,28 +16,13 @@ import persistence.DBManager;
 @WebServlet(value="/viewroom",name="viewroom")
 public class ViewRoom extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
-
-	public ViewRoom() {
-		super();
-	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<Room> r = DBManager.getInstance().getDAOFactory().getRoomDao().retrieveAll();
 		request.setAttribute("room",r);
 		request.getRequestDispatcher("booking.jsp").forward(request, response);
 	}
-
 	
-
-	
-
-	
-
-	 
-	
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 			
