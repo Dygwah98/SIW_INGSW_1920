@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,122 +131,23 @@
 					<div class="blog_posts">
 						
 						<!-- Blog Post -->
+						<c:forEach var="post" items="${post}">
 						<div class="blog_post">
 							<div class="blog_post_image">
-								<img src="images/blog_1.jpg" alt="">
-								<div class="blog_post_date"><a href="#">Oct 20, 2018</a></div>
+								<img src="${post.img }.jpg" alt="">
+								<div class="blog_post_date"><a href="#">${post.data }</a></div>
 							</div>
 							<div class="blog_post_content">
-								<div class="blog_post_title"><a href="#">Top dream destinations</a></div>
-								<div class="blog_post_info">
-									<ul class="d-flex flex-row align-items-start justify-content-start flex-wrap">
-										<li class="d-flex flex-row align-items-center justify-content-start">
-											<img src="images/icon_4.png" alt="">
-											<a href="#">News</a>
-										</li>
-										<li class="d-flex flex-row align-items-center justify-content-start">
-											<img src="images/icon_5.png" alt="">
-											<a href="#">21 Likes</a>
-										</li>
-										<li class="d-flex flex-row align-items-center justify-content-start">
-											<img src="images/icon_6.png" alt="">
-											<a href="#">602 views</a>
-										</li>
-										<li class="d-flex flex-row align-items-center justify-content-start">
-											<img src="images/icon_7.png" alt="">
-											<a href="#">1 min</a>
-										</li>
-										<li class="d-flex flex-row align-items-center justify-content-start">
-											<img src="images/icon_8.png" alt="">
-											<a href="#">3 comments</a>
-										</li>
-									</ul>
-								</div>
+								<div class="blog_post_title"><a href="#">${post.titolo }</a></div>
 								<div class="blog_post_text">
-									<p>Vivamus auctor mi eget odio feugiat, quis aliquet velit ornare. Integer egestas sit amet neque sed elementum. Fusce ut turpis felis. Etiam pretium pharetra augue, ac porttitor dolor consequat eget. Cras tempor suscipit enim vehicula ultrices. Mauris sed orci blandit.</p>
+									<p>${post.messaggio }</p>
 								</div>
-								<div class="button blog_post_button"><a href="#">Read More</a></div>
 							</div>
 						</div>
-
-						<!-- Blog Post -->
-						<div class="blog_post">
-							<div class="blog_post_image">
-								<img src="images/blog_2.jpg" alt="">
-								<div class="blog_post_date"><a href="#">Oct 20, 2018</a></div>
-							</div>
-							<div class="blog_post_content">
-								<div class="blog_post_title"><a href="#">How to book your stay</a></div>
-								<div class="blog_post_info">
-									<ul class="d-flex flex-row align-items-start justify-content-start flex-wrap">
-										<li class="d-flex flex-row align-items-center justify-content-start">
-											<img src="images/icon_4.png" alt="">
-											<a href="#">News</a>
-										</li>
-										<li class="d-flex flex-row align-items-center justify-content-start">
-											<img src="images/icon_5.png" alt="">
-											<a href="#">21 Likes</a>
-										</li>
-										<li class="d-flex flex-row align-items-center justify-content-start">
-											<img src="images/icon_6.png" alt="">
-											<a href="#">602 views</a>
-										</li>
-										<li class="d-flex flex-row align-items-center justify-content-start">
-											<img src="images/icon_7.png" alt="">
-											<a href="#">1 min</a>
-										</li>
-										<li class="d-flex flex-row align-items-center justify-content-start">
-											<img src="images/icon_8.png" alt="">
-											<a href="#">3 comments</a>
-										</li>
-									</ul>
-								</div>
-								<div class="blog_post_text">
-									<p>Vivamus auctor mi eget odio feugiat, quis aliquet velit ornare. Integer egestas sit amet neque sed elementum. Fusce ut turpis felis. Etiam pretium pharetra augue, ac porttitor dolor consequat eget. Cras tempor suscipit enim vehicula ultrices. Mauris sed orci blandit.</p>
-								</div>
-								<div class="button blog_post_button"><a href="#">Read More</a></div>
-							</div>
-						</div>
-
-						<!-- Blog Post -->
-						<div class="blog_post">
-							<div class="blog_post_image">
-								<img src="images/blog_3.jpg" alt="">
-								<div class="blog_post_date"><a href="#">Oct 20, 2018</a></div>
-							</div>
-							<div class="blog_post_content">
-								<div class="blog_post_title"><a href="#">Perfect beach wedding</a></div>
-								<div class="blog_post_info">
-									<ul class="d-flex flex-row align-items-start justify-content-start flex-wrap">
-										<li class="d-flex flex-row align-items-center justify-content-start">
-											<img src="images/icon_4.png" alt="">
-											<a href="#">News</a>
-										</li>
-										<li class="d-flex flex-row align-items-center justify-content-start">
-											<img src="images/icon_5.png" alt="">
-											<a href="#">21 Likes</a>
-										</li>
-										<li class="d-flex flex-row align-items-center justify-content-start">
-											<img src="images/icon_6.png" alt="">
-											<a href="#">602 views</a>
-										</li>
-										<li class="d-flex flex-row align-items-center justify-content-start">
-											<img src="images/icon_7.png" alt="">
-											<a href="#">1 min</a>
-										</li>
-										<li class="d-flex flex-row align-items-center justify-content-start">
-											<img src="images/icon_8.png" alt="">
-											<a href="#">3 comments</a>
-										</li>
-									</ul>
-								</div>
-								<div class="blog_post_text">
-									<p>Vivamus auctor mi eget odio feugiat, quis aliquet velit ornare. Integer egestas sit amet neque sed elementum. Fusce ut turpis felis. Etiam pretium pharetra augue, ac porttitor dolor consequat eget. Cras tempor suscipit enim vehicula ultrices. Mauris sed orci blandit.</p>
-								</div>
-								<div class="button blog_post_button"><a href="#">Read More</a></div>
-							</div>
-						</div>
-
+						</c:forEach>
+						
+						
+						
 						<!-- Page Nav -->
 						<div class="page_nav">
 							<ul class="d-flex flex-row align-items-start justify-content-start">

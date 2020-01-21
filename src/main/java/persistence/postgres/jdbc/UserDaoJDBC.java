@@ -13,31 +13,7 @@ import persistence.dao.UserDao;
 
 public class UserDaoJDBC implements UserDao {
 		
-	private final int getNextId(final Connection connection){
-		
-		try {
-			PreparedStatement statement;
-			final String query = "SELECT id FROM utente;";
-			statement = connection.prepareStatement(query,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			ResultSet result = statement.executeQuery();
-			
-			if(result.last()){
-				int tmp = result.getInt("id");
-				return ++tmp;
-			}
-			return 0;
-				
-			
-		} catch (SQLException e) {
-			throw new PersistenceException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		} 
-	}
+	
 
 	@Override
 	public void save(User utente) {

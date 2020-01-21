@@ -40,7 +40,7 @@
 						<li><a href="vediprodotti">Negozio</a></li>
 						<li><a href="aboutUs">About us</a></li>
 						<li><a href="viewroom">Rooms</a></li>
-						<li><a href="blog">Blog</a></li>
+						<li><a href="viewpost">Blog</a></li>
 						<li><a href="contact">Contact</a></li>
 					</ul>
 				</nav>
@@ -80,7 +80,7 @@
 					<li ><a href="negozio.jsp">Negozio</a></li>
 					<li><a href="about.jsp">About us</a></li>
 					<li><a href="viewroom">Rooms</a></li>
-					<li><a href="blog.jsp">Blog</a></li>
+					<li><a href="viewpost">Blog</a></li>
 					<li><a href="contact.jsp">Contact</a></li>
 				</ul>
 			</nav>
