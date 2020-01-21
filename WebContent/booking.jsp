@@ -46,8 +46,8 @@
 						<li><a href="index.jsp">Home</a></li>
 						<li ><a href="negozio.jsp">Negozio</a></li>
 						<li><a href="about.jsp">About us</a></li>
-						<li class="active"><a href="booking.jsp">Rooms</a></li>
-						<li><a href="blog.jsp">Blog</a></li>
+						<li class="active"><a href="viewroom">Rooms</a></li>
+						<li><a href="viewpost">Blog</a></li>
 						<li><a href="contact.jsp">Contact</a></li>
 					</ul>
 				</nav>
@@ -88,8 +88,8 @@
 					<li><a href="index.jsp">Home</a></li>
 					<li ><a href="negozio.jsp">Negozio</a></li>
 					<li><a href="about.jsp">About us</a></li>
-					<li class="active"><a href="booking.jsp">Rooms</a></li>
-					<li><a href="blog.jsp">Blog</a></li>
+					<li class="active"><a href="viewroom">Rooms</a></li>
+					<li><a href="viewpost">Blog</a></li>
 					<li><a href="contact.jsp">Contact</a></li>
 				</ul>
 			</nav>
