@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Admin;
 import model.User;
 
 import persistence.DBManager;
@@ -33,18 +32,9 @@ public class Login extends HttpServlet {
 		HttpSession session =  req.getSession();
 
 		User utente = DBManager.getInstance().getDAOFactory().getUtenteDAO().loginQuery(username, password);
-		Admin admin = DBManager.getInstance().getDAOFactory().getAdminDAO().loginQuery(username, password);
 		
-		if (admin != null) {
-			
-			req.getSession().setAttribute("AdminLogged",true);
-	        resp.addCookie(new Cookie("AdminLogged", "true"));
-			session.setAttribute("username", username);
-			session.setAttribute("loggato", admin.getUsername());	
-			
-		} 
 		
-		else if (utente != null) {
+		if (utente != null) {
 			
 			req.getSession().setAttribute("logged",true);
 	        resp.addCookie(new Cookie("logged", "true"));
@@ -59,7 +49,7 @@ public class Login extends HttpServlet {
 			req.getSession().setAttribute("userId", utente.getId());
 			
 		} 
-		else if(admin == null && utente == null) {
+		else {
 			resp.setStatus(401);
 		}
 	}

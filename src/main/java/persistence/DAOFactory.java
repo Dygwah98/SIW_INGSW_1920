@@ -32,9 +32,7 @@ public abstract class DAOFactory {
 	// --- Factory specification: concrete factories implementing this spec must provide this methods! ---
 		
 	public abstract UserDao getUtenteDAO();
-	
-	public abstract AdminDao getAdminDAO();
-	
+		
 	public abstract PostDao getPostDao();
 
 	public abstract PrenotazioneDao getPrenotazioneDao();
