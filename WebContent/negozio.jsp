@@ -218,251 +218,50 @@
   		<button type="submit"><i class="fa fa-search"></i></button>
 		</form>
     </section>
-    
-    <!-- lista prodotti db -->
-	<div class="row">
-    			<div class="col-md-12">
-    				<div class="cart-list">
-	    				<table class="table">
-						    <thead class="thead-secondary">
-						      <tr class="text-center">
-						        <th>&nbsp;</th>
-						        <th>&nbsp;</th>
-						        <th>id</th>
-						        <th>Tipo</th>
-						        <th>Descrizione</th>
-						        <th>prezzo</th>
-						        <th>occupata</th>						      
-						      </tr>
-						    </thead>
-						   <c:forEach var="prodotto" items="${prodotto}">
-						    <tbody>
-						      <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-						        
-						        <td class="image-prod"><div class="img" style="background-image:url(${prodotto.img }.jpg);"></div></td>
-						        <td >
-						        	<p>${prodotto.idprodotto}</p>
-						        </td>
-						        
-						        <td >
-						        	<p>${prodotto.tipo}</p>
-						        </td>
-						        
-						        <td >
-						        
-						        			<p>${prodotto.descrizione}</p>
-						        
-						        </td>
-						          <td >
-						        	
-						        			<p>${prodotto.disponibile}</p>
-						        	
-						        </td>
-						        <td class="prezzo">${prodotto.prezzo}</td>
-						      </tr><!-- END TR-->
-						    </tbody>
-						    </c:forEach>
-						  </table>
-					  </div>
-    			</div>
-    		</div>
-    	<!-- fine lista -->
+   
+    	
     
    
 	<div id="cate" class="categorie">
 	  <button class="cat">Categorie:</button>
 	  <button class="elementi active" onclick="filterSelection('all')">Tutti i prodotti</button>
-	  <button class="elementi" onclick="filterSelection('Verdure')"> Verdure</button>
-	  <button class="elementi" onclick="filterSelection('Ortaggi')"> Ortaggi</button>
+	  <button class="elementi" onclick="filterSelection('verdura')"> Verdure</button>
+	  <button class="elementi" onclick="filterSelection('ortaggio')"> Ortaggi</button>
 	  <button class="elementi" onclick="filterSelection('Salumi')"> Salumi</button>
 	  <button class="elementi" onclick="filterSelection('Formaggi')"> Formaggi</button>
 	  <button class="elementi" onclick="ordina()">Ordina</button>
 	</div>
 	
-	<div class="divCatalogo">
-	 	<div class="divProdotto Ortaggi">
-   				<div class="prodotto"> 
-   					<a href="#" class="proiezione"><img src="images/product-1.jpg" alt="peperone">
-   						<span class="sconto">50%</span> 
-   					</a>
-   					<div class="text py-3 pb-4 px-3 text-center"> 
-   						<h3><a href="#" onclick="aggiungiAlCarrello()">Peperone</a></h3>
-   						<div class="d-flex">
-	    					<p class="prezzo"><span class="mr-2 costo">3 euro</span><span class="scontato">1.50 euro</span></p>
-    					</div>
-    					<div class="bottoni d-flex px-3">
-    						<div class="m-auto d-flex">
-    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-    								<span><i class="ion-ios-menu"></i></span>
-    							</a>
-    							<a href="addCart" class="buy-now d-flex justify-content-center align-items-center mx-1">
-    								<span><i class="ion-ios-cart"></i></span>
-    							</a>s
-    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
-    								<span><i class="ion-ios-heart"></i></span>
-    							</a>
-   							</div>
+	 <div class="divCatalogo">
+		<c:forEach var="prodotto" items="${prodotto}">
+			<div class="divProdotto ${prodotto.descrizione}">
+  				<div class="prodotto"> 
+  					<a href="#" class="proiezione"><img src="${prodotto.img}.jpg" alt="peperone">
+  						<span class="sconto">50%</span> 
+  					</a>
+  					<div class="text py-3 pb-4 px-3 text-center"> 
+  						<h3><a href="#" onclick="aggiungiAlCarrello()">${prodotto.tipo}</a></h3>
+  						<div class="d-flex">
+    						<p class="prezzo"><span class="mr-2 costo">${prodotto.prezzo} euro</span><span class="scontato">${prodotto.prezzo/2} euro</span></p>
    						</div>
-   					</div>
-   				</div>
-    	</div>
-    	<div class="divProdotto Ortaggi">
-   				<div class="prodotto"> 
-   					<a href="prodotto-single.html" class="proiezione"><img src="images/product-2.jpg" alt="fragole">
-   						<span class="sconto">50%</span> 
-   					</a>
-   					<div class="text py-3 pb-4 px-3 text-center"> 
-   						<h3><a href="#">Fragole</a></h3>
-   						<div class="d-flex">
-	    					<p class="prezzo"><span class="mr-2 costo">5 euro</span><span class="scontato">3.50 euro</span></p>
-    					</div>
-    					<div class="bottoni d-flex px-3">
-    						<div class="m-auto d-flex">
-    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-    								<span><i class="ion-ios-menu"></i></span>
-    							</a>
-    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-    								<span><i class="ion-ios-cart"></i></span>
-    							</a>s
-    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
-    								<span><i class="ion-ios-heart"></i></span>
-    							</a>
-   							</div>
-   						</div>
-   					</div>
-   				</div>
-    	</div>
-    	<div class="divProdotto Ortaggi">
-   				<div class="prodotto"> 
-   					<a href="prodotto-single.html" class="proiezione"><img src="images/product-3.jpg" alt="piselli">
-   						<span class="sconto">50%</span> 
-   					</a>
-   					<div class="text py-3 pb-4 px-3 text-center"> 
-   						<h3><a href="#">Piselli</a></h3>
-   						<div class="d-flex">
-	    					<p class="prezzo"><span class="mr-2 costo">4 euro</span><span class="scontato">2 euro</span></p>
-    					</div>
-    					<div class="bottoni d-flex px-3">
-    						<div class="m-auto d-flex">
-    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-    								<span><i class="ion-ios-menu"></i></span>
-    							</a>
-    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-    								<span><i class="ion-ios-cart"></i></span>
-    							</a>s
-    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
-    								<span><i class="ion-ios-heart"></i></span>
-    							</a>
-   							</div>
-   						</div>
-   					</div>
-   				</div>
-    	</div>
-    	<div class="divProdotto Ortaggi">
-   				<div class="prodotto"> 
-   					<a href="prodotto-single.html" class="proiezione"><img src="images/product-4.jpg" alt="cavolfiore">
-   						<span class="sconto">50%</span> 
-   					</a>
-   					<div class="text py-3 pb-4 px-3 text-center"> 
-   						<h3><a href="#">Cavolfiore</a></h3>
-   						<div class="d-flex">
-	    					<p class="prezzo"><span class="mr-2 costo">2 euro</span><span class="scontato">1 euro</span></p>
-    					</div>
-    					<div class="bottoni d-flex px-3">
-    						<div class="m-auto d-flex">
-    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-    								<span><i class="ion-ios-menu"></i></span>
-    							</a>
-    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-    								<span><i class="ion-ios-cart"></i></span>
-    							</a>s
-    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
-    								<span><i class="ion-ios-heart"></i></span>
-    							</a>
-   							</div>
-   						</div>
-   					</div>
-   				</div>
-    	</div>
-    	<div class="divProdotto Ortaggi">
-   				<div class="prodotto"> 
-   					<a href="prodotto-single.html" class="proiezione"><img src="images/product-5.jpg" alt="pomodoro">
-   						<span class="sconto">50%</span> 
-   					</a>
-   					<div class="text py-3 pb-4 px-3 text-center"> 
-   						<h3><a href="#">Pomodoro</a></h3>
-   						<div class="d-flex">
-	    					<p class="prezzo"><span class="mr-2 costo">3 euro</span><span class="scontato">1.50 euro</span></p>
-    					</div>
-    					<div class="bottoni d-flex px-3">
-    						<div class="m-auto d-flex">
-    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-    								<span><i class="ion-ios-menu"></i></span>
-    							</a>
-    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-    								<span><i class="ion-ios-cart"></i></span>
-    							</a>s
-    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
-    								<span><i class="ion-ios-heart"></i></span>
-    							</a>
-   							</div>
-   						</div>
-   					</div>
-   				</div>
-    	</div>
-    	<div class="divProdotto Ortaggi">
-   				<div class="prodotto"> 
-   					<a href="prodotto-single.html" class="proiezione"><img src="images/product-6.jpg" alt="broccoli">
-   						<span class="sconto">50%</span> 
-   					</a>
-   					<div class="text py-3 pb-4 px-3 text-center"> 
-   						<h3><a href="#">Broccoli</a></h3>
-   						<div class="d-flex">
-	    					<p class="prezzo"><span class="mr-2 costo">4 euro</span><span class="scontato">2 euro</span></p>
-    					</div>
-    					<div class="bottoni d-flex px-3">
-    						<div class="m-auto d-flex">
-    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-    								<span><i class="ion-ios-menu"></i></span>
-    							</a>
-    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-    								<span><i class="ion-ios-cart"></i></span>
-    							</a>s
-    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
-    								<span><i class="ion-ios-heart"></i></span>
-    							</a>
-   							</div>
-   						</div>
-   					</div>
-   				</div>
-    	</div>
-    	<div class="divProdotto Ortaggi">
-   				<div class="prodotto"> 
-   					<a href="prodotto-single.html" class="proiezione"><img src="images/product-7.jpg" alt="carote">
-   						<span class="sconto">50%</span> 
-   					</a>
-   					<div class="text py-3 pb-4 px-3 text-center"> 
-   						<h3><a href="#">Carote</a></h3>
-   						<div class="d-flex">
-	    					<p class="prezzo"><span class="mr-2 costo">3 euro</span><span class="scontato">1.50 euro</span></p>
-    					</div>
-    					<div class="bottoni d-flex px-3">
-    						<div class="m-auto d-flex">
-    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-    								<span><i class="ion-ios-menu"></i></span>
-    							</a>
-    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-    								<span><i class="ion-ios-cart"></i></span>
-    							</a>s
-    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
-    								<span><i class="ion-ios-heart"></i></span>
-    							</a>
-   							</div>
-   						</div>
-   					</div>
-   				</div>
-    	</div>
+	   					<div class="bottoni d-flex px-3">
+	   						<div class="m-auto d-flex">
+	   							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+	   								<span><i class="ion-ios-menu"></i></span>
+	   							</a>
+	   							<a href="addCart" class="buy-now d-flex justify-content-center align-items-center mx-1">
+	   								<span><i class="ion-ios-cart"></i></span>
+	   							</a>
+	   							<a href="#" class="heart d-flex justify-content-center align-items-center ">
+	   								<span><i class="ion-ios-heart"></i></span>
+	   							</a>
+	  						</div>
+	  					</div>
+  					</div>
+  				</div>
+    		</div>		    	
+		</c:forEach>
+    </div>
 	
 	<!-- Footer -->
 	</div>
