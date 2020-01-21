@@ -22,16 +22,7 @@ public class ViewRoom extends HttpServlet {
 		request.setAttribute("room",r);
 		request.getRequestDispatcher("booking.jsp").forward(request, response);
 	}
-
 	
-
-	
-
-	
-
-	 
-	
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 			
