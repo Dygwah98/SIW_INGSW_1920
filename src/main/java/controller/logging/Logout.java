@@ -15,10 +15,13 @@ public class Logout extends HttpServlet {
     
 	@Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
-		req.getSession().setAttribute("logged", false);
+        req.getSession().setAttribute("logged", false);
+        req.getSession().removeAttribute("userId");
         resp.addCookie(new Cookie("logged", "false"));
-        req.getRequestDispatcher("/home").forward(req, resp);
+        
+        RequestDispatcher rd=req.getRequestDispatcher("index.jsp");
+        rd.forward(req, resp);
+        //resp.sendRedirect(req.getHeader("referer"));
     }
 
     @Override

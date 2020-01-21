@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Prenotazione;
-import persistence.Dao;
 import persistence.dao.PrenotazioneDao;
 
 public class PrenotazioneDaoJDBC implements PrenotazioneDao {
@@ -175,37 +174,5 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	public Prenotazione retrieve(Prenotazione object) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	
-	@Override
-	public List<Prenotazione> retrieveByUserID(Integer ID) {
-
-		String query = "SELECT * FROM prenotazioni AS p, order AS o WHERE o.idClient == ? AND p.idordine== o.idOrder AND NOT o.pagato";
-		List<Prenotazione> books = null;
-		Prenotazione book = null;
-		
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-			
-			handler.executeQuery();
-			
-			if(handler.existsResultSet()) {
-				books = new ArrayList<Prenotazione>();
-				ResultSet result = handler.getResultSet();
-				while (result.next()) {
-					book = new Prenotazione();
-					book.setIdprenotazione(result.getInt("idprenotazione"));				
-					book.setCheckin(result.getString("checkin"));
-					book.setCheckout(result.getString("checkout"));
-					book.setIdCamera(result.getInt("idcamera"));
-					book.setIdordine(result.getInt("idordine"));
-					books.add(book);
-				}
-			}
-			
-			return books;
-			
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
-		}
 	}
 }

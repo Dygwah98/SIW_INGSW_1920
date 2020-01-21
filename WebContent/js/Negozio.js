@@ -8,7 +8,7 @@ function showSlides() {
 	  var slides = document.getElementsByClassName("slide");
 	  var dots = document.getElementsByClassName("home_slider_custom_dot");
 	  for (i = 0; i < slides.length; i++) {
-	    //slides[i].style.display = "none";  
+	   // slides[i].style.display = "none";  
 	  }
 	  slideIndex++;
 	  if (slideIndex > slides.length) {slideIndex = 1}    
@@ -21,8 +21,7 @@ function showSlides() {
 }
 
 // PRODOTTI
-filterSelection("Ortaggi")
-
+filterSelection("all")
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("divProdotto");
@@ -42,7 +41,7 @@ function w3AddClass(element, name) {
   }
 }
 
-function w3RemoveClass(element, name){
+function w3RemoveClass(element, name) {
   var i, arr1, arr2;
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");

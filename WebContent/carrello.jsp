@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Contact</title>
+<title>Carrello</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="The River template project">
@@ -34,16 +34,13 @@
 						  <li><a href="logout">Logout</a></li>
 						  <%}%>
 						<li><a href="index.jsp">Home</a></li>
-						<li ><a href="negozio.jsp">Negozio</a></li>
 						<li><a href="about.jsp">About us</a></li>
-						<li><a href="viewroom">Rooms</a></li>
+						<li><a href="booking.jsp">Rooms</a></li>
 						<li><a href="blog.jsp">Blog</a></li>
-						<li class="active"><a href="contact.jsp">Contact</a></li>
+						<li ><a href="contact.jsp">Contact</a></li>
 					</ul>
 				</nav>
-			 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				<div class="book_button"><a href="carrello.jsp">Carrello</a></div>
-				 <%}%>
+				<div class="book_button"><!-- active --><a href="carrello.jsp">Carrello</a></div>
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
 					<img src="images/phone.png" alt="">
 					<span>3339290840</span>
@@ -69,19 +66,15 @@
 						  <li><a href="logout">Logout</a></li>
 						  <%}%>
 					<li><a href="index.jsp">Home</a></li>
-					<li ><a href="negozio.jsp">Negozio</a></li>
 					<li><a href="about.jsp">About us</a></li>
-					<li><a href="viewroom">Rooms</a></li>
+					<li><a href="booking.jsp">Rooms</a></li>
 					<li><a href="blog.jsp">Blog</a></li>
 					<li><a href="contact.jsp">Contact</a></li>
 				</ul>
 			</nav>
 		</div>
 		<div class="menu_extra">
-		 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				<div class="menu_book text-right"><a href="carrello.jsp">Carrello</a></div>
-				 <%}%>
-		
+			<div class="menu_book text-right"><a href="carrello.jsp">Carrello</a></div>
 			<div class="menu_phone d-flex flex-row align-items-center justify-content-center">
 				<img src="images/phone-2.png" alt="">
 				<span>3339290840</span>
@@ -92,13 +85,13 @@
 	<!-- Home -->
 
 	<div class="home">
-		<div class="background_image" style="background-image:url(images/contact.jpg)"></div>
+		<div class="background_image" style="background-image:url(images/carrello.jpg)"></div>
 		<div class="home_container">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<div class="home_content text-center">
-							<div class="home_title">Contact</div>
+							<div class="home_title">Carrello</div>
 							<div class="booking_form_container">
 								<form action="#" class="booking_form" id="booking_form">
 									<div class="d-flex flex-xl-row flex-column align-items-start justify-content-start">
@@ -119,61 +112,7 @@
 		</div>
 	</div>
 
-	<!-- Contact -->
 
-	<div class="contact">
-		<div class="container">
-			<div class="row">
-				
-				<!-- Contact Content -->
-				<div class="col-lg-6">
-					<div class="contact_content">
-						<div class="contact_title"><h2>Get in touch</h2></div>
-						<div class="contact_list">
-							<ul>
-								<li>Main Str, no 253, New York, NY</li>
-								<li>+546 990221 123</li>
-								<li>music@contact.com</li>
-							</ul>
-						</div>
-						<div class="contact_form_container">
-							<form action="#" class="contact_form" id="contact_form">
-								<div class="row">
-									<div class="col-md-6 input_container">
-										<input type="text" class="contact_input" placeholder="Your name" required="required">
-									</div>
-									<div class="col-md-6 input_container">
-										<input type="email" class="contact_input" placeholder="Your email address" required="required">
-									</div>
-								</div>
-								<div class="input_container"><input type="text" class="contact_input" placeholder="Subject"></div>
-								<div class="input_container"><textarea class="contact_input contact_textarea" placeholder="Message" required="required"></textarea></div>
-								<button class="contact_button">Send</button>
-							</form>
-						</div>
-					</div>
-				</div>
-
-				<!-- Google Map -->
-				<div class="col-xl-5 col-lg-6 offset-xl-1">
-					<div class="contact_map">
-
-						<!-- Google Map -->
-		
-						<div class="map">
-							<div id="google_map" class="google_map">
-								<div class="map_container">
-									<div id="map"></div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
 
 	<!-- Footer -->
 

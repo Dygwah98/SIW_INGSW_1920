@@ -1,8 +1,6 @@
 package persistence.postgres.jdbc;
 
-import model.*;
 import persistence.DAOFactory;
-import persistence.Dao;
 import persistence.dao.*;
 
 public class PostgresDAOFactory extends DAOFactory {

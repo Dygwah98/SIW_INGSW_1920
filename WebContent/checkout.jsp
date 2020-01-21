@@ -129,8 +129,8 @@
             <input type="text" id="email" name="email" placeholder= "antonio@example.com">
             <label for="adr"><i class="fa fa-address-card-o"></i> Indirizzo *</label>
             <input type="text" id="adr" name="address" placeholder="via e numero civico" required>
-            <label for="city"><i class="fa fa-institution"></i> Città *</label>
-            <input type="text" id="city" name="city" placeholder="città">
+            <label for="city"><i class="fa fa-institution"></i> Cittï¿½ *</label>
+            <input type="text" id="city" name="city" placeholder="cittï¿½">
 
             <div class="riga_pagamento_principale">
               <div class="colonna_pagamento_secondaria">

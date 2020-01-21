@@ -1,6 +1,5 @@
 package persistence;
 
-import model.*;
 import persistence.postgres.jdbc.PostgresDAOFactory;
 import persistence.dao.*;
 

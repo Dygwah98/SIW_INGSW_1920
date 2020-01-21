@@ -17,6 +17,13 @@
 <link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/booking.css">
 <link rel="stylesheet" type="text/css" href="styles/booking_responsive.css">
+
+<link rel="stylesheet" href="styles/icomoon.css">
+<link rel="stylesheet" href="styles/ionicons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!-- <link rel="stylesheet" type="text/css" href="styles/Carrello.css"> -->
+
 </head>
 <body>
 
@@ -37,6 +44,7 @@
 						  <li><a href="logout">Logout</a></li>
 						  <%}%>
 						<li><a href="index.jsp">Home</a></li>
+						<li ><a href="negozio.jsp">Negozio</a></li>
 						<li><a href="about.jsp">About us</a></li>
 						<li class="active"><a href="booking.jsp">Rooms</a></li>
 						<li><a href="blog.jsp">Blog</a></li>
@@ -44,12 +52,19 @@
 					</ul>
 				</nav>
 			 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				<div class="book_button"><a href="carrello.jsp">Carrello</a></div>
-				 <%}%>
+				<!--  <div class="book_button"><a href="carrello.jsp">Carrello</a></div> -->
+				<nav class="main_nav">
+					<ul class="d-flex flex-row align-items-start justify-content-start">
+						<li><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+					</ul>
+				</nav>
+				<%}%>
+				<!--  
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
 					<img src="images/phone.png" alt="">
 					<span>3339290840</span>
 				</div>
+				-->
 
 				<!-- Hamburger Menu -->
 				<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -71,8 +86,9 @@
 						  <li><a href="logout">Logout</a></li>
 						  <%}%>
 					<li><a href="index.jsp">Home</a></li>
+					<li ><a href="negozio.jsp">Negozio</a></li>
 					<li><a href="about.jsp">About us</a></li>
-					<li><a href="booking.jsp">Rooms</a></li>
+					<li class="active"><a href="booking.jsp">Rooms</a></li>
 					<li><a href="blog.jsp">Blog</a></li>
 					<li><a href="contact.jsp">Contact</a></li>
 				</ul>
@@ -80,13 +96,19 @@
 		</div>
 		<div class="menu_extra">
 		 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				<div class="menu_book text-right"><a href="carrello.jsp">Carrello</a></div>
-				 <%}%>
-			<div class="menu_book text-right"><a href="#">Carrello</a></div>
-			<div class="menu_phone d-flex flex-row align-items-center justify-content-center">
-				<img src="images/phone-2.png" alt="">
-				<span>3339290840</span>
-			</div>
+				<!--  <div class="book_button"><a href="carrello.jsp">Carrello</a></div> -->
+				<nav class="main_nav">
+					<ul class="d-flex flex-row align-items-start justify-content-start">
+						<li><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+					</ul>
+				</nav>
+				<%}%>
+				<!--  
+				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
+					<img src="images/phone.png" alt="">
+					<span>3339290840</span>
+				</div>
+				-->
 		</div>
 	</div>
 
@@ -120,30 +142,66 @@
 		</div>
 	</div>
 	<!-- Room -->
-	<table cellpadding="2" cellspacing="2" border="1">
-		<tr>
-			<th>tipo</th>
-			<th>descrizione</th>
-			<th>maxpersone</th>
-			<th>occupata</th>
-			<th>prezzo</th>
-			<th>img</th>
-		</tr>
-		<c:forEach var="room" items="${room}">
-			<tr>
-				<td>${room.tipo}</td>
-				<td>${room.descrizione}</td>
-				<td>${room.maxpersone}</td>
-				<td>${room.occupata}</td>
-				<td>${room.prezzo}</td>
-				<td>
-					<img src="${room.img }.jpg" width="106">
-				</td>
-				
-			</tr>
-		</c:forEach>
-	</table>
-	
+	<div class="row">
+    			<div class="col-md-12">
+    				<div class="cart-list">
+	    				<table class="table">
+						    <thead class="thead-secondary">
+						      <tr class="text-center">
+						        <th>&nbsp;</th>
+						        <th>&nbsp;</th>
+						        <th>Tipo</th>
+						        <th>Tipo</th>
+						        <th>Descrizione</th>
+						        <th>maxpersone</th>
+						        <th>occupata</th>
+						        <th>prezzo</th>
+						      
+						      </tr>
+						    </thead>
+						    <c:forEach var="room" items="${room}">
+						    <tbody style="background-color: white;">
+						      <tr class="text-center">
+						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+						        
+						        <td class="image-prod"><div class="img" style="background-image:url(${room.img }.jpg);"></div></td>
+						        <td >
+						        	<p>${room.tipo}</p>
+						        </td>
+						        
+						        <td >
+						        	<p>${room.tipo}</p>
+						        </td>
+						        
+						        <td >
+						        	<p> 
+						        		<ul>
+						        			${room.descrizione}
+						        		</ul>
+						        	</p>
+						        </td>
+						         <td >
+						        	<p> 
+						        		<ul>
+						        			${room.maxpersone}
+						        		</ul>
+						        	</p>
+						        </td>
+						          <td >
+						        	<p> 
+						        		<ul>
+						        			${room.occupata}
+						        		</ul>
+						        	</p>
+						        </td>
+						        <td class="prezzo">${room.prezzo}</td>
+						      </tr><!-- END TR-->
+						    </tbody>
+						    </c:forEach>
+						  </table>
+					  </div>
+    			</div>
+    		</div>
 	
 
 	<!-- Footer -->

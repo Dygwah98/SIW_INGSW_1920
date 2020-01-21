@@ -4,21 +4,20 @@ public class Prodotto {
 	
 	private Integer idProdotto;
 	private String tipo;
-	private String descrizione;
 	private Integer prezzo;
+	private String descrizione;
 	private Boolean disponibile;
 	private String img;
 	private Integer idOrdine;
 	
-	
-	public Prodotto(int idProdotto, String nome, int prezzo, String descrizione, String img,int idordine, Boolean disponibile) {
+	public Prodotto(int idProdotto, String tipo, int prezzo, String descrizione, Boolean disponibile, String img,int idOrdine) {
 		this.idProdotto = idProdotto;
-		this.tipo = nome;
+		this.tipo = tipo;
 		this.prezzo = prezzo;
 		this.descrizione = descrizione;
-		this.img = img;
-		this.idOrdine=idordine;
 		this.disponibile = disponibile;
+		this.img = img;
+		this.idOrdine=idOrdine;
 	}
 
 	public Prodotto() {
@@ -26,12 +25,43 @@ public class Prodotto {
 		this.tipo = null;
 		this.prezzo = null;
 		this.descrizione = null;
+		this.disponibile = null;
 		this.img = null;
 		this.idOrdine = null;
-		this.disponibile = null;
 	}
-	
-	
+
+	public Integer getIdProdotto() {
+		return idProdotto;
+	}
+
+	public void setIdProdotto(Integer idProdotto) {
+		this.idProdotto = idProdotto;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public Integer getPrezzo() {
+		return prezzo;
+	}
+
+	public void setPrezzo(Integer prezzo) {
+		this.prezzo = prezzo;
+	}
+
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+
 	public Boolean getDisponibile() {
 		return disponibile;
 	}
@@ -48,47 +78,16 @@ public class Prodotto {
 		this.img = img;
 	}
 
-	public int getIdProdotto() {
-		return idProdotto;
-	}
-
-	public void setIdProdotto(int id) {
-		this.idProdotto = id;
-	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
-	public int getPrezzo() {
-		return prezzo;
-	}
-
-	public void setPrezzo(int prezzo) {
-		this.prezzo = prezzo;
-	}
-
-	public String getDescrizione() {
-		return descrizione;
-	}
-
-	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
-	}
-
-	
-
-	public int getIdOrdine() {
+	public Integer getIdOrdine() {
 		return idOrdine;
 	}
 
-	public void setIdOrdine(int idordine) {
-		this.idOrdine = idordine;
+	public void setIdOrdine(Integer idOrdine) {
+		this.idOrdine = idOrdine;
 	}
+	
+	
+	
 	
 	
 	
