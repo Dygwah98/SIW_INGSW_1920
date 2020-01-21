@@ -226,38 +226,7 @@ public class RoomDaoJDBC implements RoomDao {
 		catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		}
-		try {
-		JoinRowSet jrs = new JoinRowSetImpl();
-
-	     CachedRowSet empl = new CachedRowSetImpl();
-	     empl.populate(result1);
-	     empl.setMatchColumn(1);
-	     jrs.addRowSet(empl);
-
-	     CachedRowSet bonus = new CachedRowSetImpl();
-	     bonus.populate(result2);
-	     bonus.setMatchColumn(1); // EMP_ID is the first column
-	     jrs.addRowSet(bonus); 
 		
-	     CachedRowSet bonu = new CachedRowSetImpl();
-	     bonu.populate(result3);
-	     bonu.setMatchColumn(1); // EMP_ID is the first column
-	     jrs.addRowSet(bonus);
-	     while (jrs.next()) {
-				room = new Room();
-				room.setId(jrs.getInt("idcamera"));		
-				room.setTipo(jrs.getString("tipo"));
-				room.setDescrizione(jrs.getString("descrizione"));
-				room.setMaxpersone(jrs.getInt("maxpersone"));
-				room.setOccupata(jrs.getBoolean("occupata"));
-				room.setPrezzo(jrs.getInt("prezzo"));
-				room.setImg(jrs.getString("img"));
-				rooms.add(room);
-			}
-		}
-		catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
-		}
 
 		return rooms; 
 		

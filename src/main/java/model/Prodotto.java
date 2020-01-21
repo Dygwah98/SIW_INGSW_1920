@@ -2,40 +2,40 @@ package model;
 
 public class Prodotto {
 	
-	private Integer idProdotto;
+	private Integer idprodotto;
 	private String tipo;
 	private Integer prezzo;
 	private String descrizione;
 	private Boolean disponibile;
 	private String img;
-	private Integer idOrdine;
+	private Integer idordine;
 	
-	public Prodotto(int idProdotto, String tipo, int prezzo, String descrizione, Boolean disponibile, String img,int idOrdine) {
-		this.idProdotto = idProdotto;
+	public Prodotto(int idprodotto, String tipo, int prezzo, String descrizione, Boolean disponibile, String img,int idOrdine) {
+		this.idprodotto = idprodotto;
 		this.tipo = tipo;
 		this.prezzo = prezzo;
 		this.descrizione = descrizione;
 		this.disponibile = disponibile;
 		this.img = img;
-		this.idOrdine=idOrdine;
+		this.idordine=idOrdine;
 	}
 
 	public Prodotto() {
-		this.idProdotto = null;
+		this.idprodotto = null;
 		this.tipo = null;
 		this.prezzo = null;
 		this.descrizione = null;
 		this.disponibile = null;
 		this.img = null;
-		this.idOrdine = null;
+		this.idordine = null;
 	}
 
-	public Integer getIdProdotto() {
-		return idProdotto;
+	public Integer getIdprodotto() {
+		return idprodotto;
 	}
 
-	public void setIdProdotto(Integer idProdotto) {
-		this.idProdotto = idProdotto;
+	public void setIdprodotto(Integer idprodotto) {
+		this.idprodotto = idprodotto;
 	}
 
 	public String getTipo() {
@@ -78,12 +78,12 @@ public class Prodotto {
 		this.img = img;
 	}
 
-	public Integer getIdOrdine() {
-		return idOrdine;
+	public Integer getIdordine() {
+		return idordine;
 	}
 
-	public void setIdOrdine(Integer idOrdine) {
-		this.idOrdine = idOrdine;
+	public void setIdordine(Integer idordine) {
+		this.idordine = idordine;
 	}
 	
 	

@@ -37,7 +37,7 @@
 						  <li><a href="logout">Logout</a></li>
 					<% } %>
 						<li class="active"><a href="home">Home</a></li>
-						<li><a href="shop">Negozio</a></li>
+						<li><a href="vediprodotti">Negozio</a></li>
 						<li><a href="aboutUs">About us</a></li>
 						<li><a href="viewroom">Rooms</a></li>
 						<li><a href="blog">Blog</a></li>
