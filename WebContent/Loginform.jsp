@@ -13,13 +13,9 @@
 
 <body>
 
-
 <div class="login-page">
 
 <div class="form">
-
-
-
 
 <div class="login-form">
    <input type="text" name="username" id="username" placeholder="username"/>
