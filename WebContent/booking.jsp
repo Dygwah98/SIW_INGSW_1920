@@ -133,7 +133,6 @@
 						        <th>&nbsp;</th>
 						        <th>&nbsp;</th>
 						        <th>Tipo</th>
-						        <th>Tipo</th>
 						        <th>Descrizione</th>
 						        <th>maxpersone</th>
 						        <th>occupata</th>
@@ -150,11 +149,6 @@
 						        <td >
 						        	<p>${room.tipo}</p>
 						        </td>
-						        
-						        <td >
-						        	<p>${room.tipo}</p>
-						        </td>
-						        
 						        <td >
 						        	<p> 
 						        		<ul>
@@ -185,7 +179,6 @@
     			</div>
     		</div>
 	
-
 	<!-- Footer -->
 
 	<footer class="footer">
