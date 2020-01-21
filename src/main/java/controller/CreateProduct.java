@@ -43,11 +43,11 @@ public class CreateProduct extends HttpServlet {
         
         p.setDisponibile(true);
         
-        if(tipo.equals("ortaggio")) {
+        if(descrizione.equals("ortaggio")) {
         	p.setImg("images/product-5");
         }
-        if(tipo.equals("verdura")) {
-        	p.setImg("/images/product-3");
+        if(descrizione.equals("verdura")) {
+        	p.setImg("images/product-3");
         }
         
         Dao<Prodotto> prodottoDao = DBManager.getInstance().getDAOFactory().getProdottoDao();

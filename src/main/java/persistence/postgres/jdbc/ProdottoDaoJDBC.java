@@ -14,7 +14,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public void save(Prodotto p) {
 
-		String insert = "INSERT INTO prodotto(idprodotto,tipo,descrizione,prezzo,disponibile,img,idordine) VALUES (?,?,?,?,?,?,?)";
+		String insert = "INSERT INTO prodotto(idprodotto,tipo,descrizione,prezzo,disponibile,img) VALUES (?,?,?,?,?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
@@ -26,7 +26,6 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			smt.setInt(4, p.getPrezzo());
 			smt.setBoolean(5, p.getDisponibile());
 			smt.setString(6, p.getImg());
-			smt.setInt(7,p.getIdordine());
 			
 			handler.executeUpdate();
 

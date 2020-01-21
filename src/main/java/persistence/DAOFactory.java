@@ -33,6 +33,8 @@ public abstract class DAOFactory {
 		
 	public abstract UserDao getUtenteDAO();
 	
+	public abstract AdminDao getAdminDAO();
+	
 	public abstract PostDao getPostDao();
 
 	public abstract PrenotazioneDao getPrenotazioneDao();

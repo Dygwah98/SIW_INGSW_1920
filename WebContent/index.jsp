@@ -35,7 +35,7 @@
 						<li><a href="Loginform.jsp">Login</a></li>
 					<% }else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 						  <li><a href="logout">Logout</a></li>
-					<% } %>
+					<%}  %>
 						<li class="active"><a href="home">Home</a></li>
 						<li><a href="vediprodotti">Negozio</a></li>
 						<li><a href="aboutUs">About us</a></li>
