@@ -15,7 +15,7 @@
   <div class="circle"></div>
   <div class="form-inner">
     <h3>Registrazione</h3>
-    <input type="text" name="name"placeholder="Nome">
+    <input type="text" name="name" placeholder="Nome">
     <input type="text" name="cognome" placeholder="Cognome">
     <input type="date" name="data"placeholder="DataDiNascita"> 
     <input type="text"name="username" placeholder="Username">
