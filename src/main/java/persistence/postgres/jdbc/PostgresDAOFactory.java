@@ -29,4 +29,9 @@ public class PostgresDAOFactory extends DAOFactory {
 	public RoomDao getRoomDao() {
 		return new RoomDaoJDBC();
 	}
+
+	@Override
+	public AdminDao getAdminDAO() {
+		return new AdminDaoJDBC();
+	}
 }
