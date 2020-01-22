@@ -153,4 +153,19 @@ public class OrdineDaoJDBC implements OrdineDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void pay(Integer userId) {
+
+		String query = "UPDATE order SET pagato = 'true' WHERE idClient = ? AND NOT pagato";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			handler.getStatement().setInt(1, userId);
+			handler.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
