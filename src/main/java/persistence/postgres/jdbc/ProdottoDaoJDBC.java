@@ -14,19 +14,20 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public void save(Prodotto p) {
 
-		String insert = "INSERT INTO prodotto(idprodotto,tipo,quantita,descrizione,prezzo,disponibile,img) VALUES (?,?,?,?,?,?,?)";
-		
+		String insert = "INSERT INTO prodotto(idprodotto,tipo,descrizione,prezzo,disponibile,img,idordine,quantita) VALUES (?,?,?,?,?,?,?,?)";		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
 			PreparedStatement smt = handler.getStatement();
 			
 			smt.setInt(1, p.getIdprodotto());
 			smt.setString(2, p.getTipo());
-			smt.setInt(3, p.getQuantita());
-			smt.setString(4, p.getDescrizione());
-			smt.setInt(5, p.getPrezzo());
-			smt.setBoolean(6, p.getDisponibile());
-			smt.setString(7, p.getImg());
+			smt.setString(3, p.getDescrizione());
+			smt.setInt(4, p.getPrezzo());
+			smt.setBoolean(5, p.getDisponibile());
+			smt.setString(6, p.getImg());
+			smt.setInt(7, p.getIdordine());
+			smt.setInt(8, p.getQuantita());
+
 			
 			handler.executeUpdate();
 
@@ -132,6 +133,8 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 						p.setPrezzo(result.getInt("prezzo"));
 						p.setDisponibile(result.getBoolean("disponibile"));
 						p.setImg(result.getString("img"));
+						p.setIdordine(result.getInt("idordine"));
+						p.setQuantita(result.getInt("quantita"));
 						prodotti.add(p);
 					}
 				}
