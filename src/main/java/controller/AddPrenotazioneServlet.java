@@ -23,7 +23,7 @@ public class AddPrenotazioneServlet extends HttpServlet {
 		Prenotazione p = new Prenotazione();
 		p.setCheckin(req.getParameter("checkin"));
 		p.setCheckout(req.getParameter("checkout"));
-		p.setIdCamera(Integer.parseInt(req.getParameter("n_camera")));
+		p.setIdcamera(Integer.parseInt(req.getParameter("n_camera")));
 	
 		Integer idUser = (Integer)req.getSession().getAttribute("userId");
 		

@@ -179,56 +179,5 @@ public class RoomDaoJDBC implements RoomDao {
 	}
 
 
-	@Override
-	public List<Room> retrievefilter(String tipo, Integer maxpersone, Integer minprezzo , Integer maxprezzo)  {
-		String querytipo="SELECT idcamera FROM room WHERE tipo=? ";
-		String querypeople="SELECT idcamera FROM room WHERE maxpersone=? ";
-		String rangeprezzo="SELECT idcamera FROM room WHERE prezzo>=? && prezzo<=?";
-		ResultSet result1=null;
-		ResultSet result2=null;
-		ResultSet result3 = null ;
-
-		List<Room> rooms = new ArrayList<Room>();
-		Room room = null;
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(querytipo)){
-			PreparedStatement smt = handler.getStatement();
-			smt.setString(1,tipo);
-			handler.executeQuery();
-			
-			if(handler.existsResultSet()) 
-				result1 = handler.getResultSet();
-		}
-		catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
-		}
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(querypeople)){
-			PreparedStatement smt = handler.getStatement();
-			smt.setInt(1,maxpersone);
-
-			handler.executeQuery();
-			
-			if(handler.existsResultSet()) 
-				result2 = handler.getResultSet();
-		}
-		catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
-		}
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(rangeprezzo)){
-			PreparedStatement smt = handler.getStatement();
-			smt.setInt(1,minprezzo);
-			smt.setInt(2,maxprezzo);
-
-			handler.executeQuery();
-			
-			if(handler.existsResultSet()) 
-				result3= handler.getResultSet();
-		}
-		catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
-		}
-		
-
-		return rooms; 
-		
-	}
+	
 }

@@ -7,12 +7,14 @@ public class Prodotto {
 	private Integer prezzo;
 	private String descrizione;
 	private Boolean disponibile;
+	private Integer quantita;
 	private String img;
 	private Integer idordine;
 	
-	public Prodotto(int idprodotto, String tipo, int prezzo, String descrizione, Boolean disponibile, String img,int idOrdine) {
+	public Prodotto(int idprodotto, String tipo, int prezzo, String descrizione, Integer quantita,Boolean disponibile, String img,int idOrdine) {
 		this.idprodotto = idprodotto;
 		this.tipo = tipo;
+		this.quantita=quantita;
 		this.prezzo = prezzo;
 		this.descrizione = descrizione;
 		this.disponibile = disponibile;
@@ -23,6 +25,7 @@ public class Prodotto {
 	public Prodotto() {
 		this.idprodotto = null;
 		this.tipo = null;
+		this.quantita=null;
 		this.prezzo = null;
 		this.descrizione = null;
 		this.disponibile = null;
@@ -84,6 +87,14 @@ public class Prodotto {
 
 	public void setIdordine(Integer idordine) {
 		this.idordine = idordine;
+	}
+
+	public Integer getQuantita() {
+		return quantita;
+	}
+
+	public void setQuantita(Integer quantita) {
+		this.quantita = quantita;
 	}
 	
 	

@@ -41,7 +41,7 @@
 						<li><a href="Loginform.jsp">Login</a></li>
 						 <%}
 						  else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-						  <li><a href="logout">Logout</a></li>
+						  <li><a href="logout"><%=session.getAttribute("username")%></a></li>
 						  <%}%>
 						<li><a href="index.jsp">Home</a></li>
 						<li ><a href="negozio.jsp">Negozio</a></li>
@@ -83,7 +83,7 @@
 						<li><a href="Loginform.jsp">Login</a></li>
 						 <%}
 						  else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-						  <li><a href="logout">Logout</a></li>
+						  <li><a href="logout"><%=session.getAttribute("username")%></a></li>
 						  <%}%>
 					<li><a href="index.jsp">Home</a></li>
 					<li ><a href="negozio.jsp">Negozio</a></li>
@@ -142,6 +142,8 @@
 		</div>
 	</div>
 	<!-- Room -->
+	<input type="button" id="filter-1" value="prezzodescrescente">
+	<input type="button" id="filter-1" value="prezzodescrescente">
 	<div class="row">
     			<div class="col-md-12">
     				<div class="cart-list">
