@@ -225,7 +225,7 @@ public class OrdineDaoJDBC implements OrdineDao {
 	@Override
 	public void pay(Integer userId) {
 
-		String query = "UPDATE ordine SET pagato = 'true' WHERE idclient = ? AND NOT pagato";
+		String query = "UPDATE ordine SET pagato =true WHERE idclient = ? AND pagato=false";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 			

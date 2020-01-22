@@ -234,7 +234,7 @@
     						<span class="corrispondente">103,90 euro</span>
     					</p>
     				</div>
-    				<p><a href="checkout.jsp" class="btn btn-primary py-3 px-4">Procedi al pagamento</a></p>
+    				<p><a href="payment" class="btn btn-primary py-3 px-4">Procedi al pagamento</a></p>
     			</div>
     		</div>
 	</div>
