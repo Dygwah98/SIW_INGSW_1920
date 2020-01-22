@@ -50,12 +50,12 @@ public class Prenotazione {
 		this.checkout = checkout;
 	}
 	
-	public int getIdCamera() {
+	public int getIdcamera() {
 		return IdCamera;
 	}
 	
-	public void setIdCamera(int idCamera) {
-		IdCamera = idCamera;
+	public void setIdcamera(int Idcamera) {
+		IdCamera = Idcamera;
 	}
 	
 

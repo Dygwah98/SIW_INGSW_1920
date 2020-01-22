@@ -21,7 +21,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 			PreparedStatement smt = handler.getStatement();
 			smt.setString(1, input.getCheckin());
 			smt.setString(2, input.getCheckout());
-			smt.setInt(3, input.getIdCamera());
+			smt.setInt(3, input.getIdcamera());
 			smt.setInt(4, idUtente);
 			handler.executeUpdate();
 		
@@ -41,7 +41,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 			smt.setInt(1,book.getIdprenotazione());
 			smt.setString(2,book.getCheckin());
 			smt.setString(3, book.getCheckout());
-			smt.setInt(4,book.getIdCamera());
+			smt.setInt(4,book.getIdcamera());
 			smt.setInt(5, book.getIdordine());
 			handler.executeUpdate();
 		
@@ -69,7 +69,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 					book.setIdprenotazione(result.getInt("idprenotazione"));				
 					book.setCheckin(result.getString("checkin"));
 					book.setCheckout(result.getString("checkout"));
-					book.setIdCamera(result.getInt("idcamera"));
+					book.setIdcamera(result.getInt("idcamera"));
 					book.setIdordine(result.getInt("idordine"));
 					books.add(book);
 				}
@@ -92,7 +92,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 			PreparedStatement smt = handler.getStatement();
 			smt.setString(1, book.getCheckin());
 			smt.setString(2, book.getCheckout());
-			smt.setInt(3, book.getIdCamera());
+			smt.setInt(3, book.getIdcamera());
 			smt.setInt(4, book.getIdordine());
 			smt.setInt(5, book.getIdprenotazione());
 			handler.executeUpdate();

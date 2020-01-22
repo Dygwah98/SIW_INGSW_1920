@@ -1,9 +1,13 @@
 package persistence.postgres.jdbc;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Ordine;
+import model.Prenotazione;
+import model.Prodotto;
 import persistence.dao.OrdineDao;
 
 public class OrdineDaoJDBC implements OrdineDao {
@@ -153,4 +157,67 @@ public class OrdineDaoJDBC implements OrdineDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public List<Prenotazione> retrievePrenotazioni(Integer idcliente){
+		String c="Select p.idprenotazione,p.checkin,p.checkout,p.idcamera,p.idordine from ordine as o,prenotazione as p where o.idOrder=p.idordine and o.idClient=? and o.pagato=false"; 
+		List<Prenotazione> p = null;
+		Prenotazione pre = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(c)) {
+			
+			handler.getStatement().setInt(1, idcliente);
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				p = new ArrayList<Prenotazione>();
+				ResultSet result = handler.getResultSet();
+				while (result.next()) {
+					pre = new Prenotazione();
+					pre.setIdprenotazione(result.getInt("idprenotazione"));				
+					pre.setCheckin(result.getString("checkin"));
+					pre.setCheckout(result.getString("checkout"));
+					pre.setIdcamera(result.getInt("idcamera"));
+					pre.setIdordine(result.getInt("idordine"));
+					p.add(pre);
+				}
+			}
+			
+			return p;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}	
+	}
+	public List<Prodotto> retrieveProdotti(Integer idcliente){
+		String c="Select p.idprodotto,p.tipo,p.descrizione,p.prezzo,p.disponibile,p.img,p.idordine from ordine as o,prenotazione as p where o.idOrder=p.idordine and o.idClient=? and o.pagato=false"; 
+		List<Prodotto> books = null;
+		Prodotto book = null;
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(c)) {
+			handler.getStatement().setInt(1,idcliente);
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				books = new ArrayList<Prodotto>();
+				ResultSet result = handler.getResultSet();
+				while (result.next()) {
+					book = new Prodotto();
+					book.setIdprodotto(result.getInt("idprodotto"));				
+					book.setTipo(result.getString("tipo"));
+					book.setDescrizione(result.getString("descrizione"));
+					book.setPrezzo(result.getInt("prezzo"));
+					book.setDisponibile(result.getBoolean("disponibile"));
+					book.setTipo(result.getString("img"));
+					book.setIdordine(result.getInt("idordine"));
+					books.add(book);
+				}
+			}
+			
+			return books;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		
+	}
 }
+
+	
