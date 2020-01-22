@@ -132,16 +132,41 @@
 						
 						<!-- Blog Post -->
 						<c:forEach var="post" items="${post}">
-						<div class="blog_post">
+							<div class="blog_post">
 							<div class="blog_post_image">
-								<img src="${post.img }.jpg" alt="">
-								<div class="blog_post_date"><a href="#">${post.data }</a></div>
+								<img src="${post.img}.jpg" alt="">
+								<div class="blog_post_date"><a href="#">${post.data}</a></div>
 							</div>
 							<div class="blog_post_content">
-								<div class="blog_post_title"><a href="#">${post.titolo }</a></div>
-								<div class="blog_post_text">
-									<p>${post.messaggio }</p>
+								<div class="blog_post_title"><a href="#">${post.titolo}</a></div>
+								<div class="blog_post_info">
+									<ul class="d-flex flex-row align-items-start justify-content-start flex-wrap">
+										<li class="d-flex flex-row align-items-center justify-content-start">
+											<img src="images/icon_4.png" alt="">
+											<a href="#">News</a>
+										</li>
+										<li class="d-flex flex-row align-items-center justify-content-start">
+											<img src="images/icon_5.png" alt="">
+											<a href="#">21 Likes</a>
+										</li>
+										<li class="d-flex flex-row align-items-center justify-content-start">
+											<img src="images/icon_6.png" alt="">
+											<a href="#">602 views</a>
+										</li>
+										<li class="d-flex flex-row align-items-center justify-content-start">
+											<img src="images/icon_7.png" alt="">
+											<a href="#">1 min</a>
+										</li>
+										<li class="d-flex flex-row align-items-center justify-content-start">
+											<img src="images/icon_8.png" alt="">
+											<a href="#">3 comments</a>
+										</li>
+									</ul>
 								</div>
+								<div class="blog_post_text">
+									<p>${post.messaggio}</p>
+								</div>
+								<div class="button blog_post_button"><a href="#">Read More</a></div>
 							</div>
 						</div>
 						</c:forEach>
