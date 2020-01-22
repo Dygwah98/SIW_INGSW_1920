@@ -41,4 +41,7 @@ public abstract class DAOFactory {
 
 	public abstract ProdottoDao getProdottoDao();
 	
+	public abstract OrdineDao getOrdineDao();
+
+	
 }

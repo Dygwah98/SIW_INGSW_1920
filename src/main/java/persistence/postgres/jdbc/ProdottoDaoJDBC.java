@@ -174,8 +174,9 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			smt.setString(3, prodotto.getDescrizione());
 			smt.setInt(4, prodotto.getPrezzo());
 			smt.setString(5, prodotto.getImg());
-			smt.setInt(6, prodotto.getIdordine());
 			smt.setBoolean(7, prodotto.getDisponibile());
+			smt.setInt(6, prodotto.getIdordine());
+			
 			smt.setInt(8, prodotto.getIdprodotto());
 			handler.executeUpdate();
 		

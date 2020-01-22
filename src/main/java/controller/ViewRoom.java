@@ -20,10 +20,16 @@ public class ViewRoom extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<Room> r = DBManager.getInstance().getDAOFactory().getRoomDao().retrieveAll();
+		if(r!=null) {
 		HttpSession session = request.getSession();
 		session.setAttribute("room", r);
 		request.setAttribute("room",r);
 		request.getRequestDispatcher("booking.jsp").forward(request, response);
+		}
+		else {
+			request.getRequestDispatcher("booking.jsp").forward(request, response);
+
+		}
 		
 	}
 	

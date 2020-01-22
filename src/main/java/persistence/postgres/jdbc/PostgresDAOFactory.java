@@ -30,4 +30,10 @@ public class PostgresDAOFactory extends DAOFactory {
 		return new RoomDaoJDBC();
 	}
 
+	@Override
+	public OrdineDao getOrdineDao() {
+		// TODO Auto-generated method stub
+		return new OrdineDaoJDBC();
+	}
+
 }
