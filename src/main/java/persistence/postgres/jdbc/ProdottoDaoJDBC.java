@@ -14,18 +14,17 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public void save(Prodotto p) {
 
-		String insert = "INSERT INTO prodotto(idprodotto,tipo,descrizione,prezzo,disponibile,img,quantita) VALUES (?,?,?,?,?,?,?)";		
+		String insert = "INSERT INTO prodotto(tipo,descrizione,prezzo,disponibile,img) VALUES (?,?,?,?,?)";		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
 			PreparedStatement smt = handler.getStatement();
 			
-			smt.setInt(1, p.getIdprodotto());
-			smt.setString(2, p.getTipo());
-			smt.setString(3, p.getDescrizione());
-			smt.setInt(4, p.getPrezzo());
-			smt.setBoolean(5, p.getDisponibile());
-			smt.setString(6, p.getImg());
-			smt.setInt(7, p.getQuantita());
+			//smt.setInt(1, p.getIdprodotto());
+			smt.setString(1, p.getTipo());
+			smt.setString(2, p.getDescrizione());
+			smt.setInt(3, p.getPrezzo());
+			smt.setBoolean(4, p.getDisponibile());
+			smt.setString(5, p.getImg());
 
 			
 			handler.executeUpdate();
@@ -91,7 +90,6 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 					book = new Prodotto();
 					book.setIdprodotto(result.getInt("idprodotto"));				
 					book.setTipo(result.getString("tipo"));
-					book.setQuantita(result.getInt("quantita"));
 					book.setDescrizione(result.getString("descrizione"));
 					book.setPrezzo(result.getInt("prezzo"));
 					book.setDisponibile(result.getBoolean("disponibile"));
@@ -127,13 +125,11 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 						p = new Prodotto();
 						p.setIdprodotto(result.getInt("idprodotto"));		
 						p.setTipo(result.getString("tipo"));
-						p.setQuantita(result.getInt("quantita"));
 						p.setDescrizione(result.getString("descrizione"));
 						p.setPrezzo(result.getInt("prezzo"));
 						p.setDisponibile(result.getBoolean("disponibile"));
 						p.setImg(result.getString("img"));
 						p.setIdordine(result.getInt("idordine"));
-						p.setQuantita(result.getInt("quantita"));
 						prodotti.add(p);
 					}
 				}
@@ -172,7 +168,6 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			PreparedStatement smt = handler.getStatement();
 			
 			smt.setString(1, prodotto.getTipo());
-			smt.setInt(2, prodotto.getQuantita());
 			smt.setString(3, prodotto.getDescrizione());
 			smt.setInt(4, prodotto.getPrezzo());
 			smt.setString(5, prodotto.getImg());
