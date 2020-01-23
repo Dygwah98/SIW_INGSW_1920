@@ -10,28 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Room;
 import persistence.DBManager;
 
 
-@WebServlet(value="/viewroom",name="viewroom")
-public class ViewRoom extends HttpServlet {
+@WebServlet(value="/payment",name="payment")
+public class payment extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<Room> r = DBManager.getInstance().getDAOFactory().getRoomDao().retrieveAll();
-		if(r!=null) {
-		HttpSession session = request.getSession();
-		session.setAttribute("room", r);
-		request.setAttribute("room",r);
-		request.getRequestDispatcher("booking.jsp").forward(request, response);
-		}
-		else {
-			request.getRequestDispatcher("booking.jsp").forward(request, response);
+				DBManager.getInstance().getDAOFactory().getOrdineDao().pay((Integer)request.getSession().getAttribute("userId"));
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 
-		}
-		
-	}
+			}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

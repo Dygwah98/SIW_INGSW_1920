@@ -15,7 +15,7 @@ public class OrdineDaoJDBC implements OrdineDao {
 	@Override
 	public void save(Ordine ordine) {
 		
-		String insert = "INSERT INTO order(idOrder,idClient) VALUES (?,?)";
+		String insert = "INSERT INTO ordine(idorder,idclient) VALUES (?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
@@ -157,8 +157,9 @@ public class OrdineDaoJDBC implements OrdineDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
 	public List<Prenotazione> retrievePrenotazioni(Integer idcliente){
-		String c="Select p.idprenotazione,p.checkin,p.checkout,p.idcamera,p.idordine from ordine as o,prenotazione as p where o.idOrder=p.idordine and o.idClient=? and o.pagato=false"; 
+		String c="Select p.idprenotazione,p.checkin,p.checkout,p.idcamera,p.idordine from ordine as o,prenotazioni as p where o.idorder=p.idordine and o.idclient=? and o.pagato=false"; 
 		List<Prenotazione> p = null;
 		Prenotazione pre = null;
 		
@@ -187,8 +188,9 @@ public class OrdineDaoJDBC implements OrdineDao {
 			throw new RuntimeException(e.getMessage());
 		}	
 	}
+	@Override
 	public List<Prodotto> retrieveProdotti(Integer idcliente){
-		String c="Select p.idprodotto,p.tipo,p.descrizione,p.prezzo,p.disponibile,p.img,p.idordine from ordine as o,prenotazione as p where o.idOrder=p.idordine and o.idClient=? and o.pagato=false"; 
+		String c="Select p.idprodotto,p.tipo,p.descrizione,p.prezzo,p.disponibile,p.img,p.idordine from ordine as o,prenotazione as p where o.idorder=p.idordine and o.idclient=? and o.pagato=false"; 
 		List<Prodotto> books = null;
 		Prodotto book = null;
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(c)) {
@@ -218,6 +220,45 @@ public class OrdineDaoJDBC implements OrdineDao {
 		}
 		
 	}
+
+
+	@Override
+	public void pay(Integer userId) {
+
+		String query = "UPDATE ordine SET pagato =true WHERE idclient = ? AND pagato=false";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			handler.getStatement().setInt(1, userId);
+			handler.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public List<Integer> retrieveprezzocamere(Integer id){
+		String prezzo="Select r.prezzo as pre from room as r,prenotazioni as p,ordine as o where r.idcamera=p.idcamera and p.idordine=o.idorder and o.pagato=false and o.idclient=? ";
+		List<Integer> soldi = null;
+		Integer soldo = null;
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(prezzo)) {
+			handler.getStatement().setInt(1,id);
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				soldi = new ArrayList<Integer>();
+				ResultSet result = handler.getResultSet();
+				while (result.next()) {
+					soldo=new Integer(result.getInt("pre"));
+					soldi.add(soldo);
+				}
+		
+			}
+			return soldi;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
 
-	

@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -169,37 +172,33 @@
 						    <thead class="thead-secondary">
 						      <tr class="text-center">
 						        <th>&nbsp;</th>
-						        <th>&nbsp;</th>
-						        <th>Stanza</th>
-						        <th>Servizi</th>
-						        <th>Prezzo</th>
-						        <th>num</th>
+						        <th>ordine</th>
+						        <th>n_camera</th>
 						        <th>Check-in</th>
 						        <th>Check-out</th>
+						        <th>prezzo</th>
+						        
 						      </tr>
 						    </thead>
+						     <c:forEach var="prenotazione"  items="${prenotazione}" >
+						      <c:forEach var="prezziprenotazione"  items="${prezziprenotazione}" >
 						    <tbody style="background-color: white;">
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/booking_1.jpg);"></div></td>
-						        
 						        <td >
-						        	<p>Singola</p>
+						        	<p>${prenotazione.idordine}</p>
 						        </td>
 						        
 						        <td >
-						        	<p> 
-						        		<ul>
-						        			<li>bagno</li>
-						        			<li>doccia</li>
-						        			<li>frigo-bar</li>
-						        			<li>tv</li>
-						        		</ul>
-						        	</p>
+									<p>${prenotazione.idcamera}</p>
 						        </td>
-						        
-						        <td class="prezzo">100 euro</td>
+						        	  <td >
+									<p>${prenotazione.checkin}</p>
+						        	</td>
+						        	  <td >
+									<p>${prenotazione.checkout}</p>
+						        </td>
+						        <td class="prezzo">${prezziprenotazione}</td>
 						        
 						        <td class="quantity">
 						        	<div class="input-group mb-3">
@@ -208,10 +207,10 @@
 					          			<a href="#piu"  class="next round">+</a>
 					          		</div>
 					          </td>
-						        <td class="prezzo">15 ottobre</td>
-						        <td class="prezzo">20 ottobre</td>
 						      </tr><!-- END TR-->
 						    </tbody>
+						    </c:forEach>
+						    </c:forEach>
 						  </table>
 					  </div>
     			</div>
@@ -235,7 +234,7 @@
     						<span class="corrispondente">103,90 euro</span>
     					</p>
     				</div>
-    				<p><a href="checkout.jsp" class="btn btn-primary py-3 px-4">Procedi al pagamento</a></p>
+    				<p><a href="payment" class="btn btn-primary py-3 px-4">Procedi al pagamento</a></p>
     			</div>
     		</div>
 	</div>
