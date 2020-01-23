@@ -14,7 +14,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public void save(Prodotto p) {
 
-		String insert = "INSERT INTO prodotto(idprodotto,tipo,descrizione,prezzo,disponibile,img,idordine,quantita) VALUES (?,?,?,?,?,?,?,?)";		
+		String insert = "INSERT INTO prodotto(idprodotto,tipo,descrizione,prezzo,disponibile,img,idordine) VALUES (?,?,?,?,?,?,?)";		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
 			PreparedStatement smt = handler.getStatement();
@@ -26,7 +26,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			smt.setBoolean(5, p.getDisponibile());
 			smt.setString(6, p.getImg());
 			smt.setInt(7, p.getIdordine());
-			smt.setInt(8, p.getQuantita());
+			
 
 			
 			handler.executeUpdate();
@@ -92,7 +92,6 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 					book = new Prodotto();
 					book.setIdprodotto(result.getInt("idprodotto"));				
 					book.setTipo(result.getString("tipo"));
-					book.setQuantita(result.getInt("quantita"));
 					book.setDescrizione(result.getString("descrizione"));
 					book.setPrezzo(result.getInt("prezzo"));
 					book.setDisponibile(result.getBoolean("disponibile"));
@@ -134,7 +133,6 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 						p.setDisponibile(result.getBoolean("disponibile"));
 						p.setImg(result.getString("img"));
 						p.setIdordine(result.getInt("idordine"));
-						p.setQuantita(result.getInt("quantita"));
 						prodotti.add(p);
 					}
 				}
@@ -166,21 +164,19 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public void update(Prodotto prodotto) {
 		
-		String update = "update Prodotto SET tipo=?,quantita=?,descrizione=?,prezzo=?,img=?,idordine=? where id=?";
+		String update = "update Prodotto SET tipo=?,descrizione=?,prezzo=?,img=?,idordine=? where id=?";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 			
 			PreparedStatement smt = handler.getStatement();
 			
 			smt.setString(1, prodotto.getTipo());
-			smt.setInt(2, prodotto.getQuantita());
-			smt.setString(3, prodotto.getDescrizione());
-			smt.setInt(4, prodotto.getPrezzo());
-			smt.setString(5, prodotto.getImg());
-			smt.setBoolean(7, prodotto.getDisponibile());
+			smt.setString(2, prodotto.getDescrizione());
+			smt.setInt(3, prodotto.getPrezzo());
+			smt.setString(4, prodotto.getImg());
+			smt.setBoolean(5, prodotto.getDisponibile());
 			smt.setInt(6, prodotto.getIdordine());
-			
-			smt.setInt(8, prodotto.getIdprodotto());
+			smt.setInt(7, prodotto.getIdprodotto());
 			handler.executeUpdate();
 		
 		} catch (SQLException e) {
