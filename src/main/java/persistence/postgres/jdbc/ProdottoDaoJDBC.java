@@ -129,7 +129,6 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 						p = new Prodotto();
 						p.setIdprodotto(result.getInt("idprodotto"));		
 						p.setTipo(result.getString("tipo"));
-						p.setQuantita(result.getInt("quantita"));
 						p.setDescrizione(result.getString("descrizione"));
 						p.setPrezzo(result.getInt("prezzo"));
 						p.setDisponibile(result.getBoolean("disponibile"));

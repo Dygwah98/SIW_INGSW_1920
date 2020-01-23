@@ -180,8 +180,8 @@
 						        
 						      </tr>
 						    </thead>
-						     <c:forEach var="prenotazione"  items="${prenotazione}" >
-						      <c:forEach var="prezziprenotazione"  items="${prezziprenotazione}" >
+						     <c:forEach var="prenotazione" items="${prenotazione}" varStatus="status">
+						      <%-- <c:forEach var="prezziprenotazione"  items="${prezziprenotazione}" > --%>
 						    <tbody style="background-color: white;">
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
@@ -198,19 +198,12 @@
 						        	  <td >
 									<p>${prenotazione.checkout}</p>
 						        </td>
-						        <td class="prezzo">${prezziprenotazione}</td>
-						        
-						        <td class="quantity">
-						        	<div class="input-group mb-3">
-					             		<a href="#" onclick="decrementa()" class="previous round">-</a>
-					             			<input id="valore" type="text" name="quantity" class="quantity form-control input-number" value="0" min="1" max="100">
-					          			<a href="#piu"  class="next round">+</a>
-					          		</div>
-					          </td>
+						        <td class="prezzo">${prezziprenotazione[status.index]}</td>
+
 						      </tr><!-- END TR-->
 						    </tbody>
 						    </c:forEach>
-						    </c:forEach>
+						   
 						  </table>
 					  </div>
     			</div>

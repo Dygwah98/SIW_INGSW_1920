@@ -260,5 +260,26 @@ public class OrdineDaoJDBC implements OrdineDao {
 		}
 		return null;
 	}
+	public Integer retrieveidorder(Integer idclient)
+	{
+		String ord="select idorder from ordine where idclient=? and pagato=false";
+		Integer idord=null;
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(ord)) {
+			handler.getStatement().setInt(1,idclient);
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				ResultSet result = handler.getResultSet();
+				return idord=new Integer(result.getInt("idorder"));
+			}
+			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+	
 }
 

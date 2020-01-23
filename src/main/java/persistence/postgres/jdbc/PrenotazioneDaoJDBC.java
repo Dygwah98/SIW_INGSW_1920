@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.annotation.WebServlet;
+
 import model.Prenotazione;
 import persistence.dao.PrenotazioneDao;
 
@@ -14,7 +16,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	@Override
 	public void saveAndLink(Prenotazione input, Integer idUtente) {
 		
-		String insert = "INSERT INTO prenotazioni(checkin,checkout,idcamera,idordine) SELECT ? AS checkin, ? AS checkout, ? AS idcamera, o.idOrder AS idordine FROM order AS o WHERE o.idClient = ? AND NOT o.pagato";
+		String insert = "INSERT INTO prenotazioni(checkin,checkout,idcamera,idordine) SELECT ? AS checkin, ? AS checkout, ? AS idcamera, o.idorder AS idordine FROM ordine AS o WHERE o.idclient = ? AND NOT o.pagato";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			

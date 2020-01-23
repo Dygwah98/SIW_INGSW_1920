@@ -3,13 +3,14 @@ package controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Prenotazione;
 import persistence.DBManager;
-
+@WebServlet(value="/addprenotazione",name="addprenotazione")
 public class AddPrenotazioneServlet extends HttpServlet {
 
 	@Override
@@ -28,6 +29,8 @@ public class AddPrenotazioneServlet extends HttpServlet {
 		Integer idUser = (Integer)req.getSession().getAttribute("userId");
 		
 		DBManager.getInstance().getDAOFactory().getPrenotazioneDao().saveAndLink(p, idUser);
+		DBManager.getInstance().getDAOFactory().getRoomDao().roomoccupata(p.getIdcamera());;
+		req.getRequestDispatcher("index.jsp").forward(req, resp);
 	}
 	
 }
