@@ -9,8 +9,10 @@ public class Prodotto {
 	private Boolean disponibile;
 	private String img;
 	private Integer idordine;
+
 	
-	public Prodotto(int idprodotto, String tipo, int prezzo, String descrizione, Boolean disponibile, String img,int idOrdine) {
+	public Prodotto(int idprodotto, String tipo, int prezzo, String descrizione,Boolean disponibile, String img,int idOrdine) {
+
 		this.idprodotto = idprodotto;
 		this.tipo = tipo;
 		this.prezzo = prezzo;
@@ -85,9 +87,7 @@ public class Prodotto {
 	public void setIdordine(Integer idordine) {
 		this.idordine = idordine;
 	}
-	
-	
-	
+
 	
 	
 	

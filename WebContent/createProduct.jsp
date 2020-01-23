@@ -10,13 +10,12 @@
   <link href="styles/RegistrationForm.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<form class="decor"  method="post" action="${pageContext.request.contextPath}/product_servlet" >
+<form class="decor"  method="post" action="${pageContext.request.contextPath}/addproduct" >
   <div class="form-left-decoration"></div>
   <div class="form-right-decoration"></div>
   <div class="circle"></div>
   <div class="form-inner">
     <h3>INSERISCI UN NUOVO PRODOTTO</h3>
-     <input type="text" name="Id" placeholder="id">
     <input type="text" name="Tipo"placeholder="nome">
     <input type="text" name="Descrizione" placeholder="Descrizione">
     <input type="text" name="Prezzo"placeholder="prezzo">
