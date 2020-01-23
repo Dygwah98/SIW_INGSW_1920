@@ -127,13 +127,11 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 						p = new Prodotto();
 						p.setIdprodotto(result.getInt("idprodotto"));		
 						p.setTipo(result.getString("tipo"));
-						p.setQuantita(result.getInt("quantita"));
 						p.setDescrizione(result.getString("descrizione"));
 						p.setPrezzo(result.getInt("prezzo"));
 						p.setDisponibile(result.getBoolean("disponibile"));
 						p.setImg(result.getString("img"));
 						p.setIdordine(result.getInt("idordine"));
-						p.setQuantita(result.getInt("quantita"));
 						prodotti.add(p);
 					}
 				}
@@ -263,6 +261,37 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	public Prodotto retrieve(Prodotto object) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public Prodotto retrieveByType(String tipo) {
+		String query = "SELECT * FROM prodotto";
+		Prodotto p = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+		
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				ResultSet result = handler.getResultSet();
+				
+				while (result.next()) {
+					p = new Prodotto();
+					p.setIdprodotto(result.getInt("idprodotto"));		
+					p.setTipo(tipo);
+					p.setDescrizione(result.getString("descrizione"));
+					p.setPrezzo(result.getInt("prezzo"));
+					p.setDisponibile(result.getBoolean("disponibile"));
+					p.setImg(result.getString("img"));
+					p.setIdordine(result.getInt("idordine"));
+				}
+			}
+			
+			return p;
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 
 	

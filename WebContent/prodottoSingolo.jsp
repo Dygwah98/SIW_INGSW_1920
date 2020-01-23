@@ -15,7 +15,7 @@
 <link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.2/bootstrap.min.css">
 
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.3.4/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="styles/Negozio.css">
+<link rel="stylesheet" type="text/css" href="styles/prodottoSingolo.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 
 <link rel="stylesheet" href="styles/icomoon.css">
@@ -27,11 +27,10 @@
 
 
 </head>
-
-<body>
-
-	
-	<!-- Intestazione -->
+  
+  <body>
+  
+  <!-- Intestazione -->
 
 	<header class="header">
 		<div class="header_content d-flex flex-row align-items-center justify-content-start">
@@ -43,18 +42,17 @@
 							<li><a href="Loginform.jsp">Login</a></li>
 						 <%}
 					  	 else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-					  		<li><a href="createProduct.jsp">creaProdotto</a></li>
 					  		<li><a href="logout">Logout</a></li>
 					  	 <%}%>
 						<li ><a href="index.jsp">Home</a></li>
-						<li class="active"><a href="negozio.jsp">Negozio</a></li>
+						<li><a href="negozio.jsp">Negozio</a></li>
 						<li><a href="#">Lista dei desideri</a></li>
 					</ul>
 			   </nav>
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				 <nav class="main_nav">
+					<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li class="active"><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
 					</ul>
 				</nav>
 			   <%}%>
@@ -77,18 +75,17 @@
 						<li><a href="Loginform.jsp">Login</a></li>
 				     <%}
 				     else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-						  <li><a href="createProduct.jsp">creaProdotto</a></li>
 						  <li><a href="logout">Logout</a></li>
 					 <%}%>
 					<li ><a href="index.jsp">Home</a></li>
-					<li class="active"><a href="negozio.jsp">Negozio</a></li>
+					<li><a href="negozio.jsp">Negozio</a></li>
 					<li><a href="#">Lista dei desideri</a></li>
 			   </ul>
 		   </nav>
 		</div>
 		<div class="menu_extra">
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				<nav class="main_nav">
+			<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
 						<li><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
 					</ul>
@@ -96,153 +93,119 @@
 	    <%}%>
 		</div>
 	</div>
+    <!-- END nav -->
 
-	<!-- Home -->
-
-	<div class="home">
+   <div class="home">
 		<div class="home_slider_container">
 			<div class="owl-carousel home_slider">
 				
 				<!-- Prima Slide -->
 				<div class="slide">
-					<div class="background_image" style="background-image:url(images/slide_ortaggi_1_.jpg)"></div>
+					<div class="background_image" style="background-image:url(images/index_1.jpg)"></div>
 					<div class="home_container">
 						<div class="container">
 							<div class="row">
 								<div class="col">
 									<div class="home_content text-center">
-										<div class="home_title">VERDURE</div>
-										<p class="descrizione">Le nostre verdure sono frutto di una coltivazione mirata e accurata....
-											<br>Offriamo i migliori prodotti vegetariani sul mercato.
-										</p>
-										<a href="#piu" class="bottone trans_200">DETTAGLI</a>
+										<div class="home_title">PRODOTTO SINGOLO</div>
+											<p class="descrizione">Acquista i prodotti dei tuoi sogni...</p>
+											<a href="#prodotto" class="bottone trans_200">DETTAGLI</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
-				<!-- Seconda Slide -->
-				<div class="slide">
-					<div class="background_image" style="background-image:url(images/slide_ortaggi_2_.jpg)"></div>
-					<div class="home_container">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="home_content text-center">
-										<div class="home_title">ORTAGGI</div>
-										<p class="descrizione">I nostri ortaggi sono frutto di una coltivazione mirata e accurata....
-											<br>Offriamo i migliori prodotti vegetariani sul mercato.
-										</p>
-										<a href="#piu" class="bottone trans_200">DETTAGLI</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Terza Slide -->
-				<div class="slide">
-					<div class="background_image" style="background-image:url(images/slide_salumi_3_.jpg)"></div>
-					<div class="home_container">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="home_content text-center">
-										<div class="home_title">CARNI</div>
-										<p class="descrizione">I nostri animali pascolano liberamente!!
-											<br>Offriamo i migliori prodotti di carne sul mercato.
-										</p>
-										<a href="#piu" class="bottone_carne trans_200">DETTAGLI</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<!-- Quarta Slide -->
-				<div class="slide">
-					<div class="background_image" style="background-image:url(images/slide_formaggi_4_.jpg)"></div>
-					<div class="home_container">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="home_content text-center">
-										<div class="home_title">FORMAGGI</div>
-										<p class="descrizione">Formaggi a lunga stagionatura...
-											<br>Formaggi e latticini sempre freschi!!
-										</p>
-										<a href="#piu" class="bottone_carne trans_200">DETTAGLI</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-			
-			
-			<!-- slider -->
-			<div class="home_slider_dots_container">
-				<div class="home_slider_dots">
-					<ul id="home_slider_custom_dots" class="home_slider_custom_dots d-flex flex-row align-items-start justify-content-start">
-						<li class="home_slider_custom_dot active">01.</li>
-						<li class="home_slider_custom_dot">02.</li>
-						<li class="home_slider_custom_dot">03.</li>
-						<li class="home_slider_custom_dot">04.</li>
-					</ul>
-				</div>
-			</div>
-			
-		</div>
+			 </div>
+		</div>		
 	</div>
-
-	<!-- body -->
-	
-	<section id="piu" class="ftco-section">
+   
+  
+    <section id="prodotto"  class="ftco-section1">
     	<div class="container">
-				<div class="row justify-content-center mb-3 pb-3">
-          <div class="col-md-12 heading-section text-center ">
-          	<span class="subheading">Caratteristiche dei prodotti</span>
-            <h2 class="mb-4">I nostri prodotti</h2>
-            <p>Nelle campagne sperdute di cancello, si narra la storia di Sarella......</p>
-          </div>
-        </div>   		
-    	</div>
-    	<form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
-  		<input type="text" placeholder="Search.." name="search2">
-  		<button type="submit"><i class="fa fa-search"></i></button>
-		</form>
-    </section>
-   
+    		<div class="row">
+    			<div   class="col-lg-6 mb-5 ">
+    				<a href="#" class="cursore"><img style="border: 1px solid orange" src="images/product-1.jpg"  alt=""></a>
+    			</div>
+    			<div class="col-lg-6 dettagli-prodotto pl-md-5 ">
+    				<h3 >Peperone</h3>
+    				<div class="d-flex">
+							<p class="text-left mr-4" id="recensioni">
+								<a href="#"><span  class="ion-ios-star-outline"></span></a>
+								<a href="#"><span  class="ion-ios-star-outline"></span></a>
+								<a href="#"><span  class="ion-ios-star-outline"></span></a>
+								<a href="#"><span  class="ion-ios-star-outline"></span></a>
+								<a href="#"><span  class="ion-ios-star-outline"></span></a>
+							</p>
+							<p class="text-left mr-4">
+								<a href="#" class="mr-2" style="color: #000;">100 <span style="color: orange;">Recensioni</span></a>
+							</p>
+							<p class="text-left">
+								<a href="#" class="mr-2" style="color: #000;">500 <span style="color: orange;">Venduti</span></a>
+							</p>
+						</div>
+    				<p class="price"><span>3 euro</span></p>
+    				<p>Ortaggio</p>
+						<div class="row mt-4">
+							<div class="col-md-6">
+								<div class="form-group d-flex">
+		              				<div class="select-wrap">
+	                  					<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+	                  					<select name="" id="" class="form-control">
+						                  	<option value="">Small</option>
+						                    <option value="">Medium</option>
+						                    <option value="">Large</option>
+						                    <option value="">Extra Large</option>
+	                 					 </select>
+	                				</div>
+		            			</div>
+							</div>
+							<div class="w-100"></div>
+							<div class="input-group col-md-6 d-flex mb-3">
+		             			<span class=" mr-2">
+		                			<button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
+		                  				 <i class="ion-ios-remove"></i>
+		                			</button>
+		            			</span>
+		             			<input type="text" id="quantity" name="quantity" class="form-control " value="1" min="1" max="100">
+		             			<span class="input-group-btn ml-2">
+		                			<button type="button" class="quantity-right-plus btn"  data-type="plus" data-field="">
+		                     			<i class="ion-ios-add"></i>
+		                 			</button>
+		             			</span>
+	          				</div>
+	          				<div class="w-100"></div>
+	          				<div class="col-md-12">
+	          					<p style="color: #000;">600 kg disponibili</p>
+	          				</div>
+          				</div>
+          				<p><a href="cart.html" class="btn btn-black py-3 px-5">Aggiungi al carrello</a></p>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
     	
-    
-   
-	<div id="cate" class="categorie">
-	  <button class="cat">Categorie:</button>
-	  <button class="elementi active" onclick="filterSelection('all')">Tutti i prodotti</button>
-	  <button class="elementi" onclick="filterSelection('verdura')"> Verdure</button>
-	  <button class="elementi" onclick="filterSelection('ortaggio')"> Ortaggi</button>
-	  <button class="elementi" onclick="filterSelection('Salumi')"> Salumi</button>
-	  <button class="elementi" onclick="filterSelection('Formaggi')"> Formaggi</button>
-	  <button class="elementi" onclick="ordina()">Ordina</button>
-	</div>
-	
-	 <div class="divCatalogo">
-		<c:forEach var="prodotto" items="${prodotto}">
-			<div class="divProdotto ${prodotto.descrizione}">
+       <section class="ftco-section">
+	    	<div class="container">
+				<div class="row justify-content-center mb-3 pb-3">
+	          		<div class="col-md-12 heading-section text-center">
+	          			<span class="subheading">Prodotti</span>
+	            		<h2 class="mb-4">Prodotti relativi:</h2>
+	          		</div>
+	       	   </div>   		
+	       </div>
+	   </section>
+	   
+	  <div class="divCatalogo">
+			<div class="divProdotto Ortaggi">
   				<div class="prodotto"> 
-  					<a href="singolo" class="proiezione"><img src="${prodotto.img}.jpg" alt="peperone">
+  					<a href="#" class="proiezione"><img src="images/Product-1.jpg" alt="peperone">
   						<span class="sconto">50%</span> 
   					</a>
   					<div class="text py-3 pb-4 px-3 text-center"> 
-  						<h3><a id="tipo" href="#" onclick="aggiungiAlCarrello()">${prodotto.tipo}</a></h3>
+  						<h3><a id="tipo" href="#" onclick="aggiungiAlCarrello()">Peperone</a></h3>
   						<div class="d-flex">
-    						<p class="prezzo"><span class="mr-2 costo">${prodotto.prezzo} euro</span><span class="scontato">${prodotto.prezzo/2} euro</span></p>
+    						<p class="prezzo"><span class="mr-2 costo">3 euro</span><span class="scontato">3 euro</span></p>
    						</div>
 	   					<div class="bottoni d-flex px-3">
 	   						<div class="m-auto d-flex">
@@ -260,11 +223,9 @@
   					</div>
   				</div>
     		</div>		    	
-		</c:forEach>
     </div>
-	
-	<!-- Footer -->
-	</div>
+     
+     <!-- Footer -->
 	<footer  class="footer">
 		<div class="footer_content">
 			<div class="container">
@@ -327,7 +288,7 @@
 			</div>
 		</div>
 	</footer>
-	
-<script src="js/Negozio.js"></script>
-</body>
+    	
+
+  </body>
 </html>
