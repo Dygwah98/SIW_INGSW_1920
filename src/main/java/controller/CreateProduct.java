@@ -50,6 +50,8 @@ public class CreateProduct extends HttpServlet {
         	p.setImg("images/product-3");
         }
         
+        p.setQuantita(1);
+        
         Dao<Prodotto> prodottoDao = DBManager.getInstance().getDAOFactory().getProdottoDao();
         prodottoDao.save(p);
         resp.sendRedirect("createProduct.jsp");
