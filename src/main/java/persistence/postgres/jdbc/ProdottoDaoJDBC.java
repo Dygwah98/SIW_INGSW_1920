@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Prodotto;
+import model.ProdottoAggregato;
 import persistence.dao.ProdottoDao;
 
 public class ProdottoDaoJDBC implements ProdottoDao {
@@ -258,6 +259,77 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	public Prodotto retrieve(Prodotto object) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<ProdottoAggregato> showProductsForShop() {
+		
+		String query = "SELECT * FROM showProductsForShop";
+		List<ProdottoAggregato> prodotti = null;
+		ProdottoAggregato p = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				prodotti = new ArrayList<ProdottoAggregato>();
+				ResultSet result = handler.getResultSet();
+				
+				while (result.next()) {
+					p = new ProdottoAggregato();		
+					p.setTipo(result.getString("tipo"));
+					p.setDescrizione(result.getString("descrizione"));
+					p.setPrezzo(result.getInt("prezzo"));
+					p.setDisponibile(result.getBoolean("disponibile"));
+					p.setImg(result.getString("img"));
+					p.setNumProdotti(result.getInt("numProdotti"));
+					prodotti.add(p);
+				}
+			}
+			
+			return prodotti;
+
+		} catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		
+	}
+
+	@Override
+	public List<ProdottoAggregato> showProductsForCart(Integer id) {
+
+		String query = "SELECT pr.tipo, pr.descrizione, pv.totprezzo AS prezzo, pr.disponibile, pr.img, pv.num FROM productsByTypeOrder AS pv, prodotto AS pr WHERE pv.idorder = ? AND pr.tipo = pv.tipo";
+		List<ProdottoAggregato> prodotti = null;
+		ProdottoAggregato p = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			handler.getStatement().setInt(1, id);
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				prodotti = new ArrayList<ProdottoAggregato>();
+				ResultSet result = handler.getResultSet();
+				
+				while (result.next()) {
+					p = new ProdottoAggregato();		
+					p.setTipo(result.getString("tipo"));
+					p.setDescrizione(result.getString("descrizione"));
+					p.setPrezzo(result.getInt("prezzo"));
+					p.setDisponibile(result.getBoolean("disponibile"));
+					p.setImg(result.getString("img"));
+					p.setNumProdotti(result.getInt("num"));
+					prodotti.add(p);
+				}
+			}
+			
+			return prodotti;
+			
+		}  catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		
 	}
 
 	
