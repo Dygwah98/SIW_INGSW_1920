@@ -7,25 +7,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Prodotto;
+import model.ProdottoAggregato;
 import persistence.dao.ProdottoDao;
 
 public class ProdottoDaoJDBC implements ProdottoDao {
 	
 	@Override
 	public void save(Prodotto p) {
-
-		String insert = "INSERT INTO prodotto(idprodotto,tipo,descrizione,prezzo,disponibile,img,quantita) VALUES (?,?,?,?,?,?,?)";		
+		String insert = "INSERT INTO prodotto(tipo,descrizione,prezzo,disponibile,img) VALUES (?,?,?,?,?)";		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
 			PreparedStatement smt = handler.getStatement();
 			
-			smt.setInt(1, p.getIdprodotto());
-			smt.setString(2, p.getTipo());
-			smt.setString(3, p.getDescrizione());
-			smt.setInt(4, p.getPrezzo());
-			smt.setBoolean(5, p.getDisponibile());
-			smt.setString(6, p.getImg());
-			smt.setInt(7, p.getQuantita());
+			//smt.setInt(1, p.getIdprodotto());
+			smt.setString(1, p.getTipo());
+			smt.setString(2, p.getDescrizione());
+			smt.setInt(3, p.getPrezzo());
+			smt.setBoolean(4, p.getDisponibile());
+			smt.setString(5, p.getImg());
+
 
 			
 			handler.executeUpdate();
@@ -91,7 +91,6 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 					book = new Prodotto();
 					book.setIdprodotto(result.getInt("idprodotto"));				
 					book.setTipo(result.getString("tipo"));
-					book.setQuantita(result.getInt("quantita"));
 					book.setDescrizione(result.getString("descrizione"));
 					book.setPrezzo(result.getInt("prezzo"));
 					book.setDisponibile(result.getBoolean("disponibile"));
@@ -163,21 +162,19 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public void update(Prodotto prodotto) {
 		
-		String update = "update Prodotto SET tipo=?,quantita=?,descrizione=?,prezzo=?,img=?,idordine=? where id=?";
+		String update = "update Prodotto SET tipo=?,descrizione=?,prezzo=?,img=?,idordine=? where idprodotto=?";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 			
 			PreparedStatement smt = handler.getStatement();
 			
 			smt.setString(1, prodotto.getTipo());
-			smt.setInt(2, prodotto.getQuantita());
-			smt.setString(3, prodotto.getDescrizione());
-			smt.setInt(4, prodotto.getPrezzo());
-			smt.setString(5, prodotto.getImg());
-			smt.setBoolean(7, prodotto.getDisponibile());
+			smt.setString(2, prodotto.getDescrizione());
+			smt.setInt(3, prodotto.getPrezzo());
+			smt.setString(4, prodotto.getImg());
+			smt.setBoolean(5, prodotto.getDisponibile());
 			smt.setInt(6, prodotto.getIdordine());
-			
-			smt.setInt(8, prodotto.getIdprodotto());
+			smt.setInt(7, prodotto.getIdprodotto());
 			handler.executeUpdate();
 		
 		} catch (SQLException e) {
@@ -292,6 +289,77 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		}
+	}
+
+	@Override
+	public List<ProdottoAggregato> showProductsForShop() {
+		
+		String query = "SELECT * FROM showProductsForShop";
+		List<ProdottoAggregato> prodotti = null;
+		ProdottoAggregato p = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				prodotti = new ArrayList<ProdottoAggregato>();
+				ResultSet result = handler.getResultSet();
+				
+				while (result.next()) {
+					p = new ProdottoAggregato();		
+					p.setTipo(result.getString("tipo"));
+					p.setDescrizione(result.getString("descrizione"));
+					p.setPrezzo(result.getInt("prezzo"));
+					p.setDisponibile(result.getBoolean("disponibile"));
+					p.setImg(result.getString("img"));
+					p.setNumProdotti(result.getInt("numProdotti"));
+					prodotti.add(p);
+				}
+			}
+			
+			return prodotti;
+
+		} catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		
+	}
+
+	@Override
+	public List<ProdottoAggregato> showProductsForCart(Integer id) {
+
+		String query = "SELECT pr.tipo, pr.descrizione, pv.totprezzo AS prezzo, pr.disponibile, pr.img, pv.num FROM productsByTypeOrder AS pv, prodotto AS pr WHERE pv.idorder = ? AND pr.tipo = pv.tipo";
+		List<ProdottoAggregato> prodotti = null;
+		ProdottoAggregato p = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			handler.getStatement().setInt(1, id);
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				prodotti = new ArrayList<ProdottoAggregato>();
+				ResultSet result = handler.getResultSet();
+				
+				while (result.next()) {
+					p = new ProdottoAggregato();		
+					p.setTipo(result.getString("tipo"));
+					p.setDescrizione(result.getString("descrizione"));
+					p.setPrezzo(result.getInt("prezzo"));
+					p.setDisponibile(result.getBoolean("disponibile"));
+					p.setImg(result.getString("img"));
+					p.setNumProdotti(result.getInt("num"));
+					prodotti.add(p);
+				}
+			}
+			
+			return prodotti;
+			
+		}  catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		
 	}
 
 	

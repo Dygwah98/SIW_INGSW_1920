@@ -142,8 +142,19 @@
 		</div>
 	</div>
 	<!-- Room -->
-	<input type="button" id="filter-1" value="prezzodescrescente">
-	<input type="button" id="filter-1" value="prezzodescrescente">
+	<a href="prenotazioneroom.jsp" class="bottone">booking</a>
+	<style>
+	a.bottone {
+ 	color: #fff; /* colore del testo */
+    text-decoration: none; /* eliminare la sottolineatura del testo */
+    background: rgb(212,75,56); /* sfondo del bottone */
+    padding: .7em 1.5em; /* padding dal testo dal bordo del bottone */
+    outline: none; /*  eliminare bordo*/
+    } 
+    a.bottone:hover { background: rgb(232,95,76); } /* cambio dello sfondo al passagio del mouse */
+    a.bottone:active { background: rgb(152,15,0); } /* cambiare lo sfondo al premere bottone   */
+ 
+    </style>
 	<div class="row">
     			<div class="col-md-12">
     				<div class="cart-list">

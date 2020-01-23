@@ -9,7 +9,7 @@
   <link href="styles/RegistrationForm.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<form class="decor"  method="post" action="${pageContext.request.contextPath}/RegisterUser">
+<form class="decor"  method="post" action="${pageContext.request.contextPath}/addprenotazione">
   <div class="form-left-decoration"></div>
   <div class="form-right-decoration"></div>
   <div class="circle"></div>
