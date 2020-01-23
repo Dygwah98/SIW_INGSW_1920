@@ -242,7 +242,7 @@
   					<div class="text py-3 pb-4 px-3 text-center"> 
   						<h3><a href="#" onclick="aggiungiAlCarrello()">${prodotto.tipo}</a></h3>
   						<div class="d-flex">
-    						<p class="prezzo"><span class="mr-2 costo">${prodotto.prezzo} euro</span><span class="scontato">${prodotto.prezzo/2} euro</span></p>
+    						<p class="prezzo">${prodotto.prezzo} euro</p>
    						</div>
 	   					<div class="bottoni d-flex px-3">
 	   						<div class="m-auto d-flex">
