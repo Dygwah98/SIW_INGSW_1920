@@ -31,11 +31,14 @@
 			<div class="ml-auto d-flex flex-row align-items-center justify-content-start">
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-					<% if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
+					<% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))&& (request.getSession().getAttribute("admin") == null || !(boolean)request.getSession().getAttribute("admin"))){%>
 						<li><a href="Loginform.jsp">Login</a></li>
 					<% }else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 						  <li><a href="logout">Logout</a></li>
-					<%}  %>
+					<%}  
+					   else if (request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin")){%>
+						  <li><a href="logout">LogoutAdmin</a></li>
+					<%} %>
 						<li class="active"><a href="home">Home</a></li>
 						<li><a href="vediprodotti">Negozio</a></li>
 						<li><a href="aboutUs">About us</a></li>
@@ -71,10 +74,13 @@
 		<div class="menu_content">
 			<nav class="menu_nav text-right">
 				<ul>
-					<% if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
-						<li><a href="Loginform.jsp">Login</a></li>
-					<%} else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+					<% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))&& (request.getSession().getAttribute("admin") == null || !(boolean)request.getSession().getAttribute("admin"))){%>
+					<li><a href="Loginform.jsp">Login</a></li>
+				<% }else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 						  <li><a href="logout">Logout</a></li>
+					<%}
+					 if (request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin")){%>
+						  <li><a href="logout">LogoutAdmin</a></li>
 					<%}%>
 					<li class="active"><a href="index.jsp">Home</a></li>
 					<li ><a href="negozio.jsp">Negozio</a></li>

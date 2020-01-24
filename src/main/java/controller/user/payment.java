@@ -1,4 +1,4 @@
-package controller;
+package controller.user;
 
 import java.io.IOException;
 import java.util.List;
@@ -8,25 +8,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import model.Post;
 import persistence.DBManager;
 
 
-@WebServlet(value="/viewpost",name="viewpost")
-public class ViewPost extends HttpServlet {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@WebServlet(value="/payment",name="payment")
+public class payment extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<Post> r = DBManager.getInstance().getDAOFactory().getPostDao().retrieveAll();
-		request.setAttribute("post",r);
-		request.getRequestDispatcher("blog.jsp").forward(request, response);
-	}
+				DBManager.getInstance().getDAOFactory().getOrdineDao().pay((Integer)request.getSession().getAttribute("userId"));
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+
+			}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

@@ -13,5 +13,6 @@ public interface ProdottoDao extends Dao<Prodotto> {
 	public List<Prodotto> retrieveByType(String tipo);
 	public List<ProdottoAggregato> showProductsForShop();
 	public List<ProdottoAggregato> showProductsForCart(Integer id);
+	void updatesetordine(Integer idp,Integer ido);
 
 }
