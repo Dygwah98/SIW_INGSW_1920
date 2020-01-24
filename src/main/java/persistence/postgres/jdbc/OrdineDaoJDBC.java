@@ -260,6 +260,7 @@ public class OrdineDaoJDBC implements OrdineDao {
 		}
 		return null;
 	}
+	@Override
 	public Integer retrieveidorder(Integer idclient)
 	{
 		String ord="select idorder from ordine where idclient=? and pagato=false";

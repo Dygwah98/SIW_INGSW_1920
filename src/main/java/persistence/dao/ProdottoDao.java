@@ -12,4 +12,5 @@ public interface ProdottoDao extends Dao<Prodotto> {
 	public void connectByUserID(Integer id, Integer idProd);
 	public List<ProdottoAggregato> showProductsForShop();
 	public List<ProdottoAggregato> showProductsForCart(Integer id);
+	void updatesetordine(Integer idp,Integer ido);
 }

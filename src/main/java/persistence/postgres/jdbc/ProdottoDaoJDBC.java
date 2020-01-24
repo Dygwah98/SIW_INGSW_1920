@@ -330,6 +330,23 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		}
 		
 	}
-
+	@Override
+	public void updatesetordine(Integer idp,Integer ido) {
+		
+		String update = "update Prodotto set idordine=? where idprodotto=?";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
+			
+			PreparedStatement smt = handler.getStatement();
+			
+			smt.setInt(1,ido);
+			smt.setInt(1,idp);
+			handler.executeUpdate();
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+	
 	
 }
