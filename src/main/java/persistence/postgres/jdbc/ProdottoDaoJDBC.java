@@ -259,6 +259,37 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public Prodotto retrieveByType(String tipo) {
+		String query = "SELECT * FROM prodotto";
+		Prodotto p = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+		
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				ResultSet result = handler.getResultSet();
+				
+				while (result.next()) {
+					p = new Prodotto();
+					p.setIdprodotto(result.getInt("idprodotto"));		
+					p.setTipo(tipo);
+					p.setDescrizione(result.getString("descrizione"));
+					p.setPrezzo(result.getInt("prezzo"));
+					p.setDisponibile(result.getBoolean("disponibile"));
+					p.setImg(result.getString("img"));
+					p.setIdordine(result.getInt("idordine"));
+				}
+			}
+			
+			return p;
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
 
 	@Override
 	public List<ProdottoAggregato> showProductsForShop() {

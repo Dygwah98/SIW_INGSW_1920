@@ -241,11 +241,11 @@
 		<c:forEach var="prodotto" items="${prodotto}">
 			<div class="divProdotto ${prodotto.descrizione}">
   				<div class="prodotto"> 
-  					<a href="#" class="proiezione"><img src="${prodotto.img}.jpg" alt="peperone">
+  					<a href="singolo" class="proiezione"><img src="${prodotto.img}.jpg" alt="peperone">
   						<span class="sconto">50%</span> 
   					</a>
   					<div class="text py-3 pb-4 px-3 text-center"> 
-  						<h3><a href="#" onclick="aggiungiAlCarrello()">${prodotto.tipo}</a></h3>
+  						<h3><a id="tipo" href="#" onclick="aggiungiAlCarrello()">${prodotto.tipo}</a></h3>
   						<div class="d-flex">
     						<p class="prezzo">${prodotto.prezzo} euro</p>
    						</div>
