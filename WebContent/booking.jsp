@@ -50,7 +50,7 @@
 							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
 							  <div id="myDropdown" class="dropdown-content">
 								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
-								    <a href="#">GestioneCamere</a>
+								    <a href="gestioneCamere.jsp">GestioneCamere</a>
 								    <a href="logout">Logout</a>
 							  </div>
 						</div>
@@ -101,7 +101,7 @@
 							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
 							  <div id="myDropdown" class="dropdown-content">
 								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
-								    <a href="#">GestioneCamere</a>
+								    <a href="gestioneCamere.jsp">GestioneCamere</a>
 								    <a href="logout">Logout</a>
 							  </div>
 						</div>

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.websocket.Session;
 
-import com.sun.tools.javac.util.List;
 
 import model.Prodotto;
 import persistence.DBManager;

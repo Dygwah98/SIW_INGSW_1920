@@ -47,7 +47,7 @@ public class RoomServlet extends HttpServlet {
         }
         Dao<Room> roomdao = DBManager.getInstance().getDAOFactory().getRoomDao();
         roomdao.save(r);
-        resp.sendRedirect("Addroom.jsp");
+        resp.sendRedirect("gestioneCamere.jsp");
 
 	}
 }
