@@ -313,7 +313,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 					p.setPrezzo(result.getInt("prezzo"));
 					p.setDisponibile(result.getBoolean("disponibile"));
 					p.setImg(result.getString("img"));
-					p.setNumProdotti(result.getInt("numProdotti"));
+					p.setNumProdotti(result.getInt("num"));
 					prodotti.add(p);
 				}
 			}
@@ -329,7 +329,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public List<ProdottoAggregato> showProductsForCart(Integer id) {
 
-		String query = "SELECT pr.tipo, pr.descrizione, pv.totprezzo AS prezzo, pr.disponibile, pr.img, pv.num FROM productsByTypeOrder AS pv, prodotto AS pr WHERE pv.idorder = ? AND pr.tipo = pv.tipo";
+		String query = "SELECT pr.tipo, pr.descrizione, pv.totprezzo AS prezzo, pr.disponibile, pr.img, pv.num FROM productsbytypeorder AS pv, prodotto AS pr WHERE pv.idorder = ? AND pr.tipo = pv.tipo";
 		List<ProdottoAggregato> prodotti = null;
 		ProdottoAggregato p = null;
 		
@@ -371,7 +371,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			PreparedStatement smt = handler.getStatement();
 			
 			smt.setInt(1,ido);
-			smt.setInt(1,idp);
+			smt.setInt(2,idp);
 			handler.executeUpdate();
 		
 		} catch (SQLException e) {
