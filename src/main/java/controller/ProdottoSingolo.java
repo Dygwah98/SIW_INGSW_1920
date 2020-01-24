@@ -25,17 +25,9 @@ public class ProdottoSingolo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String tipo = request.getParameter("tipo");
-		Prodotto p = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType("Pomodoro");
-		if(p!=null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("prodotto", p);
-			request.setAttribute("prodotto",p);
-			request.getRequestDispatcher("prodottoSingolo.jsp").forward(request, response);
-			}
-			else {
-				request.getRequestDispatcher("prodottoSingolo.jsp").forward(request, response);
-
-			}
+		List<Prodotto> p = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo);
+		request.setAttribute("prodotto",p);
+		request.getRequestDispatcher("prodottoSingolo.jsp").forward(request, response);
 		
 		
 	}

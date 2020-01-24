@@ -120,15 +120,15 @@
 		</div>		
 	</div>
    
-  
+  <c:forEach var="prodotto" items="${prodotto}">
     <section id="prodotto"  class="ftco-section1">
     	<div class="container">
     		<div class="row">
     			<div   class="col-lg-6 mb-5 ">
-    				<a href="#" class="cursore"><img style="border: 1px solid orange" src="images/product-1.jpg"  alt=""></a>
+    				<a href="#" class="cursore"><img style="border: 1px solid orange" src="${prodotto.img}.jpg"  alt=""></a>
     			</div>
     			<div class="col-lg-6 dettagli-prodotto pl-md-5 ">
-    				<h3 >Peperone</h3>
+    				<h3 >${prodotto.tipo}</h3>
     				<div class="d-flex">
 							<p class="text-left mr-4" id="recensioni">
 								<a href="#"><span  class="ion-ios-star-outline"></span></a>
@@ -144,8 +144,8 @@
 								<a href="#" class="mr-2" style="color: #000;">500 <span style="color: orange;">Venduti</span></a>
 							</p>
 						</div>
-    				<p class="price"><span>3 euro</span></p>
-    				<p>Ortaggio</p>
+    				<p class="price"><span>${prodotto.prezzo}</span></p>
+    				<p>${prodotto.descrizione}</p>
 						<div class="row mt-4">
 							<div class="col-md-6">
 								<div class="form-group d-flex">
@@ -176,7 +176,7 @@
 	          				</div>
 	          				<div class="w-100"></div>
 	          				<div class="col-md-12">
-	          					<p style="color: #000;">600 kg disponibili</p>
+	          					<p style="color: #000;">In teoria la quantita andrebbe qua!</p>
 	          				</div>
           				</div>
           				<p><a href="cart.html" class="btn btn-black py-3 px-5">Aggiungi al carrello</a></p>
@@ -184,6 +184,7 @@
     			</div>
     		</div>
     	</section>
+    </c:forEach>
     	
        <section class="ftco-section">
 	    	<div class="container">
@@ -196,16 +197,17 @@
 	       </div>
 	   </section>
 	   
-	  <div class="divCatalogo">
-			<div class="divProdotto Ortaggi">
+	 <div class="divCatalogo">
+		<c:forEach var="prodotto" items="${prodotto}">
+			<div class="divProdotto ${prodotto.descrizione}">
   				<div class="prodotto"> 
-  					<a href="#" class="proiezione"><img src="images/Product-1.jpg" alt="peperone">
+  					<a href="#" class="proiezione"><img src="${prodotto.img}.jpg" alt="peperone">
   						<span class="sconto">50%</span> 
   					</a>
   					<div class="text py-3 pb-4 px-3 text-center"> 
-  						<h3><a id="tipo" href="#" onclick="aggiungiAlCarrello()">Peperone</a></h3>
+  						<h3><a id="tipo" href="#" onclick="aggiungiAlCarrello()">${prodotto.tipo}</a></h3>
   						<div class="d-flex">
-    						<p class="prezzo"><span class="mr-2 costo">3 euro</span><span class="scontato">3 euro</span></p>
+    						<p class="prezzo">${prodotto.prezzo} euro</p>
    						</div>
 	   					<div class="bottoni d-flex px-3">
 	   						<div class="m-auto d-flex">
@@ -223,6 +225,7 @@
   					</div>
   				</div>
     		</div>		    	
+		</c:forEach>
     </div>
      
      <!-- Footer -->
