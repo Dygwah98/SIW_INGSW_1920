@@ -8,4 +8,5 @@ import persistence.Dao;
 
 public interface RoomDao extends Dao<Room>{
 	public void roomoccupata(Integer idcamera);
+	public void roomoccupatafalse(Integer idcamera);
 }

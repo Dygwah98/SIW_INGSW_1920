@@ -192,7 +192,7 @@
 						      <%-- <c:forEach var="prezziprenotazione"  items="${prezziprenotazione}" > --%>
 						    <tbody style="background-color: white;">
 						      <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+						        <td class="product-remove"><a href="deleteprenotazione?idc=${prenotazione.idcamera}&idp=${prenotazione.idprenotazione}"><span class="ion-ios-close"></span></a></td>
 						        <td >
 						        	<p>${prenotazione.idordine}</p>
 						        </td>

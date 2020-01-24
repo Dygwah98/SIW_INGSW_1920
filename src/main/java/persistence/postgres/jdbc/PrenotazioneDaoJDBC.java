@@ -118,6 +118,20 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 			throw new RuntimeException(e.getMessage());
 		}	
 	}
+	@Override
+	public void deletep(Integer id) {
+		
+		String delete = "DELETE FROM prenotazioni WHERE idprenotazione = ? ";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
+			
+			handler.getStatement().setInt(1,id);
+			handler.getStatement().executeUpdate();
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}	
+	}
 /*	
 	@Override
 	public ArrayList<Prenotazione> retrieve(Integer nPren, Integer maxPren) throws SQLException {

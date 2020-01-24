@@ -1,4 +1,4 @@
-package controller.admin;
+package controller.user;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -11,25 +11,24 @@ import model.Prodotto;
 import persistence.DBManager;
 import persistence.Dao;
 
-@WebServlet(value = "/deleteprodotto", name = "deleteprodotto")
-public class DeleteProdotto extends HttpServlet {
+@WebServlet(value = "/deleteprenotazione", name = "deleteprenotazione")
+public class deleteprenotazionetocart extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Integer idp=Integer.parseInt(req.getParameter("idp"));
+		Integer idc=Integer.parseInt(req.getParameter("idc"));
 
+		DBManager.getInstance().getDAOFactory().getPrenotazioneDao().deletep(idp);
+		DBManager.getInstance().getDAOFactory().getRoomDao().roomoccupatafalse(idc);
+        resp.sendRedirect("addcart");
+
+		
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("Id");
 		
-        Prodotto p = new Prodotto();
-        String numero1 =id;
-        int intero1 = Integer.parseInt(numero1);
-        p.setIdprodotto(intero1);
-         DBManager.getInstance().getDAOFactory().getProdottoDao().delete(p);
-        
-        resp.sendRedirect("gestioneProdotti.jsp");
 
 	}
 }

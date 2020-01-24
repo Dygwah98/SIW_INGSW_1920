@@ -127,6 +127,21 @@ public class RoomDaoJDBC implements RoomDao {
 			throw new RuntimeException(e.getMessage());
 		}
 	}
+	@Override
+	public void roomoccupatafalse(Integer idcamera) {
+		String update = "UPDATE Room SET occupata = false  WHERE idcamera = ?";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
+	
+			PreparedStatement smt = handler.getStatement();
+			smt.setInt(1, idcamera);
+			
+			smt.executeUpdate();
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
 /*
 	@Override
 	public ArrayList<Room> retrieve(Integer nRoom, Integer maxRoom) {
