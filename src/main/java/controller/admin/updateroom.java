@@ -1,4 +1,4 @@
-package controller;
+package controller.admin;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -11,8 +11,8 @@ import model.Room;
 import persistence.DBManager;
 import persistence.Dao;
 
-@WebServlet(value = "/rooms_servlet", name = "rooms_servlet")
-public class RoomServlet extends HttpServlet {
+@WebServlet(value = "/updaterooms_servlet", name = "updaterooms_servlet")
+public class updateroom extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -46,8 +46,8 @@ public class RoomServlet extends HttpServlet {
         	r.setImg("/images/user_1");
         }
         Dao<Room> roomdao = DBManager.getInstance().getDAOFactory().getRoomDao();
-        roomdao.save(r);
-        resp.sendRedirect("Addroom.jsp");
+        roomdao.update(r);;
+        resp.sendRedirect("updateroom.jsp");
 
 	}
 }

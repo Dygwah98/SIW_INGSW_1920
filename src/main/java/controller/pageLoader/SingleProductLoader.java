@@ -1,4 +1,4 @@
-package controller;
+package controller.pageLoader;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,28 +14,20 @@ import model.Prodotto;
 import persistence.DBManager;
 
 @WebServlet(value="/singolo",name="singolo")
-public class ProdottoSingolo extends HttpServlet {
+public class SingleProductLoader extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public ProdottoSingolo() {
+	public SingleProductLoader() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String tipo = request.getParameter("tipo");
-		Prodotto p = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType("Pomodoro");
-		if(p!=null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("prodotto", p);
-			request.setAttribute("prodotto",p);
-			request.getRequestDispatcher("prodottoSingolo.jsp").forward(request, response);
-			}
-			else {
-				request.getRequestDispatcher("prodottoSingolo.jsp").forward(request, response);
-
-			}
+		List<Prodotto> p = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo);
+		request.setAttribute("prodotto",p);
+		request.getRequestDispatcher("prodottoSingolo.jsp").forward(request, response);
 		
 		
 	}

@@ -162,7 +162,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public void update(Prodotto prodotto) {
 		
-		String update = "update Prodotto SET tipo=?,descrizione=?,prezzo=?,img=?,idordine=? where idprodotto=?";
+		String update = "UPDATE prodotto SET tipo=?,descrizione=?,prezzo=? WHERE idprodotto=?";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 			
@@ -171,10 +171,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			smt.setString(1, prodotto.getTipo());
 			smt.setString(2, prodotto.getDescrizione());
 			smt.setInt(3, prodotto.getPrezzo());
-			smt.setString(4, prodotto.getImg());
-			smt.setBoolean(5, prodotto.getDisponibile());
-			smt.setInt(6, prodotto.getIdordine());
-			smt.setInt(7, prodotto.getIdprodotto());
+			smt.setInt(4, prodotto.getIdprodotto());
 			handler.executeUpdate();
 		
 		} catch (SQLException e) {
@@ -185,7 +182,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public void delete(Prodotto prodotto) {
 
-		String delete = "delete FROM Prodotto WHERE id = ? ";
+		String delete = "delete FROM Prodotto WHERE idprodotto = ? ";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			
@@ -261,35 +258,43 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	}
 	
 	@Override
-	public Prodotto retrieveByType(String tipo) {
-		String query = "SELECT * FROM prodotto";
+	public List<Prodotto> retrieveByType(String tipo) {
+		String query = "SELECT tipo, descrizione, prezzo, disponibile, img,idprodotto FROM prodotto WHERE tipo = ?";
 		Prodotto p = null;
+		List<Prodotto> prodotti = null;
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-		
+			
+			handler.getStatement().setString(1, tipo);
 			handler.executeQuery();
 			
 			if(handler.existsResultSet()) {
+				prodotti = new ArrayList<Prodotto>();
 				ResultSet result = handler.getResultSet();
-				
+
 				while (result.next()) {
-					p = new Prodotto();
-					p.setIdprodotto(result.getInt("idprodotto"));		
-					p.setTipo(tipo);
+					p = new Prodotto();		
+					p.setTipo(result.getString("tipo"));
 					p.setDescrizione(result.getString("descrizione"));
 					p.setPrezzo(result.getInt("prezzo"));
 					p.setDisponibile(result.getBoolean("disponibile"));
 					p.setImg(result.getString("img"));
-					p.setIdordine(result.getInt("idordine"));
+					p.setIdprodotto(result.getInt("idprodotto"));
+					if(prodotti.size()==0)
+						prodotti.add(p);
+				
 				}
 			}
 			
-			return p;
-		
-		} catch (SQLException e) {
+			return prodotti;
+			
+		}  catch(SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		}
+		
 	}
+
+	
 
 	@Override
 	public List<ProdottoAggregato> showProductsForShop() {

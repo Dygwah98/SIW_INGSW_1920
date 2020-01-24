@@ -17,6 +17,7 @@
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.3.4/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="styles/Negozio.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/menuATendina.css">
 
 <link rel="stylesheet" href="styles/icomoon.css">
 <link rel="stylesheet" href="styles/ionicons.min.css">
@@ -24,11 +25,13 @@
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="plugins/OwlCarousel2-2.3.4/owl.carousel.js"></script>
 <script src="js/custom.js"></script>
+<script src="js/menuATendina.js"></script>
 
 
 </head>
 
 <body>
+
 
 	
 	<!-- Intestazione -->
@@ -45,8 +48,14 @@
 						  <li><a href="logout">Logout</a></li>
 					<%}  
 					   else if (request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin")){%>
-					   	<li><a href="createProduct.jsp">creaProdotto</a></li>
-						  <li><a href="logout">LogoutAdmin</a></li>
+						<div class="dropdown">
+							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
+							  <div id="myDropdown" class="dropdown-content">
+								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
+								    <a href="#">GestioneCamere</a>
+								    <a href="logout">Logout</a>
+							  </div>
+						</div>
 					<%} %>
 						
 						<li ><a href="index.jsp">Home</a></li>
@@ -82,8 +91,14 @@
 						  <li><a href="logout">Logout</a></li>
 					<%}  
 					   else if (request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin")){%>
-					   	<li><a href="createProduct.jsp">creaProdotto</a></li>
-						  <li><a href="logout">LogoutAdmin</a></li>
+						 <div class="dropdown">
+							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>		
+							  <div id="myDropdown" class="dropdown-content">
+								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
+								    <a href="#">GestioneCamere</a>
+								    <a href="logout">Logout</a>
+							  </div>
+						</div>
 					<%} %>
 					<li ><a href="index.jsp">Home</a></li>
 					<li class="active"><a href="negozio.jsp">Negozio</a></li>
@@ -208,6 +223,8 @@
 
 	<!-- body -->
 	
+	
+	
 	<section id="piu" class="ftco-section">
     	<div class="container">
 				<div class="row justify-content-center mb-3 pb-3">
@@ -241,7 +258,7 @@
 		<c:forEach var="prodotto" items="${prodotto}">
 			<div class="divProdotto ${prodotto.descrizione}">
   				<div class="prodotto"> 
-  					<a href="singolo" class="proiezione"><img src="${prodotto.img}.jpg" alt="peperone">
+  					<a href="singolo?tipo=${prodotto.tipo}" class="proiezione"><img src="${prodotto.img}.jpg" alt="peperone">
   						<span class="sconto">50%</span> 
   					</a>
   					<div class="text py-3 pb-4 px-3 text-center"> 
