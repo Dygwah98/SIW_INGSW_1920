@@ -1,4 +1,4 @@
-package controller;
+package controller.pageLoader;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,11 +14,11 @@ import model.Prodotto;
 import persistence.DBManager;
 
 @WebServlet(value="/singolo",name="singolo")
-public class ProdottoSingolo extends HttpServlet {
+public class SingleProductLoader extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public ProdottoSingolo() {
+	public SingleProductLoader() {
 		super();
 	}
 
