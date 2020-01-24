@@ -132,35 +132,43 @@
 						    <thead class="thead-primary">
 						      <tr class="text-center">
 						        <th>&nbsp;</th>
-						        <th>&nbsp;</th>
-						        <th>Nome Prodotto</th>
-						        <th>Prezzo</th>
+						      	 <th>&nbsp;</th>
+						      	  
+						        <th>tipo</th>
+						        <th>descrizione</th>
+						        <th>prezzo</th>
+						        
 						        <th>Quantità</th>
+						        
 						      </tr>
 						    </thead>
+						    <c:forEach var="prodc" items="${prodc}">
+						    
 						    <tbody style="background-color: white;">
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/product-3.jpg);"></div></td>
+						        <td class="image-prod"><div class="img" style="background-image:url(${prodc.img}.jpg);"></div></td>
 						        
 						        <td class="product-name">
-						        	<h3>Fagiolini</h3>
-						        	<p> Baccello verde e acerbo, raccolto e consumato con il suo baccello</p>
+						        	<h3>${prodc.tipo}</h3>
+						        	
 						        </td>
-						        
-						        <td class="prezzo">3.90 euro</td>
+						        <td class="product-descrizione">
+						       
+						        	<p>${prodc.descrizione}</p>
+						        </td>
+						        <td class="prezzo">${prodc.prezzo}</td>
 						        
 						        <td class="quantity">
-						        	<div class="input-group mb-3">
-					             		<a href="#piu" onclick="decrementa()" class="previous round">-</a>
-					             			<input id="valore" type="text" name="quantity" class="quantity form-control input-number" value="0" min="1" max="100">
-					          			<a href="#piu" onclick="incrementa()"  class="next round">+</a>
+						        		${prodc.numProdotti}
 					          		</div>
 					          </td>
 						        
 						      </tr><!-- END TR-->
+						      
 						    </tbody>
+						     </c:forEach>
 						  </table>
 					  </div>
     			</div>
@@ -208,25 +216,6 @@
 					  </div>
     			</div>
     		</div>
-    		
-    		<div class="container">
-    			<div  class="col-lg-4 mt-5 cart-wrap ">
-    				<div class="cart-total mb-3">
-    					<h4>Resoconto</h4>
-    					<p class="d-flex">
-    						<span><b>1x</b></span>
-    						<span class="corrispondente">Fagiolini</span>
-    					</p>
-    					<p class="d-flex">
-    						<span><b>1x</b></span>
-    						<span class="corrispondente">Singola</span>
-    					</p>
-    					<hr>
-    					<p class="d-flex total-price">
-    						<span><b>Totale</b></span>
-    						<span class="corrispondente">103,90 euro</span>
-    					</p>
-    				</div>
     				<p><a href="payment" class="btn btn-primary py-3 px-4">Procedi al pagamento</a></p>
     			</div>
     		</div>

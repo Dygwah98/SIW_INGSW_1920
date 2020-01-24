@@ -2,7 +2,7 @@ package model;
 
 public class ProdottoAggregato extends Prodotto {
 
-	private Integer numProdotti;
+	private Integer numProdotti=null;
 	
 	public ProdottoAggregato() {
 		super();

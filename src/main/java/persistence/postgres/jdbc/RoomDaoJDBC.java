@@ -44,7 +44,7 @@ public class RoomDaoJDBC implements RoomDao {
 	@Override
 	public List<Room> retrieveAll() {
 		
-		String query = "SELECT * FROM room";
+		String query = "SELECT * FROM room where occupata=false";
 		List<Room> rooms = null;
 		Room room = null;
 		
