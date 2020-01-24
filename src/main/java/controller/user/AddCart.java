@@ -28,6 +28,7 @@ public class AddCart extends HttpServlet {
 		List<ProdottoAggregato> prodc = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForCart(idord);
 		List<Integer> prezzi = DBManager.getInstance().getDAOFactory().getOrdineDao().retrieveprezzocamere((Integer)request.getSession().getAttribute("userId"));
 		HttpSession session = request.getSession();
+		session.setAttribute("idordine", idord);
 		session.setAttribute("prenotazione", p);
 		request.setAttribute("prenotazione",p);
 		session.setAttribute("prezziprenotazione", prezzi);

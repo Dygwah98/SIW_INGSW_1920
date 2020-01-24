@@ -249,8 +249,8 @@
 	  <button class="elementi active" onclick="filterSelection('all')">Tutti i prodotti</button>
 	  <button class="elementi" onclick="filterSelection('verdura')"> Verdure</button>
 	  <button class="elementi" onclick="filterSelection('ortaggio')"> Ortaggi</button>
-	  <button class="elementi" onclick="filterSelection('Salumi')"> Salumi</button>
-	  <button class="elementi" onclick="filterSelection('Formaggi')"> Formaggi</button>
+	  <button class="elementi" onclick="filterSelection('salume')"> Salumi</button>
+	  <button class="elementi" onclick="filterSelection('formaggio')"> Formaggi</button>
 	  <button class="elementi" onclick="ordina()">Ordina</button>
 	</div>
 	

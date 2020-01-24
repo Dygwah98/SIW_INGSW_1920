@@ -71,6 +71,35 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		}
 	}
 */
+	@Override
+	public void prodottoCartRemove(Integer idprod) {
+		String update = "UPDATE prodotto SET idordine = null  WHERE idprodotto = ?";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
+	
+			PreparedStatement smt = handler.getStatement();
+			smt.setInt(1, idprod);	
+			smt.executeUpdate();
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+	
+	@Override
+	public void deletep(Integer id) {
+		
+		String delete = "DELETE FROM prenotazioni WHERE idprodotto = ? ";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
+			
+			handler.getStatement().setInt(1,id);
+			handler.getStatement().executeUpdate();
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}	
+	}
 	
 	@Override
 	public List<Prodotto> retrieveByUserID(Integer ID) {

@@ -146,8 +146,8 @@
 						    
 						    <tbody style="background-color: white;">
 						      <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-						        
+						        <td class="prod-remove"><a href="deleteprodottotocart?idcl=${prodc.idordine}&tipo=${prodc.tipo}"><span class="ion-ios-close"></span></a></td>
+						     						        
 						        <td class="image-prod"><div class="img" style="background-image:url(${prodc.img}.jpg);"></div></td>
 						        
 						        <td class="product-name">
@@ -189,7 +189,6 @@
 						      </tr>
 						    </thead>
 						     <c:forEach var="prenotazione" items="${prenotazione}" varStatus="status">
-						      <%-- <c:forEach var="prezziprenotazione"  items="${prezziprenotazione}" > --%>
 						    <tbody style="background-color: white;">
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="deleteprenotazione?idc=${prenotazione.idcamera}&idp=${prenotazione.idprenotazione}"><span class="ion-ios-close"></span></a></td>
