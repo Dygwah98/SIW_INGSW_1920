@@ -45,7 +45,7 @@ public class Login extends HttpServlet {
 			req.getSession().setAttribute("logged",true);
 	        resp.addCookie(new Cookie("logged", "true"));
 			session.setAttribute("username", username);
-
+			
 			
 			session.setAttribute("email", utente.getEmail());
 			session.setAttribute("nome", utente.getName());

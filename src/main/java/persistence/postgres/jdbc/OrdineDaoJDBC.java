@@ -271,7 +271,6 @@ public class OrdineDaoJDBC implements OrdineDao {
 			
 			if(handler.existsResultSet()) {
 				ResultSet result = handler.getResultSet();
-				result.next();
 				return idord=new Integer(result.getInt("idorder"));
 			}
 			

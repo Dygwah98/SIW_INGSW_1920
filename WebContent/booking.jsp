@@ -166,8 +166,7 @@
 						    <thead class="thead-secondary">
 						      <tr class="text-center">
 						        <th>&nbsp;</th>
-						        
-						        <th>N_Camera</th>
+						        <th>&nbsp;</th>
 						        <th>Tipo</th>
 						        <th>Descrizione</th>
 						        <th>maxpersone</th>
@@ -179,12 +178,9 @@
 						    <c:forEach var="room" items="${room}">
 						    <tbody style="background-color: white;">
 						      <tr class="text-center">
-						       
+						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 						        
 						        <td class="image-prod"><div class="img" style="background-image:url(${room.img }.jpg);"></div></td>
-						         <td >
-						        	<p>${room.id}</p>
-						        </td>
 						        <td >
 						        	<p>${room.tipo}</p>
 						        </td>

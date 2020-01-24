@@ -20,11 +20,9 @@ public class AddProdottoToCart extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		Integer idord=	DBManager.getInstance().getDAOFactory().getOrdineDao().retrieveidorder((Integer)request.getSession().getAttribute("userId"));
 		Integer idp=Integer.parseInt(request.getParameter("idp"));
-		System.out.println((Integer)request.getSession().getAttribute("userId"));
-		System.out.println(idord);
-
 		DBManager.getInstance().getDAOFactory().getProdottoDao().updatesetordine(idp,idord);
 		
 		HttpSession session = request.getSession();
@@ -34,7 +32,7 @@ public class AddProdottoToCart extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+			
 	}
 
 }
