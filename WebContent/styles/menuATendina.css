@@ -1,0 +1,40 @@
+@charset "ISO-8859-1";
+
+.dropbtn {
+  color: red;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+
+.dropdown {
+  color:white;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown li:hover {color: #ffa37b;}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {color: #ffa37b;}
+
+.show {display: block;}

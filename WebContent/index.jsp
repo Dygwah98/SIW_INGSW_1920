@@ -18,7 +18,10 @@
 
 <link rel="stylesheet" href="styles/icomoon.css">
 <link rel="stylesheet" href="styles/ionicons.min.css">
+<link rel="stylesheet" type="text/css" href="styles/menuATendina.css">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="js/menuATendina.js"></script>
 </head>
 <body>
 	
@@ -37,7 +40,14 @@
 						  <li><a href="logout">Logout</a></li>
 					<%}  
 					   else if (request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin")){%>
-						  <li><a href="logout">LogoutAdmin</a></li>
+						  <div class="dropdown">
+							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
+							  <div id="myDropdown" class="dropdown-content">
+								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
+								    <a href="#">GestioneCamere</a>
+								    <a href="logout">Logout</a>
+							  </div>
+						</div>
 					<%} %>
 						<li class="active"><a href="home">Home</a></li>
 						<li><a href="vediprodotti">Negozio</a></li>
@@ -80,7 +90,14 @@
 						  <li><a href="logout">Logout</a></li>
 					<%}
 					 if (request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin")){%>
-						  <li><a href="logout">LogoutAdmin</a></li>
+						  <div class="dropdown">
+							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
+							  <div id="myDropdown" class="dropdown-content">
+								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
+								    <a href="#">GestioneCamere</a>
+								    <a href="logout">Logout</a>
+							  </div>
+						</div>
 					<%}%>
 					<li class="active"><a href="index.jsp">Home</a></li>
 					<li ><a href="negozio.jsp">Negozio</a></li>

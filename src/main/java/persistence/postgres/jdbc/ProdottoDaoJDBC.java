@@ -162,7 +162,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public void update(Prodotto prodotto) {
 		
-		String update = "update Prodotto SET tipo=?,descrizione=?,prezzo=?,img=?,idordine=? where idprodotto=?";
+		String update = "UPDATE prodotto SET tipo=?,descrizione=?,prezzo=? WHERE idprodotto=?";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 			
@@ -171,10 +171,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			smt.setString(1, prodotto.getTipo());
 			smt.setString(2, prodotto.getDescrizione());
 			smt.setInt(3, prodotto.getPrezzo());
-			smt.setString(4, prodotto.getImg());
-			smt.setBoolean(5, prodotto.getDisponibile());
-			smt.setInt(6, prodotto.getIdordine());
-			smt.setInt(7, prodotto.getIdprodotto());
+			smt.setInt(4, prodotto.getIdprodotto());
 			handler.executeUpdate();
 		
 		} catch (SQLException e) {
@@ -185,7 +182,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public void delete(Prodotto prodotto) {
 
-		String delete = "delete FROM Prodotto WHERE id = ? ";
+		String delete = "delete FROM Prodotto WHERE idprodotto = ? ";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			
