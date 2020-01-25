@@ -266,12 +266,13 @@
   						<div class="d-flex">
     						<p class="prezzo">${prodotto.prezzo} euro</p>
    						</div>
+   						
 	   					<div class="bottoni d-flex px-3">
 	   						<div class="m-auto d-flex">
 	   							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 	   								<span><i class="ion-ios-menu"></i></span>
 	   							</a>
-	   							<a href="addpcart?idp=${prodotto.idprodotto}" class="buy-now d-flex justify-content-center align-items-center mx-1">
+	   							<a href="addpcart?tip=${prodotto.tipo}" class="buy-now d-flex justify-content-center align-items-center mx-1">
 	   								<span><i class="ion-ios-cart"></i></span>
 	   							</a>
 	   							<a href="#" class="heart d-flex justify-content-center align-items-center ">
