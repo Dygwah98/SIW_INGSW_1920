@@ -176,14 +176,25 @@
     a.bottone:active { background: rgb(152,15,0); } /* cambiare lo sfondo al premere bottone   */
  
     </style>
+    
+    <div id="cate" class="categorie">
+	  <button class="cat">Categorie:</button>
+	  <button class="elementi active" onclick="filterSelection('all')">Tutti le camere</button>
+	  <button class="elementi" onclick="filterSelection('singola')"> Singola</button>
+	  <button class="elementi" onclick="filterSelection('doppia')"> Doppia</button>
+	</div>
+    
 	<div class="row">
     			<div class="col-md-12">
     				<div class="cart-list">
+    				<c:forEach var="room" items="${room}">
+					    	<div class="divCamera ${room.tipo}">
 	    				<table class="table">
+	    					
 						    <thead class="thead-secondary">
 						      <tr class="text-center">
 						        <th>&nbsp;</th>
-						        
+						         <th>&nbsp;</th>
 						        <th>N_Camera</th>
 						        <th>Tipo</th>
 						        <th>Descrizione</th>
@@ -193,47 +204,32 @@
 						      
 						      </tr>
 						    </thead>
-						    <c:forEach var="room" items="${room}">
-						    <tbody style="background-color: white;">
-						      <tr class="text-center">
-						       
-						        
-						        <td class="image-prod"><div class="img" style="background-image:url(${room.img }.jpg);"></div></td>
-						         <td >
-						        	<p>${room.id}</p>
-						        </td>
-						        <td >
-						        	<p>${room.tipo}</p>
-						        </td>
-						        <td >
-						        	<p> 
-						        		<ul>
-						        			${room.descrizione}
-						        		</ul>
-						        	</p>
-						        </td>
-						         <td >
-						        	<p> 
-						        		<ul>
-						        			${room.maxpersone}
-						        		</ul>
-						        	</p>
-						        </td>
-						          <td >
-						        	<p> 
-						        		<ul>
-						        			${room.occupata}
-						        		</ul>
-						        	</p>
-						        </td>
-						        <td class="prezzo">${room.prezzo}</td>
-						      </tr><!-- END TR-->
-						    </tbody>
-						    </c:forEach>
-						  </table>
-					  </div>
-    			</div>
-    		</div>
+						    
+					    			<tbody>
+						    			<tr class="text-center">
+						    				<td>&nbsp;</td>
+						    				<td ><a href="#" ><img src="${room.img}.jpg" alt="stanza"></a></td>
+						         			<td ><p>${room.id}</p></td>
+									        <td ><p>${room.tipo}</p></td>
+									        <td ><p>${room.descrizione}</p></td>
+									        <td ><p> ${room.maxpersone}</p></td>
+									        <td ><p>${room.occupata}</p></td>
+									        <td ><p>${room.prezzo}</p></td>	
+									    </tr>
+									 </tbody>
+							
+						    
+						    
+						</table>
+						</div>
+					</c:forEach>
+					</div>
+				</div>
+			</div>
+						
+		    
+									         
+									        
 	
 	<!-- Footer -->
 
@@ -307,6 +303,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 </div>
 
 <script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/filtri.js"></script>
 <script src="styles/bootstrap-4.1.2/popper.js"></script>
 <script src="styles/bootstrap-4.1.2/bootstrap.min.js"></script>
 <script src="plugins/greensock/TweenMax.min.js"></script>

@@ -521,14 +521,7 @@ form.example::after {
 @media (min-width:1200px){.divCatalogo{max-width:1140px}}
 
 /* Style the buttons */
-.elementi {
-  border: 2px solid orange;
-  outline: none;
-  padding: 12px 16px;
-  background-color: #f1f1f1;
-  cursor: pointer;
-  position: relative;
-}
+
 
 .cat {
   border: none;
@@ -541,6 +534,16 @@ form.example::after {
   cursor: pointer;
   position: relative;
 }
+
+.elementi {
+  border: 2px solid orange;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  position: relative;
+}
+
 .elementi:hover {
   background-color: #ffA500;
 }
