@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.websocket.Session;
 
 
-
 import model.Prodotto;
 import persistence.DBManager;
 import persistence.Dao;

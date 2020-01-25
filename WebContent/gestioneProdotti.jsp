@@ -7,7 +7,7 @@
   <title>GESTIONE PRODOTTI</title>
   <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
   <link href="styles/RegistrationForm.css" rel="stylesheet" type="text/css" />
-  <style type="">
+  <style>
   
   	
   	.c{
@@ -16,6 +16,7 @@
   		flex-direction: row;            
   		flex-wrap: nowrap;              
   		justify-content: space-between; 
+  		text-align: center;
   	}
   	
   	#aggiungi{
@@ -23,8 +24,8 @@
   	}
   	
   	#elimina{
-  	display: inline-block;
-  		margin: 0 auto; width: 100%;
+  		display: inline-block;
+  		 width: 100%;
   	}
   	
   	#aggiorna{
@@ -34,39 +35,40 @@
   </style>
 </head>
 
-<div class="c">
-<body>
-	<form id="aggiungi" class="decor"  method="post" action="${pageContext.request.contextPath}/addproduct" >
-	  
-	  <div class="form-inner">
-	   	<h3>INSERISCI UN NUOVO PRODOTTO</h3>
-		    <input type="text" name="Tipo"placeholder="nome">
-		    <input type="text" name="Descrizione" placeholder="Descrizione">
-		    <input type="text" name="Prezzo"placeholder="prezzo">
-		    <input type="submit" value="Invia">
-	  </div>
-	</form>
 
-	<form id="elimina" class="decor"  method="post" action="${pageContext.request.contextPath}/deleteprodotto" >
-	 
-	  <div class="form-inner">
-	    <h3>ELIMINA UN PRODOTTO</h3>
-	     <input type="text" name="Id" placeholder="id">
-	     <input type="submit" value="Invia">
-	  </div>
-	</form>
+<body>
+	<div class="c">
+		<form id="aggiungi" class="decor"  method="post" action="${pageContext.request.contextPath}/addproduct" >
+		  
+		  <div class="form-inner">
+		   	<h3>INSERISCI UN NUOVO PRODOTTO</h3>
+			    <input type="text" name="Tipo"placeholder="nome">
+			    <input type="text" name="Descrizione" placeholder="Descrizione">
+			    <input type="text" name="Prezzo"placeholder="prezzo">
+			    <input type="submit" value="Invia">
+		  </div>
+		</form>
 	
-	<form id="aggiorna" class="decor"  method="post" action="${pageContext.request.contextPath}/updateprodotto" >
-	  
-	  <div class="form-inner">
-	    <h3>AGGIORNA UN PRODOTTO</h3>
-	     	<input type="text" name="Id" placeholder="id">
-		    <input type="text" name="Tipo" placeholder="Tipo">
-		    <input type="text" name="Descrizione" placeholder="Descrizione">
-		    <input type="text" name="Prezzo" placeholder="prezzo"> 
-		    <input type="submit" value="Invia">
-	  </div>
-	</form>
+		<form id="elimina" class="decor"  method="post" action="${pageContext.request.contextPath}/deleteprodotto" >
+		 
+		  <div class="form-inner">
+		    <h3>ELIMINA UN PRODOTTO</h3>
+		     <input type="text" name="Id" placeholder="id">
+		     <input type="submit" value="Invia">
+		  </div>
+		</form>
+		
+		<form id="aggiorna" class="decor"  method="post" action="${pageContext.request.contextPath}/updateprodotto" >
+		  
+		  <div class="form-inner">
+		    <h3>AGGIORNA UN PRODOTTO</h3>
+		     	<input type="text" name="Id" placeholder="id">
+			    <input type="text" name="Tipo" placeholder="Tipo">
+			    <input type="text" name="Descrizione" placeholder="Descrizione">
+			    <input type="text" name="Prezzo" placeholder="prezzo"> 
+			    <input type="submit" value="Invia">
+		  </div>
+		</form>
 	</div>
 </body>
 </html>

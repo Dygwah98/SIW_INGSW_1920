@@ -29,7 +29,7 @@ public class deleteroom extends HttpServlet {
         r.setId(intero2);
         Dao<Room> roomdao = DBManager.getInstance().getDAOFactory().getRoomDao();
         roomdao.delete(r);
-        resp.sendRedirect("deleteroom.jsp");
+        resp.sendRedirect("gestioneCamere.jsp");
 
 	}
 }

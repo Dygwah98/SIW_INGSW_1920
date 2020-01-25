@@ -47,7 +47,7 @@ public class updateroom extends HttpServlet {
         }
         Dao<Room> roomdao = DBManager.getInstance().getDAOFactory().getRoomDao();
         roomdao.update(r);;
-        resp.sendRedirect("updateroom.jsp");
+        resp.sendRedirect("gestioneCamere.jsp");
 
 	}
 }
