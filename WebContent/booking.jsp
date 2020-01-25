@@ -188,7 +188,6 @@
 						        <th>Tipo</th>
 						        <th>Descrizione</th>
 						        <th>maxpersone</th>
-						        <th>occupata</th>
 						        <th>prezzo</th>
 						      
 						      </tr>
@@ -219,13 +218,7 @@
 						        		</ul>
 						        	</p>
 						        </td>
-						          <td >
-						        	<p> 
-						        		<ul>
-						        			${room.occupata}
-						        		</ul>
-						        	</p>
-						        </td>
+						        
 						        <td class="prezzo">${room.prezzo}</td>
 						      </tr><!-- END TR-->
 						    </tbody>
