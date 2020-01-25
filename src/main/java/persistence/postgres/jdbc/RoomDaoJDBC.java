@@ -1,5 +1,6 @@
 package persistence.postgres.jdbc;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -113,29 +114,14 @@ public class RoomDaoJDBC implements RoomDao {
 		}
 	}
 	@Override
-	public void roomoccupata(Integer idcamera) {
-		String update = "UPDATE Room SET occupata = true  WHERE idcamera = ?";
+	public void updateOccupata(Integer idRoom, Boolean value) {
+		String update = "UPDATE Room SET occupata = ? WHERE idcamera = ?";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 	
 			PreparedStatement smt = handler.getStatement();
-			smt.setInt(1, idcamera);
-			
-			smt.executeUpdate();
-		
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
-		}
-	}
-	@Override
-	public void roomoccupatafalse(Integer idcamera) {
-		String update = "UPDATE Room SET occupata = false  WHERE idcamera = ?";
-		
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
-	
-			PreparedStatement smt = handler.getStatement();
-			smt.setInt(1, idcamera);
-			
+			smt.setBoolean(1, value);
+			smt.setInt(2, idRoom);
 			smt.executeUpdate();
 		
 		} catch (SQLException e) {
@@ -207,7 +193,44 @@ public class RoomDaoJDBC implements RoomDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-	
+/*
+	@Override
+	public List<Room> retrieveByDate(Date checkin, Date checkout) {
+		
+		String query = "SELECT r.* FROM room AS r, prenotazioni AS pr WHERE pr.id_room = r.idcamera AND (pr.checkin NOT BETWEEN SYMMETRIC ? AND ?) AND (pr.checkout NOT BETWEEN SYMMETRIC ? AND ?)";
+		List<Room> ret = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+		
+			handler.getStatement().setDate(1, checkin);
+			handler.getStatement().setDate(2, checkout);
+			handler.getStatement().setDate(3, checkin);
+			handler.getStatement().setDate(4, checkout);
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				ret = new ArrayList<Room>();
+				ResultSet result = handler.getResultSet();
+				
+				Room room = null;
+				while (result.next()) {
+					room = new Room();
+					room.setId(result.getInt("idcamera"));		
+					room.setTipo(result.getString("tipo"));
+					room.setDescrizione(result.getString("descrizione"));
+					room.setMaxpersone(result.getInt("maxpersone"));
+					room.setOccupata(result.getBoolean("occupata"));
+					room.setPrezzo(result.getInt("prezzo"));
+					room.setImg(result.getString("img"));
+					ret.add(room);
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return ret;
+	}
+*/
 }

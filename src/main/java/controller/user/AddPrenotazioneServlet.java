@@ -30,7 +30,7 @@ public class AddPrenotazioneServlet extends HttpServlet {
 		Integer idUser = (Integer)req.getSession().getAttribute("userId");
 		
 		DBManager.getInstance().getDAOFactory().getPrenotazioneDao().saveAndLink(p, idUser);
-		DBManager.getInstance().getDAOFactory().getRoomDao().roomoccupata(p.getIdcamera());;
+		DBManager.getInstance().getDAOFactory().getRoomDao().updateOccupata(p.getIdcamera(), true);
 		req.getRequestDispatcher("index.jsp").forward(req, resp);
 	}
 	

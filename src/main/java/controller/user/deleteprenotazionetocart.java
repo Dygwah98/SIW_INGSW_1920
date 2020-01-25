@@ -20,7 +20,7 @@ public class deleteprenotazionetocart extends HttpServlet {
 		Integer idc=Integer.parseInt(req.getParameter("idc"));
 
 		DBManager.getInstance().getDAOFactory().getPrenotazioneDao().deletep(idp);
-		DBManager.getInstance().getDAOFactory().getRoomDao().roomoccupatafalse(idc);
+		DBManager.getInstance().getDAOFactory().getRoomDao().updateOccupata(idc, true);
         resp.sendRedirect("addcart");
 
 		
