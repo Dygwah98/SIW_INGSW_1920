@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Ordine;
+import model.OrdineConPrezzo;
 import model.Prenotazione;
 import model.Prodotto;
 import persistence.dao.OrdineDao;
@@ -281,6 +282,38 @@ public class OrdineDaoJDBC implements OrdineDao {
 		}
 		return null;
 		
+	}
+
+	@Override
+	public List<OrdineConPrezzo> getOrderHistory(Integer idCliente) {
+	
+		String query = "SELECT idorder, price FROM get_order_history WHERE idclient = ?";
+		List<OrdineConPrezzo> ord = null;
+		
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			handler.getStatement().setInt(1, idCliente);
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				
+				ord = new ArrayList<OrdineConPrezzo>();
+				ResultSet result = handler.getResultSet();
+				OrdineConPrezzo temp;
+				while (result.next()) {
+					temp = new OrdineConPrezzo();
+					temp.setIdOrdine(result.getInt("idorder"));
+					temp.setPrice(result.getInt("price"));
+					ord.add(temp);
+				}
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return ord;
 	}
 	
 }

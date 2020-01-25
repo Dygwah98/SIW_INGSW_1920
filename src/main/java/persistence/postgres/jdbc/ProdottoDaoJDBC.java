@@ -328,7 +328,9 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public List<ProdottoAggregato> showProductsForShop() {
 		
+
 		String query = "SELECT * FROM showproductsforshop where disponibile=true";
+
 		List<ProdottoAggregato> prodotti = null;
 		ProdottoAggregato p = null;
 		
