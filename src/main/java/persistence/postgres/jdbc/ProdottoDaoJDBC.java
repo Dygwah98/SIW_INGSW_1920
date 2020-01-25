@@ -139,7 +139,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public List<Prodotto> retrieveAll() {
 					
-			String query = "SELECT * FROM prodotto";
+			String query = "SELECT * FROM prodotto ";
 			List<Prodotto> prodotti = null;
 			Prodotto p = null;
 			
@@ -328,7 +328,9 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public List<ProdottoAggregato> showProductsForShop() {
 		
-		String query = "SELECT * FROM showProductsForShop";
+
+		String query = "SELECT * FROM showproductsforshop where disponibile=true";
+
 		List<ProdottoAggregato> prodotti = null;
 		ProdottoAggregato p = null;
 		
@@ -363,7 +365,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public List<ProdottoAggregato> showProductsForCart(Integer id) {
 
-		String query = "SELECT pr.tipo, pr.descrizione, pv.totprezzo AS prezzo, pr.disponibile, pr.img, pv.num FROM productsbytypeorder AS pv, prodotto AS pr WHERE pv.idorder = ? AND pr.tipo = pv.tipo";
+		String query = "SELECT  distinct pr.tipo, pr.descrizione, pv.totprezzo AS prezzo, pr.disponibile, pr.img, pv.num FROM productsbytypeorder AS pv, prodotto AS pr WHERE pv.idorder = ? AND pr.tipo = pv.tipo AND pr.disponibile=false";
 		List<ProdottoAggregato> prodotti = null;
 		ProdottoAggregato p = null;
 		
@@ -412,6 +414,22 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			throw new RuntimeException(e.getMessage());
 		}
 	}
-	
+	@Override
+	public void updatesetdisponibile(Integer idp,Boolean val) {
+		
+		String update = "update Prodotto set disponibile=? where idprodotto=?";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
+			
+			PreparedStatement smt = handler.getStatement();
+			smt.setBoolean(1,val);
+			smt.setInt(2,idp);
+			
+			handler.executeUpdate();
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
 	
 }

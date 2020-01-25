@@ -18,4 +18,5 @@ public interface ProdottoDao extends Dao<Prodotto> {
 	void updatesetordine(Integer idp,Integer ido);
 	public void deletep(Integer id);
 	public void prodottoCartRemove(Integer idprodotto);
+	void updatesetdisponibile(Integer idp, Boolean val);
 }

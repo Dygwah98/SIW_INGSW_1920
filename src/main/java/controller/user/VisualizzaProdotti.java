@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Prodotto;
+import model.ProdottoAggregato;
 import persistence.DBManager;
 
 
@@ -25,7 +26,7 @@ public class VisualizzaProdotti extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<Prodotto> p = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveAll();
+		List<ProdottoAggregato> p = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop();
 		HttpSession session = request.getSession();
 		session.setAttribute("prodotto", p);
 		request.setAttribute("prodotto",p);

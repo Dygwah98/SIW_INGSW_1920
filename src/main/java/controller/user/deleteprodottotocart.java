@@ -23,18 +23,20 @@ public class deleteprodottotocart extends HttpServlet {
 		String tipo=req.getParameter("tipo");
 		
 		//set idordine null dato idord e tipo(faccio la query)
-		
+
 		java.util.List<Prodotto> p = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveAll();
-		Integer idprod=new Integer(0);
+		Integer idprod=null;
 		//System.out.println(idord+ " "+ tipo);
 		//System.out.println(p.size()+" "+ p.get(0).getIdordine()+ " "+ p.get(1).getIdordine()); 
 		for(int i=0;i<p.size();i++) {
 			if(p.get(i).getIdordine().equals(idord) && p.get(i).getTipo().equals(tipo)) {
 				idprod = p.get(i).getIdprodotto();
-				//System.out.println(idprod);
-				i=p.size();
+				
+				break;
 			}
 		}
+		DBManager.getInstance().getDAOFactory().getProdottoDao().updatesetdisponibile(idprod,true);
+
 		DBManager.getInstance().getDAOFactory().getProdottoDao().prodottoCartRemove(idprod);
 		
 		resp.sendRedirect("addcart");

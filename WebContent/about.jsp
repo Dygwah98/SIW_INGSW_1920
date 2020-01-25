@@ -36,7 +36,7 @@
 						  <li><a href="logout">LogoutAdmin</a></li>
 					<%} %>
 						<li><a href="index.jsp">Home</a></li>
-						<li ><a href="negozio.jsp">Negozio</a></li>
+						<li ><a href="vediprodotti">Negozio</a></li>
 						<li class="active"><a href="about.jsp">About us</a></li>
 						<li><a href="viewroom">Rooms</a></li>
 						<li><a href="viewpost">Blog</a></li>
@@ -44,7 +44,7 @@
 					</ul>
 				</nav>
 				 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				<div class="book_button"><a href="carrello.jsp">Carrello</a></div>
+				<div class="book_button"><a href="addcart">Carrello</a></div>
 				 <%}%>
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
 					<img src="images/phone.png" alt="">
@@ -73,7 +73,7 @@
 						  <li><a href="logout">LogoutAdmin</a></li>
 					<%} %>
 					<li><a href="index.jsp">Home</a></li>
-					<li ><a href="negozio.jsp">Negozio</a></li>
+					<li ><a href="vediprodotti">Negozio</a></li>
 					<li><a href="about.jsp">About us</a></li>
 					<li><a href="viewroom">Rooms</a></li>
 					<li><a href="viewpost">Blog</a></li>
@@ -83,7 +83,7 @@
 		</div>
 		<div class="menu_extra">
 			 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				<div class="menu_book text-right"><a href="carrello.jsp">Carrello</a></div>				 <%}%>
+				<div class="menu_book text-right"><a href="addcart">Carrello</a></div>				 <%}%>
 			<div class="menu_phone d-flex flex-row align-items-center justify-content-center">
 				<img src="images/phone-2.png" alt="">
 				<span>3339290840</span>
