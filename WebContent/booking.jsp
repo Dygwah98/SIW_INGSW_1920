@@ -56,7 +56,7 @@
 						</div>
 					<%} %>
 						<li><a href="index.jsp">Home</a></li>
-						<li ><a href="negozio.jsp">Negozio</a></li>
+						<li ><a href="vediprodotti">Negozio</a></li>
 						<li><a href="about.jsp">About us</a></li>
 						<li class="active"><a href="viewroom">Rooms</a></li>
 						<li><a href="viewpost">Blog</a></li>
@@ -67,7 +67,7 @@
 				<!--  <div class="book_button"><a href="carrello.jsp">Carrello</a></div> -->
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
 					</ul>
 				</nav>
 				<%}%>
@@ -107,7 +107,7 @@
 						</div>
 					<%} %>
 					<li><a href="index.jsp">Home</a></li>
-					<li ><a href="negozio.jsp">Negozio</a></li>
+					<li ><a href="vediprodotti">Negozio</a></li>
 					<li><a href="about.jsp">About us</a></li>
 					<li class="active"><a href="viewroom">Rooms</a></li>
 					<li><a href="viewpost">Blog</a></li>
@@ -120,7 +120,7 @@
 				<!--  <div class="book_button"><a href="carrello.jsp">Carrello</a></div> -->
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
 					</ul>
 				</nav>
 				<%}%>

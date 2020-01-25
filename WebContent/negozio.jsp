@@ -59,14 +59,14 @@
 					<%} %>
 						
 						<li ><a href="index.jsp">Home</a></li>
-						<li class="active"><a href="negozio.jsp">Negozio</a></li>
+						<li class="active"><a href="vediprodotti">Negozio</a></li>
 						<li><a href="#">Lista dei desideri</a></li>
 					</ul>
 			   </nav>
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				 <nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
 					</ul>
 				</nav>
 			   <%}%>
@@ -101,7 +101,7 @@
 						</div>
 					<%} %>
 					<li ><a href="index.jsp">Home</a></li>
-					<li class="active"><a href="negozio.jsp">Negozio</a></li>
+					<li class="active"><a href="vediprodotti">Negozio</a></li>
 					<li><a href="#">Lista dei desideri</a></li>
 			   </ul>
 		   </nav>
@@ -110,7 +110,7 @@
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
 					</ul>
 				</nav>
 	    <%}%>
