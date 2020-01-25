@@ -3,6 +3,7 @@ package persistence.dao;
 import java.util.List;
 
 import model.Ordine;
+import model.OrdineConPrezzo;
 import model.Prenotazione;
 import model.Prodotto;
 import persistence.Dao;
@@ -13,4 +14,5 @@ public interface OrdineDao extends Dao<Ordine> {
 	public void pay(Integer userId);
 	public List<Integer> retrieveprezzocamere(Integer id);
 	Integer retrieveidorder(Integer idclient);
+	public List<OrdineConPrezzo> getOrderHistory(Integer idCliente);
 }

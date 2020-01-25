@@ -4,15 +4,13 @@ public class Ordine{
 	
 	private Integer IdOrdine;
 	private Integer IdUtente;
-	
+
 	public Ordine(int idOrdine, int idUtente) {
-		super();
-		IdOrdine = idOrdine;
-		IdUtente = idUtente;
+		this.IdOrdine = idOrdine;
+		this.IdUtente = idUtente;
 	}
 
 	public Ordine() {
-		super();
 		IdOrdine = null;
 		IdUtente = null;
 	}
