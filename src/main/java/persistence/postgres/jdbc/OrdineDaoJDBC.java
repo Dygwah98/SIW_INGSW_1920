@@ -160,7 +160,7 @@ public class OrdineDaoJDBC implements OrdineDao {
 	}
 	@Override
 	public List<Prenotazione> retrievePrenotazioni(Integer idcliente){
-		String c="Select p.idprenotazione,p.checkin,p.checkout,p.idcamera,p.idordine from ordine as o,prenotazioni as p where o.idorder=p.idordine and o.idclient=? and o.pagato=false"; 
+		String c="Select p.id_prenotazione,p.checkin,p.checkout,p.id_room,p.id_order from ordine as o,prenotazioni as p where o.idorder=p.id_order and o.idclient=? and o.pagato=false"; 
 		List<Prenotazione> p = null;
 		Prenotazione pre = null;
 		
@@ -174,11 +174,11 @@ public class OrdineDaoJDBC implements OrdineDao {
 				ResultSet result = handler.getResultSet();
 				while (result.next()) {
 					pre = new Prenotazione();
-					pre.setIdprenotazione(result.getInt("idprenotazione"));				
-					pre.setCheckin(result.getString("checkin"));
-					pre.setCheckout(result.getString("checkout"));
-					pre.setIdcamera(result.getInt("idcamera"));
-					pre.setIdordine(result.getInt("idordine"));
+					pre.setIdprenotazione(result.getInt("id_prenotazione"));				
+					pre.setCheckin(result.getDate("checkin"));
+					pre.setCheckout(result.getDate("checkout"));
+					pre.setIdcamera(result.getInt("id_room"));
+					pre.setIdordine(result.getInt("id_order"));
 					p.add(pre);
 				}
 			}
@@ -238,7 +238,7 @@ public class OrdineDaoJDBC implements OrdineDao {
 		}
 	}
 	public List<Integer> retrieveprezzocamere(Integer id){
-		String prezzo="Select r.prezzo as pre from room as r,prenotazioni as p,ordine as o where r.idcamera=p.idcamera and p.idordine=o.idorder and o.pagato=false and o.idclient=? ";
+		String prezzo="Select r.prezzo as pre from room as r,prenotazioni as p,ordine as o where r.idcamera=p.id_room and p.id_order=o.idorder and o.pagato=false and o.idclient=? ";
 		List<Integer> soldi = null;
 		Integer soldo = null;
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(prezzo)) {

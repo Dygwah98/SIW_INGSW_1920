@@ -1,6 +1,7 @@
 package controller.user;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,8 +23,8 @@ public class AddPrenotazioneServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Prenotazione p = new Prenotazione();
-		p.setCheckin(req.getParameter("checkin"));
-		p.setCheckout(req.getParameter("checkout"));
+		p.setCheckin(Date.valueOf(req.getParameter("checkin")));
+		p.setCheckout(Date.valueOf(req.getParameter("checkout")));
 		p.setIdcamera(Integer.parseInt(req.getParameter("n_camera")));
 	
 		Integer idUser = (Integer)req.getSession().getAttribute("userId");

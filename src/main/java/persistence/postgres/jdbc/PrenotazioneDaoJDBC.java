@@ -16,13 +16,13 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	@Override
 	public void saveAndLink(Prenotazione input, Integer idUtente) {
 		
-		String insert = "INSERT INTO prenotazioni(checkin,checkout,idcamera,idordine) SELECT ? AS checkin, ? AS checkout, ? AS idcamera, o.idorder AS idordine FROM ordine AS o WHERE o.idclient = ? AND NOT o.pagato";
+		String insert = "INSERT INTO prenotazioni(checkin,checkout,id_room,id_order) SELECT ? AS checkin, ? AS checkout, ? AS idcamera, o.idorder AS idordine FROM ordine AS o WHERE o.idclient = ? AND NOT o.pagato";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
 			PreparedStatement smt = handler.getStatement();
-			smt.setString(1, input.getCheckin());
-			smt.setString(2, input.getCheckout());
+			smt.setDate(1, input.getCheckin());
+			smt.setDate(2, input.getCheckout());
 			smt.setInt(3, input.getIdcamera());
 			smt.setInt(4, idUtente);
 			handler.executeUpdate();
@@ -35,14 +35,14 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	@Override
 	public void save(Prenotazione book) {
 
-		String insert = "INSERT INTO prenotazioni(idprenotazione,checkin,checkout,idcamera,idcliente,idordine) VALUES (?,?,?,?,?,?)";
+		String insert = "INSERT INTO prenotazioni(id_prenotazione,checkin,checkout,id_room,id_order) VALUES (?,?,?,?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
 			PreparedStatement smt = handler.getStatement();
 			smt.setInt(1,book.getIdprenotazione());
-			smt.setString(2,book.getCheckin());
-			smt.setString(3, book.getCheckout());
+			smt.setDate(2,book.getCheckin());
+			smt.setDate(3, book.getCheckout());
 			smt.setInt(4,book.getIdcamera());
 			smt.setInt(5, book.getIdordine());
 			handler.executeUpdate();
@@ -68,11 +68,11 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 				ResultSet result = handler.getResultSet();
 				while (result.next()) {
 					book = new Prenotazione();
-					book.setIdprenotazione(result.getInt("idprenotazione"));				
-					book.setCheckin(result.getString("checkin"));
-					book.setCheckout(result.getString("checkout"));
-					book.setIdcamera(result.getInt("idcamera"));
-					book.setIdordine(result.getInt("idordine"));
+					book.setIdprenotazione(result.getInt("id_prenotazione"));				
+					book.setCheckin(result.getDate("checkin"));
+					book.setCheckout(result.getDate("checkout"));
+					book.setIdcamera(result.getInt("id_room"));
+					book.setIdordine(result.getInt("id_order"));
 					books.add(book);
 				}
 			}
@@ -87,13 +87,13 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	@Override
 	public void update(Prenotazione book) {
 
-		String update = "UPDATE prenotazioni SET checkin = ?,checkout = ?,idcamera = ?, idordine = ? WHERE idprenotazione = ?";
+		String update = "UPDATE prenotazioni SET checkin = ?,checkout = ?,id_room = ?, id_order = ? WHERE id_prenotazione = ?";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 			
 			PreparedStatement smt = handler.getStatement();
-			smt.setString(1, book.getCheckin());
-			smt.setString(2, book.getCheckout());
+			smt.setDate(1, book.getCheckin());
+			smt.setDate(2, book.getCheckout());
 			smt.setInt(3, book.getIdcamera());
 			smt.setInt(4, book.getIdordine());
 			smt.setInt(5, book.getIdprenotazione());
@@ -107,7 +107,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	@Override
 	public void delete(Prenotazione book) {
 		
-		String delete = "DELETE FROM prenotazioni WHERE idprenotazione = ? ";
+		String delete = "DELETE FROM prenotazioni WHERE id_prenotazione = ? ";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			
@@ -121,7 +121,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	@Override
 	public void deletep(Integer id) {
 		
-		String delete = "DELETE FROM prenotazioni WHERE idprenotazione = ? ";
+		String delete = "DELETE FROM prenotazioni WHERE id_prenotazione = ? ";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			

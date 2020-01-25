@@ -1,14 +1,16 @@
 package model;
 
+import java.sql.Date;
+
 public class Prenotazione {
 
 	private Integer IdPrenotazione;
-	private String checkin;
-	private String checkout;
+	private Date checkin;
+	private Date checkout;
 	private Integer IdCamera;
 	private Integer idordine;
 	
-	public Prenotazione(int idPrenotazione, String checkin, String checkout, int idCamera,int idordine) {
+	public Prenotazione(int idPrenotazione, Date checkin, Date checkout, int idCamera,int idordine) {
 		super();
 		IdPrenotazione = idPrenotazione;
 		this.checkin = checkin;
@@ -34,19 +36,19 @@ public class Prenotazione {
 		IdPrenotazione = idPrenotazione;
 	}
 	
-	public String getCheckin() {
+	public Date getCheckin() {
 		return checkin;
 	}
 	
-	public void setCheckin(String checkin) {
+	public void setCheckin(Date checkin) {
 		this.checkin = checkin;
 	}
 	
-	public String getCheckout() {
+	public Date getCheckout() {
 		return checkout;
 	}
 	
-	public void setCheckout(String  checkout) {
+	public void setCheckout(Date checkout) {
 		this.checkout = checkout;
 	}
 	
@@ -58,8 +60,6 @@ public class Prenotazione {
 		IdCamera = Idcamera;
 	}
 	
-
-
 	public int getIdordine() {
 		return idordine;
 	}
