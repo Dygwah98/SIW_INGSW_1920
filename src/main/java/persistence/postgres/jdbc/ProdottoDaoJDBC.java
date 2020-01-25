@@ -365,7 +365,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public List<ProdottoAggregato> showProductsForCart(Integer id) {
 
-		String query = "SELECT  distinct pr.tipo, pr.descrizione, pv.totprezzo AS prezzo, pr.disponibile, pr.img, pv.num FROM productsbytypeorder AS pv, prodotto AS pr WHERE pv.idorder = 22 AND pr.tipo = pv.tipo AND pr.disponibile=false";
+		String query = "SELECT  distinct pr.tipo, pr.descrizione, pv.totprezzo AS prezzo, pr.disponibile, pr.img, pv.num FROM productsbytypeorder AS pv, prodotto AS pr WHERE pv.idorder = ? AND pr.tipo = pv.tipo AND pr.disponibile=false";
 		List<ProdottoAggregato> prodotti = null;
 		ProdottoAggregato p = null;
 		
