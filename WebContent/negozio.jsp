@@ -110,7 +110,7 @@
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
 					</ul>
 				</nav>
 	    <%}%>
@@ -235,8 +235,8 @@
           </div>
         </div>   		
     	</div>
-    	<form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
-  		<input type="text" placeholder="Search.." name="search2">
+    	<form id = "cerca" class="example" action="#cate" style="margin:auto;max-width:300px">
+  		<input id="testo" type="text" placeholder="Search.." name="search2">
   		<button type="submit"><i class="fa fa-search"></i></button>
 		</form>
     </section>
