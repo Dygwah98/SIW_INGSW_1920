@@ -161,7 +161,7 @@
 						        <td class="prezzo">${prodc.prezzo}</td>
 						        
 						        <td class="quantity">
-						        		${prodc.numProdotti}
+						        		${prodc.num}
 					          		</div>
 					          </td>
 						        

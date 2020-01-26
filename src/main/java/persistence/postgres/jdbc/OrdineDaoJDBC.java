@@ -315,6 +315,12 @@ public class OrdineDaoJDBC implements OrdineDao {
 		
 		return ord;
 	}
+
+	@Override
+	public boolean findidproductbyid(Integer id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }
 

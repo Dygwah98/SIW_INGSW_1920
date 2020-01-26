@@ -22,14 +22,16 @@ public class deleteroom extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = req.getParameter("id");
-		
+		boolean ID = DBManager.getInstance().getDAOFactory().getProdottoDao().findidproductbyid(Integer.parseInt(req.getParameter("Id")));
+        if(ID==false) {
+        	 resp.setStatus(401);
+        }
         Room r=new Room();
         String numero2 =id;
         int intero2 = Integer.parseInt(numero2);
         r.setId(intero2);
         Dao<Room> roomdao = DBManager.getInstance().getDAOFactory().getRoomDao();
         roomdao.delete(r);
-        resp.sendRedirect("gestioneCamere.jsp");
-
+   	 	resp.setStatus(201);
 	}
 }

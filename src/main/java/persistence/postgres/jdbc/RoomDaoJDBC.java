@@ -233,4 +233,11 @@ public class RoomDaoJDBC implements RoomDao {
 		return ret;
 	}
 */
+
+
+	@Override
+	public boolean findidproductbyid(Integer id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

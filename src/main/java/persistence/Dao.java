@@ -12,4 +12,6 @@ public interface Dao<T> {
 	void update(T object);
 	
 	void delete(T object);
+
+	boolean findidproductbyid(Integer id);
 }

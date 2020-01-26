@@ -23,11 +23,14 @@ public class UpdateProdotto extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String id = req.getParameter("Id");
+		String id = req.getParameter("Pr1");
 		String tipo = req.getParameter("Tipo");
         String descrizione = req.getParameter("Descrizione");
         String prezzo= req.getParameter("Prezzo");
-        
+        boolean ID = DBManager.getInstance().getDAOFactory().getProdottoDao().findidproductbyid(Integer.parseInt(id));
+        if(ID==false) {
+        	 resp.setStatus(401);
+        }
         Prodotto p = new Prodotto();
         
         p.setTipo(tipo);
@@ -40,20 +43,23 @@ public class UpdateProdotto extends HttpServlet {
         
         p.setDisponibile(true);
         
-        if(tipo.equals("ortaggio")) {
+        if(descrizione.equals("ortaggio")) {
         	p.setImg("images/product-5");
         }
-        if(tipo.equals("verdura")) {
-        	p.setImg("/images/product-3");
+        if(descrizione.equals("verdura")) {
+        	p.setImg("images/product-3");
         }
+       
         
-        String numero1 =id;
-        int intero1 = Integer.parseInt(numero1);
+       
+        int intero1 = Integer.parseInt(id);
+	
+
         p.setIdprodotto(intero1);
         
         Dao<Prodotto> prodottoDao = DBManager.getInstance().getDAOFactory().getProdottoDao();
-        prodottoDao.update(p);;
-        resp.sendRedirect("gestioneProdotti.jsp");
+        prodottoDao.update(p);
+   	 	resp.setStatus(201);
 
 	}
 }

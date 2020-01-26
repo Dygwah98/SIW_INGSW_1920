@@ -2,7 +2,7 @@ package model;
 
 public class ProdottoAggregato extends Prodotto {
 
-	private Integer numProdotti=null;
+	private Integer num=null;
 	
 	public ProdottoAggregato() {
 		super();
@@ -11,15 +11,15 @@ public class ProdottoAggregato extends Prodotto {
 	public ProdottoAggregato(String tipo, Integer numProdotti) {
 		super();
 		super.setTipo(tipo);
-		this.numProdotti = numProdotti;
+		this.num= numProdotti;
 	}
 
-	public Integer getNumProdotti() {
-		return numProdotti;
+	public Integer getNum() {
+		return num;
 	}
 
-	public void setNumProdotti(Integer numProdotti) {
-		this.numProdotti = numProdotti;
+	public void setNum(Integer numProdotti) {
+		this.num = numProdotti;
 	}
 	
 }

@@ -260,7 +260,7 @@
 			<div class="divProdotto ${prodotto.descrizione}">
   				<div class="prodotto"> 
   					<a href="singolo?tipo=${prodotto.tipo}" class="proiezione"><img src="${prodotto.img}.jpg" alt="peperone">
-  						<span class="sconto">50%</span> 
+  						
   					</a>
   					<div class="text py-3 pb-4 px-3 text-center"> 
   						<h3><a id="tipo" href="#" onclick="aggiungiAlCarrello()">${prodotto.tipo}</a></h3>

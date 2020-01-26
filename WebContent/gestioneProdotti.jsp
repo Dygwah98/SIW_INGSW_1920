@@ -6,69 +6,46 @@
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
   <title>GESTIONE PRODOTTI</title>
   <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
-  <link href="styles/RegistrationForm.css" rel="stylesheet" type="text/css" />
-  <style>
+  <link href="styles/LoginForm.css" rel="stylesheet" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   
-  	
-  	.c{
-  		width:100%;
-    	display: flex;                 
-  		flex-direction: row;            
-  		flex-wrap: nowrap;              
-  		justify-content: space-between; 
-  		text-align: center;
-  	}
-  	
-  	#aggiungi{
-  		float:left; width: 100%;
-  	}
-  	
-  	#elimina{
-  		display: inline-block;
-  		 width: 100%;
-  	}
-  	
-  	#aggiorna{
-  		float:right; width: 100%;
-  	}
-  	
-  </style>
+    <script src="js/admingestione.js"></script>
+  
 </head>
 
 
 <body>
-	<div class="c">
-		<form id="aggiungi" class="decor"  method="post" action="${pageContext.request.contextPath}/addproduct" >
-		  
-		  <div class="form-inner">
-		   	<h3>INSERISCI UN NUOVO PRODOTTO</h3>
-			    <input type="text" name="Tipo"placeholder="nome">
-			    <input type="text" name="Descrizione" placeholder="Descrizione">
-			    <input type="text" name="Prezzo"placeholder="prezzo">
-			    <input type="submit" value="Invia">
-		  </div>
-		</form>
-	
-		<form id="elimina" class="decor"  method="post" action="${pageContext.request.contextPath}/deleteprodotto" >
-		 
-		  <div class="form-inner">
-		    <h3>ELIMINA UN PRODOTTO</h3>
-		     <input type="text" name="Id" placeholder="id">
-		     <input type="submit" value="Invia">
-		  </div>
-		</form>
-		
-		<form id="aggiorna" class="decor"  method="post" action="${pageContext.request.contextPath}/updateprodotto" >
-		  
-		  <div class="form-inner">
-		    <h3>AGGIORNA UN PRODOTTO</h3>
-		     	<input type="text" name="Id" placeholder="id">
-			    <input type="text" name="Tipo" placeholder="Tipo">
-			    <input type="text" name="Descrizione" placeholder="Descrizione">
-			    <input type="text" name="Prezzo" placeholder="prezzo"> 
-			    <input type="submit" value="Invia">
-		  </div>
-		</form>
-	</div>
+	<div class="addcontrol-page">
+
+		<div class="form">
+
+			<div class="addp-form">
+  				 <input type="text" name="Tipo" id="Tipo" placeholder="Tipo"/>
+      			 <input type="text" name="Descrizione" id="Descrizione" placeholder="Descrizione"/>
+      			 <input type="text" name="Prezzo" id="Prezzo" placeholder="Prezzo"/>
+       			 <button type="submit" id="btnaddp" onclick="addp(event)">addproduct!</button>
+    		</div>
+    	</div>
+    </div>
+    <div class="udpatecontrol-page">
+    		<div class="form">
+
+			<div class="updatep-form">
+			 	  <input type="number" name="pr1" id="pr1" placeholder="id"/>
+  				 <input type="text" name="Tipo" id="Tipo" placeholder="Tipo"/>
+      			 <input type="text" name="Descrizione" id="Descrizione" placeholder="Descrizione"/>
+      			 <input type="text" name="Prezzo" id="Prezzo" placeholder="Prezzo"/>
+       			 <button type="submit" id="btnupdatep" onclick="updatep(event)">updateproduct!</button>
+    		</div>
+  		</div>
+  	</div>
+  	<div class="deletecontrol-page">
+  		<div class="form">
+			<div class="deletep-form">
+  				 	  <input type="number" name="idprodo" id="idprodo" placeholder="idprodo"/>
+       			 <button type="submit" id="btndeletep" onclick="deletep(event)">deleteproduct!</button>
+    		</div>
+  		</div>
+  	</div>
 </body>
 </html>

@@ -349,7 +349,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 					p.setPrezzo(result.getInt("prezzo"));
 					p.setDisponibile(result.getBoolean("disponibile"));
 					p.setImg(result.getString("img"));
-					p.setNumProdotti(result.getInt("num"));
+					p.setNum(result.getInt("num"));
 					prodotti.add(p);
 				}
 			}
@@ -385,7 +385,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 					p.setPrezzo(result.getInt("prezzo"));
 					p.setDisponibile(result.getBoolean("disponibile"));
 					p.setImg(result.getString("img"));
-					p.setNumProdotti(result.getInt("num"));
+					p.setNum(result.getInt("num"));
 					prodotti.add(p);
 				}
 			}
@@ -431,5 +431,20 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			throw new RuntimeException(e.getMessage());
 		}
 	}
-	
+	@Override
+	public boolean findidproductbyid(Integer id) {
+		String find="select idprodotto from prodotto where idprodotto=?";
+		Integer ID=null;
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(find)) {
+			handler.getStatement().setInt(1, id);
+			handler.executeQuery();
+			if(handler.existsResultSet()) {
+				return true;
+			}
+		}
+		catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		return false;
+	}
 }

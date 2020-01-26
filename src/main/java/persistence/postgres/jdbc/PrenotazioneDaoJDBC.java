@@ -191,4 +191,10 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean findidproductbyid(Integer id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

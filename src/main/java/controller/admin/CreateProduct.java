@@ -25,7 +25,9 @@ public class CreateProduct extends HttpServlet {
 		String tipo = req.getParameter("Tipo");
         String descrizione = req.getParameter("Descrizione");
         String prezzo= req.getParameter("Prezzo");
-        
+        if(tipo==null || descrizione==null || prezzo==null){
+            resp.setStatus(401);
+        }
         Prodotto p = new Prodotto();
        
         p.setTipo(tipo);
@@ -45,10 +47,13 @@ public class CreateProduct extends HttpServlet {
         	p.setImg("images/product-3");
         }
         
+        if(descrizione.equals("ortaggio")==false|| descrizione.equals("verdura")==false) {
+         	 resp.setStatus(401);
+        }
         
         Dao<Prodotto> prodottoDao = DBManager.getInstance().getDAOFactory().getProdottoDao();
         prodottoDao.save(p);
-        resp.sendRedirect("createProduct.jsp");
+        resp.setStatus(201);
 
 	}
 }

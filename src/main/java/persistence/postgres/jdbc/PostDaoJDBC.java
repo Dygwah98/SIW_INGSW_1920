@@ -165,4 +165,10 @@ public class PostDaoJDBC implements PostDao {
 	public void update(Post object) {
 		
 	}
+
+	@Override
+	public boolean findidproductbyid(Integer id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
