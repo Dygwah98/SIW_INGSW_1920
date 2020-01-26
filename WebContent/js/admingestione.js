@@ -28,7 +28,7 @@ function updatep(event){
     	   Pr1 : $("#pr1").val(),
            Tipo : $("#Tipo").val(),
            Descrizione : $("#Descrizione").val(),
-           Prezzo : $("#Prezzo").val()
+           Prezzo1 : $("#Prezzo1").val()
        },
        success:function(){
     	   alert("Prodotto aggiornato corretamente");
