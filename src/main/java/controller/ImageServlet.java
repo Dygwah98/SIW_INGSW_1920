@@ -29,7 +29,18 @@ public class ImageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         // gets absolute path of the web application
-        String applicationPath = request.getServletContext().getRealPath("");
+        boolean lovogliodavvero= false;
+    	String applicationPath;
+        if(lovogliodavvero){
+        	/*MOTIVAZIONE PER CUI NON FUNGE CON QUESTA FUNC ATTUALMENTE NON TEMETE
+        	 * I am running Tomcat through Eclipse, that’s why file location is like this. If you run tomcat through command line
+        	 *  and deploy application by exporting as WAR file into webapps directory, you will get different structure but a clear one.*/
+        	applicationPath = request.getServletContext().getRealPath("");
+        }
+        else {
+        	//inserisci la tua path LOCALE bestia
+        	applicationPath = "C:/Users/Antonio/Desktop/SIW_INGSW_1920" ;
+        }
         // constructs path of the directory to save uploaded file
         String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
          
@@ -48,8 +59,9 @@ public class ImageServlet extends HttpServlet {
         }
  
         request.setAttribute("message", fileName + " File uploaded successfully!");
-        getServletContext().getRequestDispatcher("/index.jsp").forward(
-                request, response);
+        request.setAttribute("img", UPLOAD_DIR + File.separator + fileName);
+        
+        response.sendRedirect("UploadImage.jsp");
     }
  
     /**
