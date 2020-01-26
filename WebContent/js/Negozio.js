@@ -55,7 +55,7 @@ function w3RemoveClass(element, name) {
   element.className = arr1.join(" ");
 }
 
-var btnContainer = document.getElementByClass("cat");
+var btnContainer = document.getElementById("cate");
 var btns = btnContainer.getElementsByClassName("elementi");
 for (var i = 0; i < btns.length; i++) {
   btns[i].addEventListener("click", function(){
@@ -108,7 +108,7 @@ function ordina() {
 }
 
 
-$("#cerca").submit( function( ) {
+$("#cerca").submit( function(e ) {
 	
 	var c = $("#testo").val();
     var x, i;
@@ -118,7 +118,7 @@ $("#cerca").submit( function( ) {
       w3RemoveClass(x[i], "mostraProdotti");
       if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "mostraProdotti");
     }
-
+    e.preventDefault();
    
     
 } );

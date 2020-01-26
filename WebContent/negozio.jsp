@@ -28,6 +28,7 @@
 <script src="js/menuATendina.js"></script>
 
 
+
 </head>
 
 <body>
@@ -236,7 +237,7 @@
         </div>   		
     	</div>
     	<form id = "cerca" class="example" action="#cate" style="margin:auto;max-width:300px">
-  		<input id="testo" type="text" placeholder="Search.." name="search2">
+  		<input id="testo" type="text" placeholder="cerca..." name="search2">
   		<button type="submit"><i class="fa fa-search"></i></button>
 		</form>
     </section>
