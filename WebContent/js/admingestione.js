@@ -63,4 +63,23 @@ function deletep(event){
 
         }
     });
+    
+}
+function returnhome(event){
+    $.ajax({
+       type: "POST",
+       url: "index.jsp",
+       success:function(){
+    	   var answer =window.confirm("Vuoi tornare alla home? I dati nei form andrnno persi")
+    	   if(answer)
+    		   window.location.replace("index.jsp");
+    	   else{}
+    	  
+       },
+        error : function () {
+           window.location.replace("gestioneProdotti.jsp");
+
+        }
+    });
+    
 }

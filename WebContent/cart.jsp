@@ -65,9 +65,12 @@
 							  </div>
 						</div>
 					<%} %>
+					<li ><a href="index.jsp">Home</a></li>
+					<li><a href="vediprodotti">Negozio</a></li>
+					<li><a href="#">Lista dei desideri</a></li>
 			</div>
 		</div>
-
+	
 	<!-- Menu Scorrevole -->
 	
 	<div class="hamburger"><i class="fa fa-bars"  aria-hidden="true"></i></div>
