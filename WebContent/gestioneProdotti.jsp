@@ -32,8 +32,8 @@
 
 			<div class="updatep-form">
 			 	  <input type="number" name="pr1" id="pr1" placeholder="id"/>
-  				 <input type="text" name="Tipo" id="Tipo" placeholder="Tipo"/>
-      			 <input type="text" name="Descrizione" id="Descrizione" placeholder="Descrizione"/>
+  				 <input type="text" name="Tipo1" id="Tipo1" placeholder="Tipo"/>
+      			 <input type="text" name="Descrizione1" id="Descrizione1" placeholder="Descrizione"/>
       			 <input type="text" name="Prezzo1" id="Prezzo1" placeholder="Prezzo"/>
        			 <button type="submit" id="btnupdatep" onclick="updatep(event)">updateproduct!</button>
     		</div>

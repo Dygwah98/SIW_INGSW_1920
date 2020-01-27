@@ -24,8 +24,8 @@ public class UpdateProdotto extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String id = req.getParameter("Pr1");
-		String tipo = req.getParameter("Tipo");
-        String descrizione = req.getParameter("Descrizione");
+		String tipo = req.getParameter("Tipo1");
+        String descrizione = req.getParameter("Descrizione1");
         String prezzo= req.getParameter("Prezzo1");
         boolean ID = DBManager.getInstance().getDAOFactory().getProdottoDao().findidproductbyid(Integer.parseInt(id));
         if(ID==false) {
@@ -50,6 +50,10 @@ public class UpdateProdotto extends HttpServlet {
         }
         if(descrizione.equals("verdura")) {
         	p.setImg("images/product-3");
+        }
+        
+        if(descrizione.equals("ortaggio")==false|| descrizione.equals("verdura")==false) {
+         	 resp.setStatus(401);
         }
        
         

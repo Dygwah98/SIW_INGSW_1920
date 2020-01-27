@@ -26,8 +26,8 @@ function updatep(event){
      
        data: {
     	   Pr1 : $("#pr1").val(),
-           Tipo : $("#Tipo").val(),
-           Descrizione : $("#Descrizione").val(),
+           Tipo1 : $("#Tipo1").val(),
+           Descrizione1 : $("#Descrizione1").val(),
            Prezzo1 : $("#Prezzo1").val()
        },
        success:function(){
