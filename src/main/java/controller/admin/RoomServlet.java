@@ -21,11 +21,11 @@ public class RoomServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
-		String tipo = req.getParameter("Tipo");
-        String descrizione = req.getParameter("Descrizione");
-        String numMaxPersone = req.getParameter("numMaxPersone");
-        String prezzo= req.getParameter("prezzo");
+		String id = req.getParameter("Id1");
+		String tipo = req.getParameter("Tipo1");
+        String descrizione = req.getParameter("Descrizione1");
+        String numMaxPersone = req.getParameter("numMaxPersone1");
+        String prezzo= req.getParameter("Prezzo1");
         Room r=new Room();
         String numero2 =id;
         int intero2 = Integer.parseInt(numero2);
@@ -47,7 +47,7 @@ public class RoomServlet extends HttpServlet {
         }
         Dao<Room> roomdao = DBManager.getInstance().getDAOFactory().getRoomDao();
         roomdao.save(r);
-        resp.sendRedirect("gestioneCamere.jsp");
+        resp.setStatus(201);
 
 	}
 }
