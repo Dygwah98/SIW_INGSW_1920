@@ -28,10 +28,15 @@ function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("divProdotto");
   if (c == "all") c = "";
+  var cont =0;
   for (i = 0; i < x.length; i++) {
     w3RemoveClass(x[i], "mostraProdotti");
     if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "mostraProdotti");
+    if(x[i].className.indexOf(c) == -1) cont++;
   }
+  if(cont == x.length)
+  	alert('nessun elemento');
+  
 }
 
 function w3AddClass(element, name) {
@@ -113,11 +118,16 @@ $("#cerca").submit( function(e ) {
 	var c = $("#testo").val();
     var x, i;
     x = document.getElementsByClassName("divProdotto");
+    console.log(x.length);
     if (c == "all") c = "";
+    var cont =0;
     for (i = 0; i < x.length; i++) {
       w3RemoveClass(x[i], "mostraProdotti");
       if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "mostraProdotti");
+      if(x[i].className.indexOf(c) == -1) cont++;
     }
+    if(cont == x.length)
+    	alert('nessun elemento');
     e.preventDefault();
    
     
