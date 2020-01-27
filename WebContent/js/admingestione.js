@@ -10,12 +10,13 @@ function addp(event){
        },
        success:function(){
     	   alert("Prodotto Inserito corretamente");
-    	   window.location.replace("vediprodotti");
+    	   window.location.replace("gestioneProdotti.jsp");
     	  
        },
         error : function () {
             alert("il prodotto non è stato inserimento corretamente");
-            window.location.replace("vediprodotti");
+     	   window.location.replace("gestioneProdotti.jsp");
+
         }
     });
 }
@@ -32,12 +33,14 @@ function updatep(event){
        },
        success:function(){
     	   alert("Prodotto aggiornato corretamente");
-    	   window.location.replace("vediprodotti");
+    	   window.location.replace("gestioneProdotti.jsp");
+
     	  
        },
         error : function () {
             alert("il prodotto non è stato aggiornato corretamente o id prodotto non corretto");
-            window.location.replace("vediprodotti");
+     	   window.location.replace("gestioneProdotti.jsp");
+
         }
     });
 }
@@ -51,12 +54,13 @@ function deletep(event){
        },
        success:function(){
     	   alert("Prodotto eliminato corretamente");
-    	   window.location.replace("vediprodotti");
+    	   window.location.replace("gestioneProdotti.jsp");
     	  
        },
         error : function () {
             alert("il prodotto non è stato eliminato corretamente o id prodotto non corretto");
-            window.location.replace("vediprodotti");
+     	   window.location.replace("gestioneProdotti.jsp");
+
         }
     });
 }

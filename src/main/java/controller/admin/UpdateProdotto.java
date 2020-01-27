@@ -32,7 +32,7 @@ public class UpdateProdotto extends HttpServlet {
         	 resp.setStatus(401);
         }
     	
-
+        else {
         Prodotto p = new Prodotto();
         
         p.setTipo(tipo);
@@ -52,9 +52,7 @@ public class UpdateProdotto extends HttpServlet {
         	p.setImg("images/product-3");
         }
         
-        if(descrizione.equals("ortaggio")==false|| descrizione.equals("verdura")==false) {
-         	 resp.setStatus(401);
-        }
+        
        
         
       
@@ -65,6 +63,6 @@ public class UpdateProdotto extends HttpServlet {
         
         DBManager.getInstance().getDAOFactory().getProdottoDao().update(p);
    	 	resp.setStatus(201);
-
+        }
 	}
 }

@@ -24,13 +24,15 @@ public class DeleteProdotto extends HttpServlet {
 		String id = req.getParameter("idprodo");
 		 boolean ID = DBManager.getInstance().getDAOFactory().getProdottoDao().findidproductbyid(Integer.parseInt(id));
 	        if(ID==false) {
+	        	
 	        	 resp.setStatus(401);
 	        }
+	        else {
         Prodotto p = new Prodotto();
         String numero1 =id;
         int intero1 = Integer.parseInt(numero1);
         p.setIdprodotto(intero1);
          DBManager.getInstance().getDAOFactory().getProdottoDao().delete(p);
-         resp.setStatus(201);
+         resp.setStatus(201);}
 	}
 }

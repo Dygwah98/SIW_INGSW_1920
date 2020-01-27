@@ -28,6 +28,7 @@ public class CreateProduct extends HttpServlet {
         if(tipo==null || descrizione==null || prezzo==null){
             resp.setStatus(401);
         }
+        else {
         Prodotto p = new Prodotto();
        
         p.setTipo(tipo);
@@ -54,6 +55,6 @@ public class CreateProduct extends HttpServlet {
         Dao<Prodotto> prodottoDao = DBManager.getInstance().getDAOFactory().getProdottoDao();
         prodottoDao.save(p);
         resp.setStatus(201);
-
+        }
 	}
 }

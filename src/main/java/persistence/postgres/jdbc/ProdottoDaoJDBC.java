@@ -89,7 +89,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public void deletep(Integer id) {
 		
-		String delete = "DELETE FROM prenotazioni WHERE idprodotto = ? ";
+		String delete = "DELETE FROM prodotto WHERE idprodotto = ? ";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 			
