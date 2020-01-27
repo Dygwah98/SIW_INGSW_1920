@@ -42,11 +42,16 @@
 					<ul class="d-flex flex-row align-items-start justify-content-start">
 						<% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))&& (request.getSession().getAttribute("admin") == null || !(boolean)request.getSession().getAttribute("admin"))){%>
 						<li><a href="Loginform.jsp">Login</a></li>
-					<% }else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-						  <li><a href="logout">Logout</a></li>
-					<%}  
-					   else if (request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin")){%>
+					<%} else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 						 <div class="dropdown">
+							  <li><a onclick="myFunction()" class="dropbtn">${username}</a></li>
+							  <div id="myDropdown" class="dropdown-content">
+								    <a href="#">Storico Ordini</a>
+								    <a href="logout">Logout</a>
+							  </div>
+						</div>
+					<%} else if (request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin")){%>
+						  <div class="dropdown">
 							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
 							  <div id="myDropdown" class="dropdown-content">
 								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
@@ -93,10 +98,15 @@
 				<ul>
 					<% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))&& (request.getSession().getAttribute("admin") == null || !(boolean)request.getSession().getAttribute("admin"))){%>
 						<li><a href="Loginform.jsp">Login</a></li>
-					<% }else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-						  <li><a href="logout">Logout</a></li>
-					<%}  
-					   else if (request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin")){%>
+					<%} else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+						 <div class="dropdown">
+							  <li><a onclick="myFunction()" class="dropbtn">${username}</a></li>
+							  <div id="myDropdown" class="dropdown-content">
+								    <a href="#">Storico Ordini</a>
+								    <a href="logout">Logout</a>
+							  </div>
+						</div>
+					<%} else if (request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin")){%>
 						  <div class="dropdown">
 							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
 							  <div id="myDropdown" class="dropdown-content">
@@ -163,19 +173,9 @@
 		</div>
 	</div>
 	<!-- Room -->
+	<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 	<a href="prenotazioneroom.jsp" class="bottone">booking</a>
-	<style>
-	a.bottone {
- 	color: #fff; /* colore del testo */
-    text-decoration: none; /* eliminare la sottolineatura del testo */
-    background: rgb(212,75,56); /* sfondo del bottone */
-    padding: .7em 1.5em; /* padding dal testo dal bordo del bottone */
-    outline: none; /*  eliminare bordo*/
-    } 
-    a.bottone:hover { background: rgb(232,95,76); } /* cambio dello sfondo al passagio del mouse */
-    a.bottone:active { background: rgb(152,15,0); } /* cambiare lo sfondo al premere bottone   */
- 
-    </style>
+	<%} %>
     
     <div id="cate" class="categorie">
 	  <button class="cat">Categorie:</button>

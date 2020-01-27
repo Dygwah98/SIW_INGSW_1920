@@ -24,6 +24,8 @@
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="plugins/OwlCarousel2-2.3.4/owl.carousel.js"></script>
 <script src="js/custom.js"></script>
+<script src="js/menuATendina.js"></script>
+<link rel="stylesheet" type="text/css" href="styles/menuATendina.css">
 
 
 </head>
@@ -38,12 +40,26 @@
 			<div class="ml-auto d-flex flex-row align-items-center justify-content-start">
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						 <%if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
-							<li><a href="Loginform.jsp">Login</a></li>
-						 <%}
-					  	 else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-					  		<li><a href="logout">Logout</a></li>
-					  	 <%}%>
+						<% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))&& (request.getSession().getAttribute("admin") == null || !(boolean)request.getSession().getAttribute("admin"))){%>
+						<li><a href="Loginform.jsp">Login</a></li>
+					<%} else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+						 <div class="dropdown">
+							  <li><a onclick="myFunction()" class="dropbtn">${username}</a></li>
+							  <div id="myDropdown" class="dropdown-content">
+								    <a href="#">Storico Ordini</a>
+								    <a href="logout">Logout</a>
+							  </div>
+						</div>
+					<%} else if (request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin")){%>
+						  <div class="dropdown">
+							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
+							  <div id="myDropdown" class="dropdown-content">
+								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
+								    <a href="gestioneCamere.jsp">GestioneCamere</a>
+								    <a href="logout">Logout</a>
+							  </div>
+						</div>
+					<%} %>
 						<li ><a href="index.jsp">Home</a></li>
 						<li><a href="vediprodotti">Negozio</a></li>
 						<li><a href="#">Lista dei desideri</a></li>
@@ -71,12 +87,26 @@
 		<div class="menu_content">
 			<nav class="menu_nav text-right">
 				<ul>
-					 <% if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
+					<% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))&& (request.getSession().getAttribute("admin") == null || !(boolean)request.getSession().getAttribute("admin"))){%>
 						<li><a href="Loginform.jsp">Login</a></li>
-				     <%}
-				     else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-						  <li><a href="logout">Logout</a></li>
-					 <%}%>
+					<%} else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+						 <div class="dropdown">
+							  <li><a onclick="myFunction()" class="dropbtn">${username}</a></li>
+							  <div id="myDropdown" class="dropdown-content">
+								    <a href="#">Storico Ordini</a>
+								    <a href="logout">Logout</a>
+							  </div>
+						</div>
+					<%} else if (request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin")){%>
+						  <div class="dropdown">
+							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
+							  <div id="myDropdown" class="dropdown-content">
+								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
+								    <a href="gestioneCamere.jsp">GestioneCamere</a>
+								    <a href="logout">Logout</a>
+							  </div>
+						</div>
+					<%} %>
 					<li ><a href="index.jsp">Home</a></li>
 					<li><a href="vediprodotti">Negozio</a></li>
 					<li><a href="#">Lista dei desideri</a></li>
