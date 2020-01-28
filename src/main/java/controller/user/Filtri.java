@@ -43,6 +43,12 @@ public class Filtri extends HttpServlet {
 		case "ortaggio":
 			l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo);
 			break;
+		case "carne":
+			l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo);
+			break;
+		case "formaggi":
+			l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo);
+			break;
 
 		default:
 			break;
@@ -77,12 +83,7 @@ public class Filtri extends HttpServlet {
 	
 public void sortaNome(List<ProdottoAggregato> l) {
 		
-		Collections.sort(l, new Comparator<ProdottoAggregato>() {
-			public int compare(ProdottoAggregato o1, ProdottoAggregato o2) {
-				int valore = o1.getTipo().compareTo(o2.getTipo());
-					return valore;
-			}
-		});
+		Collections.sort(l);
 	}
 	
 	

@@ -20,14 +20,23 @@
 		<div class="form">
 			<div class="addp-form">
   				 <input type="text" name="Tipo" id="Tipo" placeholder="Tipo"/>
-      			 <input type="text" name="Descrizione" id="Descrizione" placeholder="Descrizione"/>
+      			  Scegli la categoria:
+      			 <select name="Descrizione" id="Descrizione" >
+				    <option value="verdura">verdura</option>
+				    <option value="ortaggio">ortaggio</option>
+				    <option value="carne">carne</option>
+				    <option value="formaggi">formaggi</option>
+  				 </select>
+  				 <br>
+  				 <br>
       			 <input type="text" name="Prezzo" id="Prezzo" placeholder="Prezzo"/>
       			 Scegli l'immagine:
       			 <select name="Img" id="Img" >
 				    <option value="pomodoro">pomodoro</option>
 				    <option value="fagiolini">fagiolini</option>
 				    <option value="pecorino">pecorino</option>
-				    <option value="cavolo">cavolo</option>
+				    <option value="maiale">maiale</option>
+				    <option value="latte">latte</option>
   				 </select>
   				 <br>
   				 <br>

@@ -669,12 +669,13 @@ form.example::after {
       transform: scale(1.1); 
      }
      
-   /*
-  .prodotto .img {
+   
+  .prodotto img {
     display: block;
-    height: 500px; 
+    min-height: 200px;
+    max-height: 200px;
     }
-   */
+   
    
    /*
   .prodotto .icon {

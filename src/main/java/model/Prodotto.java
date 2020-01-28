@@ -3,7 +3,7 @@ package model;
 public class Prodotto {
 	
 	private Integer idprodotto;
-	private String tipo;
+	protected String tipo;
 	private Integer prezzo;
 	private String descrizione;
 	private Boolean disponibile;

@@ -1,6 +1,6 @@
 package model;
 
-public class ProdottoAggregato extends Prodotto {
+public class ProdottoAggregato extends Prodotto implements Comparable<ProdottoAggregato> {
 
 	private Integer num=null;
 	
@@ -20,6 +20,11 @@ public class ProdottoAggregato extends Prodotto {
 
 	public void setNum(Integer numProdotti) {
 		this.num = numProdotti;
+	}
+
+	@Override
+	public int compareTo(ProdottoAggregato o) {
+		return this.tipo.compareTo(o.tipo);
 	}
 	
 }

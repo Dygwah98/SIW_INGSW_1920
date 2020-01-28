@@ -261,7 +261,7 @@
 	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=reset">Tutti i prodotti</a>
 	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=verdura" >Verdura</a>
 	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=ortaggio">Ortaggio</a>
-	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=salumi">Salumi</a>
+	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=carne">Carni</a>
 	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=formaggi">Formaggi</a>
 	  <div  class="elementi2">
 		  <a style="color:black;" onclick="myFunction2()" class="dropbtn2">Ordina</a>
