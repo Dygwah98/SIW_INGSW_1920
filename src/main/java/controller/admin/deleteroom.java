@@ -21,8 +21,8 @@ public class deleteroom extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
-		boolean ID = DBManager.getInstance().getDAOFactory().getProdottoDao().findidproductbyid(Integer.parseInt(req.getParameter("Id")));
+		String id = req.getParameter("Id3");
+		boolean ID = DBManager.getInstance().getDAOFactory().getRoomDao().findidproductbyid(Integer.parseInt(id));
         if(ID==false) {
         	 resp.setStatus(401);
         }

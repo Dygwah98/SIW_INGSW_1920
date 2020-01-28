@@ -237,7 +237,18 @@ public class RoomDaoJDBC implements RoomDao {
 
 	@Override
 	public boolean findidproductbyid(Integer id) {
-		// TODO Auto-generated method stub
+		String find="select * from room where idcamera=?";
+		Integer ID=null;
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(find)) {
+			handler.getStatement().setInt(1, id);
+			handler.executeQuery();
+			if(handler.existsResultSet()) {
+				return true;
+			}
+		}
+		catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 		return false;
 	}
 }
