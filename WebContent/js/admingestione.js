@@ -6,7 +6,8 @@ function addp(event){
        data: {
            Tipo : $("#Tipo").val(),
            Descrizione : $("#Descrizione").val(),
-           Prezzo : $("#Prezzo").val()
+           Prezzo : $("#Prezzo").val(),
+           Img : $("#Img").val()           
        },
        success:function(){
     	   alert("Prodotto Inserito corretamente");

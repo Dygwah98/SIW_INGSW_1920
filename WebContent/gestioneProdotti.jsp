@@ -18,11 +18,19 @@
 	<div class="addcontrol-page">
 
 		<div class="form">
-
 			<div class="addp-form">
   				 <input type="text" name="Tipo" id="Tipo" placeholder="Tipo"/>
       			 <input type="text" name="Descrizione" id="Descrizione" placeholder="Descrizione"/>
       			 <input type="text" name="Prezzo" id="Prezzo" placeholder="Prezzo"/>
+      			 Scegli l'immagine:
+      			 <select name="Img" id="Img" >
+				    <option value="pomodoro">pomodoro</option>
+				    <option value="fagiolini">fagiolini</option>
+				    <option value="pecorino">pecorino</option>
+				    <option value="cavolo">cavolo</option>
+  				 </select>
+  				 <br>
+  				 <br>
        			 <button type="submit" id="btnaddp" onclick="addp(event)">addproduct!</button>
     		</div>
     	</div>
