@@ -259,12 +259,18 @@
    
 	<div id="cate" class="categorie">
 	  <button class="cat">Categorie:</button>
-	  <button class="elementi active" onclick="filterSelection('all')">Tutti i prodotti</button>
-	  <button class="elementi" onclick="filterSelection('verdura')"> Verdure</button>
-	  <button class="elementi" onclick="filterSelection('ortaggio')"> Ortaggi</button>
-	  <button class="elementi" onclick="filterSelection('salume')"> Salumi</button>
-	  <button class="elementi" onclick="filterSelection('formaggio')"> Formaggi</button>
-	  <button class="elementi" onclick="ordina()">Ordina</button>
+	  <a  class="elementi" href="vedifiltri?filtro=reset">Tutti i prodotti</a>
+	  <a class="elementi" href="vedifiltri?filtro=verdura">Verdura</a>
+	  <a class="elementi" href="vedifiltri?filtro=ortaggio">Ortaggio</a>
+	  <a class="elementi" href="vedifiltri?filtro=salumi">Salumi</a>
+	  <a class="elementi" href="vedifiltri?filtro=formaggi">Formaggi</a>
+	  <div  class="dropdown">
+		  <a style="color:black;" onclick="myFunction()" class="dropbtn">Ordina</a>
+			  <div id="myDropdown" class="dropdown-content">
+				    <a href="vedifiltri?filtro=prezzo">Prezzo</a>
+				    <a href="vedifiltri?filtro=alfabetico">Alfabetico</a>
+			  </div>
+	 </div>
 	</div>
 	
 	 <div class="divCatalogo">

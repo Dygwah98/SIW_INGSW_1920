@@ -288,30 +288,30 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	}
 	
 	@Override
-	public List<Prodotto> retrieveByType(String tipo) {
-		String query = "SELECT tipo, descrizione, prezzo, disponibile, img,idprodotto FROM prodotto WHERE tipo = ?";
-		Prodotto p = null;
-		List<Prodotto> prodotti = null;
+	public List<ProdottoAggregato> retrieveByType(String descrizione) {
+		
+		String query = "SELECT * FROM showproductsforshop where disponibile=true AND descrizione=?";
+		ProdottoAggregato p = null;
+		List<ProdottoAggregato> prodotti = null;
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 			
-			handler.getStatement().setString(1, tipo);
+			handler.getStatement().setString(1, descrizione);
 			handler.executeQuery();
 			
 			if(handler.existsResultSet()) {
-				prodotti = new ArrayList<Prodotto>();
+				prodotti = new ArrayList<ProdottoAggregato>();
 				ResultSet result = handler.getResultSet();
 
 				while (result.next()) {
-					p = new Prodotto();		
+					p = new ProdottoAggregato();		
 					p.setTipo(result.getString("tipo"));
 					p.setDescrizione(result.getString("descrizione"));
 					p.setPrezzo(result.getInt("prezzo"));
 					p.setDisponibile(result.getBoolean("disponibile"));
 					p.setImg(result.getString("img"));
-					p.setIdprodotto(result.getInt("idprodotto"));
-					if(prodotti.size()==0)
-						prodotti.add(p);
+					p.setNum(result.getInt("num"));
+					prodotti.add(p);
 				
 				}
 			}
@@ -321,6 +321,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		}  catch(SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		}
+		
 		
 	}
 
@@ -447,5 +448,41 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			throw new RuntimeException(e.getMessage());
 		}
 		return false;
+	}
+	
+	@Override
+	public List<ProdottoAggregato> singoloProdotto(String tipo) {
+		String query = "SELECT tipo, descrizione, prezzo, disponibile, img,idprodotto FROM prodotto WHERE tipo = ?";
+		ProdottoAggregato p = null;
+		List<ProdottoAggregato> prodotti = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			handler.getStatement().setString(1, tipo);
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				prodotti = new ArrayList<ProdottoAggregato>();
+				ResultSet result = handler.getResultSet();
+
+				while (result.next()) {
+					p = new ProdottoAggregato();		
+					p.setTipo(result.getString("tipo"));
+					p.setDescrizione(result.getString("descrizione"));
+					p.setPrezzo(result.getInt("prezzo"));
+					p.setDisponibile(result.getBoolean("disponibile"));
+					p.setImg(result.getString("img"));
+					p.setIdprodotto(result.getInt("idprodotto"));
+					if(prodotti.size()==0)
+						prodotti.add(p);
+				
+				}
+			}
+			
+			return prodotti;
+			
+		}  catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 }

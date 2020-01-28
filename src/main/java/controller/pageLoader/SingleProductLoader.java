@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Prodotto;
+import model.ProdottoAggregato;
 import persistence.DBManager;
 
 @WebServlet(value="/singolo",name="singolo")
@@ -25,7 +26,7 @@ public class SingleProductLoader extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String tipo = request.getParameter("tipo");
-		List<Prodotto> p = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo);
+		List<ProdottoAggregato> p = DBManager.getInstance().getDAOFactory().getProdottoDao().singoloProdotto(tipo);
 		request.setAttribute("prodotto",p);
 		request.getRequestDispatcher("prodottoSingolo.jsp").forward(request, response);
 		
