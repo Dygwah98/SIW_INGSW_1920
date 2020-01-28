@@ -52,7 +52,7 @@ public class Filtri extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("prodotto", l);
 		request.setAttribute("prodotto",l);
-		request.getRequestDispatcher("negozio.jsp#cate").forward(request, response);
+		response.sendRedirect("negozio.jsp#testo");
 		
 	}
 	

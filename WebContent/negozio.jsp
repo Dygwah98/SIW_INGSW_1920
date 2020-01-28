@@ -248,25 +248,24 @@
           </div>
         </div>   		
     	</div>
-    	<form id = "cerca" class="example" action="#cate" style="margin:auto;max-width:300px">
+    	<form id = "cerca" class="example"  action="#" style="margin:auto;max-width:300px">
   		<input id="testo" type="text" placeholder="cerca..." name="search2">
-  		<button type="submit"><i class="fa fa-search"></i></button>
+  		<a id="lente" href = "javascript:;" onclick = "this.href='vedifiltri?filtro=' + document.getElementById('testo').value"><i class="fa fa-search"></i></a>
 		</form>
     </section>
    
-    	
     
    
 	<div id="cate" class="categorie">
 	  <button class="cat">Categorie:</button>
-	  <a  class="elementi" href="vedifiltri?filtro=reset">Tutti i prodotti</a>
-	  <a class="elementi" href="vedifiltri?filtro=verdura">Verdura</a>
-	  <a class="elementi" href="vedifiltri?filtro=ortaggio">Ortaggio</a>
-	  <a class="elementi" href="vedifiltri?filtro=salumi">Salumi</a>
-	  <a class="elementi" href="vedifiltri?filtro=formaggi">Formaggi</a>
-	  <div  class="dropdown">
-		  <a style="color:black;" onclick="myFunction()" class="dropbtn">Ordina</a>
-			  <div id="myDropdown" class="dropdown-content">
+	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=reset">Tutti i prodotti</a>
+	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=verdura" >Verdura</a>
+	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=ortaggio">Ortaggio</a>
+	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=salumi">Salumi</a>
+	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=formaggi">Formaggi</a>
+	  <div  class="elementi2">
+		  <a style="color:black;" onclick="myFunction2()" class="dropbtn2">Ordina</a>
+			  <div id="myDropdown2" class="dropdown-content2">
 				    <a href="vedifiltri?filtro=prezzo">Prezzo</a>
 				    <a href="vedifiltri?filtro=alfabetico">Alfabetico</a>
 			  </div>

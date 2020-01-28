@@ -38,3 +38,42 @@
 .dropdown-content a:hover {color: #ffa37b;}
 
 .show {display: block;}
+
+.dropbtn2 {
+  color: red;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+
+.dropdown2 {
+  color:white;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown2 li:hover {color: #ffa37b;}
+
+
+.dropdown-content2 {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content2 a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content2 a:hover {color: #ffa37b;}
+
+.show2 {display: block;}
