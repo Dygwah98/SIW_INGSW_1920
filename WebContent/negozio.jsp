@@ -258,7 +258,7 @@
    
 	<div id="cate" class="categorie">
 	  <button class="cat">Categorie:</button>
-	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=reset">Tutti i prodotti</a>
+	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=all">Tutti i prodotti</a>
 	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=verdura" >Verdura</a>
 	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=ortaggio">Ortaggio</a>
 	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=carne">Carni</a>

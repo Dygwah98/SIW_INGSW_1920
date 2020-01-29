@@ -1,6 +1,7 @@
 package controller.user;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -29,6 +30,8 @@ public class Filtri extends HttpServlet {
 		
 		List<ProdottoAggregato> l = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop();
 		String tipo = request.getParameter("filtro");
+		PrintWriter out = response.getWriter();
+		boolean entro =false;
 		
 		switch (tipo) {
 		case "prezzo":
@@ -49,16 +52,28 @@ public class Filtri extends HttpServlet {
 		case "formaggi":
 			l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo);
 			break;
+		case "all":
+			l = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop();
+			break;
 
 		default:
+			   
+			   out.println("<script type=\"text/javascript\">");
+			   out.println("alert('Nessun prodotto trovato');");
+			   out.println("location='negozio.jsp#piu';");
+			   out.println("</script>");
+			   entro = true;
+			
 			break;
 		
 		}
-		
+		   
+		if(entro == false) {
 		HttpSession session = request.getSession();
 		session.setAttribute("prodotto", l);
 		request.setAttribute("prodotto",l);
 		response.sendRedirect("negozio.jsp#testo");
+		}
 		
 	}
 	
