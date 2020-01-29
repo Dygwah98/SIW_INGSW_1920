@@ -81,7 +81,7 @@
 		</div>
 	</div>
 	<div>
-		<button type="button" onclick="returnhomer()">tornaadhome</button>
+		<button type="button" onclick="returnhomeroom()">conferma</button>
 		<p id="opened"></p>
 	</div>
 </body>

@@ -8,13 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Post;
-import model.Prodotto;
-import model.User;
 import persistence.DBManager;
 import persistence.Dao;
 
-@WebServlet("/NewPost")
-public class NewPost extends HttpServlet {
+@WebServlet("/updatepost")
+public class updatePost extends HttpServlet {
 	
 	/**
 	 * 
@@ -28,21 +26,25 @@ public class NewPost extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-    	String titolo = request.getParameter("Titolo");
-    	String testo = request.getParameter("Messaggio");
-        String img = request.getParameter("Immagine");
+    	String id = request.getParameter("Identificativo");
+    	String titolo = request.getParameter("Titolo2");
+    	String testo = request.getParameter("Messaggio2");
+        String img = request.getParameter("Immagine2");
         java.util.Date uDate = new java.util.Date();
         java.sql.Date sDate = new java.sql.Date(uDate.getTime());
         
         
-        Post u=new Post();
+        Post u = new Post();
+        String n = id;
+        int i = Integer.parseInt(n);
+        u.setidPost(i);
         u.setTitolo(titolo);
         u.setImg(img);
         u.setMessaggio(testo);
         u.setData(sDate);
         
         Dao<Post> prodao = DBManager.getInstance().getDAOFactory().getPostDao();
-        prodao.save(u);
+        prodao.update(u);
         
         response.sendRedirect("gestionePost.jsp");
     }

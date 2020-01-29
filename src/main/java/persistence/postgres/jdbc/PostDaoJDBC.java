@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Post;
-import model.Room;
 import persistence.PersistenceException;
 import persistence.dao.PostDao;
 
@@ -35,16 +34,17 @@ public class PostDaoJDBC implements PostDao {
 	}
 
 	@Override
-	public void delete(Post object) {
+	public void delete(Post post) {
 		
-		String delete = "delete from post where idPost = " + object.getidPost();
+		String delete = "DELETE FROM post WHERE idpost = ? ";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
-
+			
+			handler.getStatement().setInt(1,post.getidPost());
 			handler.getStatement().executeUpdate();
 		
 		} catch (SQLException e) {
-			throw new PersistenceException(e.getMessage());
+			throw new RuntimeException(e.getMessage());
 		}
 	}
 /*
@@ -162,13 +162,39 @@ public class PostDaoJDBC implements PostDao {
 		}
 
 	@Override
-	public void update(Post object) {
+	public void update(Post post) {
 		
+		String update = "UPDATE post SET titolo = ?, messaggio = ?, img = ?,data = ? WHERE idpost = ?";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
+	
+			PreparedStatement smt = handler.getStatement();
+			smt.setString(1, post.getTitolo());
+			smt.setString(2, post.getMessaggio());
+			smt.setString(3, post.getImg());
+			smt.setDate(4,post.getData());
+			smt.setInt(5, post.getidPost());
+			smt.executeUpdate();
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 
 	@Override
 	public boolean findidproductbyid(Integer id) {
-		// TODO Auto-generated method stub
+		String find="select * from post where idpost=?";
+		Integer ID=null;
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(find)) {
+			handler.getStatement().setInt(1, id);
+			handler.executeQuery();
+			if(handler.existsResultSet()) {
+				return true;
+			}
+		}
+		catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 		return false;
 	}
 }

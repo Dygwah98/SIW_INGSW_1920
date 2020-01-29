@@ -66,12 +66,12 @@ function deletep(event){
     });
     
 }
-function returnhome(event){
+function returnhomeprodotto(event){
     $.ajax({
        type: "POST",
        url: "index.jsp",
        success:function(){
-    	   var answer =window.confirm("Vuoi tornare alla home? I dati nei form andrnno persi")
+    	   var answer =window.confirm("Confermi le operazioni svolte? I dati nei form andranno persi")
     	   if(answer)
     		   window.location.replace("index.jsp");
     	   else{}
@@ -154,12 +154,14 @@ function deletec(event){
     });
     
 }
-function returnhomer(event){
+
+
+function returnhomeroom(event){
     $.ajax({
        type: "POST",
        url: "index.jsp",
        success:function(){
-    	   var answer =window.confirm("Vuoi tornare alla home? I dati nei form andrnno persi")
+    	   var answer =window.confirm("Confermi le operazioni svolte? I dati nei form andranno persi")
     	   if(answer)
     		   window.location.replace("index.jsp");
     	   else{}
@@ -170,5 +172,93 @@ function returnhomer(event){
 
         }
     });
+}
+
+function addPost(event){
+	 $.ajax({
+	       type: "POST",
+	       url: "NewPost",
+	     
+	       data: {
+	           Titolo : $("#Titolo").val(),
+	           Messaggio : $("#Messaggio").val(),
+	           Immagine : $("#Immagine").val(),
+	           Data : $("#Data").val()           
+	       },
+	       success:function(){
+	    	   alert("Post Inserito corretamente");
+	    	   window.location.replace("gestionePost.jsp");
+	    	  
+	       },
+	        error : function () {
+	            alert("Il Post non è stato inserimento corretamente");
+	     	   window.location.replace("gestionePost.jsp");
+
+	        }
+	    });
+}
+function updatePost(event){
+    $.ajax({
+       type: "POST",
+       url: "updatepost",
+     
+       data: {
+    	   Identificativo : $("#Identificativo").val(),
+    	   Titolo2 : $("#Titolo2").val(),
+           Messaggio2 : $("#Messaggio2").val(),
+           Immagine2 : $("#Immagine2").val(),
+           Data2 : $("#Data2").val()    
+       },
+       success:function(){
+    	   alert("Post aggiornato corretamente");
+    	   window.location.replace("gestionePost.jsp");
+
+    	  
+       },
+        error : function () {
+            alert("Il post non è stato aggiornato corretamente o l'id post non corretto");
+     	   window.location.replace("gestionePost.jsp");
+
+        }
+    });
+}
+function deletePost(event){
+    $.ajax({
+       type: "POST",
+       url: "deletepost",
+     
+       data: {
+    	   Identificativo2 : $("#Identificativo2").val()
+       },
+       success:function(){
+    	   alert("Post eliminato corretamente");
+    	   window.location.replace("gestionePost.jsp");
+    	  
+       },
+        error : function () {
+            alert("Il Post non  e stato eliminato corretamente o l'id post non corretto");
+     	   window.location.replace("gestionePost.jsp");
+
+        }
+    });
     
 }
+
+function returnhomepost(event){
+    $.ajax({
+       type: "POST",
+       url: "index.jsp",
+       success:function(){
+    	   var answer =window.confirm("Confermi le operazioni svolte? I dati nei form andranno persi")
+    	   if(answer)
+    		   window.location.replace("index.jsp");
+    	   else{}
+    	  
+       },
+        error : function () {
+           window.location.replace("gestionePost.jsp");
+
+        }
+    });
+}
+

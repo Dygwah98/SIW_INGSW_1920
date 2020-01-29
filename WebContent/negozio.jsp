@@ -59,6 +59,7 @@
 							  <div id="myDropdown" class="dropdown-content">
 								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
 								    <a href="gestioneCamere.jsp">GestioneCamere</a>
+								    <a href="gestionePost.jsp">GestionePost</a>
 								    <a href="logout">Logout</a>
 							  </div>
 						</div>
@@ -108,6 +109,7 @@
 							  <div id="myDropdown" class="dropdown-content">
 								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
 								    <a href="gestioneCamere.jsp">GestioneCamere</a>
+								    <a href="gestionePost.jsp">GestionePost</a>
 								    <a href="logout">Logout</a>
 							  </div>
 						</div>
