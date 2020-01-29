@@ -26,7 +26,7 @@ public class CreateProduct extends HttpServlet {
         String descrizione = req.getParameter("Descrizione");
         String prezzo= req.getParameter("Prezzo");
         String img = req.getParameter("Img");
-        String immagine = "images/";
+        String immagine = "images/shop/";
         immagine = immagine.concat(img);
         
         if(tipo==null || descrizione==null || prezzo==null){
