@@ -1,26 +1,39 @@
 
+initHomeSlider();
 
+function initHomeSlider()
+	{
+		if($('.home_slider').length)
+		{
+			var homeSlider = $('.home_slider');
+			homeSlider.owlCarousel(
+			{
+				items:1,
+				autoplay:true,
+				loop:false,
+				nav:false,
+				smartSpeed:1200
+			});
 
-var slideIndex = 0;
-showSlides();
+			/* Custom dots events */
+			if($('.home_slider_custom_dot').length)
+			{
+				$('.home_slider_custom_dot').on('click', function()
+				{
+					$('.home_slider_custom_dot').removeClass('active');
+					$(this).addClass('active');
+					homeSlider.trigger('to.owl.carousel', [$(this).index(), 1200]);
+				});
+			}
 
-//IMMAGINI SLIDE INTESTAZIONE
-function showSlides() {
-	  var i;
-	  var slides = document.getElementsByClassName("slide");
-	  var dots = document.getElementsByClassName("home_slider_custom_dot");
-	  for (i = 0; i < slides.length; i++) {
-	   // slides[i].style.display = "none";  
-	  }
-	  slideIndex++;
-	  if (slideIndex > slides.length) {slideIndex = 1}    
-	  for (i = 0; i < dots.length; i++) {
-	    dots[i].className = dots[i].className.replace(" active", "");
-	  }
-	  slides[slideIndex-1].style.display = "block";  
-	  dots[slideIndex-1].className += " active";
-	  setTimeout(showSlides, 2000); // Change image every 2 seconds
-}
+			/* Change active class for dots when slide changes by nav or touch */
+			homeSlider.on('changed.owl.carousel', function(event)
+			{
+				$('.home_slider_custom_dot').removeClass('active');
+				$('.home_slider_custom_dots li').eq(event.page.index).addClass('active');
+			});
+		}
+	}
 
 // PRODOTTI
 filterSelection("all")
