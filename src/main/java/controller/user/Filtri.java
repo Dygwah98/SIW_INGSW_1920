@@ -30,31 +30,25 @@ public class Filtri extends HttpServlet {
 		
 		List<ProdottoAggregato> l = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop();
 		String tipo = request.getParameter("filtro");
+		tipo = tipo.toLowerCase();
 		PrintWriter out = response.getWriter();
 		boolean entro =false;
 		
 		switch (tipo) {
-		case "prezzo":
-			sortaPrezzo(l);
-			break;
-		case "alfabetico":
-			sortaNome(l);
-			break;
-		case "verdura":
-			l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo);
-			break;
-		case "ortaggio":
-			l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo);
-			break;
-		case "carne":
-			l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo);
-			break;
-		case "formaggi":
-			l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo);
-			break;
-		case "all":
-			l = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop();
-			break;
+		case "prezzo": sortaPrezzo(l); break;
+		case "alfabetico": sortaNome(l); break;
+		
+		case "verdura": l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByCategory(tipo); break;
+		case "ortaggio": l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByCategory(tipo); break;
+		case "carne": l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByCategory(tipo); break;
+		case "formaggi": l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByCategory(tipo); break;
+		
+		case "pomodori" : l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo); break;
+		case "latte": l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo); break;
+		case "broccoli": l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo); break;
+		case "maiale": l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo); break;
+		
+		case "all": l = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop(); break;
 
 		default:
 			   
@@ -96,10 +90,15 @@ public class Filtri extends HttpServlet {
 		});
 	}
 	
-public void sortaNome(List<ProdottoAggregato> l) {
+	public void sortaNome(List<ProdottoAggregato> l) {
 		
-		Collections.sort(l);
+		Collections.sort(l, new Comparator<ProdottoAggregato>() {
+			public int compare(ProdottoAggregato o1, ProdottoAggregato o2) {
+				return o1.getTipo().compareTo(o2.getTipo());
+			}
+		});
 	}
+
 	
 	
 }

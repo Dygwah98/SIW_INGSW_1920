@@ -37,6 +37,7 @@
 				    <option value="pecorino">pecorino</option>
 				    <option value="maiale">maiale</option>
 				    <option value="latte">latte</option>
+				    <option value="latte">broccoli</option>
   				 </select>
   				 <br>
   				 <br>
@@ -65,7 +66,7 @@
   		</div>
   	</div>
 	<div>
-		<button type="button" onclick="returnhome()">tornaadhome</button>
+		<button type="button" onclick="returnhomeprodotto()">tornaadhome</button>
 		<p id="opened"></p>
 	</div>
 

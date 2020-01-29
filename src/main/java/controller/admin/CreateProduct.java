@@ -35,6 +35,7 @@ public class CreateProduct extends HttpServlet {
         else {
         Prodotto p = new Prodotto();
        
+        tipo = tipo.toLowerCase();
         p.setTipo(tipo);
         
         p.setDescrizione(descrizione);
