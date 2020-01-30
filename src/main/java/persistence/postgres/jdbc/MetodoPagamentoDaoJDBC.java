@@ -1,6 +1,7 @@
 package persistence.postgres.jdbc;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.tables.MetodoPagamento;
@@ -11,7 +12,7 @@ public class MetodoPagamentoDaoJDBC implements MetodoPagamentoDao {
 	@Override
 	public void save(MetodoPagamento object) {
 		
-		String query = "INSERT INTO metodo_pagamento(ccv, numero_carta, data_scadenza, id_cliente, scelta) VALUES(?, ?, ?, ?, ?)";
+		String query = "INSERT INTO metodo_pagamento(ccv, numero_carta, data_scadenza, id_cliente, scelta) VALUES(?,?,?,?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 			
@@ -29,14 +30,72 @@ public class MetodoPagamentoDaoJDBC implements MetodoPagamentoDao {
 
 	@Override
 	public MetodoPagamento retrieve(MetodoPagamento object) {
-		// TODO Auto-generated method stub
-		return null;
+
+		String query = "SELECT * FROM metodo_pagamento WHERE id_metodo = ?";
+		MetodoPagamento p = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+		
+			handler.getStatement().setInt(1, object.getIdMetodoPagamento());
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+			
+				handler.getResultSet().next();
+				p = new MetodoPagamento();
+				p.setIdMetodoPagamento(handler.getResultSet().getInt("id_metodo"));
+				p.setCcv(handler.getResultSet().getInt("ccv"));
+				p.setNumeroCarta(handler.getResultSet().getInt("numero_carta"));
+				p.setDataScadenza(handler.getResultSet().getDate("data_scadenza"));
+				p.setIdCliente(handler.getResultSet().getInt("id_cliente"));
+				p.setMetodoDiDefault(handler.getResultSet().getBoolean("scelta"));
+			}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return p;
 	}
 
 	@Override
 	public List<MetodoPagamento> retrieveAll() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String query = "SELECT * FROM metodo_pagamento";
+		ArrayList<MetodoPagamento> mp = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+		
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				
+				mp = new ArrayList<MetodoPagamento>();
+				MetodoPagamento p = null;
+				
+				while(handler.getResultSet().next()) {
+					
+					p = new MetodoPagamento();
+					
+					p.setIdMetodoPagamento(handler.getResultSet().getInt("id_metodo"));
+					p.setCcv(handler.getResultSet().getInt("ccv"));
+					p.setNumeroCarta(handler.getResultSet().getInt("numero_carta"));
+					p.setDataScadenza(handler.getResultSet().getDate("data_scadenza"));
+					p.setIdCliente(handler.getResultSet().getInt("id_cliente"));
+					p.setMetodoDiDefault(handler.getResultSet().getBoolean("scelta"));
+					
+					mp.add(p);
+				}
+			}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return mp;
+	
 	}
 
 	@Override
