@@ -6,8 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Prodotto;
-import model.ProdottoAggregato;
+import model.nonTables.ProdottoAggregato;
+import model.tables.Prodotto;
 import persistence.dao.ProdottoDao;
 
 public class ProdottoDaoJDBC implements ProdottoDao {

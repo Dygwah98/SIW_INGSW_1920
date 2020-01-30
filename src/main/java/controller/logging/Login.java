@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.User;
-
+import model.tables.User;
 import persistence.DBManager;
 
 import java.io.IOException;
@@ -37,7 +36,7 @@ public class Login extends HttpServlet {
 	        resp.setStatus(201);
 		}
 		else {
-		User utente = DBManager.getInstance().getDAOFactory().getUtenteDAO().loginQuery(username, password);
+		User utente = DBManager.getInstance().getDAOFactory().getUtenteDao().loginQuery(username, password);
 		
 		
 		if (utente != null) {

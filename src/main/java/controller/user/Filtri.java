@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.ProdottoAggregato;
+import model.nonTables.ProdottoAggregato;
 import persistence.DBManager;
 
 @WebServlet(value="/vedifiltri",name="vedifiltri")

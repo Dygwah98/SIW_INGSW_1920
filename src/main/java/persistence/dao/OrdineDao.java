@@ -2,10 +2,10 @@ package persistence.dao;
 
 import java.util.List;
 
-import model.Ordine;
-import model.OrdineConPrezzo;
-import model.Prenotazione;
-import model.Prodotto;
+import model.nonTables.OrdineConPrezzo;
+import model.tables.Ordine;
+import model.tables.Prenotazione;
+import model.tables.Prodotto;
 import persistence.Dao;
 
 public interface OrdineDao extends Dao<Ordine> {

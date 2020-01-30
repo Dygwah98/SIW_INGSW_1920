@@ -13,7 +13,7 @@ import javax.sql.rowset.JoinRowSet;
 import com.sun.rowset.CachedRowSetImpl;
 import com.sun.rowset.JoinRowSetImpl;
 
-import model.Room;
+import model.tables.Room;
 import persistence.dao.RoomDao;
 
 public class RoomDaoJDBC implements RoomDao {

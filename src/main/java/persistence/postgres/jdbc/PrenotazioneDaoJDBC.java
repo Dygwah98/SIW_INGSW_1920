@@ -8,7 +8,7 @@ import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 
-import model.Prenotazione;
+import model.tables.Prenotazione;
 import persistence.dao.PrenotazioneDao;
 
 public class PrenotazioneDaoJDBC implements PrenotazioneDao {

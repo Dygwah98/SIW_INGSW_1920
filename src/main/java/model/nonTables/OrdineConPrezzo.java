@@ -1,4 +1,6 @@
-package model;
+package model.nonTables;
+
+import model.tables.Ordine;
 
 public class OrdineConPrezzo extends Ordine {
 

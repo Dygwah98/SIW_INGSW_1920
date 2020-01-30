@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
-import model.Room;
+import model.tables.Room;
 import persistence.Dao;
 
 public interface RoomDao extends Dao<Room>{

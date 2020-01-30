@@ -1,4 +1,4 @@
-package model;
+package model.tables;
 
 public class Prodotto {
 	

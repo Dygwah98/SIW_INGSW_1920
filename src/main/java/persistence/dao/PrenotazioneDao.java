@@ -1,6 +1,6 @@
 package persistence.dao;
 
-import model.Prenotazione;
+import model.tables.Prenotazione;
 import persistence.Dao;
 
 public interface PrenotazioneDao extends Dao<Prenotazione> {

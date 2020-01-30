@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Prodotto;
+import model.tables.Prodotto;
 import persistence.DBManager;
 import persistence.Dao;
 

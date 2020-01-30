@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Prenotazione;
+import model.tables.Prenotazione;
 import persistence.DBManager;
 @WebServlet(value="/addprenotazione",name="addprenotazione")
 public class AddPrenotazioneServlet extends HttpServlet {

@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Prenotazione;
-import model.Prodotto;
-import model.Room;
+import model.tables.Prenotazione;
+import model.tables.Prodotto;
+import model.tables.Room;
 import persistence.DBManager;
 
 @WebServlet(value="/addpcart",name="addpcart")

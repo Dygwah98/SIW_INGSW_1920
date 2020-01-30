@@ -5,10 +5,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Ordine;
-import model.OrdineConPrezzo;
-import model.Prenotazione;
-import model.Prodotto;
+import model.nonTables.OrdineConPrezzo;
+import model.tables.Ordine;
+import model.tables.Prenotazione;
+import model.tables.Prodotto;
 import persistence.dao.OrdineDao;
 
 public class OrdineDaoJDBC implements OrdineDao {

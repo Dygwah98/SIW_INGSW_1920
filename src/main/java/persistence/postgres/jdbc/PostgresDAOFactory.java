@@ -6,7 +6,7 @@ import persistence.dao.*;
 public class PostgresDAOFactory extends DAOFactory {
 
 	@Override
-	public UserDao getUtenteDAO() {
+	public UserDao getUtenteDao() {
 		return new UserDaoJDBC();
 	}
 
@@ -32,8 +32,17 @@ public class PostgresDAOFactory extends DAOFactory {
 
 	@Override
 	public OrdineDao getOrdineDao() {
-		// TODO Auto-generated method stub
 		return new OrdineDaoJDBC();
+	}
+
+	@Override
+	public PagamentoDao getPagamentoDao() {
+		return new PagamentoDaoJDBC();
+	}
+
+	@Override
+	public MetodoPagamentoDao getMetodoPagamentoDao() {
+		return new MetodoPagamentoDaoJDBC();
 	}
 
 }

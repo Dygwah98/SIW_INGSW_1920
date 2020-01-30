@@ -31,7 +31,7 @@ public abstract class DAOFactory {
 	
 	// --- Factory specification: concrete factories implementing this spec must provide this methods! ---
 		
-	public abstract UserDao getUtenteDAO();
+	public abstract UserDao getUtenteDao();
 		
 	public abstract PostDao getPostDao();
 
@@ -43,5 +43,7 @@ public abstract class DAOFactory {
 	
 	public abstract OrdineDao getOrdineDao();
 
+	public abstract PagamentoDao getPagamentoDao();
 	
+	public abstract MetodoPagamentoDao getMetodoPagamentoDao();
 }

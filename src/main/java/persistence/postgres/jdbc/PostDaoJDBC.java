@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Post;
+import model.tables.Post;
 import persistence.PersistenceException;
 import persistence.dao.PostDao;
 

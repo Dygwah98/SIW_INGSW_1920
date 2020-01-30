@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.User;
+import model.tables.User;
 import persistence.DBManager;
 import persistence.Dao;
 
@@ -36,7 +36,7 @@ public class RegisterUser extends HttpServlet {
         u.setPassword(password);
         u.setEmail(email);
         
-        Dao<User> userdao = DBManager.getInstance().getDAOFactory().getUtenteDAO();
+        Dao<User> userdao = DBManager.getInstance().getDAOFactory().getUtenteDao();
         userdao.save(u);
         
         response.sendRedirect("Loginform.jsp");

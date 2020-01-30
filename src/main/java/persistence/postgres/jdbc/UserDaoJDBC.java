@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.User;
+import model.tables.User;
 import persistence.PersistenceException;
 import persistence.dao.UserDao;
 

@@ -1,4 +1,6 @@
-package model;
+package model.nonTables;
+
+import model.tables.Prodotto;
 
 public class ProdottoAggregato extends Prodotto implements Comparable<ProdottoAggregato> {
 

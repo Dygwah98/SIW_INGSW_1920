@@ -3,8 +3,8 @@ package persistence.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import model.Prodotto;
-import model.ProdottoAggregato;
+import model.nonTables.ProdottoAggregato;
+import model.tables.Prodotto;
 import persistence.Dao;
 import persistence.postgres.jdbc.JDBCQueryHandler;
 
