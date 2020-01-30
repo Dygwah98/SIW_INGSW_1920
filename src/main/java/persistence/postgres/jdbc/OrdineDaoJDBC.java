@@ -31,6 +31,39 @@ public class OrdineDaoJDBC implements OrdineDao {
 	}
 
 	@Override
+	public Ordine retrieve(Ordine object) {
+		
+		String query = "SELECT idorder FROM ordine WHERE idorder = ?";
+		Ordine ord = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			handler.getStatement().setInt(1, object.getIdOrdine());
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+			
+				handler.getResultSet().next();
+				ord = new Ordine();
+				ord.setIdOrdine(handler.getResultSet().getInt("idorder"));
+				ord.setIdUtente(handler.getResultSet().getInt("idclient"));
+			}
+			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return ord;
+	}
+	
+	@Override
+	public List<Ordine> retrieveAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
 	public void update(Ordine ordine) {
 		// TODO Auto-generated method stub
 		
@@ -40,6 +73,12 @@ public class OrdineDaoJDBC implements OrdineDao {
 	public void delete(Ordine ordine) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public boolean exists(Ordine object) {
+		
+		return retrieve(object) != null;
 	}
 /*
 	@Override
@@ -147,48 +186,7 @@ public class OrdineDaoJDBC implements OrdineDao {
 		}
 	}
 */
-	@Override
-	public Ordine retrieve(Ordine object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public List<Ordine> retrieveAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public List<Prenotazione> retrievePrenotazioni(Integer idcliente){
-		String c="Select p.id_prenotazione,p.checkin,p.checkout,p.id_room,p.id_order from ordine as o,prenotazioni as p where o.idorder=p.id_order and o.idclient=? and o.pagato=false"; 
-		List<Prenotazione> p = null;
-		Prenotazione pre = null;
-		
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(c)) {
-			
-			handler.getStatement().setInt(1, idcliente);
-			handler.executeQuery();
-			
-			if(handler.existsResultSet()) {
-				p = new ArrayList<Prenotazione>();
-				ResultSet result = handler.getResultSet();
-				while (result.next()) {
-					pre = new Prenotazione();
-					pre.setIdprenotazione(result.getInt("id_prenotazione"));				
-					pre.setCheckin(result.getDate("checkin"));
-					pre.setCheckout(result.getDate("checkout"));
-					pre.setIdcamera(result.getInt("id_room"));
-					pre.setIdordine(result.getInt("id_order"));
-					p.add(pre);
-				}
-			}
-			
-			return p;
-			
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
-		}	
-	}
+
 	@Override
 	public List<Prodotto> retrieveProdotti(Integer idcliente){
 		String c="Select p.idprodotto,p.tipo,p.descrizione,p.prezzo,p.disponibile,p.img,p.idordine from ordine as o,prenotazione as p where o.idorder=p.idordine and o.idclient=? and o.pagato=false"; 
@@ -222,6 +220,37 @@ public class OrdineDaoJDBC implements OrdineDao {
 		
 	}
 
+	@Override
+	public List<Prenotazione> retrievePrenotazioni(Integer idcliente){
+		String c="Select p.id_prenotazione,p.checkin,p.checkout,p.id_room,p.id_order from ordine as o,prenotazioni as p where o.idorder=p.id_order and o.idclient=? and o.pagato=false"; 
+		List<Prenotazione> p = null;
+		Prenotazione pre = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(c)) {
+			
+			handler.getStatement().setInt(1, idcliente);
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				p = new ArrayList<Prenotazione>();
+				ResultSet result = handler.getResultSet();
+				while (result.next()) {
+					pre = new Prenotazione();
+					pre.setIdprenotazione(result.getInt("id_prenotazione"));				
+					pre.setCheckin(result.getDate("checkin"));
+					pre.setCheckout(result.getDate("checkout"));
+					pre.setIdcamera(result.getInt("id_room"));
+					pre.setIdordine(result.getInt("id_order"));
+					p.add(pre);
+				}
+			}
+			
+			return p;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}	
+	}
 
 	@Override
 	public void pay(Integer userId) {
@@ -237,7 +266,7 @@ public class OrdineDaoJDBC implements OrdineDao {
 			e.printStackTrace();
 		}
 	}
-	public List<Integer> retrieveprezzocamere(Integer id){
+	public List<Integer> retrievePrezzoCamere(Integer id){
 		String prezzo="Select r.prezzo as pre from room as r,prenotazioni as p,ordine as o where r.idcamera=p.id_room and p.id_order=o.idorder and o.pagato=false and o.idclient=? ";
 		List<Integer> soldi = null;
 		Integer soldo = null;
@@ -262,7 +291,7 @@ public class OrdineDaoJDBC implements OrdineDao {
 		return null;
 	}
 	@Override
-	public Integer retrieveidorder(Integer idclient)
+	public Integer retrieveIdOrder(Integer idclient)
 	{
 		String ord="select idorder from ordine where idclient=? and pagato=false";
 		Integer idord=null;
@@ -315,12 +344,5 @@ public class OrdineDaoJDBC implements OrdineDao {
 		
 		return ord;
 	}
-
-	@Override
-	public boolean findidproductbyid(Integer id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
 }
 

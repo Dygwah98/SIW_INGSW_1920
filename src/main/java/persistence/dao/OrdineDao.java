@@ -12,7 +12,7 @@ public interface OrdineDao extends Dao<Ordine> {
 	public List<Prodotto> retrieveProdotti(Integer idcliente);
 	public List<Prenotazione> retrievePrenotazioni(Integer idcliente);
 	public void pay(Integer userId);
-	public List<Integer> retrieveprezzocamere(Integer id);
-	Integer retrieveidorder(Integer idclient);
+	public List<Integer> retrievePrezzoCamere(Integer id);
+	Integer retrieveIdOrder(Integer idclient);
 	public List<OrdineConPrezzo> getOrderHistory(Integer idCliente);
 }

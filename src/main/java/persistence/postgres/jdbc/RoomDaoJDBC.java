@@ -41,7 +41,34 @@ public class RoomDaoJDBC implements RoomDao {
 		}
 	}
 
-
+	@Override
+	public Room retrieve(Room object) {
+		
+		String find="SELECT * FROM room WHERE idcamera=?";
+		Room r = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(find)) {
+			handler.getStatement().setInt(1, object.getId());
+			handler.executeQuery();
+			if(handler.existsResultSet()) {
+				handler.getResultSet().next();
+				r = new Room();
+				r.setId(handler.getResultSet().getInt("idcamera"));		
+				r.setTipo(handler.getResultSet().getString("tipo"));
+				r.setDescrizione(handler.getResultSet().getString("descrizione"));
+				r.setMaxpersone(handler.getResultSet().getInt("maxpersone"));
+				r.setOccupata(handler.getResultSet().getBoolean("occupata"));
+				r.setPrezzo(handler.getResultSet().getInt("prezzo"));
+				r.setImg(handler.getResultSet().getString("img"));
+			}
+		}
+		catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	
+		return r;
+	}
+	
 	@Override
 	public List<Room> retrieveAll() {
 		
@@ -113,6 +140,13 @@ public class RoomDaoJDBC implements RoomDao {
 			throw new RuntimeException(e.getMessage());
 		}
 	}
+	
+	@Override
+	public boolean exists(Room object) {
+	
+		return retrieve(object) != null;
+	}
+	
 	@Override
 	public void updateOccupata(Integer idRoom, Boolean value) {
 		String update = "UPDATE Room SET occupata = ? WHERE idcamera = ?";
@@ -188,11 +222,7 @@ public class RoomDaoJDBC implements RoomDao {
 		}
 	}
 */
-	@Override
-	public Room retrieve(Room object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 /*
 	@Override
 	public List<Room> retrieveByDate(Date checkin, Date checkout) {
@@ -233,22 +263,4 @@ public class RoomDaoJDBC implements RoomDao {
 		return ret;
 	}
 */
-
-
-	@Override
-	public boolean findidproductbyid(Integer id) {
-		String find="select * from room where idcamera=?";
-		Integer ID=null;
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(find)) {
-			handler.getStatement().setInt(1, id);
-			handler.executeQuery();
-			if(handler.existsResultSet()) {
-				return true;
-			}
-		}
-		catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
-		}
-		return false;
-	}
 }

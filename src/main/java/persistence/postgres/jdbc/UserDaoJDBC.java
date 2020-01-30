@@ -13,8 +13,6 @@ import persistence.dao.UserDao;
 
 public class UserDaoJDBC implements UserDao {
 		
-	
-
 	@Override
 	public void save(User utente) {
 		
@@ -36,30 +34,6 @@ public class UserDaoJDBC implements UserDao {
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-	}
-
-	@Override
-	public void update(User Utente) {
-		
-		String update = "UPDATE utente SET nome=?,cognome=?,datadinascita=?,username=?,password=?,image=?,email=? WHERE username=?";
-		
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
-			
-			PreparedStatement smt = handler.getStatement();
-			smt.setString(1, Utente.getName());
-			smt.setString(2, Utente.getSurname());
-			smt.setString(3, Utente.getNascita());
-			smt.setString(4, Utente.getUsername());
-			smt.setString(5, Utente.getPassword());
-			smt.setString(6, Utente.getImage());
-			smt.setString(7, Utente.getImage());
-			smt.setInt(8, Utente.getId());
-			
-			handler.executeUpdate();
-			
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
-		}		
 	}
 	
 	@Override
@@ -129,6 +103,30 @@ public class UserDaoJDBC implements UserDao {
 	}
 
 	@Override
+	public void update(User Utente) {
+		
+		String update = "UPDATE utente SET nome=?,cognome=?,datadinascita=?,username=?,password=?,image=?,email=? WHERE username=?";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
+			
+			PreparedStatement smt = handler.getStatement();
+			smt.setString(1, Utente.getName());
+			smt.setString(2, Utente.getSurname());
+			smt.setString(3, Utente.getNascita());
+			smt.setString(4, Utente.getUsername());
+			smt.setString(5, Utente.getPassword());
+			smt.setString(6, Utente.getImage());
+			smt.setString(7, Utente.getImage());
+			smt.setInt(8, Utente.getId());
+			
+			handler.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}		
+	}
+
+	@Override
 	public void delete(User object) {
 
 		String delete = "DELEtE FROM utente WHERE username = ? ";
@@ -143,6 +141,12 @@ public class UserDaoJDBC implements UserDao {
 		}
 	}
 
+	@Override
+	public boolean exists(User object) {
+		
+		return retrieve(object) != null;
+	}
+	
 	@Override
 	public User loginQuery(String username, String password) {
 		
@@ -176,12 +180,6 @@ public class UserDaoJDBC implements UserDao {
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-	}
-
-	@Override
-	public boolean findidproductbyid(Integer id) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 	
 }

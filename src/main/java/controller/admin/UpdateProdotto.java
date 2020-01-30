@@ -27,42 +27,27 @@ public class UpdateProdotto extends HttpServlet {
 		String tipo = req.getParameter("Tipo1");
         String descrizione = req.getParameter("Descrizione1");
         String prezzo= req.getParameter("Prezzo1");
-        boolean ID = DBManager.getInstance().getDAOFactory().getProdottoDao().findidproductbyid(Integer.parseInt(id));
-        if(ID==false) {
-        	 resp.setStatus(401);
-        }
-    	
-        else {
         Prodotto p = new Prodotto();
+        p.setIdprodotto(Integer.parseInt(id));
         
-        p.setTipo(tipo);
+        boolean ID = DBManager.getInstance().getDAOFactory().getProdottoDao().exists(p);
+        if(!ID) {
+        	 resp.setStatus(401);
         
-        p.setDescrizione(descrizione);
-       
-      
-       
-        p.setPrezzo(Integer.parseInt(prezzo));
+        } else {
+        	p.setTipo(tipo);    
+        	p.setDescrizione(descrizione);
+        	p.setPrezzo(Integer.parseInt(prezzo));
+        	p.setDisponibile(true);
+        	if(descrizione.equals("ortaggio")) {
+        		p.setImg("images/product-5");
+        	}
+        	if(descrizione.equals("verdura")) {
+        		p.setImg("images/product-3");
+        	}
         
-        p.setDisponibile(true);
-      
-        if(descrizione.equals("ortaggio")) {
-        	p.setImg("images/product-5");
-        }
-        if(descrizione.equals("verdura")) {
-        	p.setImg("images/product-3");
-        }
-        
-        
-       
-        
-      
-        int intero1 = Integer.parseInt(id);
-	
-
-        p.setIdprodotto(intero1);
-        
-        DBManager.getInstance().getDAOFactory().getProdottoDao().update(p);
-   	 	resp.setStatus(201);
+        	DBManager.getInstance().getDAOFactory().getProdottoDao().update(p);
+        	resp.setStatus(201);
         }
 	}
 }

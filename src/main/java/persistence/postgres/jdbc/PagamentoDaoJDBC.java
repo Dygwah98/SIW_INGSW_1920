@@ -109,8 +109,9 @@ public class PagamentoDaoJDBC implements PagamentoDao {
 	}
 
 	@Override
-	public boolean findidproductbyid(Integer id) {
-		return false;
+	public boolean exists(Pagamento object) {
+		
+		return retrieve(object) != null;
 	}
 
 }

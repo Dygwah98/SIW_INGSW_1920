@@ -21,7 +21,7 @@ public class AddProdottoToCart extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Integer idord=	DBManager.getInstance().getDAOFactory().getOrdineDao().retrieveidorder((Integer)request.getSession().getAttribute("userId"));
+		Integer idord=	DBManager.getInstance().getDAOFactory().getOrdineDao().retrieveIdOrder((Integer)request.getSession().getAttribute("userId"));
 			//DBManager.getInstance().getDAOFactory().getProdottoDao().updatesetdisponibile(Integer.parseInt(request.getParameter("idp")),false);
 		
 		String tipo=request.getParameter("tip");

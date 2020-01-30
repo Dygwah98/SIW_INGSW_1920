@@ -12,25 +12,6 @@ import model.tables.Prenotazione;
 import persistence.dao.PrenotazioneDao;
 
 public class PrenotazioneDaoJDBC implements PrenotazioneDao {
-
-	@Override
-	public void saveAndLink(Prenotazione input, Integer idUtente) {
-		
-		String insert = "INSERT INTO prenotazioni(checkin,checkout,id_room,id_order) SELECT ? AS checkin, ? AS checkout, ? AS idcamera, o.idorder AS idordine FROM ordine AS o WHERE o.idclient = ? AND NOT o.pagato";
-		
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
-			
-			PreparedStatement smt = handler.getStatement();
-			smt.setDate(1, input.getCheckin());
-			smt.setDate(2, input.getCheckout());
-			smt.setInt(3, input.getIdcamera());
-			smt.setInt(4, idUtente);
-			handler.executeUpdate();
-		
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
-		}
-	}
 	
 	@Override
 	public void save(Prenotazione book) {
@@ -52,6 +33,12 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 		}
 	}
 
+	@Override
+	public Prenotazione retrieve(Prenotazione object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	@Override
 	public List<Prenotazione> retrieveAll() {
 
@@ -118,6 +105,32 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 			throw new RuntimeException(e.getMessage());
 		}	
 	}
+	
+	@Override
+	public boolean exists(Prenotazione object) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	@Override
+	public void saveAndLink(Prenotazione input, Integer idUtente) {
+		
+		String insert = "INSERT INTO prenotazioni(checkin,checkout,id_room,id_order) SELECT ? AS checkin, ? AS checkout, ? AS idcamera, o.idorder AS idordine FROM ordine AS o WHERE o.idclient = ? AND NOT o.pagato";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
+			
+			PreparedStatement smt = handler.getStatement();
+			smt.setDate(1, input.getCheckin());
+			smt.setDate(2, input.getCheckout());
+			smt.setInt(3, input.getIdcamera());
+			smt.setInt(4, idUtente);
+			handler.executeUpdate();
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+	
 	@Override
 	public void deletep(Integer id) {
 		
@@ -186,15 +199,5 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 		}
 	}
 */
-	@Override
-	public Prenotazione retrieve(Prenotazione object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public boolean findidproductbyid(Integer id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

@@ -16,7 +16,7 @@ public class PostDaoJDBC implements PostDao {
 	@Override
 	public void save(Post post) {
 
-		String insert = "insert into post(titolo, messaggio, img, data) values (?,?,?,?)";
+		String insert = "insert into post(titolo, messaggio, img, data_post) values (?,?,?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 			
@@ -34,6 +34,85 @@ public class PostDaoJDBC implements PostDao {
 	}
 
 	@Override
+	public Post retrieve(Post object) {
+	
+		String find = "SELECT * FROM post WHERE idpost=?";
+		Post p = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(find)) {
+			handler.getStatement().setInt(1, object.getidPost());
+			handler.executeQuery();
+			if(handler.existsResultSet()) {
+				p = new Post();
+				handler.getResultSet().next();
+				p.setidPost(handler.getResultSet().getInt("idpost"));
+				p.setTitolo(handler.getResultSet().getString("titolo"));
+				p.setMessaggio(handler.getResultSet().getString("messaggio"));
+				p.setImg(handler.getResultSet().getString("img"));
+				p.setData(handler.getResultSet().getDate("data_post"));
+			}
+		}
+		catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		
+		return p;
+	}
+
+
+	public List<Post> retrieveAll() {
+			
+			String query = "SELECT * FROM post";
+			List<Post> posts = null;
+			Post post = null;
+			
+			try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+				handler.executeQuery();
+				
+				if(handler.existsResultSet()) {
+					posts = new ArrayList<Post>();
+					ResultSet result = handler.getResultSet();
+					
+					while (result.next()) {
+						post = new Post();
+						post.setidPost(result.getInt("idPost"));		
+						post.setImg(result.getString("img"));
+						post.setMessaggio(result.getString("messaggio"));
+						post.setTitolo(result.getString("titolo"));
+						post.setData(result.getDate("data_post"));
+						posts.add(post);
+					}
+				}
+				
+				return posts;
+			
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+
+	@Override
+	public void update(Post post) {
+		
+		String update = "UPDATE post SET titolo = ?, messaggio = ?, img = ?, data_post = ? WHERE idpost = ?";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
+	
+			PreparedStatement smt = handler.getStatement();
+			smt.setString(1, post.getTitolo());
+			smt.setString(2, post.getMessaggio());
+			smt.setString(3, post.getImg());
+			smt.setDate(4,post.getData());
+			smt.setInt(5, post.getidPost());
+			smt.executeUpdate();
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+	
+	@Override
 	public void delete(Post post) {
 		
 		String delete = "DELETE FROM post WHERE idpost = ? ";
@@ -46,6 +125,12 @@ public class PostDaoJDBC implements PostDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		}
+	}
+
+	@Override
+	public boolean exists(Post object) {
+		
+		return retrieve(object) != null;
 	}
 /*
 	@Override
@@ -123,78 +208,4 @@ public class PostDaoJDBC implements PostDao {
 		}
 	}
 */
-	@Override
-	public Post retrieve(Post object) {
-		return null;
-	}
-
-
-	public List<Post> retrieveAll() {
-			
-			String query = "SELECT * FROM post";
-			List<Post> posts = null;
-			Post post = null;
-			
-			try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-			
-				handler.executeQuery();
-				
-				if(handler.existsResultSet()) {
-					posts = new ArrayList<Post>();
-					ResultSet result = handler.getResultSet();
-					
-					while (result.next()) {
-						post = new Post();
-						post.setidPost(result.getInt("idPost"));		
-						post.setImg(result.getString("img"));
-						post.setMessaggio(result.getString("messaggio"));
-						post.setTitolo(result.getString("titolo"));
-						post.setData(result.getDate("data"));
-						posts.add(post);
-					}
-				}
-				
-				return posts;
-			
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
-		}
-
-	@Override
-	public void update(Post post) {
-		
-		String update = "UPDATE post SET titolo = ?, messaggio = ?, img = ?,data = ? WHERE idpost = ?";
-		
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
-	
-			PreparedStatement smt = handler.getStatement();
-			smt.setString(1, post.getTitolo());
-			smt.setString(2, post.getMessaggio());
-			smt.setString(3, post.getImg());
-			smt.setDate(4,post.getData());
-			smt.setInt(5, post.getidPost());
-			smt.executeUpdate();
-		
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
-		}
-	}
-
-	@Override
-	public boolean findidproductbyid(Integer id) {
-		String find="select * from post where idpost=?";
-		Integer ID=null;
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(find)) {
-			handler.getStatement().setInt(1, id);
-			handler.executeQuery();
-			if(handler.existsResultSet()) {
-				return true;
-			}
-		}
-		catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
-		}
-		return false;
-	}
 }

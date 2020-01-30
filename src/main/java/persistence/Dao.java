@@ -13,5 +13,5 @@ public interface Dao<T> {
 	
 	void delete(T object);
 
-	boolean findidproductbyid(Integer id);
+	boolean exists(T object);
 }

@@ -21,17 +21,19 @@ public class deleteroom extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		String id = req.getParameter("Id3");
-		boolean ID = DBManager.getInstance().getDAOFactory().getRoomDao().findidproductbyid(Integer.parseInt(id));
-        if(ID==false) {
+		Room r=new Room();
+        r.setId(Integer.parseInt(id));
+		
+        boolean ID = DBManager.getInstance().getDAOFactory().getRoomDao().exists(r);
+		
+		if(!ID) {
         	 resp.setStatus(401);
+        } else {
+        	r.setId(Integer.parseInt(id));
+        	DBManager.getInstance().getDAOFactory().getRoomDao().delete(r);
+   	 		resp.setStatus(201);
         }
-        Room r=new Room();
-        String numero2 =id;
-        int intero2 = Integer.parseInt(numero2);
-        r.setId(intero2);
-        Dao<Room> roomdao = DBManager.getInstance().getDAOFactory().getRoomDao();
-        roomdao.delete(r);
-   	 	resp.setStatus(201);
-	}
+    }
 }

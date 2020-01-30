@@ -120,9 +120,9 @@ public class MetodoPagamentoDaoJDBC implements MetodoPagamentoDao {
 	}
 
 	@Override
-	public boolean findidproductbyid(Integer id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean exists(MetodoPagamento object) {
+		
+		return retrieve(object) != null;
 	}
 
 }

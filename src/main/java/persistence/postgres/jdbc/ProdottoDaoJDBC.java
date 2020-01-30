@@ -283,8 +283,31 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 */
 	@Override
 	public Prodotto retrieve(Prodotto object) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String find = "SELECT * FROM prodotto WHERE idprodotto=?";
+		Prodotto p = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(find)) {
+		
+			handler.getStatement().setInt(1, object.getIdprodotto());
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				p = new Prodotto();
+				p.setIdprodotto(handler.getResultSet().getInt("idprodotto"));		
+				p.setTipo(handler.getResultSet().getString("tipo"));
+				p.setDescrizione(handler.getResultSet().getString("descrizione"));
+				p.setPrezzo(handler.getResultSet().getInt("prezzo"));
+				p.setDisponibile(handler.getResultSet().getBoolean("disponibile"));
+				p.setImg(handler.getResultSet().getString("img"));
+				p.setIdordine(handler.getResultSet().getInt("idordine"));
+			}
+		}
+		catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		
+		return p;
 	}
 	
 	@Override
@@ -472,20 +495,9 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		}
 	}
 	@Override
-	public boolean findidproductbyid(Integer id) {
-		String find="select idprodotto from prodotto where idprodotto=?";
-		Integer ID=null;
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(find)) {
-			handler.getStatement().setInt(1, id);
-			handler.executeQuery();
-			if(handler.existsResultSet()) {
-				return true;
-			}
-		}
-		catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
-		}
-		return false;
+	public boolean exists(Prodotto object) {
+		
+		return retrieve(object) != null;
 	}
 	
 	@Override
@@ -523,4 +535,5 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			throw new RuntimeException(e.getMessage());
 		}
 	}
+	
 }

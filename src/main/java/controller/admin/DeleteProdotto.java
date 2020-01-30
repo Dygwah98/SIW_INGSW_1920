@@ -21,18 +21,19 @@ public class DeleteProdotto extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		String id = req.getParameter("idprodo");
-		 boolean ID = DBManager.getInstance().getDAOFactory().getProdottoDao().findidproductbyid(Integer.parseInt(id));
-	        if(ID==false) {
-	        	
-	        	 resp.setStatus(401);
-	        }
-	        else {
-        Prodotto p = new Prodotto();
-        String numero1 =id;
-        int intero1 = Integer.parseInt(numero1);
-        p.setIdprodotto(intero1);
-         DBManager.getInstance().getDAOFactory().getProdottoDao().delete(p);
-         resp.setStatus(201);}
+		Prodotto p = new Prodotto();
+		p.setIdprodotto(Integer.parseInt(id));
+		
+		boolean ID = DBManager.getInstance().getDAOFactory().getProdottoDao().exists(p);
+	    
+		if(!ID) {
+	        resp.setStatus(401);
+		
+		} else {
+			DBManager.getInstance().getDAOFactory().getProdottoDao().delete(p);
+			resp.setStatus(201);
+		}
 	}
 }
