@@ -10,9 +10,9 @@ function initHomeSlider()
 			{
 				items:1,
 				autoplay:true,
-				loop:false,
+				loop:true,
 				nav:false,
-				smartSpeed:1200
+				smartSpeed:1500,
 			});
 
 			/* Custom dots events */
@@ -22,7 +22,7 @@ function initHomeSlider()
 				{
 					$('.home_slider_custom_dot').removeClass('active');
 					$(this).addClass('active');
-					homeSlider.trigger('to.owl.carousel', [$(this).index(), 1200]);
+					homeSlider.trigger('to.owl.carousel', [$(this).index(), 1500]);
 				});
 			}
 
