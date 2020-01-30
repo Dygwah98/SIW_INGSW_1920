@@ -19,7 +19,7 @@
 
 		<div class="form">
 			<div class="addp-form">
-  				 <input type="text" name="Tipo" id="Tipo" placeholder="Tipo"/>
+  				 <input type="text" name="Tipo" id="Tipo" placeholder="Tipo(al plurale)"/>
       			  Scegli la categoria:
       			 <select name="Descrizione" id="Descrizione" >
 				    <option value="verdura">verdura</option>
@@ -37,6 +37,13 @@
 				    <option value="pecorino">pecorino</option>
 				    <option value="maiale">maiale</option>
 				    <option value="latte">latte</option>
+				    <option value="broccoli">broccoli</option>
+				    <option value="agli">agli</option>
+				    <option value="cavolfiori">cavolfiori</option>
+				    <option value="cipolle">cipolle</option>
+				    <option value="mele">mele</option>
+				    <option value="peperoni">peperoni</option>
+				    <option value="carote">carote</option>
   				 </select>
   				 <br>
   				 <br>
@@ -65,7 +72,7 @@
   		</div>
   	</div>
 	<div>
-		<button type="button" onclick="returnhome()">tornaadhome</button>
+		<button type="button" onclick="returnhomeprodotto()">tornaadhome</button>
 		<p id="opened"></p>
 	</div>
 

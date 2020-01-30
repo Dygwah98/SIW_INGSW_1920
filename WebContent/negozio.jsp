@@ -180,7 +180,7 @@
 
 				<!-- Terza Slide -->
 				<div class="slide">
-					<div class="background_image" style="background-image:url(images/slide_salumi_3_.jpg)"></div>
+					<div class="background_image" style="background-image:url(images/slide_carne_3_.jpg)"></div>
 					<div class="home_container">
 						<div class="container">
 							<div class="row">

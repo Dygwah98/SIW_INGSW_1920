@@ -288,7 +288,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	}
 	
 	@Override
-	public List<ProdottoAggregato> retrieveByType(String descrizione) {
+	public List<ProdottoAggregato> retrieveByCategory(String descrizione) {
 		
 		String query = "SELECT * FROM showproductsforshop where disponibile=true AND descrizione=?";
 		ProdottoAggregato p = null;
@@ -297,6 +297,44 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 			
 			handler.getStatement().setString(1, descrizione);
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				prodotti = new ArrayList<ProdottoAggregato>();
+				ResultSet result = handler.getResultSet();
+
+				while (result.next()) {
+					p = new ProdottoAggregato();		
+					p.setTipo(result.getString("tipo"));
+					p.setDescrizione(result.getString("descrizione"));
+					p.setPrezzo(result.getInt("prezzo"));
+					p.setDisponibile(result.getBoolean("disponibile"));
+					p.setImg(result.getString("img"));
+					p.setNum(result.getInt("num"));
+					prodotti.add(p);
+				
+				}
+			}
+			
+			return prodotti;
+			
+		}  catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		
+		
+	}
+	
+	@Override
+	public List<ProdottoAggregato> retrieveByType(String tipo) {
+		
+		String query = "SELECT * FROM showproductsforshop where disponibile=true AND tipo=?";
+		ProdottoAggregato p = null;
+		List<ProdottoAggregato> prodotti = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			handler.getStatement().setString(1, tipo);
 			handler.executeQuery();
 			
 			if(handler.existsResultSet()) {

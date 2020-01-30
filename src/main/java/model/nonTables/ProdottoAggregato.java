@@ -2,7 +2,7 @@ package model.nonTables;
 
 import model.tables.Prodotto;
 
-public class ProdottoAggregato extends Prodotto implements Comparable<ProdottoAggregato> {
+public class ProdottoAggregato extends Prodotto{
 
 	private Integer num=null;
 	
@@ -24,9 +24,6 @@ public class ProdottoAggregato extends Prodotto implements Comparable<ProdottoAg
 		this.num = numProdotti;
 	}
 
-	@Override
-	public int compareTo(ProdottoAggregato o) {
-		return this.tipo.compareTo(o.tipo);
-	}
+
 	
 }
