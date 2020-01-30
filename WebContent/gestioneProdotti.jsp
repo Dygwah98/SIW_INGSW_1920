@@ -32,7 +32,7 @@
       			 <input type="text" name="Prezzo" id="Prezzo" placeholder="Prezzo"/>
       			 Scegli l'immagine:
       			 <select name="Img" id="Img" >
-				    <option value="pomodoro">pomodoro</option>
+				    <option value="pomodori">pomodori</option>
 				    <option value="fagiolini">fagiolini</option>
 				    <option value="pecorino">pecorino</option>
 				    <option value="maiale">maiale</option>

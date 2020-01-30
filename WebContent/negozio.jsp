@@ -278,7 +278,7 @@
 		<c:forEach var="prodotto" items="${prodotto}">
 			<div class="divProdotto ${prodotto.descrizione}">
   				<div class="prodotto"> 
-  					<a href="singolo?tipo=${prodotto.tipo}" class="proiezione"><img src="${prodotto.img}.jpg" alt="peperone">
+  					<a href="singolo?tipo=${prodotto.tipo}&category=${prodotto.descrizione}" class="proiezione"><img src="${prodotto.img}.jpg" alt="peperone">
   						
   					</a>
   					<div class="text py-3 pb-4 px-3 text-center"> 

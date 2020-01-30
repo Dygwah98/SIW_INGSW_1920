@@ -131,7 +131,7 @@
 				
 				<!-- Prima Slide -->
 				<div class="slide">
-					<div class="background_image" style="background-image:url(images/index_1.jpg)"></div>
+					<div class="background_image" style="background-image:url(images/prodottoSingolo.jpg)"></div>
 					<div class="home_container">
 						<div class="container">
 							<div class="row">
@@ -209,7 +209,7 @@
 	          					<p style="color: #000;">In teoria la quantita andrebbe qua!</p>
 	          				</div>
           				</div>
-          				<p><a href="cart.html" class="btn btn-black py-3 px-5">Aggiungi al carrello</a></p>
+          				<p><a href="addpcart?tip=${prodotto.tipo}" class="btn btn-black py-3 px-5">Aggiungi al carrello</a></p>
     				</div>
     			</div>
     		</div>
@@ -228,16 +228,16 @@
 	   </section>
 	   
 	 <div class="divCatalogo">
-		<c:forEach var="prodotto" items="${prodotto}">
-			<div class="divProdotto ${prodotto.descrizione}">
+		<c:forEach var="simili" items="${simili}">
+			<div class="divProdotto ${simili.descrizione}">
   				<div class="prodotto"> 
-  					<a href="#" class="proiezione"><img src="${prodotto.img}.jpg" alt="peperone">
+  					<a href="singolo?tipo=${simili.tipo}&category=${simili.descrizione}" class="proiezione"><img src="${simili.img}.jpg" alt="peperone">
   						<span class="sconto">50%</span> 
   					</a>
   					<div class="text py-3 pb-4 px-3 text-center"> 
-  						<h3><a id="tipo" href="#" onclick="aggiungiAlCarrello()">${prodotto.tipo}</a></h3>
+  						<h3><a id="tipo" href="#" onclick="aggiungiAlCarrello()">${simili.tipo}</a></h3>
   						<div class="d-flex">
-    						<p class="prezzo">${prodotto.prezzo} euro</p>
+    						<p class="prezzo">${simili.prezzo} euro</p>
    						</div>
 	   					<div class="bottoni d-flex px-3">
 	   						<div class="m-auto d-flex">
