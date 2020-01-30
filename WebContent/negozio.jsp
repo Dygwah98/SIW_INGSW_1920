@@ -140,7 +140,7 @@
 				
 				<!-- Prima Slide -->
 				<div class="slide">
-					<div class="background_image" style="background-image:url(images/slide_ortaggi_1_.jpg)"></div>
+					<div class="background_image" style="background-image:url(images/shop/slide_ortaggi_1_.jpg)"></div>
 					<div class="home_container">
 						<div class="container">
 							<div class="row">
@@ -160,7 +160,7 @@
 
 				<!-- Seconda Slide -->
 				<div class="slide">
-					<div class="background_image" style="background-image:url(images/slide_ortaggi_2_.jpg)"></div>
+					<div class="background_image" style="background-image:url(images/shop/slide_ortaggi_2_.jpg)"></div>
 					<div class="home_container">
 						<div class="container">
 							<div class="row">
@@ -180,7 +180,7 @@
 
 				<!-- Terza Slide -->
 				<div class="slide">
-					<div class="background_image" style="background-image:url(images/slide_carne_3_.jpg)"></div>
+					<div class="background_image" style="background-image:url(images/shop/slide_carne_3_.jpg)"></div>
 					<div class="home_container">
 						<div class="container">
 							<div class="row">
@@ -200,7 +200,7 @@
 				
 				<!-- Quarta Slide -->
 				<div class="slide">
-					<div class="background_image" style="background-image:url(images/slide_formaggi_4_.jpg)"></div>
+					<div class="background_image" style="background-image:url(images/shop/slide_formaggi_4_.jpg)"></div>
 					<div class="home_container">
 						<div class="container">
 							<div class="row">
