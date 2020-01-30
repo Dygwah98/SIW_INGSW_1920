@@ -1,6 +1,5 @@
 package persistence.postgres.jdbc;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -92,21 +91,17 @@ public class PagamentoDaoJDBC implements PagamentoDao {
 	@Override
 	public void update(Pagamento object) {
 		
-		String query;
-		
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-			
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override
 	public void delete(Pagamento object) {
 		
-		String query;
+		String query = "DELETE FROM pagamento WHERE id_pagamento = ?";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			handler.getStatement().setInt(1, object.getIdPagamento());
+			handler.executeUpdate();
 			
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -115,15 +110,6 @@ public class PagamentoDaoJDBC implements PagamentoDao {
 
 	@Override
 	public boolean findidproductbyid(Integer id) {
-		
-		String query;
-		
-		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-			
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
 		return false;
 	}
 

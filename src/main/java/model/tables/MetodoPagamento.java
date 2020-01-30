@@ -60,7 +60,7 @@ public class MetodoPagamento {
 		this.dataScadenza = dataScadenza;
 	}
 
-	public Boolean getMetodoDiDefault() {
+	public Boolean isMetodoDiDefault() {
 		return metodoDiDefault;
 	}
 
