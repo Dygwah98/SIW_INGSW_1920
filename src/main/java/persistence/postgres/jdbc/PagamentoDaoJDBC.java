@@ -12,14 +12,14 @@ public class PagamentoDaoJDBC implements PagamentoDao {
 	@Override
 	public void save(Pagamento object) {
 		
-		String query = "INSERT INTO pagamento(importo, id_ordine, id_metodo, data_pagamento) VALUES(?,?,?,?)";
+		String query = "INSERT INTO pagamento(importo, id_ordine, data_pagamento) VALUES(?,?,?,?)";
 		
 		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 			
 			handler.getStatement().setInt(1, object.getImporto());
 			handler.getStatement().setInt(2, object.getIdOrdine());
-			handler.getStatement().setInt(3, object.getIdMetodoPagamento());
-			handler.getStatement().setDate(4, object.getDataPagamento());
+			
+			handler.getStatement().setDate(3, object.getDataPagamento());
 			
 			handler.executeUpdate();
 			
@@ -46,7 +46,7 @@ public class PagamentoDaoJDBC implements PagamentoDao {
 				p.setIdPagamento(handler.getResultSet().getInt("id_pagamento"));
 				p.setImporto(handler.getResultSet().getInt("importo"));
 				p.setIdOrdine(handler.getResultSet().getInt("id_ordine"));
-				p.setIdMetodoPagamento(handler.getResultSet().getInt("id_metodo"));
+				
 				p.setDataPagamento(handler.getResultSet().getDate("data_pagamento"));
 			}
 			
@@ -75,7 +75,7 @@ public class PagamentoDaoJDBC implements PagamentoDao {
 					p.setIdPagamento(handler.getResultSet().getInt("id_pagamento"));
 					p.setImporto(handler.getResultSet().getInt("importo"));
 					p.setIdOrdine(handler.getResultSet().getInt("id_ordine"));
-					p.setIdMetodoPagamento(handler.getResultSet().getInt("id_metodo"));
+				
 					p.setDataPagamento(handler.getResultSet().getDate("data_pagamento"));
 					P.add(p);
 				}

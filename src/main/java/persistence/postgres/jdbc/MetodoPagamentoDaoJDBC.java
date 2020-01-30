@@ -121,8 +121,18 @@ public class MetodoPagamentoDaoJDBC implements MetodoPagamentoDao {
 
 	@Override
 	public boolean exists(MetodoPagamento object) {
-		
-		return retrieve(object) != null;
+		String query="select * from metodo_pagamento where id_cliente=?";
+try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			handler.getStatement().setInt(1, object.getIdCliente());
+			handler.executeUpdate();
+			if(handler.existsResultSet()) {
+				return true;
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	return false;
 	}
 
 }

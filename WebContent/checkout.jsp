@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,7 +26,7 @@
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="plugins/OwlCarousel2-2.3.4/owl.carousel.js"></script>
 <script src="js/custom.js"></script>
-<script src="js/carrello.js"></script>
+<script src="js/payment.js"></script>
   </head>
   <body>
   
@@ -113,8 +116,6 @@
 			 </div>
 		</div>		
 	</div>
-  
-    
    <div id="sezione2" class="riga_pagamento_principale">
   <div class="colonna_pagamento_principale">
     <div class="pagamento_principale">
@@ -157,12 +158,11 @@
             <input type="text" id="cname" name="cardname" placeholder="nome e cognome" required>
             <label for="ccnum">Numero carta di credito *</label>
             <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
-            <label for="expmonth">Mese *</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="mese" required>
+            <label for="expmonth">Mese/Anno *</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="mese/anno" required>
             <div class="riga_pagamento_principale">
               <div class="colonna_pagamento_secondaria">
-                <label for="expyear">Anno *</label>
-                <input type="text" id="expyear" name="expyear" placeholder="anno" required>
+               
               </div>
               <div class="colonna_pagamento_secondaria">
                 <label for="cvv">CVV *</label>
@@ -173,21 +173,17 @@
           
         </div>
         <label>
-          <input type="checkbox" checked="checked" name="sameadr"> Memorizza indirizzo come predefinito
+         <button type="submit" id="btnp" onclick="payment1(event)">pagamento</button>
         </label>
-        <input type="submit" value="Invia Ordine" class="pulsante_checkout">
       </form>
+      
     </div>
   </div>
   <div class="colonna_pagamento_terzaria">
     <div class="pagamento_principale">
-      <h4><a href="cart.jsp">Carrello</a> <span class="prezzo_carrello" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-      <p><a href="#">Prodotto uno</a> <span class="prezzo_carrello">15 euro</span></p>
-      <p><a href="#">Prodotto due</a> <span class="prezzo_carrello">5 euro</span></p>
-      <p><a href="#">Prodotto tre</a> <span class="prezzo_carrello">8 euro</span></p>
-      <p><a href="#">Prodotto quattro</a> <span class="prezzo_carrello">2 euro</span></p>
-      <hr>
-      <p>Totale <span class="prezzo_carrello" style="color:black"><b>30 euro</b></span></p>
+    
+      <h3>Totale</h3>
+     <c:out value="${totp}" default="Prezzo!" escapeXml="false"/>
     </div>
   </div>
 

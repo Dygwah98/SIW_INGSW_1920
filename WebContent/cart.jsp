@@ -30,6 +30,7 @@
 <link rel="stylesheet" type="text/css" href="styles/menuATendina.css">
 
 <script src="js/menuATendina.js"></script>
+<script src="js/checkout.js"></script>
 
 
 </head>
@@ -238,7 +239,7 @@
 					  </div>
     			</div>
     		</div>
-    				<p><a href="payment" class="btn btn-primary py-3 px-4">Procedi al pagamento</a></p>
+    				<button type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
     			</div>
     		</div>
 	</div>
