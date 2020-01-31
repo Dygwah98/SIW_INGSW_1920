@@ -45,5 +45,4 @@ public abstract class DAOFactory {
 
 	public abstract PagamentoDao getPagamentoDao();
 	
-	public abstract MetodoPagamentoDao getMetodoPagamentoDao();
 }

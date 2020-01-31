@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.nonTables.ProdottoAggregato;
-import model.tables.MetodoPagamento;
 import model.tables.Post;
 import persistence.DBManager;
 import persistence.Dao;

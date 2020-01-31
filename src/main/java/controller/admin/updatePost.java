@@ -33,7 +33,6 @@ public class updatePost extends HttpServlet {
         java.util.Date uDate = new java.util.Date();
         java.sql.Date sDate = new java.sql.Date(uDate.getTime());
         
-        
         Post u = new Post();
         String n = id;
         int i = Integer.parseInt(n);
@@ -46,6 +45,6 @@ public class updatePost extends HttpServlet {
         Dao<Post> prodao = DBManager.getInstance().getDAOFactory().getPostDao();
         prodao.update(u);
         
-        response.sendRedirect("gestionePost.jsp");
+        response.setStatus(201);
     }
 }

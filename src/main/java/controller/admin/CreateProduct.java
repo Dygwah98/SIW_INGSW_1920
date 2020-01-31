@@ -50,11 +50,12 @@ public class CreateProduct extends HttpServlet {
         
         if(descrizione.equals("ortaggio")==false|| descrizione.equals("verdura")==false) {
          	 resp.setStatus(401);
-        }
+        } else {
         
-        Dao<Prodotto> prodottoDao = DBManager.getInstance().getDAOFactory().getProdottoDao();
-        prodottoDao.save(p);
-        resp.setStatus(201);
+        	Dao<Prodotto> prodottoDao = DBManager.getInstance().getDAOFactory().getProdottoDao();
+        	prodottoDao.save(p);
+        	resp.setStatus(201);
+        }
         }
 	}
 }

@@ -34,7 +34,6 @@ public class NewPost extends HttpServlet {
         java.util.Date uDate = new java.util.Date();
         java.sql.Date sDate = new java.sql.Date(uDate.getTime());
         
-        
         Post u=new Post();
         u.setTitolo(titolo);
         u.setImg(img);
@@ -44,6 +43,6 @@ public class NewPost extends HttpServlet {
         Dao<Post> prodao = DBManager.getInstance().getDAOFactory().getPostDao();
         prodao.save(u);
         
-        response.sendRedirect("gestionePost.jsp");
+        response.setStatus(201);
     }
 }

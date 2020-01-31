@@ -38,17 +38,17 @@ public class Filtri extends HttpServlet {
 		case "prezzo": sortaPrezzo(l); break;
 		case "alfabetico": sortaNome(l); break;
 		
-		case "verdura": l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByCategory(tipo); break;
-		case "ortaggio": l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByCategory(tipo); break;
-		case "carne": l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByCategory(tipo); break;
-		case "formaggi": l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByCategory(tipo); break;
+		case "verdura": case "ortaggio": case "carne": case "formaggi": 
+			l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByCategory(tipo); 
+		break;
 		
-		case "pomodori" : l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo); break;
-		case "latte": l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo); break;
-		case "broccoli": l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo); break;
-		case "maiale": l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo); break;
+		case "pomodori": case "latte": case "broccoli": case "maiale": 
+			l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo); 
+		break;
 		
-		case "all": l = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop(); break;
+		case "all": 
+			l = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop(); 
+		break;
 
 		default:
 			   
