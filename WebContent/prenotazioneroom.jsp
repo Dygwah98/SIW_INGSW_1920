@@ -7,18 +7,19 @@
   <title>booking</title>
   <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
   <link href="styles/RegistrationForm.css" rel="stylesheet" type="text/css" />
+  <script src="js/admingestione.js"></script>
 </head>
 <body>
-<form class="decor"  method="post" action="${pageContext.request.contextPath}/addprenotazione">
+<form class="decor" >
   <div class="form-left-decoration"></div>
   <div class="form-right-decoration"></div>
   <div class="circle"></div>
   <div class="form-inner">
     <h3>booking_room</h3>
-    <input type="date" name="checkin"placeholder="checkin"> 
-    <input type="date" name="checkout"placeholder="checkout"> 
-    <input type="text" name="n_camera"placeholder="n_camera"> 
-    <input type="submit" value="Inviare">
+    <input type="date" name="checkin" id="checkin" placeholder="checkin"> 
+    <input type="date" name="checkout" id="checkout" placeholder="checkout"> 
+    <input type="text" name="n_camera" id="n_camera" placeholder="n_camera"> 
+    <input type="submit" value="Inviare" onclick="addprenotazione(event)">
   </div>
 </form>
 </body>

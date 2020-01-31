@@ -1,3 +1,27 @@
+
+function addprenotazione(event){
+    $.ajax({
+       type: "POST",
+       url: "addprenotazione",
+     
+       data: {
+           checkin : $("#checkin").val(),
+           checkout : $("#checkout").val(),
+           n_camera : $("#n_camera").val(),
+       },
+       success:function(){
+    	   alert("Prenotazione registrata corretamente");
+    	   window.location.replace("prenotazioneroom.jsp");
+    	  
+       },
+        error : function () {
+            alert("La Prenotazione non è stata registrata corretamente");
+     	   window.location.replace("prenotazioneroom.jsp");
+
+        }
+    });
+}
+
 function addp(event){
     $.ajax({
        type: "POST",
