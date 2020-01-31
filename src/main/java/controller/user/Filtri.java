@@ -38,11 +38,11 @@ public class Filtri extends HttpServlet {
 		case "prezzo": sortaPrezzo(l); break;
 		case "alfabetico": sortaNome(l); break;
 		
-		case "verdura": case "ortaggio": case "carne": case "formaggi": 
+		case "verdura": case "ortaggio": case "carne": case "formaggi": case"frutta": case "altro":
 			l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByCategory(tipo); 
 		break;
 		
-		case "pomodori": case "latte": case "broccoli": case "maiale": 
+		case "pomodori": case "latte": case "broccoli": case "maiale": case "fagiolini": case "vitello": case "mele": case "uova": 
 			l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo); 
 		break;
 		

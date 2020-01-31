@@ -62,7 +62,6 @@
 					<%} %>
 						<li ><a href="index.jsp">Home</a></li>
 						<li><a href="vediprodotti">Negozio</a></li>
-						<li><a href="#">Lista dei desideri</a></li>
 					</ul>
 			   </nav>
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
@@ -109,7 +108,6 @@
 					<%} %>
 					<li ><a href="index.jsp">Home</a></li>
 					<li><a href="vediprodotti">Negozio</a></li>
-					<li><a href="#">Lista dei desideri</a></li>
 			   </ul>
 		   </nav>
 		</div>
@@ -154,8 +152,8 @@
     <section id="prodotto"  class="ftco-section1">
     	<div class="container">
     		<div class="row">
-    			<div   class="col-lg-6 mb-5 ">
-    				<a href="#" class="cursore"><img style="border: 1px solid orange" src="${prodotto.img}.jpg"  alt=""></a>
+    			<div class="col-lg-6 mb-5 ">
+    				<a href="${prodotto.img}.jpg" class="cursore"><img style="border: 1px solid orange; display: block; height: 400px; width: 300px; width: 100%;" src="${prodotto.img}.jpg"  alt=""></a>
     			</div>
     			<div class="col-lg-6 dettagli-prodotto pl-md-5 ">
     				<h3 >${prodotto.tipo}</h3>
@@ -168,48 +166,20 @@
 								<a href="#"><span  class="ion-ios-star-outline"></span></a>
 							</p>
 							<p class="text-left mr-4">
-								<a href="#" class="mr-2" style="color: #000;">100 <span style="color: orange;">Recensioni</span></a>
+								<a href="#" class="mr-2" style="color: #000;"> <span style="color: orange; text-decoration: none;">Recensioni</span></a>
 							</p>
 							<p class="text-left">
-								<a href="#" class="mr-2" style="color: #000;">500 <span style="color: orange;">Venduti</span></a>
+								<a href="#" class="mr-2" style="color: #000;"> <span style="color: orange; text-decoration: none;">Venduti</span></a>
 							</p>
 						</div>
-    				<p class="price"><span>${prodotto.prezzo}</span></p>
-    				<p>${prodotto.descrizione}</p>
-						<div class="row mt-4">
-							<div class="col-md-6">
-								<div class="form-group d-flex">
-		              				<div class="select-wrap">
-	                  					<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                  					<select name="" id="" class="form-control">
-						                  	<option value="">Small</option>
-						                    <option value="">Medium</option>
-						                    <option value="">Large</option>
-						                    <option value="">Extra Large</option>
-	                 					 </select>
-	                				</div>
-		            			</div>
-							</div>
-							<div class="w-100"></div>
-							<div class="input-group col-md-6 d-flex mb-3">
-		             			<span class=" mr-2">
-		                			<button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
-		                  				 <i class="ion-ios-remove"></i>
-		                			</button>
-		            			</span>
-		             			<input type="text" id="quantity" name="quantity" class="form-control " value="1" min="1" max="100">
-		             			<span class="input-group-btn ml-2">
-		                			<button type="button" class="quantity-right-plus btn"  data-type="plus" data-field="">
-		                     			<i class="ion-ios-add"></i>
-		                 			</button>
-		             			</span>
-	          				</div>
-	          				<div class="w-100"></div>
-	          				<div class="col-md-12">
-	          					<p style="color: #000;">In teoria la quantita andrebbe qua!</p>
-	          				</div>
-          				</div>
-          				<p><a href="addpcart?tip=${prodotto.tipo}" class="btn btn-black py-3 px-5">Aggiungi al carrello</a></p>
+    				<p class="price"><span>${prodotto.prezzo} euro</span></p>
+    				<p>Categoria: ${prodotto.descrizione}</p>
+						
+          				<br>
+          				<br>
+          				<%if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+	   						<p><a href="addpcart?tip=${prodotto.tipo}" class="btn btn-black py-3 px-5">Aggiungi al carrello</a></p>
+							 <%}%>
     				</div>
     			</div>
     		</div>
@@ -221,7 +191,7 @@
 				<div class="row justify-content-center mb-3 pb-3">
 	          		<div class="col-md-12 heading-section text-center">
 	          			<span class="subheading">Prodotti</span>
-	            		<h2 class="mb-4">Prodotti relativi:</h2>
+	            		<h2 class="mb-4">Prodotti simili:</h2>
 	          		</div>
 	       	   </div>   		
 	       </div>
@@ -232,7 +202,6 @@
 			<div class="divProdotto ${simili.descrizione}">
   				<div class="prodotto"> 
   					<a href="singolo?tipo=${simili.tipo}&category=${simili.descrizione}" class="proiezione"><img src="${simili.img}.jpg" alt="peperone">
-  						<span class="sconto">50%</span> 
   					</a>
   					<div class="text py-3 pb-4 px-3 text-center"> 
   						<h3><a id="tipo" href="#" onclick="aggiungiAlCarrello()">${simili.tipo}</a></h3>
@@ -241,12 +210,13 @@
    						</div>
 	   					<div class="bottoni d-flex px-3">
 	   						<div class="m-auto d-flex">
-	   							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+	   							<a href="singolo?tipo=${simili.tipo}&category=${simili.descrizione}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 	   								<span><i class="ion-ios-menu"></i></span>
 	   							</a>
-	   							<a href="addCart" class="buy-now d-flex justify-content-center align-items-center mx-1">
+	   							<%if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+	   							<a href="addpcart?tip=${simili.tipo}" class="buy-now d-flex justify-content-center align-items-center mx-1">
 	   								<span><i class="ion-ios-cart"></i></span>
-	   							</a>
+	   							</a>} <%}%>
 	   							<a href="#" class="heart d-flex justify-content-center align-items-center ">
 	   								<span><i class="ion-ios-heart"></i></span>
 	   							</a>

@@ -1,24 +1,19 @@
 package controller.admin;
 import java.io.IOException;
-import java.net.PasswordAuthentication;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.Session;
-
-import com.sun.net.httpserver.Authenticator;
 
 import model.tables.Newsletter;
 import model.tables.Post;
-import model.tables.Prodotto;
-import model.tables.User;
 import persistence.DBManager;
 import persistence.Dao;
 import java.util.*;  
-
+import javax.mail.*;  
+import javax.mail.internet.*;  
 import javax.activation.*; 
 
 @WebServlet("/NewPost")

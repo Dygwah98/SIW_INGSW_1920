@@ -68,7 +68,6 @@
 						
 						<li ><a href="index.jsp">Home</a></li>
 						<li class="active"><a href="vediprodotti">Negozio</a></li>
-						<li><a href="#">Lista dei desideri</a></li>
 					</ul>
 			   </nav>
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
@@ -117,7 +116,6 @@
 					   
 					<li ><a href="index.jsp">Home</a></li>
 					<li class="active"><a href="vediprodotti">Negozio</a></li>
-					<li><a href="#">Lista dei desideri</a></li>
 			   </ul>
 		   </nav>
 		</div>
@@ -265,6 +263,8 @@
 	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=ortaggio">Ortaggio</a>
 	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=carne">Carni</a>
 	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=formaggi">Formaggi</a>
+	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=frutta">Frutta</a>
+	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=altro">Altro</a>
 	  <div  class="elementi2">
 		  <a style="color:black;" onclick="myFunction2()" class="dropbtn2">Ordina</a>
 			  <div id="myDropdown2" class="dropdown-content2">
@@ -289,7 +289,7 @@
    						
 	   					<div class="bottoni d-flex px-3">
 	   						<div class="m-auto d-flex">
-	   							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+	   							<a href="singolo?tipo=${prodotto.tipo}&category=${prodotto.descrizione}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 	   								<span><i class="ion-ios-menu"></i></span>
 	   							</a>
 	   							<%if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>

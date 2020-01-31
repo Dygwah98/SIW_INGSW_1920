@@ -29,7 +29,7 @@ public class CreateProduct extends HttpServlet {
         String immagine = "images/shop/";
         immagine = immagine.concat(img);
         
-        if(tipo==null || descrizione==null || prezzo==null){
+        if(tipo==null || descrizione==null || prezzo==null || img==null){
             resp.setStatus(401);
         }
         else {
@@ -48,14 +48,10 @@ public class CreateProduct extends HttpServlet {
         
         p.setImg(immagine);
         
-        if(descrizione.equals("ortaggio")==false|| descrizione.equals("verdura")==false) {
-         	 resp.setStatus(401);
-        } else {
+       Dao<Prodotto> prodottoDao = DBManager.getInstance().getDAOFactory().getProdottoDao();
+        prodottoDao.save(p);
+        resp.setStatus(201);
         
-        	Dao<Prodotto> prodottoDao = DBManager.getInstance().getDAOFactory().getProdottoDao();
-        	prodottoDao.save(p);
-        	resp.setStatus(201);
-        }
         }
 	}
 }

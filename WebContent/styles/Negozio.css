@@ -601,7 +601,7 @@ form.example::after {
  
   
  .prodotto {
- /* 
+ 
   display: block;
   width: 100%;
   margin-bottom: 30px;
@@ -611,7 +611,6 @@ form.example::after {
   -webkit-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  */
   border: 1px solid orange; 
  }
   /*@media (max-width: 991.98px) { .prodotto { margin-bottom: 30px;} }*/
@@ -674,6 +673,7 @@ form.example::after {
     display: block;
     min-height: 200px;
     max-height: 200px;
+    
     }
    
    

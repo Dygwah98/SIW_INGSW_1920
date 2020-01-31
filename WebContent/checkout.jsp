@@ -98,7 +98,7 @@
 				
 				<!-- Prima Slide -->
 				<div class="slide">
-					<div class="background_image" style="background-image:url(images/index_1.jpg)"></div>
+					<div class="background_image" style="background-image:url(images/blog_2.jpg)"></div>
 					<div class="home_container">
 						<div class="container">
 							<div class="row">
@@ -183,7 +183,7 @@
     <div class="pagamento_principale">
     
       <h3>Totale</h3>
-     <c:out value="${totp}" default="Prezzo!" escapeXml="false"/>
+     <c:out value="${totp} euro" default="Prezzo!" escapeXml="false"/>
     </div>
   </div>
 
