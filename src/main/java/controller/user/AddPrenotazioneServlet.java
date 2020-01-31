@@ -2,6 +2,10 @@ package controller.user;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,12 +30,32 @@ public class AddPrenotazioneServlet extends HttpServlet {
 		p.setCheckin(Date.valueOf(req.getParameter("checkin")));
 		p.setCheckout(Date.valueOf(req.getParameter("checkout")));
 		p.setIdcamera(Integer.parseInt(req.getParameter("n_camera")));
-	
-		Integer idUser = (Integer)req.getSession().getAttribute("userId");
+
+		boolean trovata = false;
 		
-		DBManager.getInstance().getDAOFactory().getPrenotazioneDao().saveAndLink(p, idUser);
-		DBManager.getInstance().getDAOFactory().getRoomDao().updateOccupata(p.getIdcamera(), true);
-		req.getRequestDispatcher("index.jsp").forward(req, resp);
+		
+		List<Prenotazione> prenotazioni = DBManager.getInstance().getDAOFactory().getPrenotazioneDao().retrieveAll();
+		
+		for (int i = 0; i < prenotazioni.size(); i++) {
+			if(p.getIdcamera() == prenotazioni.get(i).getIdcamera()){
+				if((((p.getCheckin().compareTo(prenotazioni.get(i).getCheckout()) > 0) && (p.getCheckout().compareTo(prenotazioni.get(i).getCheckout()) > 0)) ||
+						((p.getCheckin().compareTo(prenotazioni.get(i).getCheckin()) < 0) && (p.getCheckout().compareTo(prenotazioni.get(i).getCheckin()) < 0))) &&
+							((p.getCheckin().compareTo(prenotazioni.get(i).getCheckin()) > 0) && (p.getCheckout().compareTo(prenotazioni.get(i).getCheckin()) < 0))) {
+								Integer idUser = (Integer)req.getSession().getAttribute("userId");
+								DBManager.getInstance().getDAOFactory().getPrenotazioneDao().saveAndLink(p, idUser);
+								resp.setStatus(201);
+								break;
+				}
+				trovata = true;
+			}
+		}	
+		
+		if(trovata==false) {
+			Integer idUser = (Integer)req.getSession().getAttribute("userId");
+			DBManager.getInstance().getDAOFactory().getPrenotazioneDao().saveAndLink(p, idUser);
+			resp.setStatus(201);
+		}
+		resp.setStatus(401);
 	}
 	
 }
