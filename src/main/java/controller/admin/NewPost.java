@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.tables.Newsletter;
 import model.tables.Post;
-import model.tables.Prodotto;
-import model.tables.User;
 import persistence.DBManager;
 import persistence.Dao;
 import java.util.*;  
