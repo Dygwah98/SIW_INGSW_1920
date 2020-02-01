@@ -68,10 +68,20 @@
 					<%} %>
 					<li ><a href="index.jsp">Home</a></li>
 					<li><a href="vediprodotti">Negozio</a></li>
-			</div>
+						   </ul>
+		   </nav>
 		</div>
-	
-	<!-- Menu Scorrevole -->
+		<div class="menu_extra">
+		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+			<nav class="main_nav">
+					<ul class="d-flex flex-row align-items-start justify-content-start">
+							<li class="active"><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+					</ul>
+				</nav>
+	    <%}%>
+		</div>
+	</div>
+    <!-- END nav -->
 	
 	<div class="hamburger"><i class="fa fa-bars"  aria-hidden="true"></i></div>
 	</header>
@@ -112,7 +122,7 @@
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 			<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li class="active"><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
 					</ul>
 				</nav>
 	    <%}%>

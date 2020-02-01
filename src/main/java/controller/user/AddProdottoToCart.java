@@ -38,7 +38,7 @@ public class AddProdottoToCart extends HttpServlet {
 		    DBManager.getInstance().getDAOFactory().getProdottoDao().updatesetordine(idprod,idord);
 		
 		
-		request.getRequestDispatcher("addcart").forward(request, response);
+		request.getRequestDispatcher("negozio.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
