@@ -11,11 +11,7 @@ function ckout(event){
     		   alert("carrello vuoto impossibile procedere con l'ordine")
     		   window.location.reload();
     	   
-    	   } else if(e.status == 404) {
-    		   alert("NULL POINTER EXCEPTION")
-    		   window.location.reload();
     	   }
-    	   
        }
     });
 }
