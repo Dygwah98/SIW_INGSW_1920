@@ -12,7 +12,6 @@ import model.tables.User;
 import persistence.DBManager;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(value = "/login", name = "login")
 public class Login extends HttpServlet {
@@ -44,7 +43,8 @@ public class Login extends HttpServlet {
 			User utente = DBManager.getInstance().getDAOFactory().getUtenteDao().loginQuery(username, password);
 
 			if (utente != null) {
-
+				
+				req.getSession().setAttribute("admin", false);
 				req.getSession().setAttribute("logged", true);
 				resp.addCookie(new Cookie("logged", "true"));
 				session.setAttribute("username", username);

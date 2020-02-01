@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.tables.Prodotto;
-import model.tables.Room;
 import persistence.DBManager;
-import persistence.Dao;
 
 @WebServlet(value = "/updateprodotto", name = "updateprodotto")
 public class UpdateProdotto extends HttpServlet {

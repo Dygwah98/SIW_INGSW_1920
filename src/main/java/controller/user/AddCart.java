@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import model.nonTables.ProdottoAggregato;
 import model.tables.Prenotazione;
-import model.tables.Room;
 import persistence.DAOFactory;
 import persistence.DBManager;
 
@@ -24,6 +23,7 @@ public class AddCart extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 6076714433930879204L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -47,6 +47,7 @@ public class AddCart extends HttpServlet {
 		request.getRequestDispatcher("cart.jsp").forward(request, response);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

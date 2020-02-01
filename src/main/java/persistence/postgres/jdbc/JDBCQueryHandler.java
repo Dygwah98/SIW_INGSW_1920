@@ -19,6 +19,7 @@ public class JDBCQueryHandler implements AutoCloseable {
 		preparedStatement = connection.prepareStatement(query);
 	}
 
+	@Override
 	public void close() {
 
 		try {

@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.tables.Prodotto;
 import persistence.DBManager;
-import persistence.Dao;
 
 @WebServlet(value = "/deleteprodotto", name = "deleteprodotto")
 public class DeleteProdotto extends HttpServlet {

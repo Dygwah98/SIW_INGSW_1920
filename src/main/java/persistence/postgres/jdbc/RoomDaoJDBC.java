@@ -1,17 +1,10 @@
 package persistence.postgres.jdbc;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.sql.rowset.CachedRowSet;
-import javax.sql.rowset.JoinRowSet;
-
-import com.sun.rowset.CachedRowSetImpl;
-import com.sun.rowset.JoinRowSetImpl;
 
 import model.tables.Room;
 import persistence.dao.RoomDao;

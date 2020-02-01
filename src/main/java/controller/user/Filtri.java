@@ -25,6 +25,7 @@ public class Filtri extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -95,6 +96,7 @@ public class Filtri extends HttpServlet {
 	public void sortaPrezzo(List<ProdottoAggregato> l) {
 
 		Collections.sort(l, new Comparator<ProdottoAggregato>() {
+			@Override
 			public int compare(ProdottoAggregato o1, ProdottoAggregato o2) {
 				if (o1.getPrezzo() > o2.getPrezzo())
 					return 1;
@@ -108,6 +110,7 @@ public class Filtri extends HttpServlet {
 	public void sortaNome(List<ProdottoAggregato> l) {
 
 		Collections.sort(l, new Comparator<ProdottoAggregato>() {
+			@Override
 			public int compare(ProdottoAggregato o1, ProdottoAggregato o2) {
 				return o1.getTipo().compareTo(o2.getTipo());
 			}

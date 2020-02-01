@@ -1,6 +1,5 @@
 package persistence.postgres.jdbc;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -52,6 +51,7 @@ public class NewsletterDaoJDBC implements NewsletterDao {
 		return p;
 	}
 
+	@Override
 	public List<Newsletter> retrieveAll() {
 
 		String query = "SELECT * FROM newsletter";

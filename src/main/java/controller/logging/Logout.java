@@ -1,6 +1,5 @@
 package controller.logging;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -24,10 +23,10 @@ public class Logout extends HttpServlet {
 		req.getSession().setAttribute("logged", false);
 		req.getSession().removeAttribute("userId");
 		resp.addCookie(new Cookie("logged", "false"));
-		req.getSession().setAttribute("admin", false);
+		req.getSession().removeAttribute("admin");
 		resp.addCookie(new Cookie("admin", "false"));
-		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
-		rd.forward(req, resp);
+		
+		req.getRequestDispatcher("index.jsp").forward(req, resp);
 		// resp.sendRedirect(req.getHeader("referer"));
 	}
 

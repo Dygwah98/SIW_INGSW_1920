@@ -1,6 +1,5 @@
 package persistence.postgres.jdbc;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -58,6 +57,7 @@ public class PostDaoJDBC implements PostDao {
 		return p;
 	}
 
+	@Override
 	public List<Post> retrieveAll() {
 
 		String query = "SELECT * FROM post";

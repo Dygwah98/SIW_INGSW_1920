@@ -21,6 +21,7 @@ public class ViewRoom extends HttpServlet {
 	 */
 	private static final long serialVersionUID = -5619180683813203673L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<Room> r = DBManager.getInstance().getDAOFactory().getRoomDao().retrieveAll();
@@ -36,6 +37,7 @@ public class ViewRoom extends HttpServlet {
 
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

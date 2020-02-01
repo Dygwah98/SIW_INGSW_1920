@@ -233,6 +233,7 @@ public class OrdineDaoJDBC implements OrdineDao {
 		}
 	}
 
+	@Override
 	public List<Integer> retrievePrezzoCamere(Integer id) {
 		String prezzo = "Select r.prezzo as pre from room as r,prenotazioni as p,ordine as o where r.idcamera=p.id_room and p.id_order=o.idorder and o.pagato=false and o.idclient=? ";
 		List<Integer> soldi = null;

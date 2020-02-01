@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.annotation.WebServlet;
-
 import model.tables.Prenotazione;
 import persistence.dao.PrenotazioneDao;
 

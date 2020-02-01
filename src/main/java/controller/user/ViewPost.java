@@ -20,6 +20,7 @@ public class ViewPost extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<Post> r = DBManager.getInstance().getDAOFactory().getPostDao().retrieveAll();
@@ -27,6 +28,7 @@ public class ViewPost extends HttpServlet {
 		request.getRequestDispatcher("blog.jsp").forward(request, response);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

@@ -2,8 +2,6 @@ package model.tables;
 
 import java.sql.Date;
 
-import persistence.Dao;
-
 public class Pagamento {
 
 	private Integer idPagamento;

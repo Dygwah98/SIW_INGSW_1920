@@ -1,9 +1,5 @@
 package persistence.dao;
 
-import java.sql.Date;
-import java.sql.SQLException;
-import java.util.List;
-
 import model.tables.Room;
 import persistence.Dao;
 

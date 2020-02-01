@@ -18,7 +18,6 @@ import persistence.Dao;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.activation.*;
 
 @WebServlet("/NewPost")
 public class NewPost extends HttpServlet {
@@ -28,11 +27,13 @@ public class NewPost extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setStatus(405);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -86,6 +87,7 @@ public class NewPost extends HttpServlet {
 		try {
 
 			javax.mail.Session session = Session.getDefaultInstance(props, new Authenticator() {
+				@Override
 				protected PasswordAuthentication getPasswordAuthentication() {
 					return new PasswordAuthentication(username, password);
 				}

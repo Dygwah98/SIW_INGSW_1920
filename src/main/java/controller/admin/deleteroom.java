@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.tables.Room;
 import persistence.DBManager;
-import persistence.Dao;
 
 @WebServlet(value = "/deleterooms_servlet", name = "deleterooms_servlet")
 public class deleteroom extends HttpServlet {
