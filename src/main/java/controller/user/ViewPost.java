@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.tables.Post;
 import persistence.DBManager;
 
-
-@WebServlet(value="/viewpost",name="viewpost")
+@WebServlet(value = "/viewpost", name = "viewpost")
 public class ViewPost extends HttpServlet {
 
 	/**
@@ -21,16 +20,18 @@ public class ViewPost extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<Post> r = DBManager.getInstance().getDAOFactory().getPostDao().retrieveAll();
-		request.setAttribute("post",r);
+		request.setAttribute("post", r);
 		request.getRequestDispatcher("blog.jsp").forward(request, response);
 	}
-	
+
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-			
+
 	}
 
 }

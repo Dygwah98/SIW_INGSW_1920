@@ -1,4 +1,5 @@
 package controller.admin;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -9,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.tables.Post;
 import persistence.DBManager;
-import persistence.Dao;
 
 @WebServlet(value = "/deletepost", name = "deletepost")
 public class deletePost extends HttpServlet {
@@ -21,23 +21,23 @@ public class deletePost extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		resp.setStatus(405);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		String id = req.getParameter("Identificativo2");
 		Post post = new Post();
-        post.setidPost(Integer.parseInt(id));
-    
+		post.setidPost(Integer.parseInt(id));
+
 		boolean ID = DBManager.getInstance().getDAOFactory().getPostDao().exists(post);
-		
-		if(!ID) {
-        	 resp.setStatus(401);
-        } else {
-            DBManager.getInstance().getDAOFactory().getPostDao().delete(post);
-       	 	resp.setStatus(201);    	
-        }
-    }
+
+		if (!ID) {
+			resp.setStatus(401);
+		} else {
+			DBManager.getInstance().getDAOFactory().getPostDao().delete(post);
+			resp.setStatus(201);
+		}
+	}
 }

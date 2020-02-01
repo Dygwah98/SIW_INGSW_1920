@@ -11,11 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.nonTables.ProdottoAggregato;
-import model.tables.Prodotto;
 import persistence.DBManager;
 
-
-@WebServlet(value="/vediprodotti",name="vediprodotti")
+@WebServlet(value = "/vediprodotti", name = "vediprodotti")
 public class VisualizzaProdotti extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -24,12 +22,13 @@ public class VisualizzaProdotti extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<ProdottoAggregato> p = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop();
 		HttpSession session = request.getSession();
 		session.setAttribute("prodotto", p);
-		request.setAttribute("prodotto",p);
+		request.setAttribute("prodotto", p);
 		request.getRequestDispatcher("negozio.jsp").forward(request, response);
 	}
 }

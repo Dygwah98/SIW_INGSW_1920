@@ -2,7 +2,6 @@ package controller.pageLoader;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,9 +18,9 @@ public class RoomsLoader extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		req.getRequestDispatcher("/viewroom").include(req, resp);
-		
+
 //		resp.setContentType("text/html");
 //		
 //		RequestDispatcher rd = req.getRequestDispatcher("header.html");
@@ -35,21 +34,9 @@ public class RoomsLoader extends HttpServlet {
 //			req.getSession().setAttribute("attempts", 0);
 //	    }
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
-		resp.setContentType("text/html");
-		
-		RequestDispatcher rd = req.getRequestDispatcher("header.html");
-		rd.include(req, resp);
-//		rd = req.getRequestDispatcher("");
-//		rd.include(req, resp);
-		rd = req.getRequestDispatcher("footer.html");
-		rd.include(req, resp);
-		 
-		if(req.getSession().getAttribute("attempts") == null) {
-			req.getSession().setAttribute("attempts", 0);
-	    }
+
 	}
 }

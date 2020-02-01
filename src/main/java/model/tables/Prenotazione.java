@@ -9,8 +9,8 @@ public class Prenotazione {
 	private Date checkout;
 	private Integer IdCamera;
 	private Integer idordine;
-	
-	public Prenotazione(int idPrenotazione, Date checkin, Date checkout, int idCamera,int idordine) {
+
+	public Prenotazione(int idPrenotazione, Date checkin, Date checkout, int idCamera, int idordine) {
 		super();
 		IdPrenotazione = idPrenotazione;
 		this.checkin = checkin;
@@ -18,7 +18,7 @@ public class Prenotazione {
 		this.IdCamera = idCamera;
 		this.idordine = idordine;
 	}
-	
+
 	public Prenotazione() {
 		super();
 		IdPrenotazione = null;
@@ -27,43 +27,43 @@ public class Prenotazione {
 		IdCamera = null;
 		idordine = null;
 	}
-	
+
 	public int getIdprenotazione() {
 		return IdPrenotazione;
 	}
-	
+
 	public void setIdprenotazione(int idPrenotazione) {
 		IdPrenotazione = idPrenotazione;
 	}
-	
+
 	public Date getCheckin() {
 		return checkin;
 	}
-	
+
 	public void setCheckin(Date checkin) {
 		this.checkin = checkin;
 	}
-	
+
 	public Date getCheckout() {
 		return checkout;
 	}
-	
+
 	public void setCheckout(Date checkout) {
 		this.checkout = checkout;
 	}
-	
+
 	public int getIdcamera() {
 		return IdCamera;
 	}
-	
+
 	public void setIdcamera(int Idcamera) {
 		IdCamera = Idcamera;
 	}
-	
+
 	public int getIdordine() {
 		return idordine;
 	}
-	
+
 	public void setIdordine(int idordine) {
 		this.idordine = idordine;
 	}

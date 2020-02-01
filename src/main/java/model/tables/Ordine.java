@@ -1,7 +1,7 @@
 package model.tables;
 
-public class Ordine{
-	
+public class Ordine {
+
 	private Integer IdOrdine;
 	private Integer IdUtente;
 
@@ -14,19 +14,19 @@ public class Ordine{
 		IdOrdine = null;
 		IdUtente = null;
 	}
-	
+
 	public int getIdOrdine() {
 		return IdOrdine;
 	}
-	
+
 	public void setIdOrdine(int idOrdine) {
 		IdOrdine = idOrdine;
 	}
-	
+
 	public int getIdUtente() {
 		return IdUtente;
 	}
-	
+
 	public void setIdUtente(int idUtente) {
 		IdUtente = idUtente;
 	}

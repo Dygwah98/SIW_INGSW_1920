@@ -2,18 +2,18 @@ package model.nonTables;
 
 import model.tables.Prodotto;
 
-public class ProdottoAggregato extends Prodotto{
+public class ProdottoAggregato extends Prodotto {
 
-	private Integer num=null;
-	
+	private Integer num = null;
+
 	public ProdottoAggregato() {
 		super();
 	}
-	
+
 	public ProdottoAggregato(String tipo, Integer numProdotti) {
 		super();
 		super.setTipo(tipo);
-		this.num= numProdotti;
+		this.num = numProdotti;
 	}
 
 	public Integer getNum() {
@@ -24,6 +24,4 @@ public class ProdottoAggregato extends Prodotto{
 		this.num = numProdotti;
 	}
 
-
-	
 }
