@@ -18,6 +18,11 @@ import persistence.DBManager;
 @WebServlet(value="/addprenotazione",name="addprenotazione")
 public class AddPrenotazioneServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -727101467915246978L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	

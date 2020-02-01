@@ -14,6 +14,11 @@ import persistence.Dao;
 @WebServlet("/RegisterUser")
 public class RegisterUser extends HttpServlet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6910811414241559167L;
+
 	//TODO
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	

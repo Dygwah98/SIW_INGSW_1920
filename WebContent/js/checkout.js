@@ -3,11 +3,19 @@ function ckout(event){
        type: "GET",
        url: "checkout",
        success:function(){
-    	   window.location.replace("checkout.jsp");
+    	   	window.location.replace("checkout.jsp");
        },
-        error : function () {
-        	alert("carrello vuoto impossibile procedere con l'ordine")
-     	   window.location.replace("cart.jsp");
-        }
+       error : function (e, status, error) {
+    	   
+    	   if(e.status == 412) {
+    		   alert("carrello vuoto impossibile procedere con l'ordine")
+    		   window.location.reload();
+    	   
+    	   } else if(e.status == 404) {
+    		   alert("NULL POINTER EXCEPTION")
+    		   window.location.reload();
+    	   }
+    	   
+       }
     });
 }

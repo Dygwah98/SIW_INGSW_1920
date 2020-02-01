@@ -15,6 +15,11 @@ import persistence.Dao;
 @WebServlet(value = "/updateprodotto", name = "updateprodotto")
 public class UpdateProdotto extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6441792516917803239L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

@@ -184,7 +184,6 @@
 						        
 						        <td class="quantity">
 						        		${prodc.num}
-					          		</div>
 					          </td>
 						        
 						      </tr><!-- END TR-->
@@ -239,8 +238,6 @@
     		</div>
     				<button type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
     			</div>
-    		</div>
-	</div>
 	</section>
 
 	

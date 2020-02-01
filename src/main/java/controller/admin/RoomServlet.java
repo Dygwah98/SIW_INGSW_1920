@@ -14,6 +14,11 @@ import persistence.Dao;
 @WebServlet(value = "/rooms_servlet", name = "rooms_servlet")
 public class RoomServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4054930605466624053L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
