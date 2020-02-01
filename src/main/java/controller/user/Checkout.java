@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 import model.nonTables.ProdottoAggregato;
 import persistence.DAOFactory;
 import persistence.DBManager;
+import persistence.dao.OrdineDao;
+import persistence.dao.ProdottoDao;
 
 @WebServlet(value = "/checkout", name = "checkout")
 public class Checkout extends HttpServlet {
@@ -22,40 +24,54 @@ public class Checkout extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	// TODO
+	private Integer processProducts(Integer id_ordine) {
+		
+		try {
+			Integer s = 0;
+			ProdottoDao f = DBManager.getInstance().getDAOFactory().getProdottoDao();
+			List<ProdottoAggregato> prodc = f.showProductsForCart(id_ordine);
+			for(ProdottoAggregato p : prodc)
+				s += p.getPrezzo();
+			
+			return s;
+		
+		} catch(NullPointerException e) {
+			return -1;
+		}
+	}
+	
+	private Integer processRooms(Integer id_user) {
+		
+		try {
+			Integer s = 0;
+			OrdineDao d = DBManager.getInstance().getDAOFactory().getOrdineDao();
+			List<Integer> prezzi = d.retrievePrezzoCamere(id_user);
+			
+			for(Integer i : prezzi)
+				s += i;
+			
+			return s;
+			
+		} catch(NullPointerException e) {
+			return -1;
+		}
+	}
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		DAOFactory f = DBManager.getInstance().getDAOFactory();
 
-		try {
+		Integer total = 0;
+		total += processProducts((Integer) request.getSession().getAttribute("idordine"));
+		total += processRooms((Integer) request.getSession().getAttribute("userId"));
 
-			List<ProdottoAggregato> prodc = f.getProdottoDao()
-					.showProductsForCart((Integer) request.getSession().getAttribute("idordine"));
-			List<Integer> prezzi = f.getOrdineDao()
-					.retrievePrezzoCamere((Integer) request.getSession().getAttribute("userId"));
-
-			if (prezzi.isEmpty() && prodc.isEmpty()) {
-				response.setStatus(412);
-			} else {
-				session.setAttribute("metodp", true);
-				Integer s = 0;
-				if (!prodc.isEmpty())
-					for (int i = 0; i < prodc.size(); i++)
-						s += prodc.get(i).getPrezzo();
-
-				if (!prezzi.isEmpty())
-					for (int j = 0; j < prezzi.size(); j++)
-						s += prezzi.get(j);
-
-				session.setAttribute("totp", s);
-				response.setStatus(201);
-			}
-
-		} catch (NullPointerException e) {
-			response.setStatus(404);
+		if (total <= 0) {
+			response.setStatus(412);
+		} else {
+			session.setAttribute("totp", total.intValue());
+			response.setStatus(201);
 		}
 	}
 
