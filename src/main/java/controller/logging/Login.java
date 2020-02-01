@@ -34,7 +34,7 @@ public class Login extends HttpServlet {
     	String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		HttpSession session =  req.getSession();
-		if(username.equals("puzza")  && password.equals("ricca")) {
+		if(username.equals("admin")  && password.equals("admin")) {
 			
 			req.getSession().setAttribute("admin",true);
 	        resp.addCookie(new Cookie("admin", "true"));

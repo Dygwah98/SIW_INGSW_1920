@@ -54,7 +54,8 @@ function updatep(event){
     	   Pr1 : $("#pr1").val(),
            Tipo1 : $("#Tipo1").val(),
            Descrizione1 : $("#Descrizione1").val(),
-           Prezzo1 : $("#Prezzo1").val()
+           Prezzo1 : $("#Prezzo1").val(),
+           Img1 : $("#Img1").val() 
        },
        success:function(){
     	   alert("Prodotto aggiornato corretamente");
@@ -97,7 +98,7 @@ function returnhomeprodotto(event){
        success:function(){
     	   var answer =window.confirm("Confermi le operazioni svolte? I dati nei form andranno persi")
     	   if(answer)
-    		   window.location.replace("index.jsp");
+    		   window.location.replace("vediprodotti");
     	   else{}
     	  
        },

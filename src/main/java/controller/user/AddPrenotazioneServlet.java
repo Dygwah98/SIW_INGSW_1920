@@ -37,30 +37,35 @@ public class AddPrenotazioneServlet extends HttpServlet {
 		p.setIdcamera(Integer.parseInt(req.getParameter("n_camera")));
 
 		boolean trovata = false;
+		boolean funziona = false;
 		
 		
 		List<Prenotazione> prenotazioni = DBManager.getInstance().getDAOFactory().getPrenotazioneDao().retrieveAll();
 		
 		for (int i = 0; i < prenotazioni.size(); i++) {
 			if(p.getIdcamera() == prenotazioni.get(i).getIdcamera()){
+				trovata = true;
 				if((((p.getCheckin().compareTo(prenotazioni.get(i).getCheckout()) > 0) && (p.getCheckout().compareTo(prenotazioni.get(i).getCheckout()) > 0)) ||
 						((p.getCheckin().compareTo(prenotazioni.get(i).getCheckin()) < 0) && (p.getCheckout().compareTo(prenotazioni.get(i).getCheckin()) < 0))) &&
 							((p.getCheckin().compareTo(prenotazioni.get(i).getCheckin()) > 0) && (p.getCheckout().compareTo(prenotazioni.get(i).getCheckin()) < 0))) {
-								Integer idUser = (Integer)req.getSession().getAttribute("userId");
-								DBManager.getInstance().getDAOFactory().getPrenotazioneDao().saveAndLink(p, idUser);
-								resp.setStatus(201);
+								funziona = true;
 								break;
 				}
-				trovata = true;
+				
+				
 			}
 		}	
 		
-		if(trovata==false) {
+		if(trovata==false || funziona ==true) {
 			Integer idUser = (Integer)req.getSession().getAttribute("userId");
 			DBManager.getInstance().getDAOFactory().getPrenotazioneDao().saveAndLink(p, idUser);
 			resp.setStatus(201);
+			
 		}
-		resp.setStatus(401);
+		else if(funziona==false) {
+			resp.setStatus(401);
+			System.out.println("ciao");
+		}
 	}
 	
 }

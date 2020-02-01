@@ -13,6 +13,7 @@ import javax.sql.rowset.JoinRowSet;
 import com.sun.rowset.CachedRowSetImpl;
 import com.sun.rowset.JoinRowSetImpl;
 
+import model.nonTables.ProdottoAggregato;
 import model.tables.Room;
 import persistence.dao.RoomDao;
 
@@ -222,6 +223,50 @@ public class RoomDaoJDBC implements RoomDao {
 		}
 	}
 */
+
+	@Override
+	public List<Room> retrieveByCategory(String tipo) {
+		String query = "SELECT * FROM room where tipo=? AND occupata=false";
+		Room r = null;
+		List<Room> rooms = null;
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			handler.getStatement().setString(1, tipo);
+			handler.executeQuery();
+			
+			if(handler.existsResultSet()) {
+				rooms = new ArrayList<Room>();
+				ResultSet result = handler.getResultSet();
+
+				while (result.next()) {
+					r = new Room();
+					r.setId(result.getInt("idcamera"));		
+					r.setTipo(result.getString("tipo"));
+					r.setDescrizione(result.getString("descrizione"));
+					r.setMaxpersone(result.getInt("maxpersone"));
+					r.setOccupata(result.getBoolean("occupata"));
+					r.setPrezzo(result.getInt("prezzo"));
+					r.setImg(result.getString("img"));
+					rooms.add(r);
+				
+				}
+			}
+			
+			return rooms;
+			
+		}  catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		
+		
+	}
+
+	@Override
+	public List<Room> retrieveByType(String tipo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 /*
 	@Override

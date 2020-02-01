@@ -181,46 +181,51 @@
     
     <div id="cate" class="categorie">
 	  <button class="cat">Categorie:</button>
-	  <button class="elementi active" onclick="filterSelection('all')">Tutti le camere</button>
-	  <button class="elementi" onclick="filterSelection('singola')"> Singola</button>
-	  <button class="elementi" onclick="filterSelection('doppia')"> Doppia</button>
+	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltricamere?filtrocamere=all">Tutti le camere</a>
+	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltricamere?filtrocamere=singola" >Singola</a>
+	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltricamere?filtrocamere=doppia">Doppia</a>
+	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltricamere?filtrocamere=tripla">Tripla</a>
+	  <div  class="elementi2">
+		  <a style="color:black;" onclick="myFunction2()" class="dropbtn2">Ordina</a>
+			  <div id="myDropdown2" class="dropdown-content2">
+				    <a href="vedifiltricamere?filtrocamere=prezzo">Prezzo</a>
+				    <a href="vedifiltricamere?filtrocamere=alfabetico">Alfabetico</a>
+			  </div>
+	 </div>
 	</div>
-    
+    <br>
+    <br>
 	<div class="row">
     			<div class="col-md-12">
     				<div class="cart-list">
     				<c:forEach var="room" items="${room}">
-					    	<div class="divCamera ${room.tipo}">
+					    	<div  style="border: 1px solid orange;">
 	    				<table class="table">
 	    					
-						    <thead class="thead-secondary">
+						    <thead class="thead-secondary"  >
 						      <tr class="text-center">
-						        <th>&nbsp;</th>
-						         <th>&nbsp;</th>
-						        <th>N_Camera</th>
-						        <th>Tipo</th>
-						        <th>Descrizione</th>
-						        <th>maxpersone</th>
-						        <th>prezzo</th>
+						        <th >&nbsp;</th>
+						         <th >&nbsp;</th>
+						        <th style="color:black;">N_Camera</th>
+						        <th style="color:black;">Tipo</th>
+						        <th style="color:black;">Descrizione</th>
+						        <th style="color:black;">maxpersone</th>
+						        <th style="color:black;">prezzo</th>
 						      
 						      </tr>
 						    </thead>
 						    
-					    			<tbody>
-						    			<tr class="text-center">
+					    			<tbody >
+						    			<tr  class="text-center">
 						    				<td>&nbsp;</td>
 						    				<td ><a href="#" ><img src="${room.img}.jpg" alt="stanza"></a></td>
 						         			<td ><p>${room.id}</p></td>
 									        <td ><p>${room.tipo}</p></td>
 									        <td ><p>${room.descrizione}</p></td>
 									        <td ><p> ${room.maxpersone}</p></td>
-									        <td ><p>${room.occupata}</p></td>
 									        <td ><p>${room.prezzo}</p></td>	
 									    </tr>
-									 </tbody>
-							
-						    
-						    
+									 </tbody>						    
 						</table>
 						</div>
 					</c:forEach>

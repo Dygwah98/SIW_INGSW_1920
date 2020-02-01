@@ -875,6 +875,16 @@ Filtri
 7. Details
 *********************************/
 
+.elementi2 {
+  border: 2px solid orange;
+  outline: none;
+  padding: 9px 12px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+
 .details
 {
 	background: #ffffff;
