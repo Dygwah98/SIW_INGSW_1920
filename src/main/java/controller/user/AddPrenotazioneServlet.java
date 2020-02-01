@@ -60,7 +60,9 @@ public class AddPrenotazioneServlet extends HttpServlet {
 			DBManager.getInstance().getDAOFactory().getPrenotazioneDao().saveAndLink(p, idUser);
 			resp.setStatus(201);
 		}
+		else {
 		resp.setStatus(401);
+		}
 	}
 	
 }
