@@ -395,7 +395,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public List<ProdottoAggregato> showProductsForCart(Integer id) {
 
-		String query = "SELECT DISTINCT ON (pr.tipo) pr.tipo AS dtipo, pr.descrizione, pv.totprezzo AS prezzo, pr.disponibile, pr.img, pv.num FROM productsbytypeorder AS pv, prodotto AS pr WHERE pv.idorder = ? AND pr.tipo = pv.tipo AND pr.disponibile=false";
+		String query = "SELECT * FROM products_by_type_order WHERE id_order = ?";
 		List<ProdottoAggregato> prodotti = null;
 		ProdottoAggregato p = null;
 
@@ -410,9 +410,9 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 
 				while (result.next()) {
 					p = new ProdottoAggregato();
-					p.setTipo(result.getString("dtipo"));
+					p.setTipo(result.getString("tipo"));
 					p.setDescrizione(result.getString("descrizione"));
-					p.setPrezzo(result.getInt("prezzo"));
+					p.setPrezzo(result.getInt("totprezzo"));
 					p.setDisponibile(result.getBoolean("disponibile"));
 					p.setImg(result.getString("img"));
 					p.setNum(result.getInt("num"));
