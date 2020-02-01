@@ -22,8 +22,17 @@ public class Logout extends HttpServlet {
 
 		req.getSession().setAttribute("logged", false);
 		req.getSession().removeAttribute("userId");
-		resp.addCookie(new Cookie("logged", "false"));
 		req.getSession().removeAttribute("admin");
+		req.getSession().removeAttribute("idordine");
+		req.getSession().removeAttribute("prenotazione");
+		req.getSession().removeAttribute("prezziprenotazione");
+		req.getSession().removeAttribute("prodc");
+		req.getSession().removeAttribute("totp");
+		req.getSession().removeAttribute("prodotto");
+		req.getSession().removeAttribute("post");
+		req.getSession().removeAttribute("room");
+		
+		resp.addCookie(new Cookie("logged", "false"));
 		resp.addCookie(new Cookie("admin", "false"));
 		
 		req.getRequestDispatcher("index.jsp").forward(req, resp);
