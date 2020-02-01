@@ -9,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.naming.java.javaURLContextFactory;
+
 import model.nonTables.ProdottoAggregato;
 import model.tables.Pagamento;
 import persistence.DBManager;
@@ -29,7 +32,7 @@ public class payment extends HttpServlet {
 				.pay((Integer) request.getSession().getAttribute("userId"));
 		Pagamento p = new Pagamento();
 		p.setIdOrdine((Integer) request.getSession().getAttribute("idordine"));
-		Date d = new Date(2020, 01, 30);
+		Date d = new Date(new java.util.Date().getTime());
 
 		p.setDataPagamento(d);
 		List<ProdottoAggregato> prodc = DBManager.getInstance().getDAOFactory().getProdottoDao()

@@ -31,40 +31,52 @@ public class AddPrenotazioneServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		//   2>  5  <15
 		Prenotazione p = new Prenotazione();
 		p.setCheckin(Date.valueOf(req.getParameter("checkin")));
 		p.setCheckout(Date.valueOf(req.getParameter("checkout")));
 		p.setIdcamera(Integer.parseInt(req.getParameter("n_camera")));
-
-		boolean trovata = false;
-		boolean funziona = false;
-		
+		boolean funziono = true;
 		
 		List<Prenotazione> prenotazioni = DBManager.getInstance().getDAOFactory().getPrenotazioneDao().retrieveAll();
-		
+		//so che è bruttino ma funge LOL
 		for (int i = 0; i < prenotazioni.size(); i++) {
 			if(p.getIdcamera() == prenotazioni.get(i).getIdcamera()){
-				trovata = true;
-				if((((p.getCheckin().compareTo(prenotazioni.get(i).getCheckout()) > 0) && (p.getCheckout().compareTo(prenotazioni.get(i).getCheckout()) > 0)) ||
-						((p.getCheckin().compareTo(prenotazioni.get(i).getCheckin()) < 0) && (p.getCheckout().compareTo(prenotazioni.get(i).getCheckin()) < 0))) &&
-							((p.getCheckin().compareTo(prenotazioni.get(i).getCheckin()) > 0) && (p.getCheckout().compareTo(prenotazioni.get(i).getCheckin()) < 0))) {
-								funziona = true;
-								break;
+				if((prenotazioni.get(i).getCheckin().compareTo(p.getCheckin()) < 0)&&(prenotazioni.get(i).getCheckout().compareTo(p.getCheckin()) > 0)) {
+					funziono = false;
+					break;
 				}
-				
+				else if((prenotazioni.get(i).getCheckin().compareTo(p.getCheckout()) < 0) && (prenotazioni.get(i).getCheckout().compareTo(p.getCheckout()) > 0)) {
+					funziono = false;
+					break;
+				}
+				else if (prenotazioni.get(i).getCheckin().compareTo(p.getCheckout()) == 0) {
+					funziono = false;
+					break;
+				}
+				else if (prenotazioni.get(i).getCheckin().compareTo(p.getCheckin()) == 0) {
+					funziono = false;
+					break;
+				}
+				else if (prenotazioni.get(i).getCheckout().compareTo(p.getCheckout()) == 0) {
+					funziono = false;
+					break;
+				}
+				else if (prenotazioni.get(i).getCheckout().compareTo(p.getCheckin()) == 0) {
+					funziono = false;
+					break;
+				}
 				
 			}
 		}	
 		
-		if(trovata==false || funziona ==true) {
+		if(funziono) {
 			Integer idUser = (Integer)req.getSession().getAttribute("userId");
 			DBManager.getInstance().getDAOFactory().getPrenotazioneDao().saveAndLink(p, idUser);
 			resp.setStatus(201);
-			
 		}
-		else if(funziona==false) {
+		else {
 			resp.setStatus(401);
-			System.out.println("ciao");
 		}
 	}
 	
