@@ -31,7 +31,7 @@ public class AddPrenotazioneServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//   2>  5  <15
+		//   12>  11 22  <15
 		Prenotazione p = new Prenotazione();
 		p.setCheckin(Date.valueOf(req.getParameter("checkin")));
 		p.setCheckout(Date.valueOf(req.getParameter("checkout")));
@@ -43,16 +43,21 @@ public class AddPrenotazioneServlet extends HttpServlet {
 		for (int i = 0; i < prenotazioni.size(); i++) {
 			if(p.getIdcamera() == prenotazioni.get(i).getIdcamera()){
 				if((prenotazioni.get(i).getCheckin().compareTo(p.getCheckin()) < 0)&&(prenotazioni.get(i).getCheckout().compareTo(p.getCheckin()) > 0)) {
-					funziono = false;
-					break;
+					funziono = false; 
+					break;	// p(2,5,gennaio) list(1,5,gennaio) 1<2 && 5>2
 				}
 				else if((prenotazioni.get(i).getCheckin().compareTo(p.getCheckout()) < 0) && (prenotazioni.get(i).getCheckout().compareTo(p.getCheckout()) > 0)) {
+					funziono = false; 
+					break;	//p(2,5,gennaio) list(1,6) 1<5 && 6>5
+				}
+				else if((prenotazioni.get(i).getCheckin().compareTo(p.getCheckin()) > 0) && (prenotazioni.get(i).getCheckin().compareTo(p.getCheckout()) < 0)) {
 					funziono = false;
-					break;
+					System.out.println("porcamadonna");
+					break;	//p(1-5) list(2-4) 
 				}
 				else if (prenotazioni.get(i).getCheckin().compareTo(p.getCheckout()) == 0) {
 					funziono = false;
-					break;
+					break; 
 				}
 				else if (prenotazioni.get(i).getCheckin().compareTo(p.getCheckin()) == 0) {
 					funziono = false;
@@ -65,11 +70,9 @@ public class AddPrenotazioneServlet extends HttpServlet {
 				else if (prenotazioni.get(i).getCheckout().compareTo(p.getCheckin()) == 0) {
 					funziono = false;
 					break;
-				}
-				
+				}				
 			}
 		}	
-		
 		if(funziono) {
 			Integer idUser = (Integer)req.getSession().getAttribute("userId");
 			DBManager.getInstance().getDAOFactory().getPrenotazioneDao().saveAndLink(p, idUser);
