@@ -20,7 +20,7 @@ public class AboutLoader extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		req.getRequestDispatcher("about.jsp").include(req, resp);
-	
+
 //		resp.setContentType("text/html");
 //		
 //		RequestDispatcher rd = req.getRequestDispatcher("header.html");
@@ -35,9 +35,9 @@ public class AboutLoader extends HttpServlet {
 //	    }
 
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+
 	}
 }

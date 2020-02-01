@@ -1,4 +1,5 @@
 package controller;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -21,21 +22,21 @@ public class AddEmail extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		resp.setStatus(405);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		String email = req.getParameter("email");
-        
+
 		Newsletter p = new Newsletter();
-       
-        p.setEmail(email);
-        Dao<Newsletter> newsletterDao = DBManager.getInstance().getDAOFactory().getNewsletterDao();
-        newsletterDao.save(p);
-        resp.setStatus(201);
-        req.getRequestDispatcher("index.jsp").include(req, resp);
-   
+
+		p.setEmail(email);
+		Dao<Newsletter> newsletterDao = DBManager.getInstance().getDAOFactory().getNewsletterDao();
+		newsletterDao.save(p);
+		resp.setStatus(201);
+		req.getRequestDispatcher("index.jsp").include(req, resp);
+
 	}
 }

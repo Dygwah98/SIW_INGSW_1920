@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(value = "/home", name = "home")
 public class HomeLoader extends HttpServlet {
-	
+
 	/**
 	 * 
 	 */
@@ -18,7 +18,7 @@ public class HomeLoader extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		req.getRequestDispatcher("index.jsp").include(req, resp);
 
 //		resp.setContentType("text/html");
@@ -29,15 +29,12 @@ public class HomeLoader extends HttpServlet {
 ////		rd.include(req, resp);
 //		rd = req.getRequestDispatcher("footer.html");
 //		rd.include(req, resp);
-//		 
-		if(req.getSession().getAttribute("attempts") == null) {
-			req.getSession().setAttribute("attempts", 0);
-	    }
+//		
 
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+
 	}
 }

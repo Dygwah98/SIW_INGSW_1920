@@ -157,40 +157,39 @@ package persistence;
 import persistence.postgres.jdbc.PostgresDAOFactory;
 
 public class DBManager {
-	
+
 	private static DBManager instance = null;
-	
+
 	private DAOFactory factory = null;
 	private DataSource dataSource = null;
-	
+
 	private DBManager() {
-		
+
 		try {
 			Class.forName("org.postgresql.Driver").newInstance();
 			dataSource = new DataSource(
-					"jdbc:postgresql://sarella.cqenbowd50kg.eu-central-1.rds.amazonaws.com:5050/sarella",
-					"riuzaki9797",
+					"jdbc:postgresql://sarella.cqenbowd50kg.eu-central-1.rds.amazonaws.com:5050/sarella", "riuzaki9797",
 					"*Francesco1.,");
-		
+
 		} catch (Exception e) {
-			System.err.println("PostgresDAOFactory.class: failed to load MySQL JDBC driver\n"+e);
+			System.err.println("PostgresDAOFactory.class: failed to load MySQL JDBC driver\n" + e);
 			e.printStackTrace();
 		}
-		
+
 		factory = new PostgresDAOFactory();
 	}
-	
+
 	public static DBManager getInstance() {
-		
-		if(instance == null)
+
+		if (instance == null)
 			instance = new DBManager();
 		return instance;
 	}
-	
+
 	public DataSource getDataSource() {
 		return dataSource;
 	}
-	
+
 	public DAOFactory getDAOFactory() {
 		return factory;
 	}

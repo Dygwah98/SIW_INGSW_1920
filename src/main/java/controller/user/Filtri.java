@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import model.nonTables.ProdottoAggregato;
 import persistence.DBManager;
 
-@WebServlet(value="/vedifiltri",name="vedifiltri")
+@WebServlet(value = "/vedifiltri", name = "vedifiltri")
 public class Filtri extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -27,71 +27,86 @@ public class Filtri extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		List<ProdottoAggregato> l = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop();
 		String tipo = request.getParameter("filtro");
 		tipo = tipo.toLowerCase();
 		PrintWriter out = response.getWriter();
-		boolean entro =false;
-		
+		boolean entro = false;
+
 		switch (tipo) {
-		case "prezzo": sortaPrezzo(l); break;
-		case "alfabetico": sortaNome(l); break;
-		
-		case "verdura": case "ortaggio": case "carne": case "formaggi": case"frutta": case "altro":
-			l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByCategory(tipo); 
-		break;
-		
-		case "pomodori": case "latte": case "broccoli": case "maiale": case "fagiolini": case "vitello": case "mele": case "uova": 
-			l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo); 
-		break;
-		
-		case "all": 
-			l = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop(); 
-		break;
+		case "prezzo":
+			sortaPrezzo(l);
+			break;
+		case "alfabetico":
+			sortaNome(l);
+			break;
+
+		case "verdura":
+		case "ortaggio":
+		case "carne":
+		case "formaggi":
+		case "frutta":
+		case "altro":
+			l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByCategory(tipo);
+			break;
+
+		case "pomodori":
+		case "latte":
+		case "broccoli":
+		case "maiale":
+		case "fagiolini":
+		case "vitello":
+		case "mele":
+		case "uova":
+			l = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveByType(tipo);
+			break;
+
+		case "all":
+			l = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop();
+			break;
 
 		default:
-			   
-			   out.println("<script type=\"text/javascript\">");
-			   out.println("alert('Nessun prodotto trovato');");
-			   out.println("location='negozio.jsp#piu';");
-			   out.println("</script>");
-			   entro = true;
-			
+
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Nessun prodotto trovato');");
+			out.println("location='negozio.jsp#piu';");
+			out.println("</script>");
+			entro = true;
+
 			break;
-		
+
 		}
-		   
-		if(entro == false) {
-		HttpSession session = request.getSession();
-		session.setAttribute("prodotto", l);
-		request.setAttribute("prodotto",l);
-		response.sendRedirect("negozio.jsp#testo");
+
+		if (entro == false) {
+			HttpSession session = request.getSession();
+			session.setAttribute("prodotto", l);
+			request.setAttribute("prodotto", l);
+			response.sendRedirect("negozio.jsp#testo");
 		}
-		
+
 	}
-	
-	
-	public List<ProdottoAggregato> reset(List<ProdottoAggregato> l){
+
+	public List<ProdottoAggregato> reset(List<ProdottoAggregato> l) {
 		l = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop();
 		return l;
 	}
-	
+
 	public void sortaPrezzo(List<ProdottoAggregato> l) {
-		
+
 		Collections.sort(l, new Comparator<ProdottoAggregato>() {
 			public int compare(ProdottoAggregato o1, ProdottoAggregato o2) {
-				if(o1.getPrezzo() > o2.getPrezzo())
+				if (o1.getPrezzo() > o2.getPrezzo())
 					return 1;
-				else if(o1.getPrezzo() < o2.getPrezzo())
+				else if (o1.getPrezzo() < o2.getPrezzo())
 					return -1;
 				return 0;
 			}
 		});
 	}
-	
+
 	public void sortaNome(List<ProdottoAggregato> l) {
-		
+
 		Collections.sort(l, new Comparator<ProdottoAggregato>() {
 			public int compare(ProdottoAggregato o1, ProdottoAggregato o2) {
 				return o1.getTipo().compareTo(o2.getTipo());
@@ -99,6 +114,4 @@ public class Filtri extends HttpServlet {
 		});
 	}
 
-	
-	
 }

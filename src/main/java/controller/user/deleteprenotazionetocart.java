@@ -1,4 +1,5 @@
 package controller.user;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -21,19 +22,17 @@ public class deleteprenotazionetocart extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Integer idp=Integer.parseInt(req.getParameter("idp"));
-		Integer idc=Integer.parseInt(req.getParameter("idc"));
+		Integer idp = Integer.parseInt(req.getParameter("idp"));
+		Integer idc = Integer.parseInt(req.getParameter("idc"));
 
 		DBManager.getInstance().getDAOFactory().getPrenotazioneDao().deletep(idp);
 		DBManager.getInstance().getDAOFactory().getRoomDao().updateOccupata(idc, true);
-        resp.sendRedirect("addcart");
+		resp.sendRedirect("addcart");
 
-		
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 
 	}
 }

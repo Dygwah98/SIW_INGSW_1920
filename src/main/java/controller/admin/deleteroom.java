@@ -1,4 +1,5 @@
 package controller.admin;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -21,24 +22,24 @@ public class deleteroom extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		resp.setStatus(405);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		String id = req.getParameter("Id3");
-		Room r=new Room();
-        r.setId(Integer.parseInt(id));
-		
-        boolean ID = DBManager.getInstance().getDAOFactory().getRoomDao().exists(r);
-		
-		if(!ID) {
-        	 resp.setStatus(401);
-        } else {
-        	r.setId(Integer.parseInt(id));
-        	DBManager.getInstance().getDAOFactory().getRoomDao().delete(r);
-   	 		resp.setStatus(201);
-        }
-    }
+		Room r = new Room();
+		r.setId(Integer.parseInt(id));
+
+		boolean ID = DBManager.getInstance().getDAOFactory().getRoomDao().exists(r);
+
+		if (!ID) {
+			resp.setStatus(401);
+		} else {
+			r.setId(Integer.parseInt(id));
+			DBManager.getInstance().getDAOFactory().getRoomDao().delete(r);
+			resp.setStatus(201);
+		}
+	}
 }

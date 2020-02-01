@@ -17,46 +17,45 @@ import java.io.PrintWriter;
 @WebServlet(value = "/login", name = "login")
 public class Login extends HttpServlet {
 
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3085554283911985689L;
 
 	@Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setStatus(403); // Permission danied, only POST here
-    }
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setStatus(405); // Permission danied, only POST here
+	}
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	
-        resp.setContentType("text/jsp");
-    	String username = req.getParameter("username");
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		resp.setContentType("text/jsp");
+		String username = req.getParameter("username");
 		String password = req.getParameter("password");
-		HttpSession session =  req.getSession();
-		if(username.equals("puzza")  && password.equals("ricca")) {
-			
-			req.getSession().setAttribute("admin",true);
-	        resp.addCookie(new Cookie("admin", "true"));
-	        resp.setStatus(201);
-		}
-		else {
-		
+		HttpSession session = req.getSession();
+		if (username.equals("puzza") && password.equals("ricca")) {
+
+			req.getSession().setAttribute("admin", true);
+			resp.addCookie(new Cookie("admin", "true"));
+			resp.setStatus(201);
+		} else {
+
 			User utente = DBManager.getInstance().getDAOFactory().getUtenteDao().loginQuery(username, password);
-			
+
 			if (utente != null) {
-				
-				req.getSession().setAttribute("logged",true);
+
+				req.getSession().setAttribute("logged", true);
 				resp.addCookie(new Cookie("logged", "true"));
 				session.setAttribute("username", username);
 
 				session.setAttribute("email", utente.getEmail());
 				session.setAttribute("nome", utente.getName());
 				session.setAttribute("cognome", utente.getSurname());
-			
+
 				req.getSession().setAttribute("userId", utente.getId());
 				resp.setStatus(201);
-			
+
 			} else {
 				resp.setStatus(401);
 			}

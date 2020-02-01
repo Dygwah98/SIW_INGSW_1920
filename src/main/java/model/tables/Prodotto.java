@@ -1,7 +1,7 @@
 package model.tables;
 
 public class Prodotto {
-	
+
 	private Integer idprodotto;
 	protected String tipo;
 	private Integer prezzo;
@@ -10,8 +10,8 @@ public class Prodotto {
 	private String img;
 	private Integer idordine;
 
-	
-	public Prodotto(int idprodotto, String tipo, int prezzo, String descrizione,Boolean disponibile, String img,int idOrdine) {
+	public Prodotto(int idprodotto, String tipo, int prezzo, String descrizione, Boolean disponibile, String img,
+			int idOrdine) {
 
 		this.idprodotto = idprodotto;
 		this.tipo = tipo;
@@ -19,7 +19,7 @@ public class Prodotto {
 		this.descrizione = descrizione;
 		this.disponibile = disponibile;
 		this.img = img;
-		this.idordine=idOrdine;
+		this.idordine = idOrdine;
 	}
 
 	public Prodotto() {
@@ -88,9 +88,4 @@ public class Prodotto {
 		this.idordine = idordine;
 	}
 
-	
-	
-	
-	
 }
-

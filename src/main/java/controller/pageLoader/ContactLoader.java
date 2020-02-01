@@ -20,7 +20,7 @@ public class ContactLoader extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		req.getRequestDispatcher("contact.jsp").include(req, resp);
-		
+
 //		resp.setContentType("text/html");
 //		
 //		RequestDispatcher rd = req.getRequestDispatcher("header.html");
@@ -34,9 +34,9 @@ public class ContactLoader extends HttpServlet {
 //			req.getSession().setAttribute("attempts", 0);
 //	    }
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	}
-	
+
 }
