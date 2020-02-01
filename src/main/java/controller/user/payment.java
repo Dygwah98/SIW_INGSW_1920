@@ -21,6 +21,11 @@ import persistence.DBManager;
 @WebServlet(value="/paym",name="paym")
 public class payment extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4725397173656796295L;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 				

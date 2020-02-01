@@ -14,6 +14,11 @@ import persistence.Dao;
 @WebServlet(value = "/addproduct", name = "addproduct")
 public class CreateProduct extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8438202137830147228L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

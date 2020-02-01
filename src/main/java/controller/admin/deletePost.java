@@ -14,6 +14,11 @@ import persistence.Dao;
 @WebServlet(value = "/deletepost", name = "deletepost")
 public class deletePost extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6370703769581278837L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

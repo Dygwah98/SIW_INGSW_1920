@@ -16,6 +16,11 @@ import persistence.Dao;
 @WebServlet(value = "/deleteprodottotocart", name = "deleteprodottotocart")
 public class deleteprodottotocart extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2483267051461964626L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer idord=(Integer)req.getSession().getAttribute("idordine");

@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(value = "/shop", name = "shop")
 public class ShopLoader extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8929960043418795056L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

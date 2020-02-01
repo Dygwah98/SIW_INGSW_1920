@@ -17,6 +17,11 @@ import persistence.DBManager;
 @WebServlet(value="/addcart",name="addcart")
 public class AddCart extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6076714433930879204L;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

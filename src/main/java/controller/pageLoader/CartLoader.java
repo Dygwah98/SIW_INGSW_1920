@@ -11,9 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(value = "/cart", name = "cart")
 public class CartLoader extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7700927083684583669L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+		
+		req.getRequestDispatcher("cart.jsp").include(req, resp);
 	}
 	
 	@Override

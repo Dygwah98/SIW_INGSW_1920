@@ -14,6 +14,11 @@ import persistence.Dao;
 @WebServlet(value = "/deleterooms_servlet", name = "deleterooms_servlet")
 public class deleteroom extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 224905303019449713L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

@@ -17,7 +17,12 @@ import java.io.PrintWriter;
 @WebServlet(value = "/login", name = "login")
 public class Login extends HttpServlet {
 
-    @Override
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3085554283911985689L;
+
+	@Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setStatus(403); // Permission danied, only POST here
     }
@@ -36,27 +41,25 @@ public class Login extends HttpServlet {
 	        resp.setStatus(201);
 		}
 		else {
-		User utente = DBManager.getInstance().getDAOFactory().getUtenteDao().loginQuery(username, password);
 		
-		
-		if (utente != null) {
+			User utente = DBManager.getInstance().getDAOFactory().getUtenteDao().loginQuery(username, password);
 			
-			req.getSession().setAttribute("logged",true);
-	        resp.addCookie(new Cookie("logged", "true"));
-			session.setAttribute("username", username);
+			if (utente != null) {
+				
+				req.getSession().setAttribute("logged",true);
+				resp.addCookie(new Cookie("logged", "true"));
+				session.setAttribute("username", username);
 
+				session.setAttribute("email", utente.getEmail());
+				session.setAttribute("nome", utente.getName());
+				session.setAttribute("cognome", utente.getSurname());
 			
-			session.setAttribute("email", utente.getEmail());
-			session.setAttribute("nome", utente.getName());
-			session.setAttribute("cognome", utente.getSurname());
+				req.getSession().setAttribute("userId", utente.getId());
+				resp.setStatus(201);
 			
-		
-			req.getSession().setAttribute("userId", utente.getId());
-			resp.setStatus(201);
-		} 
-		else {
-			resp.setStatus(401);
-		}
+			} else {
+				resp.setStatus(401);
+			}
 		}
 	}
 

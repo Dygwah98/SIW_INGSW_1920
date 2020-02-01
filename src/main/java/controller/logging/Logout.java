@@ -13,9 +13,15 @@ import java.io.IOException;
 @WebServlet("/logout")
 public class Logout extends HttpServlet {
     
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3499056463190953357L;
+
 	@Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().setAttribute("logged", false);
+        
+		req.getSession().setAttribute("logged", false);
         req.getSession().removeAttribute("userId");
         resp.addCookie(new Cookie("logged", "false"));
         req.getSession().setAttribute("admin", false);
