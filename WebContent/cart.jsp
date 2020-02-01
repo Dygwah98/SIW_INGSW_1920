@@ -160,7 +160,7 @@
 		</div>		
 	</div>
 
-    <section id="piu" class="ftco-section ftco-cart">
+    <section style="text-align: center" id="piu" class="ftco-section ftco-cart">
 			<div class="container">
 				<div class="row">
     			<div class="col-md-12">
@@ -183,7 +183,7 @@
 						    
 						    <tbody style="background-color: white;">
 						      <tr class="text-center">
-						        <td class="prod-remove"><a href="deleteprodottotocart?idcl=${prodc.idordine}&tipo=${prodc.tipo}"><span class="ion-ios-close"></span></a></td>
+						        <td class="product-remove"><a href="deleteprodottotocart?idcl=${prodc.idordine}&tipo=${prodc.tipo}"><span class="ion-ios-close"></span></a></td>
 						     						        
 						        <td class="image-prod"><div class="img" style="background-image:url(${prodc.img}.jpg);"></div></td>
 						        
@@ -251,9 +251,11 @@
 					  </div>
     			</div>
     		</div>
-    				<button type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
+    				
     			</div>
+    			<button class="button" type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
 	</section>
+	
 
 	
    <footer class="footer">

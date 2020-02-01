@@ -50,7 +50,7 @@
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				 <nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
 					</ul>
 				</nav>
 			   <%}%>
@@ -85,7 +85,7 @@
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="cart.jsp"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
 					</ul>
 				</nav>
 	    <%}%>
@@ -116,10 +116,10 @@
 			 </div>
 		</div>		
 	</div>
-   <div id="sezione2" class="riga_pagamento_principale">
+   <div  id="sezione2" class="riga_pagamento_principale">
   <div class="colonna_pagamento_principale">
     <div class="pagamento_principale">
-      <form action="checkout.jsp">
+      <form id="cash" action="checkout.jsp">
       
         <div  class="riga_pagamento_principale">
           <div class="colonna_pagamento_secondaria">
@@ -172,8 +172,9 @@
           </div>
           
         </div>
-        <label>
-         <button type="submit" id="btnp" onclick="payment1(event)">pagamento</button>
+        <label >
+         	<button type="submit" class="button" form="cash"  id="conferma" onclick="pagamento(event)" >CONFERMA I DATI</button>
+         	<button value="New Tab" class="button" style=" display: none"   id="paga" onclick="payment1(event)">INVIA ORDINE</button>
         </label>
       </form>
       
@@ -188,7 +189,7 @@
   </div>
 
 </div>
-    
+    	
     <footer  class="footer">
 		<div class="footer_content">
 			<div class="container">

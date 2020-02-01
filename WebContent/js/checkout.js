@@ -8,10 +8,9 @@ function ckout(event){
        error : function (e, status, error) {
     	   
     	   if(e.status == 412) {
-    		   alert("carrello vuoto impossibile procedere con l'ordine")
-    		   window.location.reload();
-    	   
+    		   alert("carrello vuoto impossibile procedere con l'ordine")    	   
     	   }
        }
     });
 }
+

@@ -174,7 +174,7 @@ function deletec(event){
     	  
        },
         error : function () {
-            alert("la Camera non  e stata eliminato corretamente o id prodotto non corretto");
+            alert("l'id non corrisponde oppure la camera è stata prenotata");
      	   window.location.replace("gestioneCamere.jsp");
 
         }

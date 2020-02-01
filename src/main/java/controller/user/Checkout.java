@@ -36,7 +36,7 @@ public class Checkout extends HttpServlet {
 			return s;
 		
 		} catch(NullPointerException e) {
-			return -1;
+			return 0;
 		}
 	}
 	
@@ -53,7 +53,7 @@ public class Checkout extends HttpServlet {
 			return s;
 			
 		} catch(NullPointerException e) {
-			return -1;
+			return 0;
 		}
 	}
 	
