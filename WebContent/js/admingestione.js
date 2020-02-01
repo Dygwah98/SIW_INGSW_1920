@@ -11,7 +11,7 @@ function addprenotazione(event){
        },
        success:function(){
     	   alert("Prenotazione registrata corretamente");
-    	   window.location.replace("prenotazioneroom.jsp");
+    	   window.location.replace("viewroom");
     	  
        },
         error : function () {
