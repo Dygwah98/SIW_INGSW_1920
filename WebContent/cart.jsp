@@ -46,7 +46,7 @@
 			<div class="ml-auto d-flex flex-row align-items-center justify-content-start">
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))&& (request.getSession().getAttribute("admin") == null || !(boolean)request.getSession().getAttribute("admin"))){%>
+					<% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))&& (request.getSession().getAttribute("admin") == null || !(boolean)request.getSession().getAttribute("admin"))){%>
 						<li><a href="Loginform.jsp">Login</a></li>
 					<%} else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 						 <div class="dropdown">
@@ -62,26 +62,27 @@
 							  <div id="myDropdown" class="dropdown-content">
 								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
 								    <a href="gestioneCamere.jsp">GestioneCamere</a>
+								    <a href="gestionePost.jsp">GestionePost</a>
 								    <a href="logout">Logout</a>
 							  </div>
 						</div>
 					<%} %>
-					<li ><a href="index.jsp">Home</a></li>
-					<li><a href="vediprodotti">Negozio</a></li>
-						   </ul>
-		   </nav>
-		</div>
-		<div class="menu_extra">
-		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-			<nav class="main_nav">
+						
+						<li ><a href="index.jsp">Home</a></li>
+						<li class="active"><a href="vediprodotti">Negozio</a></li>
+					</ul>
+			   </nav>
+			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+				 <nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-							<li class="active"><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a  href="cart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
 					</ul>
 				</nav>
-	    <%}%>
+			   <%}%>
+			</div>
 		</div>
-	</div>
-    <!-- END nav -->
+
+	<!-- Menu Scorrevole -->
 	
 	<div class="hamburger"><i class="fa fa-bars"  aria-hidden="true"></i></div>
 	</header>
@@ -93,7 +94,7 @@
 		<div class="menu_content">
 			<nav class="menu_nav text-right">
 				<ul>
-					 <% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))&& (request.getSession().getAttribute("admin") == null || !(boolean)request.getSession().getAttribute("admin"))){%>
+					<% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))&& (request.getSession().getAttribute("admin") == null || !(boolean)request.getSession().getAttribute("admin"))){%>
 						<li><a href="Loginform.jsp">Login</a></li>
 					<%} else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 						 <div class="dropdown">
@@ -109,26 +110,28 @@
 							  <div id="myDropdown" class="dropdown-content">
 								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
 								    <a href="gestioneCamere.jsp">GestioneCamere</a>
+								    <a href="gestionePost.jsp">GestionePost</a>
 								    <a href="logout">Logout</a>
 							  </div>
 						</div>
 					<%} %>
+					   
 					<li ><a href="index.jsp">Home</a></li>
-					<li><a href="vediprodotti">Negozio</a></li>
+					<li class="active"><a href="vediprodotti">Negozio</a></li>
 			   </ul>
 		   </nav>
 		</div>
 		<div class="menu_extra">
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-			<nav class="main_nav">
+				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li class="active"><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a href="cart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
 					</ul>
 				</nav>
 	    <%}%>
 		</div>
 	</div>
-    <!-- END nav -->
+
 
    <div class="home">
 		<div class="home_slider_container">

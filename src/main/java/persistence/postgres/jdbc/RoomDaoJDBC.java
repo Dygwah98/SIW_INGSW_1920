@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
+
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.JoinRowSet;
 
@@ -14,8 +14,7 @@ import com.sun.rowset.CachedRowSetImpl;
 import com.sun.rowset.JoinRowSetImpl;
 
 import model.nonTables.ProdottoAggregato;
-=======
->>>>>>> 5aa012d684cfb92a2a25aca1c2bf25131bdc9239
+
 import model.tables.Room;
 import persistence.dao.RoomDao;
 
@@ -204,7 +203,7 @@ public class RoomDaoJDBC implements RoomDao {
 	 * }
 	 */
 
-<<<<<<< HEAD
+
 	@Override
 	public List<Room> retrieveByCategory(String tipo) {
 		String query = "SELECT * FROM room where tipo=? AND occupata=false";
@@ -289,7 +288,7 @@ public class RoomDaoJDBC implements RoomDao {
 		return ret;
 	}
 */
-=======
+
 	/*
 	 * @Override public List<Room> retrieveByDate(Date checkin, Date checkout) {
 	 * 
@@ -319,5 +318,5 @@ public class RoomDaoJDBC implements RoomDao {
 	 * 
 	 * return ret; }
 	 */
->>>>>>> 5aa012d684cfb92a2a25aca1c2bf25131bdc9239
+
 }
