@@ -70,6 +70,7 @@
 						
 						<li ><a href="index.jsp">Home</a></li>
 						<li ><a href="vediprodotti">Negozio</a></li>
+						<li ><a href="viewroom">Rooms</a></li>
 					</ul>
 			   </nav>
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
@@ -118,6 +119,7 @@
 					   
 					<li ><a href="index.jsp">Home</a></li>
 					<li><a href="vediprodotti">Negozio</a></li>
+					<li ><a href="viewroom">Rooms</a></li>
 			   </ul>
 		   </nav>
 		</div>

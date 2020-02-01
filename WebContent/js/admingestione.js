@@ -119,6 +119,7 @@ function addc(event){
     	   Tipo1 : $("#Tipo1").val(),
            Descrizione1 : $("#Descrizione1").val(),
            numMaxPersone1 : $("#numMaxPersone1").val(),
+           Img1 : $("#Img1").val(),
            Prezzo1 : $("#Prezzo1").val()
        },
        success:function(){
@@ -143,6 +144,7 @@ function updatec(event){
     	   Tipo2 : $("#Tipo2").val(),
            Descrizione2 : $("#Descrizione2").val(),
            numMaxPersone2 : $("#numMaxPersone2").val(),
+           Img2 : $("#Img2").val(),
            Prezzo2 : $("#Prezzo2").val()
        },
        success:function(){
@@ -188,7 +190,7 @@ function returnhomeroom(event){
        success:function(){
     	   var answer =window.confirm("Confermi le operazioni svolte? I dati nei form andranno persi")
     	   if(answer)
-    		   window.location.replace("index.jsp");
+    		   window.location.replace("viewroom");
     	   else{}
     	  
        },

@@ -31,6 +31,9 @@ public class updateroom extends HttpServlet {
 		String tipo = req.getParameter("Tipo2");
 		String descrizione = req.getParameter("Descrizione2");
 		String numMaxPersone = req.getParameter("numMaxPersone2");
+		String img = req.getParameter("Img2");
+	    String immagine = "images/";
+	    immagine = immagine.concat(img);
 		String prezzo = req.getParameter("Prezzo2");
 		Room r = new Room();
 		String numero2 = id;
@@ -45,12 +48,7 @@ public class updateroom extends HttpServlet {
 		String numero1 = prezzo;
 		int intero1 = Integer.parseInt(numero1);
 		r.setPrezzo(intero1);
-		if (tipo.equals("singola")) {
-			r.setImg("images/user_1");
-		}
-		if (tipo.equals("doppia")) {
-			r.setImg("/images/user_1");
-		}
+		r.setImg(immagine);
 		Dao<Room> roomdao = DBManager.getInstance().getDAOFactory().getRoomDao();
 		roomdao.update(r);
 		resp.setStatus(201);

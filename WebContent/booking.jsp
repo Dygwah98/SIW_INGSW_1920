@@ -175,9 +175,7 @@
 		</div>
 	</div>
 	<!-- Room -->
-	<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-	<a href="prenotazioneroom.jsp" class="bottone">booking</a>
-	<%} %>
+	
     
     <div id="cate" class="categorie">
 	  <button class="cat">Categorie:</button>
@@ -192,6 +190,9 @@
 				    <a href="vedifiltricamere?filtrocamere=alfabetico">Alfabetico</a>
 			  </div>
 	 </div>
+	 <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+	<a style="text-decoration: none; color: black; background-color: orange;" class="elementi" href="prenotazioneroom.jsp" >booking</a>
+	<%} %>
 	</div>
     <br>
     <br>
@@ -218,7 +219,7 @@
 					    			<tbody >
 						    			<tr  class="text-center">
 						    				<td>&nbsp;</td>
-						    				<td ><a href="#" ><img src="${room.img}.jpg" alt="stanza"></a></td>
+						    				<td ><a href="#" ><img style="width: 100px; height: 100px;" src="${room.img}.jpg" alt="stanza"></a></td>
 						         			<td ><p>${room.id}</p></td>
 									        <td ><p>${room.tipo}</p></td>
 									        <td ><p>${room.descrizione}</p></td>

@@ -36,7 +36,6 @@ public class deleteroom extends HttpServlet {
 		if (!ID) {
 			resp.setStatus(401);
 		} else {
-			r.setId(Integer.parseInt(id));
 			DBManager.getInstance().getDAOFactory().getRoomDao().delete(r);
 			resp.setStatus(201);
 		}
