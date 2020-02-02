@@ -35,14 +35,7 @@
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
-body
-{
-	font-family: 'Raleway', sans-serif;
-	font-size: 14px;
-	font-weight: 400;
-	background: #FFFFFF;
-	color: #a5a5a5;
-}
+body { background: #f5f5dc; font-family:Times New Roman; }
 div
 {
 	display: block;
@@ -368,9 +361,9 @@ section
 }
 .logo
 {
-	width: 150px;
+	width: 280px;
 	height: 41px;
-	border: solid 2px #ffffff;
+	border: solid 3px green;
 	text-align: center;
 }
 .logo a
@@ -380,11 +373,10 @@ section
 	font-weight: 600;
 	color: #ffffff;
 	line-height: 37px;
+	text-decoration: none;
 }
-.main_nav ul li:not(:last-of-type)
-{
-	margin-right: 49px;
-}
+
+.main_nav ul li {margin-right: 49px;  /* margine solo fino all'ultimo della lista*/}
 .main_nav ul li a
 {
 	font-size: 16px;
@@ -588,6 +580,44 @@ section
 5. Home
 *********************************/
 
+.descrizione{
+	color: #ff7514;
+	font-family: Courier New;
+	font-size: 20px;
+	text-align: center;
+	position: relative;
+}
+
+.trans_200
+{
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+
+.bottone
+{
+	background: green;
+	font-size: 20px;
+	font-weight: 500;
+	color: #ffffff;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	position:relative;
+	padding: 5px;		
+}
+
+.bottone:hover
+{
+	text-decoration: none;
+	color:white;
+	background-color: #00BB2D;
+}
+
 .home
 {
 	width: 100%;
@@ -737,7 +767,7 @@ input[type=number]::-webkit-outer-spin-button
 
 .blog
 {
-	background: #ffffff;
+	background: #f5f5dc;
 	padding-top: 82px;
 	padding-bottom: 110px;
 	border-bottom: solid 2px #eaf2f7;
@@ -764,7 +794,6 @@ input[type=number]::-webkit-outer-spin-button
 .blog_post_content
 {
 	padding-top: 45px;
-	padding-left: 64px;
 	padding-bottom: 59px;
 	padding-right: 75px;
 }
