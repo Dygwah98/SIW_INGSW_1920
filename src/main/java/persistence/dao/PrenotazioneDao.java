@@ -10,4 +10,6 @@ public interface PrenotazioneDao extends Dao<Prenotazione> {
 	public void deletep(Integer id);
 
 	public void reset(Integer id);
+
+	boolean existprenotazioni();
 }

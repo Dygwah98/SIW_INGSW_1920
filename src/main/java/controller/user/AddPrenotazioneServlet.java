@@ -39,6 +39,7 @@ public class AddPrenotazioneServlet extends HttpServlet {
 		boolean funziono = true;
 		
 		List<Prenotazione> prenotazioni = DBManager.getInstance().getDAOFactory().getPrenotazioneDao().retrieveAll();
+		if(prenotazioni!=null) {
 		//so che è bruttino ma funge LOL
 		for (int i = 0; i < prenotazioni.size(); i++) {
 			if(p.getIdcamera() == prenotazioni.get(i).getIdcamera()){
@@ -52,7 +53,7 @@ public class AddPrenotazioneServlet extends HttpServlet {
 				}
 				else if((prenotazioni.get(i).getCheckin().compareTo(p.getCheckin()) > 0) && (prenotazioni.get(i).getCheckin().compareTo(p.getCheckout()) < 0)) {
 					funziono = false;
-					System.out.println("porcamadonna");
+					
 					break;	//p(1-5) list(2-4) 
 				}
 				else if (prenotazioni.get(i).getCheckin().compareTo(p.getCheckout()) == 0) {
@@ -73,6 +74,7 @@ public class AddPrenotazioneServlet extends HttpServlet {
 				}				
 			}
 		}	
+		}
 		if(funziono) {
 			Integer idUser = (Integer)req.getSession().getAttribute("userId");
 			DBManager.getInstance().getDAOFactory().getPrenotazioneDao().saveAndLink(p, idUser);
