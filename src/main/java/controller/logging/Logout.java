@@ -27,7 +27,7 @@ public class Logout extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-		if(req.getSession().getAttribute("admin") != null) {
+		if(req.getSession().getAttribute("admin") == null) {
 			DAOFactory f = DBManager.getInstance().getDAOFactory();
 			Integer idord = f.getOrdineDao().retrieveIdOrder((Integer) req.getSession().getAttribute("userId"));
 			f.getProdottoDao().resetDisponibile(idord);
