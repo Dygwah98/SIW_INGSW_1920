@@ -19,6 +19,9 @@
 <link rel="stylesheet" type="text/css" href="styles/blog_responsive.css">
 <script src="js/menuATendina.js"></script>
 <link rel="stylesheet" type="text/css" href="styles/menuATendina.css">
+<link rel="stylesheet" href="styles/icomoon.css">
+<link rel="stylesheet" href="styles/ionicons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 </head>
@@ -180,7 +183,7 @@
 				
 	<!-- Footer -->
 
-	<footer class="footer">
+	<footer  class="footer">
 		<div class="footer_content">
 			<div class="container">
 				<div class="row">
@@ -189,7 +192,7 @@
 							<div class="footer_logo">
 								<a href="#"></a>
 								<div>Agriturismo Sarella</div>
-								<div>since 1945</div>
+								<div>Dal 1945</div>
 							</div>
 						</div>
 					</div>
@@ -198,37 +201,30 @@
 					
 					<!-- Address -->
 					<div class="col-lg-3">
-						<div class="footer_title">Our Address</div>
+						<div class="footer_title">Il nostro indirizzo</div>
 						<div class="footer_list">
 							<ul>
-								<li>Beach Str. 345</li>
-								<li>67559 Miami</li>
-								<li>USA</li>
+								<li>complanare 180</li>
+								<li>88025 Cancello</li>
+								<li>IT</li>
 							</ul>
 						</div>
 					</div>
 
 					<!-- Reservations -->
 					<div class="col-lg-3">
-						<div class="footer_title">Reservations</div>
+						<div class="footer_title">Contatti</div>
 						<div class="footer_list">
 							<ul>
 								<li>Tel: 345 5667 889</li>
 								<li>Fax; 6783 4567 889</li>
-								<li>reservations@hotelriver.com</li>
+								<li>contatto@hotelSarella.com</li>
 							</ul>
 						</div>
 					</div>
 
 					<!-- Newsletter -->
 					<div class="col-lg-3">
-						<div class="footer_title">Newsletter</div>
-						<div class="newsletter_container">
-							<form class="decor"  method="post" action="${pageContext.request.contextPath}/addemail" >
-								<input type="email" class="newsletter_input" name="email"placeholder="Your email address" required="required">
-								<button class="newsletter_button" type="submit" value="Invia">Subscribe</button>
-							</form>
-						</div>
 					</div>
 
 					<!-- Footer images -->
@@ -241,7 +237,6 @@
 				</div>
 			</div>
 		</div>
-		
 	</footer>
 
 

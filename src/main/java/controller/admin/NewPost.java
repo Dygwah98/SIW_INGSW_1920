@@ -85,7 +85,7 @@ public class NewPost extends HttpServlet {
         java.sql.Date sDate = new java.sql.Date(uDate.getTime());
         
        
-        if (titolo == null || testo == null || img == null) {
+        if (titolo == null || testo == null || img == null || titolo==""|| testo =="") {
 			response.setStatus(401);
 			System.out.println("ciao");
 		} 

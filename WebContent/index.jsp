@@ -197,19 +197,6 @@
 								<div class="col">
 									<div class="home_content text-center">
 										<div class="home_title">Agriturismo Sarella</div>
-										<div class="booking_form_container">
-											<form action="#" class="booking_form">
-												<div class="d-flex flex-xl-row flex-column align-items-start justify-content-start">
-													<div class="booking_input_container d-flex flex-lg-row flex-column align-items-start justify-content-start">
-														<div><input type="text" class="datepicker booking_input booking_input_a booking_in" placeholder="Check in" required="required"></div>
-														<div><input type="text" class="datepicker booking_input booking_input_a booking_out" placeholder="Check out" required="required"></div>
-														<div><input type="number" class="booking_input booking_input_b" placeholder="Children" required="required"></div>
-														<div><input type="number" class="booking_input booking_input_b" placeholder="Room" required="required"></div>
-													</div>
-													<div><button class="booking_button trans_200">Book Now</button></div>
-												</div>
-											</form>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -240,9 +227,8 @@
 				<div class="col-lg-4 icon_box_col">
 					<div class="icon_box d-flex flex-column align-items-center justify-content-start text-center">
 						<div class="icon_box_icon"><img src="images/icon_1.svg" class="svg" alt="https://www.flaticon.com/authors/monkik"></div>
-						<div class="icon_box_title"><h2>Fabulous Resort</h2></div>
+						<div class="icon_box_title"><h2>Favoloso Agriturismo</h2></div>
 						<div class="icon_box_text">
-							<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse nec faucibus velit. Quisque eleifend orci ipsum, a bibendum.</p>
 						</div>
 					</div>
 				</div>
@@ -251,9 +237,8 @@
 				<div class="col-lg-4 icon_box_col">
 					<div class="icon_box d-flex flex-column align-items-center justify-content-start text-center">
 						<div class="icon_box_icon"><img src="images/icon_2.svg" class="svg" alt="https://www.flaticon.com/authors/monkik"></div>
-						<div class="icon_box_title"><h2>Infinity Pool</h2></div>
+						<div class="icon_box_title"><h2>Grande piscina</h2></div>
 						<div class="icon_box_text">
-							<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse nec faucibus velit. Quisque eleifend orci ipsum, a bibendum.</p>
 						</div>
 					</div>
 				</div>
@@ -262,9 +247,8 @@
 				<div class="col-lg-4 icon_box_col">
 					<div class="icon_box d-flex flex-column align-items-center justify-content-start text-center">
 						<div class="icon_box_icon"><img src="images/icon_3.svg" class="svg" alt="https://www.flaticon.com/authors/monkik"></div>
-						<div class="icon_box_title"><h2>Luxury Rooms</h2></div>
+						<div class="icon_box_title"><h2>Stanze lussuose</h2></div>
 						<div class="icon_box_text">
-							<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse nec faucibus velit. Quisque eleifend orci ipsum, a bibendum.</p>
 						</div>
 					</div>
 				</div>
@@ -316,9 +300,8 @@
 				<!-- About Content -->
 				<div class="col-lg-6">
 					<div class="about_content">
-						<div class="about_title"><h2>The River / 10 years of excellence</h2></div>
+						<div class="about_title"><h2>Sarella / 50 anni di eccellenza</h2></div>
 						<div class="about_text">
-							<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse nec faucibus velit. Quisque eleifend orci ipsum, a bibendum lacus suscipit sit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse nec faucibus velit. Quisque eleifend orci ipsum, a bibendum lacus suscipit sit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse nec faucibus velit.</p>
 						</div>
 					</div>
 				</div>
@@ -337,56 +320,7 @@
 
 	<!-- Testimonials -->
 
-	<div class="testimonials">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/testimonials.jpg" data-speed="0.8"></div>
-		<div class="testimonials_overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="testimonials_slider_container">
-
-						<!-- Testimonials Slider -->
-						<div class="owl-carousel owl-theme test_slider">
-							
-							<!-- Slide -->
-							<div  class="test_slider_item text-center">
-								<div class="rating rating_5 d-flex flex-row align-items-start justify-content-center"><i></i><i></i><i></i><i></i><i></i></div>
-								<div class="testimonial_title"><a href="#">Perfect Stay</a></div>
-								<div class="testimonial_text">
-									<p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio vestibulum est mattis effic.</p>
-								</div>
-								<div class="testimonial_image"><img src="images/user_1.jpg" alt=""></div>
-								<div class="testimonial_author"><a href="#">Samantha Smith</a>, Greece</div>
-							</div>
-
-							<!-- Slide -->
-							<div  class="test_slider_item text-center">
-								<div class="rating rating_5 d-flex flex-row align-items-start justify-content-center"><i></i><i></i><i></i><i></i><i></i></div>
-								<div class="testimonial_title"><a href="#">Nice place</a></div>
-								<div class="testimonial_text">
-									<p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio vestibulum est mattis effic.</p>
-								</div>
-								<div class="testimonial_image"><img src="images/user_2.jpg" alt=""></div>
-								<div class="testimonial_author"><a href="#">Michael Doe</a>, Italy</div>
-							</div>
-
-							<!-- Slide -->
-							<div  class="test_slider_item text-center">
-								<div class="rating rating_5 d-flex flex-row align-items-start justify-content-center"><i></i><i></i><i></i><i></i><i></i></div>
-								<div class="testimonial_title"><a href="#">We loved it</a></div>
-								<div class="testimonial_text">
-									<p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio vestibulum est mattis effic.</p>
-								</div>
-								<div class="testimonial_image"><img src="images/user_3.jpg" alt=""></div>
-								<div class="testimonial_author"><a href="#">Luis Garcia</a>, Spain</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 
 	<!-- Booking -->
 
@@ -396,7 +330,6 @@
 				<div class="col">
 					<div class="booking_title text-center"><h2>Book a room</h2></div>
 					<div class="booking_text text-center">
-						<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse nec faucibus velit. Quisque eleifend orci ipsum, a bibendum lacus suscipit sit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse nec faucibus velit. Quisque eleifend orci ipsum, a bibendum lacus suscipit sit.</p>
 					</div>
 
 					<!-- Booking Slider -->
@@ -475,7 +408,7 @@
 
 	<!-- Footer -->
 
-	<footer class="footer">
+	<footer  class="footer">
 		<div class="footer_content">
 			<div class="container">
 				<div class="row">
@@ -484,7 +417,7 @@
 							<div class="footer_logo">
 								<a href="#"></a>
 								<div>Agriturismo Sarella</div>
-								<div>since 1945</div>
+								<div>Dal 1945</div>
 							</div>
 						</div>
 					</div>
@@ -493,31 +426,30 @@
 					
 					<!-- Address -->
 					<div class="col-lg-3">
-						<div class="footer_title">Our Address</div>
+						<div class="footer_title">Il nostro indirizzo</div>
 						<div class="footer_list">
 							<ul>
-								<li>Beach Str. 345</li>
-								<li>67559 Miami</li>
-								<li>USA</li>
+								<li>complanare 180</li>
+								<li>88025 Cancello</li>
+								<li>IT</li>
 							</ul>
 						</div>
 					</div>
 
 					<!-- Reservations -->
 					<div class="col-lg-3">
-						<div class="footer_title">Reservations</div>
+						<div class="footer_title">Contatti</div>
 						<div class="footer_list">
 							<ul>
 								<li>Tel: 345 5667 889</li>
 								<li>Fax; 6783 4567 889</li>
-								<li>reservations@hotelriver.com</li>
+								<li>contatto@hotelSarella.com</li>
 							</ul>
 						</div>
 					</div>
 
 					<!-- Newsletter -->
 					<div class="col-lg-3">
-						
 					</div>
 
 					<!-- Footer images -->
@@ -530,11 +462,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="copyright">
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</div>
 	</footer>
 </div>
 

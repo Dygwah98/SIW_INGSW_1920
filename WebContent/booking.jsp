@@ -226,7 +226,7 @@
 	
 	<!-- Footer -->
 
-	<footer class="footer">
+	<footer  class="footer">
 		<div class="footer_content">
 			<div class="container">
 				<div class="row">
@@ -234,8 +234,8 @@
 						<div class="footer_logo_container text-center">
 							<div class="footer_logo">
 								<a href="#"></a>
-								<div>Agriturismo  Sarella</div>
-								<div>since 1945</div>
+								<div>Agriturismo Sarella</div>
+								<div>Dal 1945</div>
 							</div>
 						</div>
 					</div>
@@ -244,31 +244,30 @@
 					
 					<!-- Address -->
 					<div class="col-lg-3">
-						<div class="footer_title">Our Address</div>
+						<div class="footer_title">Il nostro indirizzo</div>
 						<div class="footer_list">
 							<ul>
-								<li>Beach Str. 345</li>
-								<li>67559 Miami</li>
-								<li>USA</li>
+								<li>complanare 180</li>
+								<li>88025 Cancello</li>
+								<li>IT</li>
 							</ul>
 						</div>
 					</div>
 
 					<!-- Reservations -->
 					<div class="col-lg-3">
-						<div class="footer_title">Reservations</div>
+						<div class="footer_title">Contatti</div>
 						<div class="footer_list">
 							<ul>
 								<li>Tel: 345 5667 889</li>
 								<li>Fax; 6783 4567 889</li>
-								<li>reservations@hotelriver.com</li>
+								<li>contatto@hotelSarella.com</li>
 							</ul>
 						</div>
 					</div>
 
 					<!-- Newsletter -->
 					<div class="col-lg-3">
-						
 					</div>
 
 					<!-- Footer images -->
@@ -281,11 +280,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="copyright">
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</div>
 	</footer>
 </div>
 

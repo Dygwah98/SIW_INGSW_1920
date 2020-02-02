@@ -103,7 +103,7 @@ img{ max-width: 100%; } /* permette di avere la giusta proporzione*/
 {
 	width: 280px;
 	height: 41px;
-	border: solid 3px green;
+	border: solid 3px orange;
 	text-align: center;
 }
 .logo a
