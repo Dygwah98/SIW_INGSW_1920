@@ -50,19 +50,19 @@ public class Login extends HttpServlet {
 			
 			if (utente != null) {
 				
-				DAOFactory f = DBManager.getInstance().getDAOFactory();
-				Integer idord = f.getOrdineDao().retrieveIdOrder(utente.getId());
-				List<Prenotazione> p = f.getOrdineDao().retrievePrenotazioni(utente.getId());
-				List<ProdottoAggregato> prodc = f.getProdottoDao().showProductsForCart(idord);
-				List<Integer> prezzi = f.getOrdineDao().retrievePrezzoCamere(utente.getId());
-				
-				session.setAttribute("idordine", idord);
-				session.setAttribute("prenotazione", p);
-				req.setAttribute("prenotazione", p);
-				session.setAttribute("prezziprenotazione", prezzi);
-				req.setAttribute("prezziprenotazione", prezzi);
-				session.setAttribute("prodc", prodc);
-				req.setAttribute("prodc", prodc);
+//				DAOFactory f = DBManager.getInstance().getDAOFactory();
+//				Integer idord = f.getOrdineDao().retrieveIdOrder(utente.getId());
+//				List<Prenotazione> p = f.getOrdineDao().retrievePrenotazioni(utente.getId());
+//				List<ProdottoAggregato> prodc = f.getProdottoDao().showProductsForCart(idord);
+//				List<Integer> prezzi = f.getOrdineDao().retrievePrezzoCamere(utente.getId());
+//				
+//				session.setAttribute("idordine", idord);
+//				session.setAttribute("prenotazione", p);
+//				req.setAttribute("prenotazione", p);
+//				session.setAttribute("prezziprenotazione", prezzi);
+//				req.setAttribute("prezziprenotazione", prezzi);
+//				session.setAttribute("prodc", prodc);
+//				req.setAttribute("prodc", prodc);
 				
 				req.getSession().setAttribute("logged",true);
 				resp.addCookie(new Cookie("logged", "true"));
