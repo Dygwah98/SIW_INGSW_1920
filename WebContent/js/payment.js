@@ -16,22 +16,17 @@ function payment1(event){
     });
 }
 
-function pagamento(event) {
-	
-
-$.ajax({
-	   data: $('#cash').serialize(),                 
-	   success: function (data) {                       
-		   $(function () {
-			    $("#conferma").on('click', function () {
-			        $("#paga").show();
-			        $("#conferma").hide();
-			    });
-			});
-
-	   },
-	   error: function (xhr, text, error) {             
-	      alert('Error: ' + error);
-	   }
+$(document).ready(function(){
+	  $("form").submit(function(e){
+		  e.preventDefault();
+	    $("#conferma").hide();
+	    $("#paga").show();
+	    
+	  });
 	});
-}
+
+$(document).ready(function(){
+	$( "#reset" ).click(function() {
+		  location.replace("checkout.jsp");
+		});
+});
