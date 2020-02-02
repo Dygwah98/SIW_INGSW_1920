@@ -36,22 +36,27 @@ public class updatePost extends HttpServlet {
 		String testo = request.getParameter("Messaggio2");
 		String img = request.getParameter("Immagine2");
 		String immagine = "images/blog/";
-        immagine = immagine.concat(img);
 		java.util.Date uDate = new java.util.Date();
 		java.sql.Date sDate = new java.sql.Date(uDate.getTime());
-
-		Post u = new Post();
-		String n = id;
-		int i = Integer.parseInt(n);
-		u.setidPost(i);
-		u.setTitolo(titolo);
-		u.setImg(immagine);
-		u.setMessaggio(testo);
-		u.setData(sDate);
-
-		Dao<Post> prodao = DBManager.getInstance().getDAOFactory().getPostDao();
-		prodao.update(u);
-
-		response.setStatus(201);
+		
+		 if (titolo == null || testo == null || img == null) {
+				response.setStatus(401);
+			} 
+	        else {
+				Post u = new Post();
+				String n = id;
+				int i = Integer.parseInt(n);
+				u.setidPost(i);
+				u.setTitolo(titolo);
+				immagine = immagine.concat(img);
+				u.setImg(immagine);
+				u.setMessaggio(testo);
+				u.setData(sDate);
+		
+				Dao<Post> prodao = DBManager.getInstance().getDAOFactory().getPostDao();
+				prodao.update(u);
+		
+				response.setStatus(201);
+	        }
 	}
 }

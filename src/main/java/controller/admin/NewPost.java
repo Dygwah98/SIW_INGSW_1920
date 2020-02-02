@@ -81,21 +81,28 @@ public class NewPost extends HttpServlet {
     	String testo = request.getParameter("Messaggio");
         String img = request.getParameter("Immagine");
         String immagine = "images/blog/";
-        immagine = immagine.concat(img);
         java.util.Date uDate = new java.util.Date();
         java.sql.Date sDate = new java.sql.Date(uDate.getTime());
         
-        Post u=new Post();
-        u.setTitolo(titolo);
-        u.setImg(immagine);
-        u.setMessaggio(testo);
-        u.setData(sDate);
-        
-        Dao<Post> prodao = DBManager.getInstance().getDAOFactory().getPostDao();
-        prodao.save(u);
-        
-        emailSender(titolo);
-        
-        response.setStatus(201);
+       
+        if (titolo == null || testo == null || img == null) {
+			response.setStatus(401);
+			System.out.println("ciao");
+		} 
+        else {
+	        Post u=new Post();
+	        u.setTitolo(titolo);
+	        immagine = immagine.concat(img);
+	        u.setImg(immagine);
+	        u.setMessaggio(testo);
+	        u.setData(sDate);
+	        
+	        Dao<Post> prodao = DBManager.getInstance().getDAOFactory().getPostDao();
+	        prodao.save(u);
+	        
+	        emailSender(titolo);
+	        
+	        response.setStatus(201);
+        }
     }
 }
