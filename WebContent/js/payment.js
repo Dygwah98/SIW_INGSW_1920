@@ -3,14 +3,15 @@ function payment1(event){
        type: "GET",
        url: "paym",
        success:function(){
-    	  
-    	   window.location.replace("index.jsp");
     	   alert("pagamento avvenuto con successo");
+    	   window.location.replace("index.jsp");
+    	   
 
        },
         error : function () {
+          alert("errore pagamento riprovare");
      	   window.location.replace("checkout.jsp");
-    	   alert("errore pagamento riprovare");
+    	   
 
         }
     });
