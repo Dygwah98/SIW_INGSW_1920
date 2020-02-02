@@ -224,9 +224,9 @@
 					<div class="col-lg-3">
 						<div class="footer_title">Newsletter</div>
 						<div class="newsletter_container">
-							<form action="#" class="newsletter_form" id="newsletter_form">
-								<input type="email" class="newsletter_input" placeholder="Your email address" required="required">
-								<button class="newsletter_button">Subscribe</button>
+							<form class="decor"  method="post" action="${pageContext.request.contextPath}/addemail" >
+								<input type="email" class="newsletter_input" name="email"placeholder="Your email address" required="required">
+								<button class="newsletter_button" type="submit" value="Invia">Subscribe</button>
 							</form>
 						</div>
 					</div>

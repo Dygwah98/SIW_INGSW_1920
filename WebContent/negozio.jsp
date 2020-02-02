@@ -350,13 +350,6 @@
 
 					<!-- Newsletter -->
 					<div class="col-lg-3">
-						<div class="footer_title">Newsletter</div>
-						<div class="newsletter_container">
-							<form action="#" class="newsletter_form" id="newsletter_form">
-								<input type="email" class="newsletter_input" placeholder="Your email address" required="required">
-								<button class="newsletter_button">Iscriviti</button>
-							</form>
-						</div>
 					</div>
 
 					<!-- Footer images -->

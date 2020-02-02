@@ -129,17 +129,6 @@
 						<div class="home_content text-center">
 							<div class="home_title">About us</div>
 							<div class="booking_form_container">
-								<form action="#" class="booking_form" id="booking_form">
-									<div class="d-flex flex-xl-row flex-column align-items-start justify-content-start">
-										<div class="booking_input_container d-flex flex-row align-items-start justify-content-start flex-wrap">
-											<div><input type="text" class="datepicker booking_input booking_input_a booking_in" placeholder="Check in" required="required"></div>
-											<div><input type="text" class="datepicker booking_input booking_input_a booking_out" placeholder="Check out" required="required"></div>
-											<div><input type="number" class="booking_input booking_input_b" placeholder="Children" required="required"></div>
-											<div><input type="number" class="booking_input booking_input_b" placeholder="Room" required="required"></div>
-										</div>
-										<div><button class="booking_button trans_200">Book Now</button></div>
-									</div>
-								</form>
 							</div>
 						</div>
 					</div>
@@ -389,13 +378,7 @@
 
 					<!-- Newsletter -->
 					<div class="col-lg-3">
-						<div class="footer_title">Newsletter</div>
-						<div class="newsletter_container">
-							<form action="#" class="newsletter_form" id="newsletter_form">
-								<input type="email" class="newsletter_input" placeholder="Your email address" required="required">
-								<button class="newsletter_button">Subscribe</button>
-							</form>
-						</div>
+						
 					</div>
 
 					<!-- Footer images -->

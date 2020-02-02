@@ -34,8 +34,8 @@ public class AddEmail extends HttpServlet {
         p.setEmail(email);
         Dao<Newsletter> newsletterDao = DBManager.getInstance().getDAOFactory().getNewsletterDao();
         newsletterDao.save(p);
+        resp.sendRedirect("viewpost");
         resp.setStatus(201);
-        req.getRequestDispatcher("index.jsp").include(req, resp);
    
 	}
 }
