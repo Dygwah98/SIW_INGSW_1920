@@ -181,7 +181,21 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	 * } catch (SQLException e) { throw new PersistenceException(e.getMessage()); }
 	 * }
 	 */
-
+	@Override
+	public boolean existprenotazioni() {
+		
+		String query = "select * from prenotazioni";
+		
+		try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			handler.getStatement().executeUpdate();
+			if (handler.existsResultSet()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		return false;
+	}
 	@Override
 	public void reset(Integer id) {
 		

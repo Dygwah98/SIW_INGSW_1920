@@ -200,7 +200,23 @@ function returnhomeroom(event){
         }
     });
 }
+function returnhomeprenotazioni(event){
+    $.ajax({
+       type: "POST",
+       url: "index.jsp",
+       success:function(){
+    	   var answer =window.confirm("Confermi le operazioni svolte? I dati nei form andranno persi")
+    	   if(answer)
+    		   window.location.replace("viewroom");
+    	   else{}
+    	  
+       },
+        error : function () {
+           window.location.replace("prenotazioneroom.jsp");
 
+        }
+    });
+}
 function addPost(event){
 	 $.ajax({
 	       type: "POST",
