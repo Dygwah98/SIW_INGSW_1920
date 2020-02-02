@@ -1,9 +1,15 @@
 package model.tables;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Prenotazione {
+public class Prenotazione implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -703983560624016042L;
+	
 	private Integer IdPrenotazione;
 	private Date checkin;
 	private Date checkout;

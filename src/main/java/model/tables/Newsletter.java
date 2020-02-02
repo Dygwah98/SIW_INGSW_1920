@@ -1,7 +1,14 @@
 package model.tables;
 
-public class Newsletter {
+import java.io.Serializable;
 
+public class Newsletter implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8298791923116591400L;
+	
 	private Integer id;
 	private String email;
 

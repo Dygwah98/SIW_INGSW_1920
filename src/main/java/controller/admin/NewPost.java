@@ -24,35 +24,7 @@ public class NewPost extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	//TODO
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
-    }
-    
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-    	String titolo = request.getParameter("Titolo");
-    	String testo = request.getParameter("Messaggio");
-        String img = request.getParameter("Immagine");
-        java.util.Date uDate = new java.util.Date();
-        java.sql.Date sDate = new java.sql.Date(uDate.getTime());
-        
-        Post u=new Post();
-        u.setTitolo(titolo);
-        u.setImg(img);
-        u.setMessaggio(testo);
-        u.setData(sDate);
-        
-        Dao<Post> prodao = DBManager.getInstance().getDAOFactory().getPostDao();
-        prodao.save(u);
-        
-        emailSender(titolo);
-        
-        response.setStatus(201);
-    }
-
-    
-    void emailSender(String title) {
+	private void emailSender(String title) {
     	
     	
     	/*	importare mail.jar e activation.jar per farlo funzionare
@@ -96,5 +68,32 @@ public class NewPost extends HttpServlet {
         		System.out.println("Messaggio inviato correttamente.");
         	}
         }catch (MessagingException e){ System.out.println("Errore d'invio, causa:" + e);}
+    }
+	
+	//TODO
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
+    }
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+    	String titolo = request.getParameter("Titolo");
+    	String testo = request.getParameter("Messaggio");
+        String img = request.getParameter("Immagine");
+        java.util.Date uDate = new java.util.Date();
+        java.sql.Date sDate = new java.sql.Date(uDate.getTime());
+        
+        Post u=new Post();
+        u.setTitolo(titolo);
+        u.setImg(img);
+        u.setMessaggio(testo);
+        u.setData(sDate);
+        
+        Dao<Post> prodao = DBManager.getInstance().getDAOFactory().getPostDao();
+        prodao.save(u);
+        
+        emailSender(titolo);
+        
+        response.setStatus(201);
     }
 }

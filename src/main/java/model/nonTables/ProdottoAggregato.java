@@ -4,6 +4,11 @@ import model.tables.Prodotto;
 
 public class ProdottoAggregato extends Prodotto {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1706209725356542904L;
+	
 	private Integer num = null;
 
 	public ProdottoAggregato() {

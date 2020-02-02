@@ -1,7 +1,14 @@
 package model.tables;
 
-public class Post {
+import java.io.Serializable;
 
+public class Post implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4456569981394305366L;
+	
 	private String messaggio;
 	private String titolo;
 	private Integer idPost;
