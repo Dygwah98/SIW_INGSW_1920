@@ -1,7 +1,14 @@
 package model.tables;
 
-public class User {
+import java.io.Serializable;
 
+public class User implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2326455764241737720L;
+	
 	private Integer id;
 	private String name;
 	private String surname;

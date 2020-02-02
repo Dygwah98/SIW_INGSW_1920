@@ -27,31 +27,25 @@ public class RoomServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		String id = req.getParameter("Id1");
 		String tipo = req.getParameter("Tipo1");
 		String descrizione = req.getParameter("Descrizione1");
 		String numMaxPersone = req.getParameter("numMaxPersone1");
-		String immagine = "images/";
-		String img = req.getParameter("Img1");
-		immagine = immagine.concat(img);
+		String immagine = ("images/").concat(req.getParameter("Img1"));
 		String prezzo = req.getParameter("Prezzo1");
+		
 		Room r = new Room();
-		String numero2 = id;
-		int intero2 = Integer.parseInt(numero2);
-		r.setId(intero2);
+		r.setId(Integer.parseInt(id));
 		r.setTipo(tipo);
 		r.setDescrizione(descrizione);
-		String numero = numMaxPersone;
-		int intero = Integer.parseInt(numero);
-		r.setMaxpersone(intero);
+		r.setMaxpersone(Integer.parseInt(numMaxPersone));
 		r.setOccupata(false);
-		String numero1 = prezzo;
-		int intero1 = Integer.parseInt(numero1);
-		r.setPrezzo(intero1);
+		r.setPrezzo(Integer.parseInt(prezzo));
 		r.setImg(immagine);
-		Dao<Room> roomdao = DBManager.getInstance().getDAOFactory().getRoomDao();
-		roomdao.save(r);
+		
+		DBManager.getInstance().getDAOFactory().getRoomDao().save(r);
+		
 		resp.setStatus(201);
-
 	}
 }
