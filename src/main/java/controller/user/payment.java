@@ -14,7 +14,10 @@ import org.apache.naming.java.javaURLContextFactory;
 
 import model.nonTables.ProdottoAggregato;
 import model.tables.Pagamento;
+import persistence.DAOFactory;
 import persistence.DBManager;
+import persistence.dao.OrdineDao;
+import persistence.dao.ProdottoDao;
 
 @WebServlet(value = "/paym", name = "paym")
 public class payment extends HttpServlet {
@@ -24,34 +27,65 @@ public class payment extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 4725397173656796295L;
 
+	private Integer processProducts(Integer id_ordine) {
+		
+		try {
+			Integer s = 0;
+			ProdottoDao f = DBManager.getInstance().getDAOFactory().getProdottoDao();
+			List<ProdottoAggregato> prodc = f.showProductsForCart(id_ordine);
+			for(ProdottoAggregato p : prodc)
+				s += p.getPrezzo();
+			
+			return s;
+		
+		} catch(NullPointerException e) {
+			return 0;
+		}
+	}
+	
+	private Integer processRooms(Integer id_user) {
+		
+		try {
+			Integer s = 0;
+			OrdineDao d = DBManager.getInstance().getDAOFactory().getOrdineDao();
+			List<Integer> prezzi = d.retrievePrezzoCamere(id_user);
+			
+			for(Integer i : prezzi)
+				s += i;
+			
+			return s;
+			
+		} catch(NullPointerException e) {
+			return 0;
+		}
+	}
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		DBManager.getInstance().getDAOFactory().getOrdineDao()
-				.pay((Integer) request.getSession().getAttribute("userId"));
-		Pagamento p = new Pagamento();
-		p.setIdOrdine((Integer) request.getSession().getAttribute("idordine"));
-		Date d = new Date(new java.util.Date().getTime());
+		DAOFactory factory = DBManager.getInstance().getDAOFactory();
 
-		p.setDataPagamento(d);
-		List<ProdottoAggregato> prodc = DBManager.getInstance().getDAOFactory().getProdottoDao()
-				.showProductsForCart((Integer) request.getSession().getAttribute("idordine"));
-		List<Integer> prezzi = DBManager.getInstance().getDAOFactory().getOrdineDao()
-				.retrievePrezzoCamere((Integer) request.getSession().getAttribute("userId"));
-		int s = 0;
-		for (int i = 0; i < prodc.size(); i++) {
-			s += prodc.get(i).getPrezzo();
-		}
-		for (int j = 0; j < prezzi.size(); j++) {
-			s += prezzi.get(j);
-		}
-		p.setImporto(s);
-		DBManager.getInstance().getDAOFactory().getPagamentoDao().save(p);
-		DBManager.getInstance().getDAOFactory().getOrdineDao()
-				.pay((Integer) request.getSession().getAttribute("userId"));
-		response.setStatus(201);
+		Integer total = 0;
+		total += processProducts((Integer) request.getSession().getAttribute("idordine"));
+		total += processRooms((Integer) request.getSession().getAttribute("userId"));
 
+		if (total <= 0) {
+			response.setStatus(412);
+		} else {
+			Date d = new Date(new java.util.Date().getTime());
+			
+			Pagamento p = new Pagamento();
+			p.setIdOrdine((Integer) request.getSession().getAttribute("idordine"));
+			p.setDataPagamento(d);
+			p.setImporto(total);
+		
+			factory.getPagamentoDao().save(p);
+			
+			factory.getOrdineDao().pay((Integer) request.getSession().getAttribute("userId"));
+			
+			response.setStatus(201);
+		}
 	}
 
 	@Override

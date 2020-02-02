@@ -172,9 +172,9 @@
           </div>
           
         </div>
-        <label >
+        <label>
          	<button type="submit" class="button" form="cash"  id="conferma" onclick="pagamento(event)" >CONFERMA I DATI</button>
-         	<button value="New Tab" class="button" style=" display: none"   id="paga" onclick="payment1(event)">INVIA ORDINE</button>
+         	<button value="New Tab" class="button" style=" display: none" id="paga" onclick="payment1(event)">INVIA ORDINE</button>
         </label>
       </form>
       

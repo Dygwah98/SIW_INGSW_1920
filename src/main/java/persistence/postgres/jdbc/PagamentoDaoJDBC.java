@@ -12,15 +12,14 @@ public class PagamentoDaoJDBC implements PagamentoDao {
 	@Override
 	public void save(Pagamento object) {
 
-		String query = "INSERT INTO pagamento(importo, id_ordine, data_pagamento) VALUES(?,?,?,?)";
+		String query = "INSERT INTO pagamento(importo, id_ordine, data_pagamento) VALUES(?,?,?)";
 
 		try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 
 			handler.getStatement().setInt(1, object.getImporto());
 			handler.getStatement().setInt(2, object.getIdOrdine());
-
 			handler.getStatement().setDate(3, object.getDataPagamento());
-
+			
 			handler.executeUpdate();
 
 		} catch (SQLException e) {
