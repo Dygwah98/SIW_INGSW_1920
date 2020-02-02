@@ -130,8 +130,8 @@
             <input type="text" id="email" name="email" placeholder= "antonio@example.com">
             <label for="adr"><i class="fa fa-address-card-o"></i> Indirizzo *</label>
             <input type="text" id="adr" name="address" placeholder="via e numero civico" required>
-            <label for="city"><i class="fa fa-institution"></i> Cittï¿½ *</label>
-            <input type="text" id="city" name="city" placeholder="cittï¿½">
+            <label for="city"><i class="fa fa-institution"></i> Città *</label>
+            <input type="text" id="city" name="city" placeholder="città">
 
             <div class="riga_pagamento_principale">
               <div class="colonna_pagamento_secondaria">
@@ -170,12 +170,13 @@
               </div>
             </div>
           </div>
-          
         </div>
-        <label>
-         	<button type="submit" class="button" form="cash"  id="conferma" onclick="pagamento(event)" >CONFERMA I DATI</button>
-         	<button value="New Tab" class="button" style=" display: none" id="paga" onclick="payment1(event)">INVIA ORDINE</button>
-        </label>
+        <div>
+        	<button type="submit" class="button" form="cash"  id="conferma"  >CONFERMA I DATI</button>
+         	<button type="submit" style="margin-left: 30px;" class="button2" id="reset"  >RESET DATI</button>
+         	<button class="button" style=" display: none"   id="paga" onclick="payment1(event)">INVIA ORDINE</button>
+        </div>
+         	
       </form>
       
     </div>

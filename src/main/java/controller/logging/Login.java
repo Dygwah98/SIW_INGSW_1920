@@ -8,11 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.nonTables.ProdottoAggregato;
+import model.tables.Prenotazione;
 import model.tables.User;
+import persistence.DAOFactory;
 import persistence.DBManager;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet(value = "/login", name = "login")
 public class Login extends HttpServlet {
@@ -45,6 +49,20 @@ public class Login extends HttpServlet {
 			User utente = DBManager.getInstance().getDAOFactory().getUtenteDao().loginQuery(username, password);
 			
 			if (utente != null) {
+				
+//				DAOFactory f = DBManager.getInstance().getDAOFactory();
+//				Integer idord = f.getOrdineDao().retrieveIdOrder(utente.getId());
+//				List<Prenotazione> p = f.getOrdineDao().retrievePrenotazioni(utente.getId());
+//				List<ProdottoAggregato> prodc = f.getProdottoDao().showProductsForCart(idord);
+//				List<Integer> prezzi = f.getOrdineDao().retrievePrezzoCamere(utente.getId());
+//				
+//				session.setAttribute("idordine", idord);
+//				session.setAttribute("prenotazione", p);
+//				req.setAttribute("prenotazione", p);
+//				session.setAttribute("prezziprenotazione", prezzi);
+//				req.setAttribute("prezziprenotazione", prezzi);
+//				session.setAttribute("prodc", prodc);
+//				req.setAttribute("prodc", prodc);
 				
 				req.getSession().setAttribute("logged",true);
 				resp.addCookie(new Cookie("logged", "true"));

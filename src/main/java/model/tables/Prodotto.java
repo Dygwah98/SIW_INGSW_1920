@@ -1,7 +1,14 @@
 package model.tables;
 
-public class Prodotto {
+import java.io.Serializable;
 
+public class Prodotto implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8990418938865840553L;
+	
 	private Integer idprodotto;
 	protected String tipo;
 	private Integer prezzo;

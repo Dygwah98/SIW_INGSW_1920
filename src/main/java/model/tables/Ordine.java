@@ -1,7 +1,14 @@
 package model.tables;
 
-public class Ordine {
+import java.io.Serializable;
 
+public class Ordine implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4782578891093448924L;
+	
 	private Integer IdOrdine;
 	private Integer IdUtente;
 

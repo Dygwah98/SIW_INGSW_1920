@@ -3,35 +3,31 @@ function payment1(event){
        type: "GET",
        url: "paym",
        success:function(){
-    	  
-    	   window.location.replace("index.jsp");
     	   alert("pagamento avvenuto con successo");
+    	   window.location.replace("index.jsp");
+    	   
 
        },
         error : function () {
+          alert("errore pagamento riprovare");
      	   window.location.replace("checkout.jsp");
-    	   alert("errore pagamento riprovare");
+    	   
 
         }
     });
 }
 
-function pagamento(event) {
-	
-
-$.ajax({
-	   data: $('#cash').serialize(),                 
-	   success: function (data) {                       
-		   $(function () {
-			    $("#conferma").on('click', function () {
-			        $("#paga").show();
-			        $("#conferma").hide();
-			    });
-			});
-
-	   },
-	   error: function (xhr, text, error) {             
-	      alert('Error: ' + error);
-	   }
+$(document).ready(function(){
+	  $("form").submit(function(e){
+		  e.preventDefault();
+	    $("#conferma").hide();
+	    $("#paga").show();
+	    
+	  });
 	});
-}
+
+$(document).ready(function(){
+	$( "#reset" ).click(function() {
+		  location.replace("checkout.jsp");
+		});
+});

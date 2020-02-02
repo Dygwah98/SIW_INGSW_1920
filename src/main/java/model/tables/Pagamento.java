@@ -1,9 +1,15 @@
 package model.tables;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Pagamento {
+public class Pagamento implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4860917979216022128L;
+	
 	private Integer idPagamento;
 	private Integer importo;
 	private Integer idOrdine;

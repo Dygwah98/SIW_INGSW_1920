@@ -1,7 +1,14 @@
 package model.tables;
 
-public class Room {
+import java.io.Serializable;
 
+public class Room implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6306405729826829240L;
+	
 	private Integer Id;
 	private String tipo;
 	private String descrizione;
