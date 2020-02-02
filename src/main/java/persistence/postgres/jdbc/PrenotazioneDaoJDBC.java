@@ -182,4 +182,19 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	 * }
 	 */
 
+	@Override
+	public void reset(Integer id) {
+		
+		String query = "DELETE FROM prenotazioni AS pp USING ordine AS oo WHERE pp.id_order = oo.idorder AND oo.idorder = ? AND NOT oo.pagato";
+		
+		try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+
+			handler.getStatement().setInt(1, id);
+			handler.getStatement().executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}	
+
 }
