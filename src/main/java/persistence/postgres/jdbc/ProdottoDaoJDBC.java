@@ -506,4 +506,20 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		}
 	}
 
+	@Override
+	public void resetDisponibile(Integer id) {
+
+		String query = "UPDATE prodotto SET disponibile = true, idordine = null WHERE idordine = ?";
+		
+		try(JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+			
+			handler.getStatement().setInt(1, id);
+			handler.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }
