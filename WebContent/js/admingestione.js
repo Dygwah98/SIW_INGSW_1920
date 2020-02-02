@@ -277,8 +277,9 @@ function returnhomepost(event){
        url: "index.jsp",
        success:function(){
     	   var answer =window.confirm("Confermi le operazioni svolte? I dati nei form andranno persi")
-    	   if(answer)
-    		   window.location.replace("index.jsp");
+    	   if(answer){
+    		   window.location.replace("viewpost");
+    	   }
     	   else{}
     	  
        },

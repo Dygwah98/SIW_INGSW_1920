@@ -80,12 +80,14 @@ public class NewPost extends HttpServlet {
     	String titolo = request.getParameter("Titolo");
     	String testo = request.getParameter("Messaggio");
         String img = request.getParameter("Immagine");
+        String immagine = "images/blog/";
+        immagine = immagine.concat(img);
         java.util.Date uDate = new java.util.Date();
         java.sql.Date sDate = new java.sql.Date(uDate.getTime());
         
         Post u=new Post();
         u.setTitolo(titolo);
-        u.setImg(img);
+        u.setImg(immagine);
         u.setMessaggio(testo);
         u.setData(sDate);
         
