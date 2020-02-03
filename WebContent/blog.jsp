@@ -225,6 +225,10 @@
 
 					<!-- Newsletter -->
 					<div class="col-lg-3">
+						<form class="decor"  method="post" action="${pageContext.request.contextPath}/addemail" >
+							<input type="email" class="newsletter_input" name="email"placeholder="Your email address" required="required">
+							<button class="newsletter_button" type="submit" value="Invia">Subscribe</button>
+						</form>
 					</div>
 
 					<!-- Footer images -->
