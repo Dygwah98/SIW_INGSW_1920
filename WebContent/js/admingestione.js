@@ -96,16 +96,17 @@ function returnhomeprodotto(event){
        type: "POST",
        url: "index.jsp",
        success:function(){
-    	   var answer =window.confirm("Confermi le operazioni svolte? I dati nei form andranno persi")
+    	   var answer = window.confirm("Confermi le operazioni svolte? I dati nei form andranno persi")
     	   if(answer)
     		   window.location.replace("index.jsp");
     	   else{}
     	  
        },
-        error : function () {
-           window.location.replace("gestioneProdotti.jsp");
-
-        }
+       error : function () {
+    	   alert("Errore nella conferma, riprova");
+    	   window.location.replace("gestioneProdotti.jsp");
+       
+       }
     });
     
 }

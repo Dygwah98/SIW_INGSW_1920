@@ -76,20 +76,15 @@ public class NewPost extends HttpServlet {
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-    	String titolo = request.getParameter("Titolo");
-    	String testo = request.getParameter("Messaggio");
-        String img = request.getParameter("Immagine");
-        String immagine = "images/blog/";
-        java.util.Date uDate = new java.util.Date();
-        java.sql.Date sDate = new java.sql.Date(uDate.getTime());
-        
        
-        if (titolo == null || testo == null || img == null || titolo==""|| testo =="") {
-			response.setStatus(401);
-			System.out.println("ciao");
-		} 
-        else {
+    	try {
+    		String titolo = request.getParameter("Titolo");
+    		String testo = request.getParameter("Messaggio");
+        	String img = request.getParameter("Immagine");
+        	String immagine = "images/blog/";
+        	java.util.Date uDate = new java.util.Date();
+        	java.sql.Date sDate = new java.sql.Date(uDate.getTime());
+        
 	        Post u=new Post();
 	        u.setTitolo(titolo);
 	        immagine = immagine.concat(img);
@@ -103,6 +98,9 @@ public class NewPost extends HttpServlet {
 	        emailSender(titolo);
 	        
 	        response.setStatus(201);
-        }
+    	} catch(Exception e) {
+    		response.setStatus(401);
+    	}
+    
     }
 }

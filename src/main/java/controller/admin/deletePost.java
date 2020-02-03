@@ -27,17 +27,21 @@ public class deletePost extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String id = req.getParameter("Identificativo2");
-		Post post = new Post();
-		post.setidPost(Integer.parseInt(id));
+		try {
+			String id = req.getParameter("Identificativo2");
+			Post post = new Post();
+			post.setidPost(Integer.parseInt(id));
 
-		boolean ID = DBManager.getInstance().getDAOFactory().getPostDao().exists(post);
+			boolean ID = DBManager.getInstance().getDAOFactory().getPostDao().exists(post);
 
-		if (!ID) {
+			if (!ID) {
+				resp.setStatus(401);
+			} else {
+				DBManager.getInstance().getDAOFactory().getPostDao().delete(post);
+				resp.setStatus(201);
+			}
+		} catch(Exception e) {
 			resp.setStatus(401);
-		} else {
-			DBManager.getInstance().getDAOFactory().getPostDao().delete(post);
-			resp.setStatus(201);
 		}
 	}
 }

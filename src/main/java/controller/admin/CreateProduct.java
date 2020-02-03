@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.tables.Prodotto;
 import persistence.DBManager;
 import persistence.Dao;
+import persistence.dao.ProdottoDao;
 
 @WebServlet(value = "/addproduct", name = "addproduct")
 public class CreateProduct extends HttpServlet {
@@ -27,19 +28,20 @@ public class CreateProduct extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		String tipo = req.getParameter("Tipo");
-		String descrizione = req.getParameter("Descrizione");
-		String prezzo = req.getParameter("Prezzo");
-		String immagine = "images/shop/";
-		String img = req.getParameter("Img");
-
-		if (tipo == null || descrizione == null || prezzo == null || img == null) {
-			resp.setStatus(401);
-		} else {
+		
+		try {
+			Prodotto p = null;
+			ProdottoDao P = DBManager.getInstance().getDAOFactory().getProdottoDao();
+			
+			String tipo = req.getParameter("Tipo");
+			String descrizione = req.getParameter("Descrizione");
+			String prezzo = req.getParameter("Prezzo");
+			String immagine = "images/shop/";
+			String img = req.getParameter("Img");
+			
 			immagine = immagine.concat(img);
 
-			Prodotto p = new Prodotto();
+			p = new Prodotto();
 
 			tipo = tipo.toLowerCase();
 			p.setTipo(tipo);
@@ -54,10 +56,12 @@ public class CreateProduct extends HttpServlet {
 
 			p.setImg(immagine);
 
-			Dao<Prodotto> prodottoDao = DBManager.getInstance().getDAOFactory().getProdottoDao();
-			prodottoDao.save(p);
+			P.save(p);
 			resp.setStatus(201);
-
-		}
+			
+		} catch(Exception e) {
+			
+			resp.setStatus(401);
+		}	
 	}
 }
