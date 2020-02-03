@@ -98,7 +98,7 @@ function returnhomeprodotto(event){
        success:function(){
     	   var answer =window.confirm("Confermi le operazioni svolte? I dati nei form andranno persi")
     	   if(answer)
-    		   window.location.replace("vediprodotti");
+    		   window.location.replace("index.jsp");
     	   else{}
     	  
        },
@@ -190,7 +190,7 @@ function returnhomeroom(event){
        success:function(){
     	   var answer =window.confirm("Confermi le operazioni svolte? I dati nei form andranno persi")
     	   if(answer)
-    		   window.location.replace("viewroom");
+    		   window.location.replace("index.jsp");
     	   else{}
     	  
        },
@@ -294,7 +294,7 @@ function returnhomepost(event){
        success:function(){
     	   var answer =window.confirm("Confermi le operazioni svolte? I dati nei form andranno persi")
     	   if(answer){
-    		   window.location.replace("viewpost");
+    		   window.location.replace("index.jsp");
     	   }
     	   else{}
     	  
