@@ -113,3 +113,19 @@ $("#cerca").submit( function(e ) {
     
 } );
 
+//function filtroNegozio(filtro) {
+//	$.ajax({
+//		
+//		type: "GET",
+//		url: "vedifiltri?filtro=" + filtro,
+//		
+//		success:function() {
+//			window.location.replace("negozio.jsp#testo");
+//		},
+//		
+//		error:function() {
+//			alert('Nessun prodotto trovato');
+//			window.location.replace("negozio.jsp#piu'");
+//		}
+//	});
+//}
