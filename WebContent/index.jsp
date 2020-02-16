@@ -59,6 +59,7 @@
 						<li><a href="vediprodotti">Negozio</a></li>
 						<li><a href="viewroom">Rooms</a></li>
 						<li><a href="viewpost">Blog</a></li>
+						<li><a href="contact.jsp">Contattaci</a></li>
 					</ul>
 				</nav>
 				<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
@@ -113,6 +114,7 @@
 					<li ><a href="vediprodotti">Negozio</a></li>
 					<li><a href="viewroom">Rooms</a></li>
 					<li><a href="viewpost">Blog</a></li>
+					<li><a href="contact.jsp">Contattaci</a></li>
 				</ul>
 			</nav>
 		</div>
