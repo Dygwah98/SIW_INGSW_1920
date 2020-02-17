@@ -16,6 +16,9 @@
 <link rel="stylesheet" type="text/css" href="styles/about_responsive.css">
 <script src="js/menuATendina.js"></script>
 <link rel="stylesheet" type="text/css" href="styles/menuATendina.css">
+<link rel="stylesheet" type="text/css" href="styles/login.css">
+<script src="js/login.js"></script>
+
 
 </head>
 <body>
@@ -138,6 +141,28 @@
 	</div>
 
 	<!-- About -->
+	<div id="wrap">
+  <div id="regbar">
+    <div id="navthing">
+      <h2><a href="#" id="loginform">Login</a> | <a href="#">Register</a></h2>
+    <div class="login">
+      <div class="arrow-up"></div>
+      <div class="formholder">
+        <div class="randompad">
+           <fieldset>
+             <label name="email">Email</label>
+             <input type="email" value="example@example.com" />
+             <label name="password">Password</label>
+             <input type="password" />
+             <input type="submit" value="Login" />
+ 
+           </fieldset>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
 
 	<div class="about">
 		<div class="container">
