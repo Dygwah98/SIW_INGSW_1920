@@ -84,6 +84,7 @@ public class NewPost extends HttpServlet {
         	String immagine = "images/blog/";
         	java.util.Date uDate = new java.util.Date();
         	java.sql.Date sDate = new java.sql.Date(uDate.getTime());
+        	String categoria = request.getParameter("Categoria");
         
 	        Post u=new Post();
 	        u.setTitolo(titolo);
@@ -91,6 +92,7 @@ public class NewPost extends HttpServlet {
 	        u.setImg(immagine);
 	        u.setMessaggio(testo);
 	        u.setData(sDate);
+	        u.setCategoria(categoria);
 	        
 	        Dao<Post> prodao = DBManager.getInstance().getDAOFactory().getPostDao();
 	        prodao.save(u);

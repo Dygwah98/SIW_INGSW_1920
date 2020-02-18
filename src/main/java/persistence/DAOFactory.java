@@ -45,5 +45,7 @@ public abstract class DAOFactory {
 	public abstract PagamentoDao getPagamentoDao();
 
 	public abstract NewsletterDao getNewsletterDao();
+	
+	public abstract CommentoDao getCommentoDao();
 
 }

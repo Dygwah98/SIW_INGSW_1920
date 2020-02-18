@@ -14,6 +14,7 @@ public class Post implements Serializable {
 	private Integer idPost;
 	private String img;
 	private java.sql.Date data;
+	private String categoria;
 
 	public Post() {
 		this.titolo = null;
@@ -21,16 +22,25 @@ public class Post implements Serializable {
 		this.messaggio = null;
 		this.img = null;
 		this.data = null;
+		this.categoria = null;
 	}
 
-	public Post(Integer i, String t, String messaggio, String l, String strimg, java.sql.Date data) {
+	public Post(Integer i, String t, String messaggio, String l, String strimg, java.sql.Date data, String categoria) {
 		this.titolo = t;
 		this.idPost = i;
 		this.messaggio = messaggio;
-		;
+		this.categoria = categoria;
 		this.img = strimg;
 		this.data = data;
 
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
 	public Integer getidPost() {

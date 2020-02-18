@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.nonTables.ProdottoAggregato;
 import model.tables.Post;
 import persistence.PersistenceException;
 import persistence.dao.PostDao;
@@ -15,7 +16,7 @@ public class PostDaoJDBC implements PostDao {
 	@Override
 	public void save(Post post) {
 
-		String insert = "insert into post(titolo, messaggio, img, data_post) values (?,?,?,?)";
+		String insert = "insert into post(titolo, messaggio, img, data_post, categoria) values (?,?,?,?,?)";
 
 		try (JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 
@@ -24,6 +25,7 @@ public class PostDaoJDBC implements PostDao {
 			smt.setString(2, post.getMessaggio());
 			smt.setString(3, post.getImg());
 			smt.setDate(4, post.getData());
+			smt.setString(5, post.getCategoria());
 			handler.executeUpdate();
 
 		} catch (SQLException e) {
@@ -49,6 +51,7 @@ public class PostDaoJDBC implements PostDao {
 				p.setMessaggio(handler.getResultSet().getString("messaggio"));
 				p.setImg(handler.getResultSet().getString("img"));
 				p.setData(handler.getResultSet().getDate("data_post"));
+				p.setCategoria(handler.getResultSet().getString("categoria"));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -79,6 +82,7 @@ public class PostDaoJDBC implements PostDao {
 					post.setMessaggio(result.getString("messaggio"));
 					post.setTitolo(result.getString("titolo"));
 					post.setData(result.getDate("data_post"));
+					post.setCategoria(result.getString("categoria"));
 					posts.add(post);
 				}
 			}
@@ -93,7 +97,7 @@ public class PostDaoJDBC implements PostDao {
 	@Override
 	public void update(Post post) {
 
-		String update = "UPDATE post SET titolo = ?, messaggio = ?, img = ?, data_post = ? WHERE idpost = ?";
+		String update = "UPDATE post SET titolo = ?, messaggio = ?, img = ?, data_post = ?, categoria = ? WHERE idpost = ?";
 
 		try (JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 
@@ -102,7 +106,8 @@ public class PostDaoJDBC implements PostDao {
 			smt.setString(2, post.getMessaggio());
 			smt.setString(3, post.getImg());
 			smt.setDate(4, post.getData());
-			smt.setInt(5, post.getidPost());
+			smt.setString(5, post.getCategoria());
+			smt.setInt(6, post.getidPost());
 			smt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -171,4 +176,40 @@ public class PostDaoJDBC implements PostDao {
 	 * finally { try { connection.close(); } catch (SQLException e) { throw new
 	 * PersistenceException(e.getMessage()); } } }
 	 */
+
+	@Override
+	public List<Post> retrieveByCategory(String tipo) {
+		String query = "SELECT * FROM post where categoria=?";
+		Post p = null;
+		List<Post> post = null;
+
+		try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+
+			handler.getStatement().setString(1, tipo);
+			handler.executeQuery();
+
+			if (handler.existsResultSet()) {
+				post = new ArrayList<Post>();
+				ResultSet result = handler.getResultSet();
+
+				while (result.next()) {
+					p = new Post();
+					p.setidPost(result.getInt("idPost"));
+					p.setImg(result.getString("img"));
+					p.setMessaggio(result.getString("messaggio"));
+					p.setTitolo(result.getString("titolo"));
+					p.setData(result.getDate("data_post"));
+					p.setCategoria(result.getString("categoria"));
+					post.add(p);
+
+				}
+			}
+
+			return post;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+
+	}
 }

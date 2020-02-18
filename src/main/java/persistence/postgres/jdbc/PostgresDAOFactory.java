@@ -44,4 +44,9 @@ public class PostgresDAOFactory extends DAOFactory {
 	public NewsletterDao getNewsletterDao() {
 		return new NewsletterDaoJDBC();
 	}
+	
+	@Override
+	public CommentoDao getCommentoDao() {
+		return new CommentoDaoJDBC();
+	}
 }

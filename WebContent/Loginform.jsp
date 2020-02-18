@@ -21,7 +21,7 @@
 
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form class="decor"  method="post" action="${pageContext.request.contextPath}/RegisterUser">
+		<form class="decor"  method="post" action="${pageContext.request.contextPath}/RegisterUser" >
 			<h1>Crea un account</h1>
 			<input type="text" name="name" placeholder="nome">
 		    <input type="text" name="cognome" placeholder="cognome">

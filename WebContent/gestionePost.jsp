@@ -29,6 +29,13 @@
 				    <option value="stanze">stanze</option>
 				    <option value="ristorante">ristorante</option>
   				 </select> 
+  				 <select name="Categoria" id="Categoria" >
+      			 	<option >Categoria:</option>
+      			 	<option value="shop">shop</option>
+				    <option value="servizi">servizi</option>
+				    <option value="news">news</option>
+				    <option value="ristorante">ristorante</option>
+  				 </select> 
 				<button type="submit" id="btnaddc" onclick="addPost(event)">INSERISCI POST</button>
 			</div>
 		</div>
@@ -47,6 +54,13 @@
 				    <option value="stanze">stanze</option>
 				    <option value="ristorante">ristorante</option>
   				 </select>  
+  				  <select name="Categoria2" id="Categoria2" >
+      			 	<option >Categoria:</option>
+      			 	<option value="shop">shop</option>
+				    <option value="servizi">servizi</option>
+				    <option value="news">news</option>
+				    <option value="ristorante">ristorante</option>
+  				 </select> 
 				<button type="submit" id="btnaddc" onclick="updatePost(event)">AGGIORNA POST</button>
 			</div>
 		</div>

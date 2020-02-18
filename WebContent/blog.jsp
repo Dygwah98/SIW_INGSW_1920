@@ -161,17 +161,38 @@
 								<img src="${post.img}.jpg" alt="">
 								<div class="blog_post_date"><a href="#">${post.data}</a></div>
 							</div>
-							<div class="blog_post_content">
-								<div class="blog_post_text">
-									<p>${post.messaggio}</p>
-								</div>
-							</div>
+							<br>
+						    <p >${post.messaggio}</p> 
+							<br>
+							<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+							<form action="${pageContext.request.contextPath}/commenta" method="POST">
+								<input type="hidden" name="ID" value="${post.idPost}" />
+								<input name="recensione" style="width: 70%; height: 30px;" type="text" placeholder="recensisci..">
+								<button style="background-color: #FF7415"" type="submit">Commenta</button> 
+							</form>
+							<%}%>
+							<a href="viewcomment?identificativo=${post.idPost}">VediCommenti</a>
+							
 						</div>
 						</c:forEach>
+						
+						
 						
 
 					</div>
 				</div>
+				<div class="categories" style="margin:80px;">
+							<div class="sidebar_title"><h4>Categorie:</h4></div>
+							<div class="sidebar_list">
+								<ul>
+									<li><a href="vedifiltripost?filtro=all">Tutti i post</a></li>
+									<li><a href="vedifiltripost?filtro=shop" >Shop</a></li>
+									<li> <a href="vedifiltripost?filtro=servizi">Servizi</a></li>
+									<li><a href="vedifiltripost?filtro=ristorante">Ristorante</a></li>
+									<li><a href="vedifiltripost?filtro=news">News</a></li>
+								</ul>
+							</div>
+						</div>
 
 				<!-- Sidebar -->
 				
@@ -180,7 +201,7 @@
 		</div>
 	</div>
 
-				
+	
 	<!-- Footer -->
 
 	<footer  class="footer">

@@ -19,7 +19,6 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 
 			PreparedStatement smt = handler.getStatement();
 
-			// smt.setInt(1, p.getIdprodotto());
 			smt.setString(1, p.getTipo());
 			smt.setString(2, p.getDescrizione());
 			smt.setInt(3, p.getPrezzo());
