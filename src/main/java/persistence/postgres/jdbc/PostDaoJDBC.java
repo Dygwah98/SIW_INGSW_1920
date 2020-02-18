@@ -16,7 +16,7 @@ public class PostDaoJDBC implements PostDao {
 	@Override
 	public void save(Post post) {
 
-		String insert = "insert into post(titolo, messaggio, img, data_post, categoria) values (?,?,?,?,?)";
+		String insert = "INSERT INTO post(titolo, messaggio, img, data_post, categoria) values (?,?,?,?,?)";
 
 		try (JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 

@@ -72,7 +72,7 @@ public class NewPost extends HttpServlet {
 	
 	//TODO
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
+    	response.setStatus(405);
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -85,7 +85,8 @@ public class NewPost extends HttpServlet {
         	java.util.Date uDate = new java.util.Date();
         	java.sql.Date sDate = new java.sql.Date(uDate.getTime());
         	String categoria = request.getParameter("Categoria");
-        
+        	
+        	
 	        Post u=new Post();
 	        u.setTitolo(titolo);
 	        immagine = immagine.concat(img);

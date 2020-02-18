@@ -154,7 +154,7 @@
 						
 						<!-- Blog Post -->
 						<c:forEach var="post" items="${post}">
-							<div class="blog_post">
+							<div style="margin-top:60px;" class="blog_post">
 							<div class="blog_post_title"><a href="#">${post.titolo}</a></div>
 							<br>
 							<div class="blog_post_image">
@@ -162,17 +162,21 @@
 								<div class="blog_post_date"><a href="#">${post.data}</a></div>
 							</div>
 							<br>
-						    <p >${post.messaggio}</p> 
-							<br>
+							<div style=" width: 100%; float:left;">
+						    	<p style=" word-wrap:break-word;" >${post.messaggio}</p> 
+						    </div>
+							
 							<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 							<form action="${pageContext.request.contextPath}/commenta" method="POST">
 								<input type="hidden" name="ID" value="${post.idPost}" />
-								<input name="recensione" style="width: 70%; height: 30px;" type="text" placeholder="recensisci..">
-								<button style="background-color: #FF7415"" type="submit">Commenta</button> 
+								<input name="recensione" style="width: 80%; height: 30px;" type="text" placeholder="recensisci..">
+								<button class="button" type="submit">Commenta</button> 
 							</form>
 							<%}%>
-							<a href="viewcomment?identificativo=${post.idPost}">VediCommenti</a>
 							
+							<div style="margin-top:40px;">
+								<a class="button1" href="viewcomment?identificativo=${post.idPost}">VediCommenti</a>
+							</div>
 						</div>
 						</c:forEach>
 						

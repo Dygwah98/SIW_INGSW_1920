@@ -41,6 +41,7 @@ public class updatePost extends HttpServlet {
 			String categoria = request.getParameter("Categoria2");
 		
 	    	
+	    	
 			Post u = new Post();
 			String n = id;
 			int i = Integer.parseInt(n);	
