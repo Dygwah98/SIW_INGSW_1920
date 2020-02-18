@@ -22,6 +22,14 @@
 <link rel="stylesheet" href="styles/icomoon.css">
 <link rel="stylesheet" href="styles/ionicons.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style type="text/css">
+.contieni{
+	width: 100%;
+  	display: flex;
+  	flex-direction: row;
+}
+
+</style>
 
 
 </head>
@@ -144,23 +152,24 @@
 
 	<!-- Blog -->
 
-	<div class="blog">
-		<div class="container">
+	<div   class="blog">
+		<div  class="container">
 			<div class="row">
 				
 				<!-- Blog Posts -->
 				<div class="col-lg-9">
-					<div class="blog_posts">
+					<div  class="blog_posts">
 						
 						<!-- Blog Post -->
 						<c:forEach var="post" items="${post}">
 							<div style="margin-top:60px;" class="blog_post">
 							<div class="blog_post_title"><a href="#">${post.titolo}</a></div>
 							<br>
-							<div class="blog_post_image">
-								<img src="${post.img}.jpg" alt="">
-								<div class="blog_post_date"><a href="#">${post.data}</a></div>
-							</div>
+								<div class="blog_post_image">
+									<img src="${post.img}.jpg" alt="">
+									<div class="blog_post_date"><a href="#">${post.data}</a></div>
+								</div>
+								
 							<br>
 							<div style=" width: 100%; float:left;">
 						    	<p style=" word-wrap:break-word;" >${post.messaggio}</p> 
@@ -179,24 +188,22 @@
 							</div>
 						</div>
 						</c:forEach>
-						
-						
-						
 
 					</div>
 				</div>
 				<div class="categories" style="margin:80px;">
-							<div class="sidebar_title"><h4>Categorie:</h4></div>
-							<div class="sidebar_list">
-								<ul>
-									<li><a href="vedifiltripost?filtro=all">Tutti i post</a></li>
-									<li><a href="vedifiltripost?filtro=shop" >Shop</a></li>
-									<li> <a href="vedifiltripost?filtro=servizi">Servizi</a></li>
-									<li><a href="vedifiltripost?filtro=ristorante">Ristorante</a></li>
-									<li><a href="vedifiltripost?filtro=news">News</a></li>
-								</ul>
-							</div>
-						</div>
+					<div class="sidebar_title"><h4>Categorie:</h4></div>
+					<div class="sidebar_list">
+						<ul>
+							<li><a href="vedifiltripost?filtro=all">Tutti i post</a></li>
+							<li><a href="vedifiltripost?filtro=shop" >Shop</a></li>
+							<li> <a href="vedifiltripost?filtro=servizi">Servizi</a></li>
+							<li><a href="vedifiltripost?filtro=ristorante">Ristorante</a></li>
+							<li><a href="vedifiltripost?filtro=news">News</a></li>
+						</ul>
+					</div>
+			  </div>
+			  
 
 				<!-- Sidebar -->
 				
@@ -251,8 +258,8 @@
 					<!-- Newsletter -->
 					<div class="col-lg-3">
 						<form class="decor"  method="post" action="${pageContext.request.contextPath}/addemail" >
-							<input type="email" class="newsletter_input" name="email"placeholder="Your email address" required="required">
-							<button class="newsletter_button" type="submit" value="Invia">Subscribe</button>
+							<input type="email" class="newsletter_input" name="email"placeholder="e-mail..." required="required">
+							<button class="button" type="submit">Iscriviti</button>
 						</form>
 					</div>
 

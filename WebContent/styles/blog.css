@@ -805,7 +805,7 @@ input[type=number]::-webkit-outer-spin-button
 
 .blog
 {
-	background: #f5f5dc;
+	background: white;
 	padding-top: 82px;
 	padding-bottom: 110px;
 	border-bottom: solid 2px #eaf2f7;

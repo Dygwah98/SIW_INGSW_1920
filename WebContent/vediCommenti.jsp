@@ -10,7 +10,7 @@
 <body>
 
 	<c:forEach var="commento" items="${commento}">
-		<p>${commento.username_cliente}: </p> <p>${commento.testo}</p>
+		<h3>${commento.username_cliente}</h3> <p  style="font-style: italic">${commento.testo}</p>
 	</c:forEach>
 
 </body>
