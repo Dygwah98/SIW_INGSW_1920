@@ -4,37 +4,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Agriturismo Sarella</title>
+<title>Blog</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Sarella agriturismo">
+<meta name="description" content="The River template project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-</head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.2/bootstrap.min.css">
-
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.3.4/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="styles/Carrello.css">
-<link rel="stylesheet" type="text/css" href="styles/responsive.css">
-
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.3.4/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.3.4/animate.css">
+<link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/blog.css">
+<link rel="stylesheet" type="text/css" href="styles/blog_responsive.css">
+<script src="js/menuATendina.js"></script>
+<link rel="stylesheet" type="text/css" href="styles/menuATendina.css">
 <link rel="stylesheet" href="styles/icomoon.css">
 <link rel="stylesheet" href="styles/ionicons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="js/commento.js"></script>
+<style type="text/css">
+.contieni{
+	width: 100%;
+  	display: flex;
+  	flex-direction: row;
+}
 
-
-
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="plugins/OwlCarousel2-2.3.4/owl.carousel.js"></script>
-<script src="js/custom.js"></script>
-<script src="js/carrello.js"></script>
-<link rel="stylesheet" type="text/css" href="styles/menuATendina.css">
-
-<script src="js/menuATendina.js"></script>
-<script src="js/checkout.js"></script>
+</style>
 
 
 </head>
-
 <body>
 
 	
@@ -68,13 +69,13 @@
 					<%} %>
 						
 						<li ><a href="index.jsp">Home</a></li>
-						<li ><a href="vediprodotti">Negozio</a></li>
+						<li class="active"><a href="viewpost">Blog</a></li>
 					</ul>
 			   </nav>
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				 <nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li class="active"><a  href="cart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
+						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
 					</ul>
 				</nav>
 			   <%}%>
@@ -115,7 +116,7 @@
 					<%} %>
 					   
 					<li ><a href="index.jsp">Home</a></li>
-					<li><a href="vediprodotti">Negozio</a></li>
+					<li class="active"><a href="vediprodotti">Negozio</a></li>
 			   </ul>
 		   </nav>
 		</div>
@@ -123,138 +124,97 @@
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li class="active"><a href="cart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
+						<li><a href="addcart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
 					</ul>
 				</nav>
 	    <%}%>
 		</div>
 	</div>
 
+	<!-- Home -->
 
-   <div class="home">
-		<div class="home_slider_container">
-			<div class="owl-carousel home_slider">
-				
-				<!-- Prima Slide -->
-				<div class="slide">
+	<div class="home">
+		<div class="slide">
 					<div class="background_image" style="background-image:url(images/index_1.jpg)"></div>
 					<div class="home_container">
 						<div class="container">
 							<div class="row">
 								<div class="col">
 									<div class="home_content text-center">
-										<div class="home_title">CARRELLO</div>
-											<p class="descrizione">Acquista i prodotti dei tuoi sogni...</p>
-											<a href="#piu" class="bottone trans_200">DETTAGLI</a>
-									</div>
+										<div class="home_title">POST</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			 </div>
-		</div>		
 	</div>
 
-    <section style="text-align: center" id="piu" class="ftco-section ftco-cart">
-			<div class="container">
-				<div class="row">
-    			<div class="col-md-12">
-    				<div class="cart-list">
-	    				<table class="table">
-						    <thead class="thead-primary">
-						      <tr class="text-center">
-						        <th>&nbsp;</th>
-						      	 <th>&nbsp;</th>
-						      	  
-						        <th>tipo</th>
-						        <th>descrizione</th>
-						        <th>prezzo</th>
-						        
-						        <th>Quantità</th>
-						        
-						      </tr>
-						    </thead>
-						    <c:forEach var="prodc" items="${prodc}">
-						    
-						    <tbody style="background-color: white;">
-						      <tr class="text-center">
-						        <td class="product-remove"><a href="deleteprodottotocart?idcl=${prodc.idordine}&tipo=${prodc.tipo}"><span class="ion-ios-close"></span></a></td>
-						     						        
-						        <td class="image-prod"><div class="img" style="background-image:url(${prodc.img}.jpg);"></div></td>
-						        
-						        <td class="product-name">
-						        	<h3>${prodc.tipo}</h3>
-						        	
-						        </td>
-						        <td class="product-descrizione">
-						       
-						        	<p>${prodc.descrizione}</p>
-						        </td>
-						        <td class="prezzo">${prodc.prezzo}</td>
-						        
-						        <td class="quantity">
-						        		${prodc.num}
-					          </td>
-						        
-						      </tr><!-- END TR-->
-						      
-						    </tbody>
-						     </c:forEach>
-						  </table>
-					  </div>
-    			</div>
-    		</div>
-    		<div class="row">
-    			<div class="col-md-12">
-    				<div class="cart-list">
-	    				<table class="table">
-						    <thead class="thead-secondary">
-						      <tr class="text-center">
-						        <th>&nbsp;</th>
-						        <th>ordine</th>
-						        <th>n_camera</th>
-						        <th>Check-in</th>
-						        <th>Check-out</th>
-						        <th>prezzo</th>
-						        
-						      </tr>
-						    </thead>
-						     <c:forEach var="prenotazione" items="${prenotazione}" varStatus="status">
-						    <tbody style="background-color: white;">
-						      <tr class="text-center">
-						        <td class="product-remove"><a href="deleteprenotazione?idc=${prenotazione.idcamera}&idp=${prenotazione.idprenotazione}"><span class="ion-ios-close"></span></a></td>
-						        <td >
-						        	<p>${prenotazione.idordine}</p>
-						        </td>
-						        
-						        <td >
-									<p>${prenotazione.idcamera}</p>
-						        </td>
-						        	  <td >
-									<p>${prenotazione.checkin}</p>
-						        	</td>
-						        	  <td >
-									<p>${prenotazione.checkout}</p>
-						        </td>
-						        <td class="prezzo">${prezziprenotazione[status.index]}</td>
-
-						      </tr><!-- END TR-->
-						    </tbody>
-						    </c:forEach>
-						   
-						  </table>
-					  </div>
-    			</div>
-    		</div>
-    				
-    			</div>
-    			<button class="button" type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
-	</section>
-	
+	<!-- Blog -->
 
 	
-   <footer class="footer">
+	<div   class="blog">
+		<div  class="container">
+			<div class="row">
+				
+				<!-- Blog Posts -->
+				<div class="col-lg-9">
+					<div  class="blog_posts">
+						
+						<!-- Blog Post -->
+						<c:forEach var="post" items="${post}">
+							<div style="margin-top:60px;" class="blog_post">
+							<div class="blog_post_title"><a href="#">${post.titolo}</a></div>
+							<br>
+								<div class="blog_post_image">
+									<a href="singolopost?identificativo=${post.idPost}" ><img src="${post.img}.jpg" alt="peperone"></a>
+									<div class="blog_post_date"><a href="#">${post.data}</a></div>
+								</div>
+								
+							<br>
+							<div style=" width: 100%; float:left;">
+								<h6>Descrizione:</h6>
+						    	<p style=" word-wrap:break-word;" >${post.messaggio}</p> 
+						    </div>
+							
+							<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+							<div>
+								<input type="hidden" name="ID" id="ID" value="${post.idPost}" />
+								<input name="recensione" id="recensione" style="width: 80%; height: 30px;" type="text" placeholder="recensisci.." >
+								<button class="button" type="submit" onclick="addcomm(event)">Commenta</button> 
+							</div>
+							<%}%>
+							
+						</div>
+						</c:forEach>
+
+					</div>
+				</div>
+				
+				<div class="col-lg-3">
+					<div class="sidebar">
+						
+						<div style="border: 1px solid grey; margin-top: 85px;  overflow: scroll; height: 355px;">
+						<div style="text-align: center;"><h3 style="color:#FF7514">Recensioni</h3></div>
+							<c:forEach var="commento" items="${commento}">
+								<h4 style="margin-left: 10px;">${commento.username_cliente}</h4> <p style="font-style: italic; margin-left: 10px;">${commento.testo}</p>
+							</c:forEach>
+						</div>
+					</div>
+				</div>
+				
+			  
+
+				<!-- Sidebar -->
+				
+
+			</div>
+		</div>
+	</div>
+
+	
+	<!-- Footer -->
+
+	<footer  class="footer">
 		<div class="footer_content">
 			<div class="container">
 				<div class="row">
@@ -296,13 +256,10 @@
 
 					<!-- Newsletter -->
 					<div class="col-lg-3">
-						<div class="footer_title">Newsletter</div>
-						<div class="newsletter_container">
-							<form action="#" class="newsletter_form" id="newsletter_form">
-								<input type="email" class="newsletter_input" placeholder="Your email address" required="required">
-								<button class="newsletter_button">Iscriviti</button>
-							</form>
-						</div>
+						<form class="decor"  method="post" action="${pageContext.request.contextPath}/addemail" >
+							<input type="email" class="newsletter_input" name="email"placeholder="e-mail..." required="required">
+							<button class="button" type="submit">Iscriviti</button>
+						</form>
 					</div>
 
 					<!-- Footer images -->
@@ -315,6 +272,22 @@
 				</div>
 			</div>
 		</div>
-		</footer>
-  </body>
+	</footer>
+
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="styles/bootstrap-4.1.2/popper.js"></script>
+<script src="styles/bootstrap-4.1.2/bootstrap.min.js"></script>
+<script src="plugins/greensock/TweenMax.min.js"></script>
+<script src="plugins/greensock/TimelineMax.min.js"></script>
+<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="plugins/greensock/animation.gsap.min.js"></script>
+<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="plugins/OwlCarousel2-2.3.4/owl.carousel.js"></script>
+<script src="plugins/easing/easing.js"></script>
+<script src="plugins/progressbar/progressbar.min.js"></script>
+<script src="plugins/parallax-js-master/parallax.min.js"></script>
+<script src="plugins/jquery-datepicker/jquery-ui.js"></script>
+<script src="js/blog.js"></script>
+</body>
 </html>

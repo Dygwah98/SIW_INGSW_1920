@@ -58,7 +58,6 @@
 							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
 							  <div id="myDropdown" class="dropdown-content">
 								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
-								    <a href="gestioneCamere.jsp">GestioneCamere</a>
 								    <a href="gestionePost.jsp">GestionePost</a>
 								    <a href="logout">Logout</a>
 							  </div>
@@ -72,7 +71,7 @@
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				 <nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
 					</ul>
 				</nav>
 			   <%}%>
@@ -106,7 +105,6 @@
 							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
 							  <div id="myDropdown" class="dropdown-content">
 								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
-								    <a href="gestioneCamere.jsp">GestioneCamere</a>
 								    <a href="gestionePost.jsp">GestionePost</a>
 								    <a href="logout">Logout</a>
 							  </div>
@@ -122,7 +120,7 @@
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a href="addcart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
 					</ul>
 				</nav>
 	    <%}%>

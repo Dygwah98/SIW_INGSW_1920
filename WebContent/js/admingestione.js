@@ -227,7 +227,6 @@ function addPost(event){
 	           Titolo : $("#Titolo").val(),
 	           Messaggio : $("#Messaggio").val(),
 	           Immagine : $("#Immagine").val(),
-	           Data : $("#Data").val(),    
 	           Categoria: $("#Categoria").val()
 	       },
 	       success:function(){
@@ -252,7 +251,6 @@ function updatePost(event){
     	   Titolo2 : $("#Titolo2").val(),
            Messaggio2 : $("#Messaggio2").val(),
            Immagine2 : $("#Immagine2").val(),
-           Data2 : $("#Data2").val(),
            Categoria2: $("#Categoria2").val()
        },
        success:function(){

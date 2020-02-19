@@ -8,6 +8,7 @@ import java.util.List;
 
 import model.nonTables.ProdottoAggregato;
 import model.tables.Post;
+import model.tables.Prodotto;
 import persistence.PersistenceException;
 import persistence.dao.PostDao;
 
@@ -59,7 +60,8 @@ public class PostDaoJDBC implements PostDao {
 
 		return p;
 	}
-
+	
+	
 	@Override
 	public List<Post> retrieveAll() {
 
@@ -211,5 +213,42 @@ public class PostDaoJDBC implements PostDao {
 			throw new RuntimeException(e.getMessage());
 		}
 
+	}
+
+	@Override
+	public List<Post> singoloPost(Integer id) {
+		String query = "SELECT * FROM post WHERE idpost = ?";
+		Post post = null;
+		List<Post> posts= null;
+
+		try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+
+			handler.getStatement().setInt(1, id);
+			handler.executeQuery();
+
+			if (handler.existsResultSet()) {
+				posts = new ArrayList<Post>();
+				ResultSet result = handler.getResultSet();
+
+				while (result.next()) {
+					post = new Post();
+					post.setidPost(result.getInt("idPost"));
+					post.setImg(result.getString("img"));
+					post.setMessaggio(result.getString("messaggio"));
+					post.setTitolo(result.getString("titolo"));
+					post.setData(result.getDate("data_post"));
+					post.setCategoria(result.getString("categoria"));
+
+					if (posts.size() == 0)
+						posts.add(post);
+
+				}
+			}
+
+			return posts;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 }

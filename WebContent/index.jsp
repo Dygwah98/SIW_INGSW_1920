@@ -49,7 +49,6 @@
 							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
 							  <div id="myDropdown" class="dropdown-content">
 								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
-								    <a href="gestioneCamere.jsp">GestioneCamere</a>
 								    <a href="gestionePost.jsp">GestionePost</a>
 								    <a href="logout">Logout</a>
 							  </div>
@@ -57,7 +56,6 @@
 					<%} %>
 						<li class="active"><a href="home">Home</a></li>
 						<li><a href="vediprodotti">Negozio</a></li>
-						<li><a href="viewroom">Rooms</a></li>
 						<li><a href="viewpost">Blog</a></li>
 						<li><a href="contact.jsp">Contattaci</a></li>
 					</ul>
@@ -66,7 +64,7 @@
 				<!--  <div class="book_button"><a href="carrello.jsp">Carrello</a></div> -->
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
 					</ul>
 				</nav>
 				<%}%>
@@ -104,7 +102,6 @@
 						<li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
 							<div id="myDropdown" class="dropdown-content">
 								<a href="gestioneProdotti.jsp">GestioneNegozio</a>
-								<a href="gestioneCamere.jsp">GestioneCamere</a>
 								<a href="gestionePost.jsp">GestionePost</a>
 								<a href="logout">Logout</a>
 							</div>
@@ -112,7 +109,6 @@
 					<%}%>
 					<li class="active"><a href="index.jsp">Home</a></li>
 					<li ><a href="vediprodotti">Negozio</a></li>
-					<li><a href="viewroom">Rooms</a></li>
 					<li><a href="viewpost">Blog</a></li>
 					<li><a href="contact.jsp">Contattaci</a></li>
 				</ul>
@@ -123,7 +119,7 @@
 			<!--  <div class="book_button"><a href="carrello.jsp">Carrello</a></div> -->
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
 					</ul>
 				</nav>
 				<%}%>
@@ -160,62 +156,7 @@
 						</div>
 					</div>
 				</div>
-
-				<!-- Slide -->
-				<div class="slide">
-					<div class="background_image" style="background-image:url(images/index_1.jpg)"></div>
-					<div class="home_container">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="home_content text-center">
-										<div class="home_title">Agriturismo Sarella</div>
-										<div class="booking_form_container">
-											<form action="#" class="booking_form">
-												<div class="d-flex flex-xl-row flex-column align-items-start justify-content-start">
-													<div class="booking_input_container d-flex flex-lg-row flex-column align-items-start justify-content-start">
-														<div><input type="text" class="datepicker booking_input booking_input_a booking_in" placeholder="Check in" required="required"></div>
-														<div><input type="text" class="datepicker booking_input booking_input_a booking_out" placeholder="Check out" required="required"></div>
-														<div><input type="number" class="booking_input booking_input_b" placeholder="Children" required="required"></div>
-														<div><input type="number" class="booking_input booking_input_b" placeholder="Room" required="required"></div>
-													</div>
-													<div><button class="booking_button trans_200">Book Now</button></div>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Slide -->
-				<div class="slide">
-					<div class="background_image" style="background-image:url(images/index_1.jpg)"></div>
-					<div class="home_container">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="home_content text-center">
-										<div class="home_title">Agriturismo Sarella</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
 			</div>
-			
-			<!-- Home Slider Dots -->
-			<div class="home_slider_dots_container">
-				<div class="home_slider_dots">
-					<ul id="home_slider_custom_dots" class="home_slider_custom_dots d-flex flex-row align-items-start justify-content-start">
-					</ul>
-				</div>
-			</div>
-			
 		</div>
 	</div>
 

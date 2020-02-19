@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.tables.Post;
+import model.tables.Prodotto;
 import persistence.DBManager;
 import persistence.Dao;
 
@@ -30,6 +31,7 @@ public class updatePost extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		try {
 			String id = request.getParameter("Identificativo");
 			String titolo = request.getParameter("Titolo2");
@@ -39,24 +41,25 @@ public class updatePost extends HttpServlet {
 			java.util.Date uDate = new java.util.Date();
 			java.sql.Date sDate = new java.sql.Date(uDate.getTime());
 			String categoria = request.getParameter("Categoria2");
+			
+			Post p = new Post();
+            p.setidPost(Integer.parseInt(id));
 		
-	    	
-	    	
-			Post u = new Post();
-			String n = id;
-			int i = Integer.parseInt(n);	
-			u.setidPost(i);
-			u.setTitolo(titolo);
-			immagine = immagine.concat(img);
-			u.setImg(immagine);
-			u.setMessaggio(testo);	
-			u.setData(sDate);
-			u.setCategoria(categoria);
+			 boolean ID = DBManager.getInstance().getDAOFactory().getPostDao().exists(p);
+	            if(!ID) {
+	            	 response.setStatus(401);
+	            
+	            } else {
+						p.setTitolo(titolo);
+						immagine = immagine.concat(img);
+						p.setImg(immagine);
+						p.setMessaggio(testo);	
+						p.setData(sDate);
+						p.setCategoria(categoria);
 		
-			Dao<Post> prodao = DBManager.getInstance().getDAOFactory().getPostDao();
-			prodao.update(u);
-		
-			response.setStatus(201);
+						DBManager.getInstance().getDAOFactory().getPostDao().update(p);
+		            	response.setStatus(201);
+	            }
 		} catch(Exception e) {
 			response.setStatus(401);
 		}

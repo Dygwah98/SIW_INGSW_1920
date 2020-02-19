@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import model.tables.Newsletter;
 import model.tables.Post;
 import persistence.DBManager;
-import persistence.Dao;
+import persistence.dao.PostDao;
+
 import java.util.*;  
 import javax.mail.*;  
 import javax.mail.internet.*;  
-import javax.activation.*; 
 
 @WebServlet("/NewPost")
 public class NewPost extends HttpServlet {
@@ -78,6 +78,9 @@ public class NewPost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        
     	try {
+    		Post  p = null;
+			PostDao posts = DBManager.getInstance().getDAOFactory().getPostDao();
+			
     		String titolo = request.getParameter("Titolo");
     		String testo = request.getParameter("Messaggio");
         	String img = request.getParameter("Immagine");
@@ -87,20 +90,20 @@ public class NewPost extends HttpServlet {
         	String categoria = request.getParameter("Categoria");
         	
         	
-	        Post u=new Post();
-	        u.setTitolo(titolo);
+	        p=new Post();
+	        p.setTitolo(titolo);
 	        immagine = immagine.concat(img);
-	        u.setImg(immagine);
-	        u.setMessaggio(testo);
-	        u.setData(sDate);
-	        u.setCategoria(categoria);
+	        p.setImg(immagine);
+	        p.setMessaggio(testo);
+	        p.setData(sDate);
+	        p.setCategoria(categoria);
+	    
+	        posts.save(p);
 	        
-	        Dao<Post> prodao = DBManager.getInstance().getDAOFactory().getPostDao();
-	        prodao.save(u);
-	        
-	        emailSender(titolo);
-	        
+	        emailSender(titolo); // se tenuto qua non funziona la chiamata ajax
 	        response.setStatus(201);
+
+
     	} catch(Exception e) {
     		response.setStatus(401);
     	}

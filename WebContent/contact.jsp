@@ -16,7 +16,9 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="styles/mappa.css">
-
+<style>
+	.logo a:hover{color:white;}
+</style>
 
 </head>
 <body>
@@ -27,7 +29,7 @@
 
 	<header class="header">
 		<div class="header_content d-flex flex-row align-items-center justify-content-start">
-			<div class="logo"><a href="#">Agriturismo Sarella</a></div>
+			<div class="logo"><a style="text-decoration: none;"href="#">Agriturismo Sarella</a></div>
 			<div class="ml-auto d-flex flex-row align-items-center justify-content-start">
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
@@ -46,7 +48,6 @@
 							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
 							  <div id="myDropdown" class="dropdown-content">
 								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
-								    <a href="gestioneCamere.jsp">GestioneCamere</a>
 								    <a href="gestionePost.jsp">GestionePost</a>
 								    <a href="logout">Logout</a>
 							  </div>
@@ -54,7 +55,6 @@
 					<%} %>
 						<li><a href="home">Home</a></li>
 						<li><a href="vediprodotti">Negozio</a></li>
-						<li><a href="viewroom">Rooms</a></li>
 						<li><a href="viewpost">Blog</a></li>
 						<li class="active"><a href="contact.jsp">Contattaci</a></li>
 					</ul>
@@ -63,7 +63,7 @@
 				<!--  <div class="book_button"><a href="carrello.jsp">Carrello</a></div> -->
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
 					</ul>
 				</nav>
 				<%}%>
@@ -101,7 +101,6 @@
 						<li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
 							<div id="myDropdown" class="dropdown-content">
 								<a href="gestioneProdotti.jsp">GestioneNegozio</a>
-								<a href="gestioneCamere.jsp">GestioneCamere</a>
 								<a href="gestionePost.jsp">GestionePost</a>
 								<a href="logout">Logout</a>
 							</div>
@@ -109,7 +108,6 @@
 					<%}%>
 					<li ><a href="index.jsp">Home</a></li>
 					<li ><a href="vediprodotti">Negozio</a></li>
-					<li><a href="viewroom">Rooms</a></li>
 					<li><a href="viewpost">Blog</a></li>
 					<li class="active"><a href="contact.jsp">Contattaci</a></li>
 				</ul>
@@ -120,7 +118,7 @@
 			<!--  <div class="book_button"><a href="carrello.jsp">Carrello</a></div> -->
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
 					</ul>
 				</nav>
 				<%}%>

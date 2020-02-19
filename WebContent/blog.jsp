@@ -59,7 +59,6 @@
 							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
 							  <div id="myDropdown" class="dropdown-content">
 								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
-								    <a href="gestioneCamere.jsp">GestioneCamere</a>
 								    <a href="gestionePost.jsp">GestionePost</a>
 								    <a href="logout">Logout</a>
 							  </div>
@@ -73,7 +72,7 @@
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				 <nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
 					</ul>
 				</nav>
 			   <%}%>
@@ -107,7 +106,6 @@
 							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
 							  <div id="myDropdown" class="dropdown-content">
 								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
-								    <a href="gestioneCamere.jsp">GestioneCamere</a>
 								    <a href="gestionePost.jsp">GestionePost</a>
 								    <a href="logout">Logout</a>
 							  </div>
@@ -123,7 +121,7 @@
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a href="addcart"><span id="carrello" class="icon-shopping_cart">[0]</span ></a></li>
+						<li><a href="addcart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
 					</ul>
 				</nav>
 	    <%}%>
@@ -152,7 +150,18 @@
 
 	<!-- Blog -->
 
+	
 	<div   class="blog">
+		<div class="categories" >
+				<div ><h4>Categorie:</h4></div>
+				<div class="sidebar_list">
+						<a href="vedifiltripost?filtro=all">Tutti i post</a>
+						<a href="vedifiltripost?filtro=shop" >Shop</a>
+						 <a href="vedifiltripost?filtro=servizi">Servizi</a>
+						<a href="vedifiltripost?filtro=ristorante">Ristorante</a>
+						<a href="vedifiltripost?filtro=news">News</a>
+				</div>
+	  </div>
 		<div  class="container">
 			<div class="row">
 				
@@ -166,44 +175,21 @@
 							<div class="blog_post_title"><a href="#">${post.titolo}</a></div>
 							<br>
 								<div class="blog_post_image">
-									<img src="${post.img}.jpg" alt="">
+									<a href="singolopost?identificativo=${post.idPost}" ><img src="${post.img}.jpg" alt="peperone"></a>
 									<div class="blog_post_date"><a href="#">${post.data}</a></div>
 								</div>
 								
 							<br>
-							<div style=" width: 100%; float:left;">
-						    	<p style=" word-wrap:break-word;" >${post.messaggio}</p> 
-						    </div>
-							
-							<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-							<form action="${pageContext.request.contextPath}/commenta" method="POST">
-								<input type="hidden" name="ID" value="${post.idPost}" />
-								<input name="recensione" style="width: 80%; height: 30px;" type="text" placeholder="recensisci..">
-								<button class="button" type="submit">Commenta</button> 
-							</form>
-							<%}%>
-							
-							<div style="margin-top:40px;">
-								<a class="button1" href="viewcomment?identificativo=${post.idPost}">VediCommenti</a>
+							<div >
+								<a class="button2" href="singolopost?identificativo=${post.idPost}" >INFO</a>
 							</div>
+							
 						</div>
 						</c:forEach>
 
 					</div>
 				</div>
-				<div class="categories" style="margin:80px;">
-					<div class="sidebar_title"><h4>Categorie:</h4></div>
-					<div class="sidebar_list">
-						<ul>
-							<li><a href="vedifiltripost?filtro=all">Tutti i post</a></li>
-							<li><a href="vedifiltripost?filtro=shop" >Shop</a></li>
-							<li> <a href="vedifiltripost?filtro=servizi">Servizi</a></li>
-							<li><a href="vedifiltripost?filtro=ristorante">Ristorante</a></li>
-							<li><a href="vedifiltripost?filtro=news">News</a></li>
-						</ul>
-					</div>
-			  </div>
-			  
+				
 
 				<!-- Sidebar -->
 				

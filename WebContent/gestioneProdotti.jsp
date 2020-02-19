@@ -20,7 +20,6 @@
 	<div class="addcontrol-page" id="aggiungi">
 		<div class="form ">
 			<div class="addp-form">
-
   				 <select name="Tipo" id="Tipo">
   				    <option >Tipologia:</option>
 				    <option value="pomodori">pomodori</option>
@@ -159,7 +158,7 @@
   				 </select>
   				 <br>
       			 <input type="text" name="Prezzo1" id="Prezzo1" placeholder="Prezzo"/>
-       			 <button type="submit" id="btnupdatep" onclick="updatep(event)">AGGIORNA UN PRODOTTO</button>
+       			 <button type="submit"  onclick="updatep(event)">AGGIORNA UN PRODOTTO</button>
     		</div>
   		</div>
   	</div>

@@ -8,13 +8,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.tables.Commento;
 import model.tables.Post;
 import persistence.DBManager;
 
-@WebServlet(value = "/viewcomment", name = "viewcomment")
-public class vediCommentiPerPost extends HttpServlet {
+@WebServlet(value = "/singolopost", name = "singolopost")
+public class SingoloPost extends HttpServlet {
 
 	/**
 	 * 
@@ -24,14 +25,19 @@ public class vediCommentiPerPost extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<Post> r = DBManager.getInstance().getDAOFactory().getPostDao().retrieveAll();
-		request.setAttribute("post", r);
+		
 		String tipo = request.getParameter("identificativo");
 		String id = tipo;
 		int intero = Integer.parseInt(id);
+		
+		
+		List<Post> r = DBManager.getInstance().getDAOFactory().getPostDao().singoloPost(intero);
+		request.setAttribute("post", r);
+		
 		List<Commento> c = DBManager.getInstance().getDAOFactory().getCommentoDao().commentiPerPost(intero);
 		request.setAttribute("commento", c);
-		request.getRequestDispatcher("blog.jsp").forward(request, response);
+		
+		request.getRequestDispatcher("singoloPost.jsp").forward(request, response);
 	}
 
 	@Override

@@ -28,23 +28,35 @@ public class Commenta extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		try {
 			Commento c = null;
 			CommentoDao C = DBManager.getInstance().getDAOFactory().getCommentoDao();
 			
 			String testo = req.getParameter("recensione");
-			String username = (String) req.getSession().getAttribute("username");
-			String idPost = req.getParameter("ID");
 			
-			String id = idPost;
-			int intero = Integer.parseInt(id);
-			c = new Commento();
+			if(testo == null|| testo =="") {
+				resp.setStatus(401);
+			}
+			else {
+				String username = (String) req.getSession().getAttribute("username");
+				String idPost = req.getParameter("ID");
+				
+				String id = idPost;
+				int intero = Integer.parseInt(id);
+				c = new Commento();
 
-			c.setTesto(testo);
-			c.setUsername_cliente(username);
-			c.setIdpost(intero);
+				c.setTesto(testo);
+				c.setUsername_cliente(username);
+				c.setIdpost(intero);
 
-			C.save(c);
-			resp.sendRedirect("viewpost");
+				C.save(c);
+				
+				resp.setStatus(201);
+			}
+			
+    	} catch(Exception e) {
+    		resp.setStatus(401);
+    	}
 		
 	}
 }
