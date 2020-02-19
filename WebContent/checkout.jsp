@@ -37,7 +37,7 @@
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
 						 <%if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
-							<li><a href="Loginform.jsp">Login</a></li>
+							<li><a href="login-registration.jsp">Login</a></li>
 						 <%}
 					  	 else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 					  		<li><a href="logout">Logout</a></li>
@@ -70,7 +70,7 @@
 			<nav class="menu_nav text-right">
 				<ul>
 					 <% if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
-						<li><a href="Loginform.jsp">Login</a></li>
+						<li><a href="login-registration.jsp">Login</a></li>
 				     <%}
 				     else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 						  <li><a href="logout">Logout</a></li>
