@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.tables.Commento;
 import persistence.DBManager;
@@ -31,15 +32,14 @@ public class Commenta extends HttpServlet {
 		try {
 			Commento c = null;
 			CommentoDao C = DBManager.getInstance().getDAOFactory().getCommentoDao();
-			
 			String testo = req.getParameter("recensione");
-			
 			if(testo == null|| testo =="") {
 				resp.setStatus(401);
 			}
 			else {
 				String username = (String) req.getSession().getAttribute("username");
 				String idPost = req.getParameter("ID");
+				String img = DBManager.getInstance().getDAOFactory().getUtenteDao().ritornaImmagine(username);
 				
 				String id = idPost;
 				int intero = Integer.parseInt(id);
@@ -48,6 +48,7 @@ public class Commenta extends HttpServlet {
 				c.setTesto(testo);
 				c.setUsername_cliente(username);
 				c.setIdpost(intero);
+				c.setImg_utente(img);
 
 				C.save(c);
 				

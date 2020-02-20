@@ -30,6 +30,14 @@
 	width: 100%;
   	display: flex;
   	flex-direction: row;
+  	
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 60px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 </style>
@@ -196,7 +204,12 @@
 						<div style="border: 1px solid grey; margin-top: 85px;  overflow: scroll; height: 355px;">
 						<div style="text-align: center;"><h3 style="color:#FF7514">Recensioni</h3></div>
 							<c:forEach var="commento" items="${commento}">
-								<h4 style="margin-left: 10px;">${commento.username_cliente}</h4> <p style="font-style: italic; margin-left: 10px;">${commento.testo}</p>
+							  <div style="position: relative; height: 60px;">
+								
+								<img style="float: left;" class="avatar" src="${commento.img_utente}" alt="img"> 
+								<h4 style="margin-left: 80px;">${commento.username_cliente}</h4>
+							  </div>
+								<p style="font-style: italic; margin-top: 10px; margin-left: 10px;">${commento.testo}</p>
 							</c:forEach>
 						</div>
 					</div>

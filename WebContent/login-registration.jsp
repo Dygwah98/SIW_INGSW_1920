@@ -8,12 +8,23 @@
   <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
   <link href="styles/login.css" rel="stylesheet" type="text/css" />
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
    <script src="js/login1.js"></script>
-   <style>
-   body{
-	background-image: url("images/sfondo.jpg");
-	}
-	</style>
+  <style>
+    body{ background-image: url("images/sfondo.jpg"); }
+    #cambia{
+    	color:black;
+    	font-weight: bolder;
+    	border: 1px solid black;
+    	padding: 5px;
+    	padding-right: 20px;
+    	padding-left: 20px;
+    }
+    #cambia:hover{
+    	background-color: red;
+    	cursor: pointer;
+    }
+  </style>
 
 </head>
 
@@ -21,8 +32,12 @@
 
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form class="decor"  method="post" action="${pageContext.request.contextPath}/RegisterUser" >
+		<form class="decor"  method="post" action="upload" enctype="multipart/form-data" >
 			<h1>Crea un account</h1>
+			<div style="width: 200px; height: 20px; margin-top: 20px; margin-bottom: 10px;">
+		      <label id="cambia" for="files" class="btn">carica immagine</label>
+		      <input name="nameFile" id="files" style="visibility:hidden;" type="file">
+   		    </div>
 			<input type="text" name="name" placeholder="nome">
 		    <input type="text" name="cognome" placeholder="cognome">
 		    <input type="date" name="data" placeholder="data di nascita"> 

@@ -16,7 +16,7 @@ public class CommentoDaoJDBC implements CommentoDao {
 
 	@Override
 	public void save(Commento c) {
-		String insert = "INSERT INTO commento(testo,username_cliente,idpost) VALUES (?,?,?)";
+		String insert = "INSERT INTO commento(testo,username_cliente,idpost,img_utente) VALUES (?,?,?,?)";
 		try (JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 
 			PreparedStatement smt = handler.getStatement();
@@ -24,6 +24,7 @@ public class CommentoDaoJDBC implements CommentoDao {
 			smt.setString(1, c.getTesto());
 			smt.setString(2, c.getUsername_cliente());
 			smt.setInt(3,  c.getIdpost());
+			smt.setString(4, c.getImg_utente());
 
 			handler.executeUpdate();
 
@@ -84,6 +85,7 @@ public class CommentoDaoJDBC implements CommentoDao {
 					c.setTesto(result.getString("testo"));
 					c.setUsername_cliente(result.getString("username_cliente"));
 					c.setIdpost(result.getInt("idpost"));
+					c.setImg_utente(result.getString("img_utente"));
 					commenti.add(c);
 
 				}

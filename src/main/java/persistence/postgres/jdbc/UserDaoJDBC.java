@@ -25,7 +25,7 @@ public class UserDaoJDBC implements UserDao {
 			smt.setString(3, utente.getNascita());
 			smt.setString(4, utente.getUsername());
 			smt.setString(5, utente.getPassword());
-			smt.setString(6, null);
+			smt.setString(6, utente.getImage());
 			smt.setString(7, utente.getEmail());
 
 			handler.executeUpdate();
@@ -60,6 +60,36 @@ public class UserDaoJDBC implements UserDao {
 			}
 
 			return u;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+	
+	@Override
+	public String ritornaImmagine(String username) {
+
+		String query = "SELECT u.image FROM utente AS u WHERE u.username= ?";
+		User u = null;
+		
+
+		try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+
+			handler.getStatement().setString(1, username);
+			handler.executeQuery();
+
+			if (handler.existsResultSet()) {
+				
+				ResultSet result = handler.getResultSet();
+				result.next();
+				
+				u = new User();
+				
+				u.setImage(result.getString("image"));
+				
+			}
+			
+			return u.getImage();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());

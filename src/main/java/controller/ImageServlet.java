@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import model.tables.User;
+import persistence.DBManager;
+import persistence.Dao;
+
 @WebServlet(value = "/upload", name = "upload")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10, // 10 MB
 		maxFileSize = 1024 * 1024 * 50, // 50 MB
@@ -80,11 +84,33 @@ public class ImageServlet extends HttpServlet {
 		for (Part part : request.getParts()) {
 			fileName = getFileName(part);
 			part.write(uploadFilePath + File.separator + fileName);
+			break;
 		}
 
 		request.setAttribute("message", fileName + " File uploaded successfully!");
 		request.setAttribute("img", UPLOAD_DIR + File.separator + fileName);
+		String name = request.getParameter("name");
+		String cognome = request.getParameter("cognome");
+		String data = request.getParameter("data");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String email = request.getParameter("email");
+		String immagine = "images/";		
+		immagine = immagine.concat(fileName);
 
-		response.sendRedirect("UploadImage.jsp");
+		User u = new User();
+		u.SetName(name);
+		u.SetSurname(cognome);
+		u.SetNascita(data);
+		u.setUsername(username);
+		u.setPassword(password);
+		u.setEmail(email);
+		u.setImage(immagine);
+
+		Dao<User> userdao = DBManager.getInstance().getDAOFactory().getUtenteDao();
+		userdao.save(u);
+
+		response.sendRedirect("login-registration.jsp");
+
 	}
 }

@@ -9,3 +9,14 @@ signUpButton.addEventListener('click', () => {
 signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
+
+
+
+
+
+$( document ).ready(function() {
+	$("#files").change(function() {
+		 filename = this.files[0].name;
+		 document.getElementById("cambia").innerHTML = filename;
+		});
+});

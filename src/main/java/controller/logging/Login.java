@@ -71,6 +71,7 @@ public class Login extends HttpServlet {
 				session.setAttribute("email", utente.getEmail());
 				session.setAttribute("nome", utente.getName());
 				session.setAttribute("cognome", utente.getSurname());
+				session.setAttribute("image", utente.getImage());
 			
 				req.getSession().setAttribute("userId", utente.getId());
 				resp.setStatus(201);
