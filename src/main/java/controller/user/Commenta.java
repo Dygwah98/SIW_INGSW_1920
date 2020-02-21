@@ -39,6 +39,7 @@ public class Commenta extends HttpServlet {
 			else {
 				String username = (String) req.getSession().getAttribute("username");
 				String idPost = req.getParameter("ID");
+				String valuta = req.getParameter("valuta");
 				String img = DBManager.getInstance().getDAOFactory().getUtenteDao().ritornaImmagine(username);
 				
 				String id = idPost;
@@ -49,6 +50,7 @@ public class Commenta extends HttpServlet {
 				c.setUsername_cliente(username);
 				c.setIdpost(intero);
 				c.setImg_utente(img);
+				c.setValutazione(valuta);
 
 				C.save(c);
 				

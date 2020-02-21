@@ -11,6 +11,25 @@
 
 
 ******************************/
+function sing(event){
+    $.ajax({
+       type: "GET",
+       url: "singolopost",
+     
+       data: {
+          identificativo : $("#identificativo").val()
+       },
+       success:function(){
+    	   window.location.replace("singoloPost.jsp");
+    	  
+       },
+        error : function () {
+            alert("errore nel singolo post");
+     	   window.location.replace("blog.jsp");
+
+        }
+    });
+}
 
 $(document).ready(function()
 {

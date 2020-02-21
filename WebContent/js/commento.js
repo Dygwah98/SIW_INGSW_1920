@@ -6,7 +6,8 @@ function addcomm(event){
 	     
 	       data: {
 	           recensione : $("#recensione").val(),
-	           ID : $("#ID").val()
+	           ID : $("#ID").val(),
+	           valuta:$("#valuta").val()
 	       },
 	       success:function(){
 	    	   alert("Commento Inserito corretamente");

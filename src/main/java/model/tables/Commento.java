@@ -14,6 +14,7 @@ public class Commento implements Serializable {
 	private String username_cliente;
 	private Integer idpost;
 	private String img_utente;
+	private String valutazione;
 
 	public Commento() {
 		this.idcommento = null;
@@ -21,15 +22,26 @@ public class Commento implements Serializable {
 		this.username_cliente = null;
 		this.idpost = null;
 		this.img_utente = null;
+		this.valutazione = null;
 	}
 
-	public Commento(Integer idcommento, String testo, String username_cliente, Integer idpost, String img_utente) {
+	public Commento(Integer idcommento, String testo, String username_cliente, Integer idpost, String img_utente, String valutazione) {
 		super();
 		this.idcommento = idcommento;
 		this.testo = testo;
 		this.username_cliente = username_cliente;
 		this.idpost = idpost;
 		this.img_utente = img_utente;
+		this.valutazione = valutazione;
+	}
+	
+
+	public String getValutazione() {
+		return valutazione;
+	}
+
+	public void setValutazione(String valutazione) {
+		this.valutazione = valutazione;
 	}
 
 	public String getImg_utente() {

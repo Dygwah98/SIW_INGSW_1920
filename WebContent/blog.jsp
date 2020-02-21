@@ -182,6 +182,7 @@
 							<br>
 							<div >
 								<a class="button2" href="singolopost?identificativo=${post.idPost}" >INFO</a>
+								<!-- <button id="identificativo" value="${post.idPost}" class="button2" onclick="sing(event)" >INFO</button> -->
 							</div>
 							
 						</div>

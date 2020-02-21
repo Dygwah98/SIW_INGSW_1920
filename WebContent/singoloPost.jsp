@@ -24,6 +24,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+ <link rel="stylesheet" href="styles/singoloPost.css">
+<link rel="stylesheet" href="styles/about_responsive.css">
+  
   <script src="js/commento.js"></script>
 <style type="text/css">
 .contieni{
@@ -188,6 +192,13 @@
 							<div>
 								<input type="hidden" name="ID" id="ID" value="${post.idPost}" />
 								<input name="recensione" id="recensione" style="width: 80%; height: 30px;" type="text" placeholder="recensisci.." >
+								<select name="valuta" id="valuta" style="  padding: 10px 10px 10px 10px; text-align: center" name="servizio" id="servizio" >
+				      			 	<option  >valuta</option>
+				      			 	<option value="Ottimo luogo!!">Ottimo luogo</option>
+								    <option value="Servizio impeccabile!!">Servizio impeccabile</option>
+								    <option value="Location incantevole!!">Location incantevole</option>
+								    <option value="Ristorazione top!!">Ristorazione top</option>
+  				 				</select> 
 								<button class="button" type="submit" onclick="addcomm(event)">Commenta</button> 
 							</div>
 							<%}%>
@@ -199,19 +210,9 @@
 				</div>
 				
 				<div class="col-lg-3">
-					<div class="sidebar">
+					<div class="sidebar" style="margin-top: 80px;">
 						
-						<div style="border: 1px solid grey; margin-top: 85px;  overflow: scroll; height: 355px;">
-						<div style="text-align: center;"><h3 style="color:#FF7514">Recensioni</h3></div>
-							<c:forEach var="commento" items="${commento}">
-							  <div style="position: relative; height: 60px;">
-								
-								<img style="float: left;" class="avatar" src="${commento.img_utente}" alt="img"> 
-								<h4 style="margin-left: 80px;">${commento.username_cliente}</h4>
-							  </div>
-								<p style="font-style: italic; margin-top: 10px; margin-left: 10px;">${commento.testo}</p>
-							</c:forEach>
-						</div>
+						<a class="button3" href="#review" >REVIEW</a>
 					</div>
 				</div>
 				
@@ -220,6 +221,37 @@
 				<!-- Sidebar -->
 				
 
+			</div>
+		</div>
+	</div>
+	
+	<div class="testimonials" id="review">
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/testimonials.jpg" data-speed="0.8"></div>
+		<div class="testimonials_overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="testimonials_slider_container">
+
+						<!-- Testimonials Slider -->
+						<div class="owl-carousel owl-theme test_slider">
+							
+							<!-- Slide -->
+							<c:forEach var="commento" items="${commento}">
+								<div  class="test_slider_item text-center">
+									<div class="rating rating_5 d-flex flex-row align-items-start justify-content-center"><i></i><i></i><i></i><i></i><i></i></div>
+									<div class="testimonial_title"><a href="#">${commento.valutazione}</a></div>
+									<div class="testimonial_text">
+										<p>${commento.testo}</p>
+									</div>
+									<div class="testimonial_image"><img src="${commento.img_utente}" alt=""></div>
+									<div class="testimonial_author">${commento.username_cliente}</div>
+								</div>
+							</c:forEach>
+
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -302,5 +334,6 @@
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
 <script src="plugins/jquery-datepicker/jquery-ui.js"></script>
 <script src="js/blog.js"></script>
+<script src="js/about.js"></script>
 </body>
 </html>
