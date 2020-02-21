@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Contact</title>
+<title>Contatti</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="The River template project">
@@ -29,7 +29,7 @@
 
 	<header class="header">
 		<div class="header_content d-flex flex-row align-items-center justify-content-start">
-			<div class="logo"><a style="text-decoration: none;"href="#">Agriturismo Sarella</a></div>
+			<div class="logo"><a style="text-decoration: none;"href="#">Agriturismo Paradise</a></div>
 			<div class="ml-auto d-flex flex-row align-items-center justify-content-start">
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
@@ -221,7 +221,7 @@
 						<div class="footer_logo_container text-center">
 							<div class="footer_logo">
 								<a href="#"></a>
-								<div>Agriturismo Sarella</div>
+								<div>Agriturismo Paradise</div>
 								<div>since 1945</div>
 							</div>
 						</div>

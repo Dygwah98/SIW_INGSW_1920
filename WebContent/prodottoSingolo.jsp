@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Agriturismo Sarella</title>
+<title>Prodotto Singolo</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Sarella agriturismo">
@@ -36,7 +36,7 @@
 
 	<header class="header">
 		<div class="header_content d-flex flex-row align-items-center justify-content-start">
-			<div class="logo"> <a href="#">Agriturismo Sarella</a></div>
+			<div class="logo"> <a href="#">Agriturismo Paradise</a></div>
 			<div class="ml-auto d-flex flex-row align-items-center justify-content-start">
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
@@ -237,7 +237,7 @@
 						<div class="footer_logo_container text-center">
 							<div class="footer_logo">
 								<a href="#"></a>
-								<div>Agriturismo Sarella</div>
+								<div>Agriturismo Paradise</div>
 								<div>Dal 1945</div>
 							</div>
 						</div>

@@ -373,9 +373,9 @@ section
 }
 .logo
 {
-	width: 150px;
+	width: 280px;
 	height: 41px;
-	border: solid 2px #ffffff;
+	border: solid 3px orange;
 	text-align: center;
 }
 .logo a
@@ -385,11 +385,10 @@ section
 	font-weight: 600;
 	color: #ffffff;
 	line-height: 37px;
+	text-decoration: none;
 }
-.main_nav ul li:not(:last-of-type)
-{
-	margin-right: 49px;
-}
+
+.main_nav ul li{margin-right: 49px;  /* margine solo fino all'ultimo della lista*/}
 .main_nav ul li a
 {
 	font-size: 16px;
@@ -744,7 +743,6 @@ input[type=number]::-webkit-outer-spin-button
 {
 	background: #ffffff;
 	border-bottom: solid 2px #eaf2f7;
-	padding-top: 105px;
 	padding-bottom: 24px;
 }
 .buttons_container

@@ -4,7 +4,7 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-  <title>Nuovo</title>
+  <title>login/registration</title>
   <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
   <link href="styles/login.css" rel="stylesheet" type="text/css" />
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
