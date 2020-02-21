@@ -191,7 +191,9 @@
 							<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 							<div>
 								<input type="hidden" name="ID" id="ID" value="${post.idPost}" />
-								<input name="recensione" id="recensione" style="width: 80%; height: 30px;" type="text" placeholder="recensisci.." >
+								<div class="input_container">
+									<textarea name="recensione" id="recensione"  class="contact_input contact_textarea" placeholder="Messaggio..."></textarea>
+								</div>
 								<select name="valuta" id="valuta" style="  padding: 10px 10px 10px 10px; text-align: center" name="servizio" id="servizio" >
 				      			 	<option  >valuta</option>
 				      			 	<option value="Ottimo luogo!!">Ottimo luogo</option>
@@ -199,7 +201,7 @@
 								    <option value="Location incantevole!!">Location incantevole</option>
 								    <option value="Ristorazione top!!">Ristorazione top</option>
   				 				</select> 
-								<button class="button" type="submit" onclick="addcomm(event)">Commenta</button> 
+								<button class="button" type="submit" onclick="addcomm(event)">Recensisci</button> 
 							</div>
 							<%}%>
 							

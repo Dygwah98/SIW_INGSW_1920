@@ -28,6 +28,28 @@
 /*********************************
 2. Body and some general stuff
 *********************************/
+.input_container
+{
+	margin-bottom: 5px;
+}
+.contact_input
+{
+	width: 100%;
+	height: 64px;
+	background: #ffffff;
+	border: none;
+	outline: none;
+	border-bottom: solid 2px #393939;
+	font-size: 16px;
+	font-weight: 500;
+	color: #393939;
+}
+
+.contact_textarea
+{
+	height: 80px;
+	border: 1px solid grey;
+}
 
 *
 {

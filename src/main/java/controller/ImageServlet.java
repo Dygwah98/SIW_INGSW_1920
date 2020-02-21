@@ -58,11 +58,11 @@ public class ImageServlet extends HttpServlet {
 		if (lovogliodavvero) {
 			/*
 			 * MOTIVAZIONE PER CUI NON FUNGE CON QUESTA FUNC ATTUALMENTE NON TEMETE I am
-			 * running Tomcat through Eclipse, that’s why file location is like this. If you
+			 * running Tomcat through Eclipse, thats why file location is like this. If you
 			 * run tomcat through command line and deploy application by exporting as WAR
 			 * file into webapps directory, you will get different structure but a clear
-			 * one. *PER FAZIO = sto avviando tomcat attraverso Eclipse, per questola path è
-			 * così ... VAFFANCULO SCEMO
+			 * one. *PER FAZIO = sto avviando tomcat attraverso Eclipse, per questola path 
+			 * cos... VAFFANCULO SCEMO
 			 */
 			applicationPath = request.getServletContext().getRealPath("");
 		} else {
