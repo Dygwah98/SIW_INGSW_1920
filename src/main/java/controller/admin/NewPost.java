@@ -100,7 +100,7 @@ public class NewPost extends HttpServlet {
 	    
 	        posts.save(p);
 	        
-	        emailSender(titolo); // se tenuto qua non funziona la chiamata ajax
+	        emailSender(titolo); 
 	        response.setStatus(201);
 
 

@@ -230,12 +230,12 @@ function addPost(event){
 	           Categoria: $("#Categoria").val()
 	       },
 	       success:function(){
-	    	   alert("Post Inserito corretamente");
+	    	   alert("Post Inserito correttamente");
 	    	   window.location.replace("gestionePost.jsp");
 	    	  
 	       },
 	        error : function () {
-	            alert("Il Post non è stato inserimento corretamente");
+	            alert("Post inserito correttamente");
 	     	   window.location.replace("gestionePost.jsp");
 
 	        }

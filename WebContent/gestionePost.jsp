@@ -27,6 +27,7 @@
 				    <option value="servizi">servizi</option>
 				    <option value="stanze">stanze</option>
 				    <option value="ristorante">ristorante</option>
+				    <option value="spa">Spa</option>
   				 </select> 
   				 <select name="Categoria" id="Categoria" >
       			 	<option >Categoria:</option>

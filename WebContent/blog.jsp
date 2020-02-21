@@ -132,7 +132,7 @@
 
 	<div class="home">
 		<div class="slide">
-					<div class="background_image" style="background-image:url(images/index_1.jpg)"></div>
+					<div class="background_image" style="background-image:url(images/natura.jpg)"></div>
 					<div class="home_container">
 						<div class="container">
 							<div class="row">

@@ -147,7 +147,7 @@
 
 	<div class="home">
 		<div class="slide">
-					<div class="background_image" style="background-image:url(images/index_1.jpg)"></div>
+					<div class="background_image" style="background-image:url(images/profilo.jpg)"></div>
 					<div class="home_container">
 						<div class="container">
 							<div class="row">
@@ -212,7 +212,7 @@
 				</div>
 				
 				<div class="col-lg-3">
-					<div class="sidebar" style="margin-top: 80px;">
+					<div class="sidebar" style="margin-top: 240px;">
 						
 						<a class="button3" href="#review" >REVIEW</a>
 					</div>

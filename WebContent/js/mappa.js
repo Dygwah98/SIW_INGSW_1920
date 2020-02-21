@@ -4,8 +4,8 @@ var infoWindow;
 
 function createMap () {
 	
-	var a = 38.940652,
-    b = 16.430850,
+	var a = 45.79160,
+    b = 7.30760,
     diff = 0.0033;
 	
 	 var options = {
@@ -18,8 +18,8 @@ function createMap () {
   infoWindow = new google.maps.InfoWindow;
   
   var position = {
-    lat: 38.940652,
-    lng: 16.430850
+    lat: 45.79160,
+    lng: 7.30760
   };
   
   infoWindow.setPosition(position);
