@@ -187,9 +187,9 @@
 				<!-- Contact Content -->
 						<div class="contact_list">
 							<ul>
-								<li>Indirizzo: Viale John Fitzgerlad Kennedy, Cancello CZ</li>
+								<li>Indirizzo: Frazione Moulin, 1, 11010, Roisan, AO</li>
 								<li>Telefono:  0968 789653</li>
-								<li>E-mail:    sarellaHotel@gmail.com</li>
+								<li>E-mail:    agriturismoSIW2020@gmail.com</li>
 							</ul>
 						</div>
 						<div style="float:right; margin-left: 200px;" class="contact_form_container">
@@ -231,24 +231,24 @@
 					
 					<!-- Address -->
 					<div class="col-lg-3">
-						<div class="footer_title">Our Address</div>
+						<div class="footer_title">Il nostro indirizzo</div>
 						<div class="footer_list">
 							<ul>
-								<li>Beach Str. 345</li>
-								<li>67559 Miami</li>
-								<li>USA</li>
+								<li>Frazione Moulin, 1</li>
+								<li>11010, Roisan</li>
+								<li>IT</li>
 							</ul>
 						</div>
 					</div>
 
 					<!-- Reservations -->
 					<div class="col-lg-3">
-						<div class="footer_title">Reservations</div>
+						<div class="footer_title">Contatti</div>
 						<div class="footer_list">
 							<ul>
-								<li>Tel: 345 5667 889</li>
+								<li>Tel: 0968 789653</li>
 								<li>Fax; 6783 4567 889</li>
-								<li>reservations@hotelriver.com</li>
+								<li>agriturismoSIW2020@gmail.com</li>
 							</ul>
 						</div>
 					</div>
@@ -268,11 +268,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="copyright">
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</div>
 	</footer>
 </div>
 

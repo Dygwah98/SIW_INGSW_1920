@@ -275,8 +275,8 @@
 						<div class="footer_title">Il nostro indirizzo</div>
 						<div class="footer_list">
 							<ul>
-								<li>complanare 180</li>
-								<li>88025 Cancello</li>
+								<li>Frazione Moulin, 1</li>
+								<li>11010, Roisan</li>
 								<li>IT</li>
 							</ul>
 						</div>
@@ -287,9 +287,9 @@
 						<div class="footer_title">Contatti</div>
 						<div class="footer_list">
 							<ul>
-								<li>Tel: 345 5667 889</li>
+								<li>Tel: 0968 789653</li>
 								<li>Fax; 6783 4567 889</li>
-								<li>contatto@hotelSarella.com</li>
+								<li>agriturismoSIW2020@gmail.com</li>
 							</ul>
 						</div>
 					</div>

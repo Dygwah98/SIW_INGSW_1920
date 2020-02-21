@@ -11,6 +11,26 @@
 
 
 ******************************/
+
+function invia(event){
+    $.ajax({
+       type: "POST",
+       url: "addemail",
+     
+       data: {
+          email : $("#email").val()
+       },
+       success:function(){
+    	   alert("Registrazione effettuata!!");
+    	   window.location.replace("blog.jsp");
+    	  
+       },
+        error : function () {
+            alert("Registrazione fallita!!");
+        }
+    });
+}
+
 function sing(event){
     $.ajax({
        type: "GET",

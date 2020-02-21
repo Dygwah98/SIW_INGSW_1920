@@ -47,8 +47,8 @@ public class NewPost extends HttpServlet {
         props.put("mail.debug", "true");
         props.put("mail.store.protocol", "pop3");
         props.put("mail.transport.protocol", "smtp");
-        final String username = "creareSarellaEmail@gmail.com";//
-        final String password = "********";
+        final String username = "agriturismoSIW2020@gmail.com";//
+        final String password = "siw2020!!";
         try{
         	Session session = Session.getDefaultInstance(props, 
                                 new Authenticator(){
@@ -58,11 +58,11 @@ public class NewPost extends HttpServlet {
         	for(int i=0; i<newsletter.size();i++) {
         		Message msg = new MimeMessage(session);
 
-        		msg.setFrom(new InternetAddress("creareSarellaEmail@gmail.com"));
+        		msg.setFrom(new InternetAddress("agriturismoSIW2020@gmail.com"));
         		msg.setRecipients(Message.RecipientType.TO, 
                             InternetAddress.parse(newsletter.get(i).getEmail(),false));
-        		msg.setSubject("Nuovo post " +title +" da Sarella :)");
-        		msg.setText("Ciao, Siamo l'agriturismo Sarella, potrebbe interessarti il nostro nuovo post!");
+        		msg.setSubject("Nuovo post  " +title +"  da Paradise :)");
+        		msg.setText("Ciao, Siamo l'agriturismo Paradise, potrebbe interessarti il nostro nuovo post!");
         		msg.setSentDate(new Date());
         		Transport.send(msg);
         		System.out.println("Messaggio inviato correttamente.");
