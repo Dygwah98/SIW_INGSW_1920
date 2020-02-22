@@ -20,4 +20,6 @@ public interface OrdineDao extends Dao<Ordine> {
 	Integer retrieveIdOrder(Integer idclient);
 
 	public List<OrdineConPrezzo> getOrderHistory(Integer idCliente);
+	
+	public void eliminaOrdine(Integer ID);
 }

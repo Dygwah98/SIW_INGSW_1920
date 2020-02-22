@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.nonTables.ProdottoAggregato;
+import model.tables.Prodotto;
 import persistence.DAOFactory;
 import persistence.DBManager;
 import persistence.dao.OrdineDao;
@@ -29,29 +30,12 @@ public class Checkout extends HttpServlet {
 		try {
 			Integer s = 0;
 			ProdottoDao f = DBManager.getInstance().getDAOFactory().getProdottoDao();
-			List<ProdottoAggregato> prodc = f.showProductsForCart(id_ordine);
-			for(ProdottoAggregato p : prodc)
+			List<Prodotto> prodc = f.showProductsForCart(id_ordine);
+			for(Prodotto p : prodc)
 				s += p.getPrezzo();
 			
 			return s;
 		
-		} catch(NullPointerException e) {
-			return 0;
-		}
-	}
-	
-	private Integer processRooms(Integer id_user) {
-		
-		try {
-			Integer s = 0;
-			OrdineDao d = DBManager.getInstance().getDAOFactory().getOrdineDao();
-			List<Integer> prezzi = d.retrievePrezzoCamere(id_user);
-			
-			for(Integer i : prezzi)
-				s += i;
-			
-			return s;
-			
 		} catch(NullPointerException e) {
 			return 0;
 		}
@@ -65,8 +49,7 @@ public class Checkout extends HttpServlet {
 
 		Integer total = 0;
 		total += processProducts((Integer) request.getSession().getAttribute("idordine"));
-		total += processRooms((Integer) request.getSession().getAttribute("userId"));
-
+		
 		if (total <= 0) {
 			response.setStatus(412);
 		} else {

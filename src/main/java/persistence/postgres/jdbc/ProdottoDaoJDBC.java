@@ -282,11 +282,11 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	}
 
 	@Override
-	public List<ProdottoAggregato> retrieveByCategory(String descrizione) {
+	public List<Prodotto> retrieveByCategory(String descrizione) {
 
-		String query = "SELECT * FROM showproductsforshop where disponibile=true AND descrizione=?";
-		ProdottoAggregato p = null;
-		List<ProdottoAggregato> prodotti = null;
+		String query = "SELECT * FROM prodotto where disponibile=true AND descrizione=?";
+		Prodotto p = null;
+		List<Prodotto> prodotti = null;
 
 		try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 
@@ -294,18 +294,23 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			handler.executeQuery();
 
 			if (handler.existsResultSet()) {
-				prodotti = new ArrayList<ProdottoAggregato>();
+				prodotti = new ArrayList<Prodotto>();
 				ResultSet result = handler.getResultSet();
 
 				while (result.next()) {
-					p = new ProdottoAggregato();
+					boolean presente = false;
+					p = new Prodotto();
 					p.setTipo(result.getString("tipo"));
 					p.setDescrizione(result.getString("descrizione"));
 					p.setPrezzo(result.getInt("prezzo"));
 					p.setDisponibile(result.getBoolean("disponibile"));
 					p.setImg(result.getString("img"));
-					p.setNum(result.getInt("num"));
-					prodotti.add(p);
+					for (int i = 0; i < prodotti.size(); i++) {
+						if(prodotti.get(i).getTipo().equals(p.getTipo()))
+							presente=true;
+					}
+					if(presente==false)
+						prodotti.add(p);
 
 				}
 			}
@@ -319,11 +324,11 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	}
 
 	@Override
-	public List<ProdottoAggregato> retrieveByType(String tipo) {
+	public List<Prodotto> retrieveByType(String tipo) {
 
-		String query = "SELECT * FROM showproductsforshop where disponibile=true AND tipo=?";
-		ProdottoAggregato p = null;
-		List<ProdottoAggregato> prodotti = null;
+		String query = "SELECT * FROM prodotto where disponibile=true AND tipo=?";
+		Prodotto p = null;
+		List<Prodotto> prodotti = null;
 
 		try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 
@@ -331,18 +336,23 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			handler.executeQuery();
 
 			if (handler.existsResultSet()) {
-				prodotti = new ArrayList<ProdottoAggregato>();
+				prodotti = new ArrayList<Prodotto>();
 				ResultSet result = handler.getResultSet();
 
 				while (result.next()) {
-					p = new ProdottoAggregato();
+					boolean presente = false;
+					p = new Prodotto();
 					p.setTipo(result.getString("tipo"));
 					p.setDescrizione(result.getString("descrizione"));
 					p.setPrezzo(result.getInt("prezzo"));
 					p.setDisponibile(result.getBoolean("disponibile"));
 					p.setImg(result.getString("img"));
-					p.setNum(result.getInt("num"));
-					prodotti.add(p);
+					for (int i = 0; i < prodotti.size(); i++) {
+						if(prodotti.get(i).getTipo().equals(p.getTipo()))
+							presente=true;
+					}
+					if(presente==false)
+						prodotti.add(p);
 
 				}
 			}
@@ -356,30 +366,35 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	}
 
 	@Override
-	public List<ProdottoAggregato> showProductsForShop() {
+	public List<Prodotto> showProductsForShop() {
 
-		String query = "SELECT * FROM showproductsforshop where disponibile=true";
+		String query = "SELECT * FROM prodotto where disponibile=true";
 
-		List<ProdottoAggregato> prodotti = null;
-		ProdottoAggregato p = null;
+		List<Prodotto> prodotti = null;
+		Prodotto p = null;
 
 		try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 
 			handler.executeQuery();
 
 			if (handler.existsResultSet()) {
-				prodotti = new ArrayList<ProdottoAggregato>();
+				prodotti = new ArrayList<Prodotto>();
 				ResultSet result = handler.getResultSet();
 
 				while (result.next()) {
-					p = new ProdottoAggregato();
+					boolean presente = false;
+					p = new Prodotto();
 					p.setTipo(result.getString("tipo"));
 					p.setDescrizione(result.getString("descrizione"));
 					p.setPrezzo(result.getInt("prezzo"));
 					p.setDisponibile(result.getBoolean("disponibile"));
 					p.setImg(result.getString("img"));
-					p.setNum(result.getInt("num"));
-					prodotti.add(p);
+					for (int i = 0; i < prodotti.size(); i++) {
+						if(prodotti.get(i).getTipo().equals(p.getTipo()))
+							presente=true;
+					}
+					if(presente==false)
+						prodotti.add(p);
 				}
 			}
 
@@ -390,13 +405,14 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 		}
 
 	}
-
+	
+	
 	@Override
-	public List<ProdottoAggregato> showProductsForCart(Integer id) {
+	public List<Prodotto> showProductsForCart(Integer id) {
 
-		String query = "SELECT * FROM products_by_type_order WHERE id_order = ?";
-		List<ProdottoAggregato> prodotti = null;
-		ProdottoAggregato p = null;
+		String query = "SELECT * FROM prodotto WHERE idordine = ?";
+		List<Prodotto> prodotti = null;
+		Prodotto p = null;
 
 		try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 
@@ -404,17 +420,50 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 			handler.executeQuery();
 
 			if (handler.existsResultSet()) {
-				prodotti = new ArrayList<ProdottoAggregato>();
+				prodotti = new ArrayList<Prodotto>();
 				ResultSet result = handler.getResultSet();
 
 				while (result.next()) {
-					p = new ProdottoAggregato();
+					p = new Prodotto();
 					p.setTipo(result.getString("tipo"));
 					p.setDescrizione(result.getString("descrizione"));
-					p.setPrezzo(result.getInt("totprezzo"));
+					p.setPrezzo(result.getInt("prezzo"));
 					p.setDisponibile(result.getBoolean("disponibile"));
 					p.setImg(result.getString("img"));
-					p.setNum(result.getInt("num"));
+					prodotti.add(p);
+				}
+			}
+
+			return prodotti;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+
+	}
+	
+	@Override
+	public List<Prodotto> carrelloVuoto() {
+
+		String query = "SELECT * FROM prodotto WHERE idordine = null and disponibile = false";
+		List<Prodotto> prodotti = null;
+		Prodotto p = null;
+
+		try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+
+			handler.executeQuery();
+
+			if (handler.existsResultSet()) {
+				prodotti = new ArrayList<Prodotto>();
+				ResultSet result = handler.getResultSet();
+
+				while (result.next()) {
+					p = new Prodotto();
+					p.setTipo(result.getString("tipo"));
+					p.setDescrizione(result.getString("descrizione"));
+					p.setPrezzo(result.getInt("prezzo"));
+					p.setDisponibile(result.getBoolean("disponibile"));
+					p.setImg(result.getString("img"));
 					prodotti.add(p);
 				}
 			}

@@ -12,15 +12,15 @@ public interface ProdottoDao extends Dao<Prodotto> {
 
 	public void connectByUserID(Integer id, Integer idProd);
 
-	public List<ProdottoAggregato> retrieveByCategory(String descrizione);
+	public List<Prodotto> retrieveByCategory(String descrizione);
 
-	public List<ProdottoAggregato> retrieveByType(String tipo);
+	public List<Prodotto> retrieveByType(String tipo);
 
-	public List<ProdottoAggregato> showProductsForShop();
+	public List<Prodotto> showProductsForShop();
 
 	public List<ProdottoAggregato> singoloProdotto(String tipo);
 
-	public List<ProdottoAggregato> showProductsForCart(Integer id);
+	public List<Prodotto> showProductsForCart(Integer id);
 
 	void updatesetordine(Integer idp, Integer ido);
 
@@ -31,4 +31,7 @@ public interface ProdottoDao extends Dao<Prodotto> {
 	void updatesetdisponibile(Integer idp, Boolean val);
 	
 	void resetDisponibile(Integer id);
+	
+	public List<Prodotto> carrelloVuoto();
+	
 }

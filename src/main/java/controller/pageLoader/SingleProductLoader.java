@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.nonTables.ProdottoAggregato;
+import model.tables.Prodotto;
 import persistence.DAOFactory;
 import persistence.DBManager;
 
@@ -32,7 +33,7 @@ public class SingleProductLoader extends HttpServlet {
 		request.setAttribute("prodotto", p);
 
 		String categoria = request.getParameter("category");
-		List<ProdottoAggregato> simili = f.getProdottoDao().retrieveByCategory(categoria);
+		List<Prodotto> simili = f.getProdottoDao().retrieveByCategory(categoria);
 		request.setAttribute("simili", simili);
 
 		request.getRequestDispatcher("prodottoSingolo.jsp").forward(request, response);

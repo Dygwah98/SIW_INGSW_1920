@@ -36,8 +36,8 @@ public class payment extends HttpServlet {
 		Date d = new Date(new java.util.Date().getTime());
 			
 		Pagamento p = new Pagamento();
-		p.setIdOrdine((Integer) request.getSession().getAttribute("idordine"));
-		p.setDataPagamento(d);
+		p.setid_ordine((Integer) request.getSession().getAttribute("idordine"));
+		p.setdata_pagamento(d);
 		p.setImporto((Integer) request.getSession().getAttribute("totp"));
 		
 		factory.getPagamentoDao().save(p);

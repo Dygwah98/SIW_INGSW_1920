@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.nonTables.ProdottoAggregato;
+import model.tables.Prodotto;
 import persistence.DBManager;
 
 @WebServlet(value = "/vedifiltri", name = "vedifiltri")
@@ -29,7 +30,7 @@ public class Filtri extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<ProdottoAggregato> l = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop();
+		List<Prodotto> l = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop();
 		String tipo = request.getParameter("filtro");
 		tipo = tipo.toLowerCase();
 		PrintWriter out = response.getWriter();
@@ -88,16 +89,16 @@ public class Filtri extends HttpServlet {
 
 	}
 
-	public List<ProdottoAggregato> reset(List<ProdottoAggregato> l) {
+	public List<Prodotto> reset(List<Prodotto> l) {
 		l = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop();
 		return l;
 	}
 
-	public void sortaPrezzo(List<ProdottoAggregato> l) {
+	public void sortaPrezzo(List<Prodotto> l) {
 
-		Collections.sort(l, new Comparator<ProdottoAggregato>() {
+		Collections.sort(l, new Comparator<Prodotto>() {
 			@Override
-			public int compare(ProdottoAggregato o1, ProdottoAggregato o2) {
+			public int compare(Prodotto o1, Prodotto o2) {
 				if (o1.getPrezzo() > o2.getPrezzo())
 					return 1;
 				else if (o1.getPrezzo() < o2.getPrezzo())
@@ -107,11 +108,11 @@ public class Filtri extends HttpServlet {
 		});
 	}
 
-	public void sortaNome(List<ProdottoAggregato> l) {
+	public void sortaNome(List<Prodotto> l) {
 
-		Collections.sort(l, new Comparator<ProdottoAggregato>() {
+		Collections.sort(l, new Comparator<Prodotto>() {
 			@Override
-			public int compare(ProdottoAggregato o1, ProdottoAggregato o2) {
+			public int compare(Prodotto o1, Prodotto o2) {
 				return o1.getTipo().compareTo(o2.getTipo());
 			}
 		});

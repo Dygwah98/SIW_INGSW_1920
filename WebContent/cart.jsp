@@ -193,9 +193,7 @@
 						        </td>
 						        <td class="prezzo">${prodc.prezzo}</td>
 						        
-						        <td class="quantity">
-						        		${prodc.num}
-					          </td>
+						        
 						        
 						      </tr><!-- END TR-->
 						      
@@ -204,51 +202,8 @@
 						  </table>
 					  </div>
     			</div>
-    		</div>
-    		<div class="row">
-    			<div class="col-md-12">
-    				<div class="cart-list">
-	    				<table class="table">
-						    <thead class="thead-secondary">
-						      <tr class="text-center">
-						        <th>&nbsp;</th>
-						        <th>ordine</th>
-						        <th>n_camera</th>
-						        <th>Check-in</th>
-						        <th>Check-out</th>
-						        <th>prezzo</th>
-						        
-						      </tr>
-						    </thead>
-						     <c:forEach var="prenotazione" items="${prenotazione}" varStatus="status">
-						    <tbody style="background-color: white;">
-						      <tr class="text-center">
-						        <td class="product-remove"><a href="deleteprenotazione?idc=${prenotazione.idcamera}&idp=${prenotazione.idprenotazione}"><span class="ion-ios-close"></span></a></td>
-						        <td >
-						        	<p>${prenotazione.idordine}</p>
-						        </td>
-						        
-						        <td >
-									<p>${prenotazione.idcamera}</p>
-						        </td>
-						        	  <td >
-									<p>${prenotazione.checkin}</p>
-						        	</td>
-						        	  <td >
-									<p>${prenotazione.checkout}</p>
-						        </td>
-						        <td class="prezzo">${prezziprenotazione[status.index]}</td>
-
-						      </tr><!-- END TR-->
-						    </tbody>
-						    </c:forEach>
-						   
-						  </table>
-					  </div>
-    			</div>
-    		</div>
-    				
-    			</div>
+    		</div>    				
+    	</div>
     			<button class="button" type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
 	</section>
 	

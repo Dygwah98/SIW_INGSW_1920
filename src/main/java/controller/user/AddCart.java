@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model.nonTables.ProdottoAggregato;
 import model.tables.Prenotazione;
+import model.tables.Prodotto;
 import persistence.DAOFactory;
 import persistence.DBManager;
 
@@ -30,20 +31,28 @@ public class AddCart extends HttpServlet {
 		DAOFactory f = DBManager.getInstance().getDAOFactory();
 
 //		DBManager.getInstance().getDAOFactory().getProdottoDao().connectByUserID(idUser, idProd);
-		List<Prenotazione> p = f.getOrdineDao()
-				.retrievePrenotazioni((Integer) request.getSession().getAttribute("userId"));
+		//List<Prenotazione> p = f.getOrdineDao().retrievePrenotazioni((Integer) request.getSession().getAttribute("userId"));
+		
 		Integer idord = f.getOrdineDao().retrieveIdOrder((Integer) request.getSession().getAttribute("userId"));
-		List<ProdottoAggregato> prodc = f.getProdottoDao().showProductsForCart(idord);
-		List<Integer> prezzi = f.getOrdineDao()
-				.retrievePrezzoCamere((Integer) request.getSession().getAttribute("userId"));
 		HttpSession session = request.getSession();
-		session.setAttribute("idordine", idord);
-		session.setAttribute("prenotazione", p);
-		request.setAttribute("prenotazione", p);
-		session.setAttribute("prezziprenotazione", prezzi);
-		request.setAttribute("prezziprenotazione", prezzi);
-		session.setAttribute("prodc", prodc);
-		request.setAttribute("prodc", prodc);
+		if(idord!=null) {
+			List<Prodotto> prodc = f.getProdottoDao().showProductsForCart(idord);
+			//List<Integer> prezzi = f.getOrdineDao().retrievePrezzoCamere((Integer) request.getSession().getAttribute("userId"));
+			session.setAttribute("idordine", idord);
+			//session.setAttribute("prenotazione", p);
+			//request.setAttribute("prenotazione", p);
+			//session.setAttribute("prezziprenotazione", prezzi);
+			//request.setAttribute("prezziprenotazione", prezzi);
+			session.setAttribute("prodc", prodc);
+			request.setAttribute("prodc", prodc);
+			
+		}
+		else {
+			List<Prodotto> prodc = f.getProdottoDao().carrelloVuoto();
+			session.setAttribute("prodc", prodc);
+			request.setAttribute("prodc", prodc);
+			session.setAttribute("idordine", null);
+		}
 		request.getRequestDispatcher("cart.jsp").forward(request, response);
 	}
 

@@ -16,12 +16,12 @@ public class OrdineDaoJDBC implements OrdineDao {
 	@Override
 	public void save(Ordine ordine) {
 
-		String insert = "INSERT INTO ordine(idorder,idclient) VALUES (?,?)";
+		String insert = "INSERT INTO ordine(idclient,pagato) VALUES (?,?)";
 
 		try (JDBCQueryHandler handler = new JDBCQueryHandler(insert)) {
 
-			handler.getStatement().setInt(1, ordine.getIdOrdine());
-			handler.getStatement().setInt(2, ordine.getIdUtente());
+			handler.getStatement().setInt(1, ordine.getIdUtente());
+			handler.getStatement().setBoolean(2, ordine.getPagato());
 
 			handler.executeUpdate();
 
@@ -74,6 +74,20 @@ public class OrdineDaoJDBC implements OrdineDao {
 
 	}
 
+	@Override
+	public void eliminaOrdine(Integer ID) {
+		String delete = "delete FROM ordine WHERE idorder = ? ";
+
+		try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
+
+			handler.getStatement().setInt(1, ID);
+			handler.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+	
 	@Override
 	public boolean exists(Ordine object) {
 

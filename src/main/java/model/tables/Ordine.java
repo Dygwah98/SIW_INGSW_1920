@@ -11,16 +11,31 @@ public class Ordine implements Serializable {
 	
 	private Integer IdOrdine;
 	private Integer IdUtente;
+	private Boolean pagato;
 
-	public Ordine(int idOrdine, int idUtente) {
+	public Ordine(int idOrdine, int idUtente, Boolean pagato) {
 		this.IdOrdine = idOrdine;
 		this.IdUtente = idUtente;
+		this.pagato = pagato;
 	}
 
+	
 	public Ordine() {
-		IdOrdine = null;
-		IdUtente = null;
+		this.IdOrdine = null;
+		this.IdUtente = null;
+		this.pagato=null;
 	}
+
+	
+	public Boolean getPagato() {
+		return pagato;
+	}
+
+
+	public void setPagato(Boolean pagato) {
+		this.pagato = pagato;
+	}
+
 
 	public int getIdOrdine() {
 		return IdOrdine;

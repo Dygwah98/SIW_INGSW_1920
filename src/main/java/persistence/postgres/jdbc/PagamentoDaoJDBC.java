@@ -17,8 +17,8 @@ public class PagamentoDaoJDBC implements PagamentoDao {
 		try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 
 			handler.getStatement().setInt(1, object.getImporto());
-			handler.getStatement().setInt(2, object.getIdOrdine());
-			handler.getStatement().setDate(3, object.getDataPagamento());
+			handler.getStatement().setInt(2, object.getid_ordine());
+			handler.getStatement().setDate(3, object.getdata_pagamento());
 			
 			handler.executeUpdate();
 
@@ -35,18 +35,18 @@ public class PagamentoDaoJDBC implements PagamentoDao {
 
 		try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 
-			handler.getStatement().setInt(1, object.getIdPagamento());
+			handler.getStatement().setInt(1, object.getid_pagamento());
 			handler.executeQuery();
 
 			if (handler.existsResultSet()) {
 
 				handler.getResultSet().next();
 				p = new Pagamento();
-				p.setIdPagamento(handler.getResultSet().getInt("id_pagamento"));
+				p.setid_pagamento(handler.getResultSet().getInt("id_pagamento"));
 				p.setImporto(handler.getResultSet().getInt("importo"));
-				p.setIdOrdine(handler.getResultSet().getInt("id_ordine"));
+				p.setid_ordine(handler.getResultSet().getInt("id_ordine"));
 
-				p.setDataPagamento(handler.getResultSet().getDate("data_pagamento"));
+				p.setdata_pagamento(handler.getResultSet().getDate("data_pagamento"));
 			}
 
 		} catch (SQLException e) {
@@ -71,11 +71,10 @@ public class PagamentoDaoJDBC implements PagamentoDao {
 				Pagamento p = null;
 				while (handler.getResultSet().next()) {
 					p = new Pagamento();
-					p.setIdPagamento(handler.getResultSet().getInt("id_pagamento"));
+					p.setid_pagamento(handler.getResultSet().getInt("id_pagamento"));
 					p.setImporto(handler.getResultSet().getInt("importo"));
-					p.setIdOrdine(handler.getResultSet().getInt("id_ordine"));
-
-					p.setDataPagamento(handler.getResultSet().getDate("data_pagamento"));
+					p.setid_ordine(handler.getResultSet().getInt("id_ordine"));
+					p.setdata_pagamento(handler.getResultSet().getDate("data_pagamento"));
 					P.add(p);
 				}
 			}
@@ -99,7 +98,7 @@ public class PagamentoDaoJDBC implements PagamentoDao {
 
 		try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 
-			handler.getStatement().setInt(1, object.getIdPagamento());
+			handler.getStatement().setInt(1, object.getid_pagamento());
 			handler.executeUpdate();
 
 		} catch (SQLException e) {

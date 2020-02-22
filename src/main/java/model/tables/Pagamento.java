@@ -10,26 +10,26 @@ public class Pagamento implements Serializable {
 	 */
 	private static final long serialVersionUID = -4860917979216022128L;
 	
-	private Integer idPagamento;
+	private Integer id_pagamento;
 	private Integer importo;
-	private Integer idOrdine;
+	private Integer id_ordine;
 	private Integer idMetodoPagamento;
-	private Date dataPagamento;
+	private Date data_pagamento;
 
 	public Pagamento() {
-		idPagamento = null;
+		id_pagamento = null;
 		importo = null;
-		idOrdine = null;
+		id_ordine = null;
 		idMetodoPagamento = null;
-		dataPagamento = null;
+		data_pagamento = null;
 	}
 
-	public Integer getIdPagamento() {
-		return idPagamento;
+	public Integer getid_pagamento() {
+		return id_pagamento;
 	}
 
-	public void setIdPagamento(Integer idPagamento) {
-		this.idPagamento = idPagamento;
+	public void setid_pagamento(Integer id_pagamento) {
+		this.id_pagamento = id_pagamento;
 	}
 
 	public Integer getImporto() {
@@ -40,12 +40,12 @@ public class Pagamento implements Serializable {
 		this.importo = importo;
 	}
 
-	public Integer getIdOrdine() {
-		return idOrdine;
+	public Integer getid_ordine() {
+		return id_ordine;
 	}
 
-	public void setIdOrdine(Integer idOrdine) {
-		this.idOrdine = idOrdine;
+	public void setid_ordine(Integer id_ordine) {
+		this.id_ordine = id_ordine;
 	}
 
 	public Integer getIdMetodoPagamento() {
@@ -56,12 +56,12 @@ public class Pagamento implements Serializable {
 		this.idMetodoPagamento = idMetodoPagamento;
 	}
 
-	public Date getDataPagamento() {
-		return dataPagamento;
+	public Date getdata_pagamento() {
+		return data_pagamento;
 	}
 
-	public void setDataPagamento(Date dataPagamento) {
-		this.dataPagamento = dataPagamento;
+	public void setdata_pagamento(Date data_pagamento) {
+		this.data_pagamento = data_pagamento;
 	}
 
 }
