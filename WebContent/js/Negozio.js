@@ -1,4 +1,13 @@
 
+window.onkeydown = function(event){
+    if(event.keyCode === 13) {
+        event.preventDefault();
+        document.querySelector('#lente').click(); //This will trigger a click on the first <a> element.
+    }
+};
+
+
+
 initHomeSlider();
 
 function initHomeSlider()

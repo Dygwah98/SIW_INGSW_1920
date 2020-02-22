@@ -151,8 +151,8 @@
 	<!-- Blog -->
 
 	
-	<div   class="blog">
-		<div class="categories" >
+	<div class="blog">
+		<div class="categories">
 				<div ><h4>Categorie:</h4></div>
 				<div class="sidebar_list">
 						<a href="vedifiltripost?filtro=all">Tutti i post</a>

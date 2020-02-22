@@ -239,9 +239,9 @@
     	<div class="container">
 				<div class="row justify-content-center mb-3 pb-3">
           <div class="col-md-12 heading-section text-center ">
-          	<span class="subheading">Caratteristiche dei prodotti</span>
-            <h2 class="mb-4">I nostri prodotti</h2>
-            <p>Nelle campagne sperdute di cancello, si narra la storia di Sarella......</p>
+          	<span class="subheading">Biologici a km0</span>
+            <h2 class="mb-4">Breve storia sui nostri prodotti..</h2>
+            <p>Il Biologico: una vera e propria passione per gli italiani che ha portato la nostra nazione al sesto posto nel mondo in termini di fatturato. Un fatturato da record, un mercato che è cresciuto anche in anni in cui si registravano solo continue contrazioni dei consumi. Le ragioni di questo amore sono molte ma, venite a scoprirlo nel nostro AGRITURISMO e vi renderete conto voi stessi dei vantaggi che questo tipo di agricoltura garantisce (che sono molti e innegabili).</p>
           </div>
         </div>   		
     	</div>
@@ -251,24 +251,25 @@
 		</form>
     </section>
    
-    
-   
-	<div id="cate" class="categorie">
-	  <button class="cat">Categorie:</button>
-	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=all">Tutti i prodotti</a>
-	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=verdura" >Verdura</a>
-	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=ortaggio">Ortaggio</a>
-	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=carne">Carni</a>
-	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=formaggi">Formaggi</a>
-	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=frutta">Frutta</a>
-	  <a style="text-decoration: none; color: black;" class="elementi" href="vedifiltri?filtro=altro">Altro</a>
-	  <div  class="elementi2">
-		  <a style="color:black;" onclick="myFunction2()" class="dropbtn2">Ordina</a>
-			  <div id="myDropdown2" class="dropdown-content2">
-				    <a href="vedifiltri?filtro=prezzo">Prezzo</a>
-				    <a href="vedifiltri?filtro=alfabetico">Alfabetico</a>
-			  </div>
-	 </div>
+ 
+	<div id="cate" class="categories">
+	  	<div ><h4>Categorie:</h4></div>
+	  	<div class="sidebar_list">
+			  <a style="color: #ffa37b;" href="vedifiltri?filtro=all">Tutti i prodotti</a>
+			  <a href="vedifiltri?filtro=verdura" >Verdura</a>
+			  <a href="vedifiltri?filtro=ortaggio">Ortaggio</a>
+			  <a href="vedifiltri?filtro=carne">Carni</a>
+			  <a href="vedifiltri?filtro=formaggi">Formaggi</a>
+			  <a href="vedifiltri?filtro=frutta">Frutta</a>
+			  <a href="vedifiltri?filtro=altro">Altro</a>
+			  <div  class="elementi2">
+				  <a  onclick="myFunction2()" class="dropbtn2">Ordina</a>
+					  <div id="myDropdown2" class="dropdown-content2">
+						    <a href="vedifiltri?filtro=prezzo">Prezzo</a>
+						    <a href="vedifiltri?filtro=alfabetico">Alfabetico</a>
+					  </div>
+			 </div>
+	     </div>
 	</div>
 	
 	 <div class="divCatalogo">

@@ -382,6 +382,7 @@ menu a tendina
   margin-right: auto;
   margin-left: auto; 
 }
+
   
 .row {
   display: -webkit-box;
@@ -476,6 +477,41 @@ form.example::after {
   display: table;
 }
 
+.sidebar_list
+{
+	margin-top: 20px;
+	padding-left: 24px;
+}
+
+.sidebar_list  a
+{
+	font-size: 15px;
+	font-weight: 500;
+	color: #6d6d6d;
+	margin-right: 20px;
+	cursor: pointer;
+  	position: relative;
+  	display: inline-block;
+  	font-weight: bold;
+}
+
+
+.sidebar_list  a:hover
+{
+	color: #ffa37b;
+	cursor: pointer;
+	text-decoration: none;
+}
+.categories
+{
+	text-align: center;
+}
+
+.categories h4{
+	font-size: 40px;
+	font-weight: bold;
+}
+
 
 /*********************************
 6. CATALOGO
@@ -548,12 +584,7 @@ form.example::after {
 }
 
 .elementi2 {
-  border: 2px solid orange;
-  outline: none;
-  padding: 9px 12px;
-  background-color: #f1f1f1;
-  cursor: pointer;
-  position: relative;
+ 
   display: inline-block;
 }
 
@@ -561,9 +592,6 @@ form.example::after {
   background-color: #ffA500;
 }
 
-.elementi2:hover {
-  background-color: #ffA500;
-}
 
 .elementi.active {
   background-color: #ffA500;
