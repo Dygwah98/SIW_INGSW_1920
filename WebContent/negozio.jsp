@@ -151,7 +151,7 @@
 										<p class="descrizione">Le nostre verdure sono frutto di una coltivazione mirata e accurata....
 											<br>Offriamo i migliori prodotti vegetariani sul mercato.
 										</p>
-										<a href="#piu" class="bottone trans_200">DETTAGLI</a>
+										<a href="#cate" class="bottone trans_200">DETTAGLI</a>
 									</div>
 								</div>
 							</div>
@@ -171,7 +171,7 @@
 										<p class="descrizione">I nostri ortaggi sono frutto di una coltivazione mirata e accurata....
 											<br>Offriamo i migliori prodotti vegetariani sul mercato.
 										</p>
-										<a href="#piu" class="bottone trans_200">DETTAGLI</a>
+										<a href="#cate" class="bottone trans_200">DETTAGLI</a>
 									</div>
 								</div>
 							</div>
@@ -191,7 +191,7 @@
 										<p class="descrizione">I nostri animali pascolano liberamente!!
 											<br>Offriamo i migliori prodotti di carne sul mercato.
 										</p>
-										<a href="#piu" class="bottone_carne trans_200">DETTAGLI</a>
+										<a href="#cate" class="bottone_carne trans_200">DETTAGLI</a>
 									</div>
 								</div>
 							</div>
@@ -211,7 +211,7 @@
 										<p class="descrizione">Formaggi a lunga stagionatura...
 											<br>Formaggi e latticini sempre freschi!!
 										</p>
-										<a href="#piu" class="bottone_carne trans_200">DETTAGLI</a>
+										<a href="#cate" class="bottone_carne trans_200">DETTAGLI</a>
 									</div>
 								</div>
 							</div>

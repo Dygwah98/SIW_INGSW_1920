@@ -65,11 +65,11 @@ public class AddCart extends HttpServlet {
 				session.setAttribute("idordine", null);
 				session.setAttribute("totale", 0);
 			}
-			response.sendRedirect("negozio.jsp#cate");
+			response.sendRedirect("negozio.jsp");
 		}
 		else {
 			session.setAttribute("totale", 0);
-			response.sendRedirect("negozio.jsp#cate");
+			response.sendRedirect("negozio.jsp");
 		}
 		
 	}

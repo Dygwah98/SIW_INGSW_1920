@@ -75,9 +75,7 @@
 				</nav>
 				<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				<!--  <div class="book_button"><a href="carrello.jsp">Carrello</a></div> -->
-				 <nav class="main_nav">
-					<button id="check" class="icon-shopping_cart" type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
-				</nav>
+				 
 				<%}%>
 				<!--  
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
@@ -128,9 +126,7 @@
 		<div class="menu_extra">
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")) { %>
 			<!--  <div class="book_button"><a href="carrello.jsp">Carrello</a></div> -->
-				 <nav class="main_nav">
-					<button id="check" class="icon-shopping_cart" type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
-				</nav>
+				
 				<%}%>
 				<!--  
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">

@@ -22,6 +22,11 @@
 <link rel="stylesheet" href="styles/ionicons.min.css">
 
 <script src="js/checkout.js"></script>
+<script src="js/googlePay.js"></script>
+<script async
+  src="https://pay.google.com/gp/p/js/pay.js"
+  onload="onGooglePayLoaded()">
+</script>
 
 <style>
 	#check{
@@ -171,6 +176,7 @@
           </div>
         </div>
         <div>
+        	 <div id="buy-now"></div>
         	<button type="submit" class="button" form="cash"  id="conferma"  >CONFERMA I DATI</button>
          	<button type="submit" style="margin-left: 30px;" class="button2" id="reset"  >RESET DATI</button>
          	<button class="button" style=" display: none"   id="paga" onclick="payment1(event)">INVIA ORDINE</button>
@@ -184,8 +190,11 @@
     <div class="pagamento_principale">
     
       <h3>Totale</h3>
-     <c:out value="${totp} euro" default="Prezzo!" escapeXml="false"/>
+      <% String role=request.getSession().getAttribute("totp").toString();%>
+	  <input type="hidden" id="role" value=<%= role %> />
+     <c:out  value="${totp} euro" default="Prezzo!" escapeXml="false"/>
     </div>
+    
   </div>
 
 </div>
