@@ -39,7 +39,7 @@ public class deleteprodottotocart extends HttpServlet {
 		//DBManager.getInstance().getDAOFactory().getOrdineDao().eliminaOrdine(idord);
 		DBManager.getInstance().getDAOFactory().getProdottoDao().updatesetdisponibile(idprod, true);
 		DBManager.getInstance().getDAOFactory().getProdottoDao().prodottoCartRemove(idprod);
-		resp.sendRedirect("vediprodotti");
+		resp.sendRedirect("addcart");
 
 	}
 

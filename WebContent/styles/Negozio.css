@@ -375,6 +375,11 @@ menu a tendina
   padding: 6em 0;
   position: relative; }
   
+  .ftco-section1 {
+  padding: 1em 0;
+  position: relative; }
+  
+  
 .container {
   width: 100%;
   padding-right: 15px;
@@ -516,6 +521,18 @@ form.example::after {
 /*********************************
 6. CATALOGO
 *********************************/
+
+.product-remove a {
+      bordeR: 1px solid rgba(0, 0, 0, 0.1);s
+      padding: 4px 10px;
+      color: #000000;
+ }
+ 
+ .table tbody tr td.product-remove a:hover {
+        border: 1px solid #82ae46;
+        background: #82ae46;
+ }
+
 .categorie{
 	text-align: center;
 }

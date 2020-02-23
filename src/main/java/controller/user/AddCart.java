@@ -27,33 +27,51 @@ public class AddCart extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		DAOFactory f = DBManager.getInstance().getDAOFactory();
-
-//		DBManager.getInstance().getDAOFactory().getProdottoDao().connectByUserID(idUser, idProd);
-		//List<Prenotazione> p = f.getOrdineDao().retrievePrenotazioni((Integer) request.getSession().getAttribute("userId"));
 		
-		Integer idord = f.getOrdineDao().retrieveIdOrder((Integer) request.getSession().getAttribute("userId"));
+		List<Prodotto> p = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop();
 		HttpSession session = request.getSession();
-		if(idord!=null) {
-			List<Prodotto> prodc = f.getProdottoDao().showProductsForCart(idord);
-			//List<Integer> prezzi = f.getOrdineDao().retrievePrezzoCamere((Integer) request.getSession().getAttribute("userId"));
-			session.setAttribute("idordine", idord);
-			//session.setAttribute("prenotazione", p);
-			//request.setAttribute("prenotazione", p);
-			//session.setAttribute("prezziprenotazione", prezzi);
-			//request.setAttribute("prezziprenotazione", prezzi);
-			session.setAttribute("prodc", prodc);
-			request.setAttribute("prodc", prodc);
-			
+		session.setAttribute("prodotto", p);
+		request.setAttribute("prodotto", p);
+		
+		DAOFactory f = DBManager.getInstance().getDAOFactory();
+		
+		Integer loggato =(Integer) request.getSession().getAttribute("userId");
+		if(loggato!=null) {
+			Integer idord = f.getOrdineDao().retrieveIdOrder((Integer) request.getSession().getAttribute("userId"));
+			session = request.getSession();
+			if(idord!=null) {
+				List<Prodotto> prodc = f.getProdottoDao().showProductsForCart(idord);
+				Integer totale = 0;
+				if(prodc==null) {
+					session.setAttribute("idordine", idord);
+					session.setAttribute("prodc", prodc);
+					request.setAttribute("prodc", prodc);
+					session.setAttribute("totale", 0);
+				}
+				else {
+					for (int i = 0; i < prodc.size(); i++) {
+						totale = totale + prodc.get(i).getPrezzo();
+					}
+					session.setAttribute("idordine", idord);
+					session.setAttribute("prodc", prodc);
+					request.setAttribute("prodc", prodc);
+					session.setAttribute("totale", totale.intValue());
+				}
+			}
+			else {
+				List<Prodotto> prodc = f.getProdottoDao().carrelloVuoto();
+				session.setAttribute("prodc", prodc);
+				request.setAttribute("prodc", prodc);
+				session.setAttribute("idordine", null);
+				session.setAttribute("totale", 0);
+			}
+			response.sendRedirect("negozio.jsp#cate");
 		}
 		else {
-			List<Prodotto> prodc = f.getProdottoDao().carrelloVuoto();
-			session.setAttribute("prodc", prodc);
-			request.setAttribute("prodc", prodc);
-			session.setAttribute("idordine", null);
+			session.setAttribute("totale", 0);
+			response.sendRedirect("negozio.jsp#cate");
 		}
-		request.getRequestDispatcher("cart.jsp").forward(request, response);
+		
 	}
 
 	@Override

@@ -32,6 +32,15 @@
 <script src="js/menuATendina.js"></script>
 <script src="js/checkout.js"></script>
 
+<style>
+	#check{
+		cursor:pointer; color:white; background-color: transparent; border: none;
+	}
+	#check:hover {
+		color: #ff7514;
+	}
+</style>
+
 
 </head>
 
@@ -68,14 +77,12 @@
 					<%} %>
 						
 						<li ><a href="index.jsp">Home</a></li>
-						<li ><a href="vediprodotti">Negozio</a></li>
+						<li ><a href="addcart">Negozio</a></li>
 					</ul>
 			   </nav>
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				 <nav class="main_nav">
-					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li class="active"><a  href="cart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
-					</ul>
+					<button id="check" class="icon-shopping_cart" type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
 				</nav>
 			   <%}%>
 			</div>
@@ -115,16 +122,14 @@
 					<%} %>
 					   
 					<li ><a href="index.jsp">Home</a></li>
-					<li><a href="vediprodotti">Negozio</a></li>
+					<li><a href="addcart">Negozio</a></li>
 			   </ul>
 		   </nav>
 		</div>
 		<div class="menu_extra">
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				<nav class="main_nav">
-					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li class="active"><a href="cart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
-					</ul>
+				 <nav class="main_nav">
+					<button id="check" class="icon-shopping_cart" type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
 				</nav>
 	    <%}%>
 		</div>

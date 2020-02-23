@@ -10,6 +10,8 @@
 <link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.2/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="styles/contact.css">
 <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+<link rel="stylesheet" href="styles/icomoon.css">
+<link rel="stylesheet" href="styles/ionicons.min.css">
 
 <link rel="stylesheet" type="text/css" href="styles/menuATendina.css">
 <script src="js/menuATendina.js"></script>
@@ -18,7 +20,14 @@
 <link rel="stylesheet" href="styles/mappa.css">
 <style>
 	.logo a:hover{color:white;}
+	#check{
+		cursor:pointer; color:white; background-color: transparent; border: none;
+	}
+	#check:hover {
+		color: #ff7514;
+	}
 </style>
+<script src="js/checkout.js"></script>
 
 </head>
 <body>
@@ -54,18 +63,14 @@
 						</div>
 					<%} %>
 						<li><a href="home">Home</a></li>
-						<li><a href="vediprodotti">Negozio</a></li>
+						<li><a href="addcart">Negozio</a></li>
 						<li><a href="viewpost">Blog</a></li>
 						<li class="active"><a href="contact.jsp">Contattaci</a></li>
 					</ul>
 				</nav>
 				<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				<!--  <div class="book_button"><a href="carrello.jsp">Carrello</a></div> -->
-				<nav class="main_nav">
-					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
-					</ul>
-				</nav>
+				
 				<%}%>
 				<!--  
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">
@@ -107,7 +112,7 @@
 					</div>
 					<%}%>
 					<li ><a href="index.jsp">Home</a></li>
-					<li ><a href="vediprodotti">Negozio</a></li>
+					<li ><a href="addcart">Negozio</a></li>
 					<li><a href="viewpost">Blog</a></li>
 					<li class="active"><a href="contact.jsp">Contattaci</a></li>
 				</ul>
@@ -116,11 +121,7 @@
 		<div class="menu_extra">
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")) { %>
 			<!--  <div class="book_button"><a href="carrello.jsp">Carrello</a></div> -->
-				<nav class="main_nav">
-					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
-					</ul>
-				</nav>
+				
 				<%}%>
 				<!--  
 				<div class="header_phone d-flex flex-row align-items-center justify-content-center">

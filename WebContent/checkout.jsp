@@ -21,6 +21,17 @@
 <link rel="stylesheet" href="styles/icomoon.css">
 <link rel="stylesheet" href="styles/ionicons.min.css">
 
+<script src="js/checkout.js"></script>
+
+<style>
+	#check{
+		cursor:pointer; color:white; background-color: transparent; border: none;
+	}
+	#check:hover {
+		color: #ff7514;
+	}
+</style>
+
 
 
 <script src="js/jquery-3.3.1.min.js"></script>
@@ -43,16 +54,10 @@
 					  		<li><a href="logout">Logout</a></li>
 					  	 <%}%>
 						<li ><a href="index.jsp">Home</a></li>
-						<li><a href="negozio.jsp">Negozio</a></li>
-						<li><a href="#">Lista dei desideri</a></li>
+						<li><a href="addcart">Negozio</a></li>
 					</ul>
 			   </nav>
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				 <nav class="main_nav">
-					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
-					</ul>
-				</nav>
 			   <%}%>
 			</div>
 		</div>
@@ -76,18 +81,12 @@
 						  <li><a href="logout">Logout</a></li>
 					 <%}%>
 					<li ><a href="index.jsp">Home</a></li>
-					<li><a href="negozio.jsp">Negozio</a></li>
-					<li><a href="#">Lista dei desideri</a></li>
+					<li><a href="addcart">Negozio</a></li>
 			   </ul>
 		   </nav>
 		</div>
 		<div class="menu_extra">
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				<nav class="main_nav">
-					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
-					</ul>
-				</nav>
 	    <%}%>
 		</div>
 	</div>

@@ -40,6 +40,9 @@ public class Filtri extends HttpServlet {
 		case "prezzo":
 			sortaPrezzo(l);
 			break;
+		case "prezzo2":
+			sortaPrezzo2(l);
+			break;
 		case "alfabetico":
 			sortaNome(l);
 			break;
@@ -84,7 +87,7 @@ public class Filtri extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("prodotto", l);
 			request.setAttribute("prodotto", l);
-			response.sendRedirect("negozio.jsp#testo");
+			response.sendRedirect("negozio.jsp#cate");
 		}
 
 	}
@@ -102,6 +105,20 @@ public class Filtri extends HttpServlet {
 				if (o1.getPrezzo() > o2.getPrezzo())
 					return 1;
 				else if (o1.getPrezzo() < o2.getPrezzo())
+					return -1;
+				return 0;
+			}
+		});
+	}
+	
+	public void sortaPrezzo2(List<Prodotto> l) {
+
+		Collections.sort(l, new Comparator<Prodotto>() {
+			@Override
+			public int compare(Prodotto o1, Prodotto o2) {
+				if (o1.getPrezzo() < o2.getPrezzo())
+					return 1;
+				else if (o1.getPrezzo() > o2.getPrezzo())
 					return -1;
 				return 0;
 			}

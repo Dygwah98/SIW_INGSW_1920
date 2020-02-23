@@ -28,8 +28,16 @@
   	display: flex;
   	flex-direction: row;
 }
-
+#check{
+		cursor:pointer; color:white; background-color: transparent; border: none;
+	}
+	#check:hover {
+		color: #ff7514;
+	}
 </style>
+
+<script src="js/checkout.js"></script>
+
 
 
 </head>
@@ -71,9 +79,7 @@
 			   </nav>
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				 <nav class="main_nav">
-					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a  href="addcart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
-					</ul>
+					<button id="check" class="icon-shopping_cart" type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
 				</nav>
 			   <%}%>
 			</div>
@@ -113,16 +119,14 @@
 					<%} %>
 					   
 					<li ><a href="index.jsp">Home</a></li>
-					<li class="active"><a href="vediprodotti">Negozio</a></li>
+					<li class="active"><a href="viewpost">Blog</a></li>
 			   </ul>
 		   </nav>
 		</div>
 		<div class="menu_extra">
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				<nav class="main_nav">
-					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a href="addcart"><span id="carrello" class="icon-shopping_cart"></span ></a></li>
-					</ul>
+				 <nav class="main_nav">
+					<button id="check" class="icon-shopping_cart" type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
 				</nav>
 	    <%}%>
 		</div>

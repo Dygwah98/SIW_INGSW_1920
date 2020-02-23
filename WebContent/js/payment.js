@@ -9,7 +9,7 @@ function payment1(event){
 
        },
         error : function () {
-          alert("errore pagamento riprovare");
+          alert("Inserisci almeno un prodotto nel carrello prima");
      	   window.location.replace("checkout.jsp");
     	   
 
