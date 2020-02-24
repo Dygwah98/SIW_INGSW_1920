@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model.nonTables.ProdottoAggregato;
 import model.tables.Prodotto;
+import persistence.DAOFactory;
 import persistence.DBManager;
 
 @WebServlet(value = "/vediprodotti", name = "vediprodotti")
@@ -26,10 +27,17 @@ public class VisualizzaProdotti extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		/*
 		List<Prodotto> p = DBManager.getInstance().getDAOFactory().getProdottoDao().showProductsForShop();
 		HttpSession session = request.getSession();
 		session.setAttribute("prodotto", p);
 		request.setAttribute("prodotto", p);
 		request.getRequestDispatcher("negozio.jsp").forward(request, response);
+		*/
+		
+		DAOFactory f = DBManager.getInstance().getDAOFactory();
+		HttpSession session = request.getSession();
+		Integer idord = f.getOrdineDao().retrieveIdOrder((Integer) request.getSession().getAttribute("userId"));
+		List<Prodotto> carrello = f.getProdottoDao().showProductsForCart(idord);
 	}
 }

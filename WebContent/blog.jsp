@@ -79,7 +79,7 @@
 			   </nav>
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				 <nav class="main_nav">
-					<button id="check" class="icon-shopping_cart" type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
+					<button id="check"  type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT <span class="icon-shopping_cart">[<c:out  value="${elementi}" />]</span></button>
 				</nav>
 			   <%}%>
 			</div>
@@ -126,7 +126,7 @@
 		<div class="menu_extra">
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 				 <nav class="main_nav">
-					<button id="check" class="icon-shopping_cart" type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
+					<button id="check"  type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT <span class="icon-shopping_cart">[<c:out  value="${elementi}" />]</span></button>
 				</nav>
 	    <%}%>
 		</div>

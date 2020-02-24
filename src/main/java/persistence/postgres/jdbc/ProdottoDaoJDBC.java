@@ -479,7 +479,7 @@ public class ProdottoDaoJDBC implements ProdottoDao {
 	@Override
 	public void updatesetordine(Integer idp, Integer ido) {
 
-		String update = "update Prodotto set idordine=? where idprodotto=?";
+		String update = "update Prodotto set idordine=?, disponibile=false where idprodotto=?";
 
 		try (JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 

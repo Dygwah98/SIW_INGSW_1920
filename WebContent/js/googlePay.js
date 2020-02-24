@@ -157,7 +157,7 @@ function onGooglePayLoaded() {
 					  shippingOptions: [
 					    {
 					      id: 'Spedizione1',
-					      label: '1,99 euro: Spedizione standard',
+					      label: 'Gratis: Spedizione standard',
 					      description: 'Entro tra 5-6 giorni.'
 					    },
 					    {
@@ -175,7 +175,7 @@ function onGooglePayLoaded() {
 
 					// Shipping surcharges mapped to the IDs above.
 					const shippingSurcharges = {
-					  'Spedizione1': 1.99,
+					  'Spedizione1': 0,
 					  'Spedizione2': 3.99,
 					  'Spedizione3': 10
 					};

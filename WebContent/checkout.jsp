@@ -176,26 +176,43 @@
           </div>
         </div>
         <div>
-        	 <div id="buy-now"></div>
-        	<button type="submit" class="button" form="cash"  id="conferma"  >CONFERMA I DATI</button>
+        	<button type="submit" class="button" form="cash"  id="conferma"  >Aquista con carta</button>
          	<button type="submit" style="margin-left: 30px;" class="button2" id="reset"  >RESET DATI</button>
          	<button class="button" style=" display: none"   id="paga" onclick="payment1(event)">INVIA ORDINE</button>
         </div>
-         	
       </form>
       
     </div>
   </div>
-  <div class="colonna_pagamento_terzaria">
-    <div class="pagamento_principale">
-    
-      <h3>Totale</h3>
+  <div class="col-25">
+    <div class="container1">
+      <h4 style="font-weight: bold;">Carrello <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b><c:out  value="${elementi}" /></b></span></h4>
+      <c:forEach var="prodc" items="${prodc}">
+      <br>
+      	<p><a style="color:black" href="#">${prodc.tipo}</a> <span class="price">${prodc.prezzo} euro</span></p>
+      </c:forEach>
+      <hr>
       <% String role=request.getSession().getAttribute("totp").toString();%>
 	  <input type="hidden" id="role" value=<%= role %> />
-     <c:out  value="${totp} euro" default="Prezzo!" escapeXml="false"/>
+      <p style="font-weight: bold; font-size: 25px;">Totale <span class="price" style="color:black"><b><c:out  value="${totp} euro" default="Prezzo!" escapeXml="false"/></b></span></p>
+      <br>
+      <div  id="buy-now"></div>
+      <br>
+      <!-- Se lasciamo jquery.js non funziona -->
+      <!-- Se lasciamo jquery.js non funziona -->
+      <!-- Se lasciamo jquery.js non funziona -->
+      <!-- Se lasciamo jquery.js non funziona -->
+      <form style="text-align: center" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+		<input type="hidden" name="cmd" value="_s-xclick">
+		<input type="hidden" name="hosted_button_id" value="5R7GDZZ6P6WT2">
+		<input type="image" src="https://www.paypalobjects.com/it_IT/IT/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal è il metodo rapido e sicuro per pagare e farsi pagare online.">
+		<img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
+      </form>
     </div>
-    
   </div>
+  
+      
+     
 
 </div>
     	

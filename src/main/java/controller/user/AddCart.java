@@ -56,6 +56,7 @@ public class AddCart extends HttpServlet {
 					session.setAttribute("prodc", prodc);
 					request.setAttribute("prodc", prodc);
 					session.setAttribute("totale", totale.intValue());
+					session.setAttribute("elementi", prodc.size());
 				}
 			}
 			else {

@@ -394,6 +394,40 @@ menu a tendina
   font-size: 17px;
 }
 
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.container1 {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  
+}
+
+span.price {
+  float: right;
+  color: grey;
+  
+}
+
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+
 .pulsante_checkout:hover {
   background-color: #45a049;
 }
