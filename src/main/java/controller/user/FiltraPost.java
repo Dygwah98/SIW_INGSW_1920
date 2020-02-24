@@ -37,7 +37,7 @@ public class FiltraPost extends HttpServlet {
 		
 		switch (tipo) {
 		
-		case "shop": case "servizi": case "ristorante": case "news":
+		case "shop": case "servizi": case "ristorante": case "stanze":
 			l = DBManager.getInstance().getDAOFactory().getPostDao().retrieveByCategory(tipo);
 		break;
 		
@@ -61,7 +61,7 @@ public class FiltraPost extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("post", l);
 		request.setAttribute("post",l);
-		response.sendRedirect("blog.jsp");
+		response.sendRedirect("blog.jsp#posto");
 		}
 		
 	}	

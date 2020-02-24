@@ -152,14 +152,14 @@
 
 	
 	<div class="blog">
-		<div class="categories">
+		<div class="categories" id="posto">
 				<div ><h4>Categorie:</h4></div>
 				<div class="sidebar_list">
 						<a href="vedifiltripost?filtro=all">Tutti i post</a>
 						<a href="vedifiltripost?filtro=shop" >Shop</a>
 						 <a href="vedifiltripost?filtro=servizi">Servizi</a>
 						<a href="vedifiltripost?filtro=ristorante">Ristorante</a>
-						<a href="vedifiltripost?filtro=news">News</a>
+						<a href="vedifiltripost?filtro=stanze">Stanze</a>
 				</div>
 	  </div>
 		<div  class="container">
