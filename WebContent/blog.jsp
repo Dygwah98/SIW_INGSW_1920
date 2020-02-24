@@ -75,12 +75,10 @@
 						
 						<li ><a href="index.jsp">Home</a></li>
 						<li class="active"><a href="viewpost">Blog</a></li>
+						<li><a href="contact.jsp">Contattaci</a></li>
 					</ul>
 			   </nav>
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				 <nav class="main_nav">
-					<button id="check"  type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT <span class="icon-shopping_cart">[<c:out  value="${elementi}" />]</span></button>
-				</nav>
 			   <%}%>
 			</div>
 		</div>
@@ -120,14 +118,12 @@
 					   
 					<li ><a href="index.jsp">Home</a></li>
 					<li class="active"><a href="viewpost">Blog</a></li>
+					<li><a href="contact.jsp">Contattaci</a></li>
 			   </ul>
 		   </nav>
 		</div>
 		<div class="menu_extra">
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				 <nav class="main_nav">
-					<button id="check"  type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT <span class="icon-shopping_cart">[<c:out  value="${elementi}" />]</span></button>
-				</nav>
 	    <%}%>
 		</div>
 	</div>

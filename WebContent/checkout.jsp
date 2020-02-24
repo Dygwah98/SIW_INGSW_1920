@@ -29,6 +29,48 @@
   src="https://pay.google.com/gp/p/js/pay.js"
   onload="onGooglePayLoaded()">
 </script>
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script type="text/javascript">
+
+paypal.Button.render({
+    // Configure environment
+    env: 'sandbox',
+    client: {
+      sandbox: 'demo_sandbox_client_id',
+      production: 'demo_production_client_id'
+    },
+    // Customize button (optional)
+    locale: 'it_IT',
+    style: {
+      size: 'small',
+      color: 'gold',
+      shape: 'pill',
+    },
+
+    // Enable Pay Now checkout flow (optional)
+    commit: true,
+
+    // Set up a payment
+    payment: function(data, actions) {
+      return actions.payment.create({
+        transactions: [{
+          amount: {
+            total: '0.01',
+            currency: 'EUR'
+          }
+        }]
+      });
+    },
+    // Execute the payment
+    onAuthorize: function(data, actions) {
+      return actions.payment.execute().then(function() {
+        // Show a confirmation message to the buyer
+        window.alert('Thank you for your purchase!');
+      });
+    }
+  }, '#paypal-button');
+
+</script>
 
 <style>
 	#check{
@@ -239,18 +281,13 @@
 	  <input type="hidden" id="role" value=<%= role %> />
       <p style="font-weight: bold; font-size: 25px;">Totale <span class="price" style="color:black"><b><c:out  value="${totp} euro" default="Prezzo!" escapeXml="false"/></b></span></p>
       <br>
-      <div  id="buy-now"></div>
+      <div style="text-align: center;"  id="buy-now"></div>
       <br>
       <!-- Se lasciamo jquery.js non funziona -->
       <!-- Se lasciamo jquery.js non funziona -->
       <!-- Se lasciamo jquery.js non funziona -->
       <!-- Se lasciamo jquery.js non funziona -->
-      <form style="text-align: center" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-		<input type="hidden" name="cmd" value="_s-xclick">
-		<input type="hidden" name="hosted_button_id" value="5R7GDZZ6P6WT2">
-		<input type="image" src="https://www.paypalobjects.com/it_IT/IT/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal è il metodo rapido e sicuro per pagare e farsi pagare online.">
-		<img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
-      </form>
+      <div style="text-align: center;" id="paypal-button"></div>
     </div>
   </div>
   
