@@ -18,7 +18,6 @@ html{
 
 body { 
 	background: white; /*beige*/
-	font-family:Times New Roman;
  }
 
 div{ position: relative;} /* lo slider non schiarisce*/
@@ -134,10 +133,11 @@ Header
 
 .main_nav ul li a:hover,
 .main_nav ul li.active a{color: #ffa37b;}
+.main_nav ul li.active #check{color: #ffa37b;}
 
 /*****
 menu a tendina 
-******/
+******
 .hamburger
 {
 	display: none;
@@ -453,10 +453,10 @@ span.price {
 .button {
   display: inline-block;
   position: relative;
-  background-color: #FF5E13;
+  background-color: #FFFF66;
   border: none;
   font-size: 15px;
-  color: #FFFFFF;
+  color: black;
   padding: 20px;
   width: 200px;
   text-align: center;
@@ -467,18 +467,18 @@ span.price {
   cursor: pointer;
   border-radius: 15px;
   margin-left: 360px;
-  
+  font-weight: bold;  
 }
 
 .button2 {
   float: right;
   position: relative;
-  background-color: black;
+  background-color: rgb(247,188,87);
   border: none;
   font-size: 15px;
-  color: #FFFFFF;
-  padding: 20px;
-  width: 200px;
+  color: black;
+  padding: 15px;
+  width: 150px;
   text-align: center;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
@@ -487,7 +487,7 @@ span.price {
   cursor: pointer;
   border-radius: 15px;
   margin-left: 360px;
-  
+  font-weight: bold;
 }
 
 
@@ -511,7 +511,7 @@ span.price {
   transition: 0s
 }
 .button:hover {
-  background-color: rgb(156,42,0);
+  background-color: #FFC726;
 }
 
 /*********************************

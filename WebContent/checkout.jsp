@@ -17,10 +17,12 @@
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.3.4/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="styles/checkout.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/menuATendina.css">
 
 <link rel="stylesheet" href="styles/icomoon.css">
 <link rel="stylesheet" href="styles/ionicons.min.css">
 
+<script src="js/menuATendina.js"></script>
 <script src="js/checkout.js"></script>
 <script src="js/googlePay.js"></script>
 <script async
@@ -52,17 +54,37 @@
 			<div class="ml-auto d-flex flex-row align-items-center justify-content-start">
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						 <%if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
-							<li><a href="login-registration.jsp">Login</a></li>
-						 <%}
-					  	 else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-					  		<li><a href="logout">Logout</a></li>
-					  	 <%}%>
+					<% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))&& (request.getSession().getAttribute("admin") == null || !(boolean)request.getSession().getAttribute("admin"))){%>
+						<li><a href="login-registration.jsp">Login</a></li>
+					<%} else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+						 <div class="dropdown">
+							  <li><a onclick="myFunction()" class="dropbtn">${username}</a></li>
+							  <div id="myDropdown" class="dropdown-content">
+								    <a href="#">Storico Ordini</a>
+								    <a href="logout">Logout</a>
+							  </div>
+						</div>
+					<%} else if (request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin")){%>
+						  <div class="dropdown">
+							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
+							  <div id="myDropdown" class="dropdown-content">
+								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
+								    <a href="gestionePost.jsp">GestionePost</a>
+								    <a href="logout">Logout</a>
+							  </div>
+						</div>
+					<%} %>
+						
 						<li ><a href="index.jsp">Home</a></li>
 						<li><a href="addcart">Negozio</a></li>
 					</ul>
 			   </nav>
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+				 <nav class="main_nav">
+				 	<ul>
+						<li class="active"><button id="check"  type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT <span class="icon-shopping_cart">[<c:out  value="${elementi}" />]</span></button></li>
+					</ul>
+				</nav>
 			   <%}%>
 			</div>
 		</div>
@@ -71,7 +93,7 @@
 	
 	<div class="hamburger"><i class="fa fa-bars"  aria-hidden="true"></i></div>
 	</header>
-	
+
 	<!-- Menu -->
 
 	<div class="menu trans_400 d-flex flex-column align-items-end justify-content-start">
@@ -79,22 +101,43 @@
 		<div class="menu_content">
 			<nav class="menu_nav text-right">
 				<ul>
-					 <% if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
+					<% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))&& (request.getSession().getAttribute("admin") == null || !(boolean)request.getSession().getAttribute("admin"))){%>
 						<li><a href="login-registration.jsp">Login</a></li>
-				     <%}
-				     else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-						  <li><a href="logout">Logout</a></li>
-					 <%}%>
+					<%} else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+						 <div class="dropdown">
+							  <li><a onclick="myFunction()" class="dropbtn">${username}</a></li>
+							  <div id="myDropdown" class="dropdown-content">
+								    <a href="#">Storico Ordini</a>
+								    <a href="logout">Logout</a>
+							  </div>
+						</div>
+					<%} else if (request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin")){%>
+						  <div class="dropdown">
+							  <li><a onclick="myFunction()" class="dropbtn">Admin</a></li>
+							  <div id="myDropdown" class="dropdown-content">
+								    <a href="gestioneProdotti.jsp">GestioneNegozio</a>
+								    <a href="gestionePost.jsp">GestionePost</a>
+								    <a href="logout">Logout</a>
+							  </div>
+						</div>
+					<%} %>
+					   
 					<li ><a href="index.jsp">Home</a></li>
-					<li><a href="addcart">Negozio</a></li>
+					<li class="active"><a href="addcart">Negozio</a></li>
 			   </ul>
 		   </nav>
 		</div>
 		<div class="menu_extra">
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+				  <nav class="main_nav">
+				 	<ul>
+						<li class="active"><button id="check"  type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT <span class="icon-shopping_cart">[<c:out  value="${elementi}" />]</span></button></li>
+					</ul>
+				</nav>
 	    <%}%>
 		</div>
 	</div>
+
 	
 	<div class="home">
 		<div class="home_slider_container">
@@ -176,7 +219,7 @@
           </div>
         </div>
         <div>
-        	<button type="submit" class="button" form="cash"  id="conferma"  >Aquista con carta</button>
+        	<button type="submit" class="fa fa-credit-card button" form="cash"  id="conferma" > Aquista con carta</button>
          	<button type="submit" style="margin-left: 30px;" class="button2" id="reset"  >RESET DATI</button>
          	<button class="button" style=" display: none"   id="paga" onclick="payment1(event)">INVIA ORDINE</button>
         </div>
@@ -258,13 +301,6 @@
 
 					<!-- Newsletter -->
 					<div class="col-lg-3">
-						<div class="footer_title">Newsletter</div>
-						<div class="newsletter_container">
-							<form action="#" class="newsletter_form" id="newsletter_form">
-								<input type="email" class="newsletter_input" placeholder="Your email address" required="required">
-								<button class="newsletter_button">Iscriviti</button>
-							</form>
-						</div>
 					</div>
 
 					<!-- Footer images -->

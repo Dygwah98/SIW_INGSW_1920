@@ -248,7 +248,7 @@
 				<!-- About Content -->
 				<div class="col-lg-6">
 					<div class="about_content">
-						<div class="about_title"><h2>Sarella / 50 anni di eccellenza</h2></div>
+						<div class="about_title"><h2>Paradise / 50 anni di eccellenza</h2></div>
 						<div class="about_text">
 						</div>
 					</div>
