@@ -34,10 +34,6 @@ public abstract class DAOFactory {
 
 	public abstract PostDao getPostDao();
 
-	public abstract PrenotazioneDao getPrenotazioneDao();
-
-	public abstract RoomDao getRoomDao();
-
 	public abstract ProdottoDao getProdottoDao();
 
 	public abstract OrdineDao getOrdineDao();

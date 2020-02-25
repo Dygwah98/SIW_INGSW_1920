@@ -74,7 +74,6 @@
 						 <div class="dropdown">
 							  <li><a onclick="myFunction()" class="dropbtn">${username}</a></li>
 							  <div id="myDropdown" class="dropdown-content">
-								    <a href="#">Storico Ordini</a>
 								    <a href="logout">Logout</a>
 							  </div>
 						</div>
@@ -94,9 +93,6 @@
 					</ul>
 			   </nav>
 			   <% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				 <nav class="main_nav">
-					<button id="check" class="icon-shopping_cart" type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
-				</nav>
 			   <%}%>
 			</div>
 		</div>
@@ -119,7 +115,6 @@
 						 <div class="dropdown">
 							  <li><a onclick="myFunction()" class="dropbtn">${username}</a></li>
 							  <div id="myDropdown" class="dropdown-content">
-								    <a href="#">Storico Ordini</a>
 								    <a href="logout">Logout</a>
 							  </div>
 						</div>
@@ -141,9 +136,7 @@
 		</div>
 		<div class="menu_extra">
 		<% if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
-				 <nav class="main_nav">
-					<button id="check" class="icon-shopping_cart" type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
-				</nav>
+				
 	    <%}%>
 		</div>
 	</div>

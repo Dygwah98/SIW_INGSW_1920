@@ -21,16 +21,6 @@ public class PostgresDAOFactory extends DAOFactory {
 	}
 
 	@Override
-	public PrenotazioneDao getPrenotazioneDao() {
-		return new PrenotazioneDaoJDBC();
-	}
-
-	@Override
-	public RoomDao getRoomDao() {
-		return new RoomDaoJDBC();
-	}
-
-	@Override
 	public OrdineDao getOrdineDao() {
 		return new OrdineDaoJDBC();
 	}

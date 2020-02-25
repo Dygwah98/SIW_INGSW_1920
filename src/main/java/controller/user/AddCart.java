@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.nonTables.ProdottoAggregato;
-import model.tables.Prenotazione;
 import model.tables.Prodotto;
 import persistence.DAOFactory;
 import persistence.DBManager;

@@ -22,23 +22,14 @@
 <link rel="stylesheet" href="styles/icomoon.css">
 <link rel="stylesheet" href="styles/ionicons.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style type="text/css">
-.contieni{
-	width: 100%;
-  	display: flex;
-  	flex-direction: row;
-}
-#check{
-		cursor:pointer; color:white; background-color: transparent; border: none;
-	}
-	#check:hover {
-		color: #ff7514;
-	}
+	.contieni{ width: 100%; display: flex; flex-direction: row; }
+	#check{ cursor:pointer; color:white; background-color: transparent; border: none;}
+	#check:hover { color: #ff7514;}
 </style>
 
 <script src="js/checkout.js"></script>
-
-
 
 </head>
 <body>
@@ -58,7 +49,6 @@
 						 <div class="dropdown">
 							  <li><a onclick="myFunction()" class="dropbtn">${username}</a></li>
 							  <div id="myDropdown" class="dropdown-content">
-								    <a href="#">Storico Ordini</a>
 								    <a href="logout">Logout</a>
 							  </div>
 						</div>
@@ -101,7 +91,6 @@
 						 <div class="dropdown">
 							  <li><a onclick="myFunction()" class="dropbtn">${username}</a></li>
 							  <div id="myDropdown" class="dropdown-content">
-								    <a href="#">Storico Ordini</a>
 								    <a href="logout">Logout</a>
 							  </div>
 						</div>

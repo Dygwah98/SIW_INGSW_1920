@@ -61,7 +61,6 @@
 						 <div class="dropdown">
 							  <li><a onclick="myFunction()" class="dropbtn">${username}</a></li>
 							  <div id="myDropdown" class="dropdown-content">
-								    <a href="#">Storico Ordini</a>
 								    <a href="logout">Logout</a>
 							  </div>
 						</div>
@@ -106,7 +105,6 @@
 						 <div class="dropdown">
 							  <li><a onclick="myFunction()" class="dropbtn">${username}</a></li>
 							  <div id="myDropdown" class="dropdown-content">
-								    <a href="#">Storico Ordini</a>
 								    <a href="logout">Logout</a>
 							  </div>
 						</div>

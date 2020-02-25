@@ -7,7 +7,6 @@ import java.util.List;
 
 import model.nonTables.OrdineConPrezzo;
 import model.tables.Ordine;
-import model.tables.Prenotazione;
 import model.tables.Prodotto;
 import persistence.dao.OrdineDao;
 
@@ -127,37 +126,7 @@ public class OrdineDaoJDBC implements OrdineDao {
 
 	}
 
-	@Override
-	public List<Prenotazione> retrievePrenotazioni(Integer idcliente) {
-		String c = "Select p.id_prenotazione,p.checkin,p.checkout,p.id_room,p.id_order from ordine as o,prenotazioni as p where o.idorder=p.id_order and o.idclient=? and o.pagato=false";
-		List<Prenotazione> p = null;
-		Prenotazione pre = null;
-
-		try (JDBCQueryHandler handler = new JDBCQueryHandler(c)) {
-
-			handler.getStatement().setInt(1, idcliente);
-			handler.executeQuery();
-
-			if (handler.existsResultSet()) {
-				p = new ArrayList<Prenotazione>();
-				ResultSet result = handler.getResultSet();
-				while (result.next()) {
-					pre = new Prenotazione();
-					pre.setIdprenotazione(result.getInt("id_prenotazione"));
-					pre.setCheckin(result.getDate("checkin"));
-					pre.setCheckout(result.getDate("checkout"));
-					pre.setIdcamera(result.getInt("id_room"));
-					pre.setIdordine(result.getInt("id_order"));
-					p.add(pre);
-				}
-			}
-
-			return p;
-
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
-		}
-	}
+	
 
 	@Override
 	public void pay(Integer userId) {
