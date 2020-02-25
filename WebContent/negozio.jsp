@@ -457,7 +457,7 @@
 		<c:forEach var="prodotto" items="${prodotto}">
 			<div class="divProdotto ${prodotto.descrizione}">
   				<div class="prodotto"> 
-  					<a href="singolo?tipo=${prodotto.tipo}&category=${prodotto.descrizione}" class="proiezione"><img src="${prodotto.img}.jpg" alt="peperone">
+  					<a href="#" class="proiezione"><img src="${prodotto.img}.jpg" alt="peperone">
   						
   					</a>
   					<div class="text py-3 pb-4 px-3 text-center"> 
@@ -471,10 +471,9 @@
 	   							<a href="singolo?tipo=${prodotto.tipo}&category=${prodotto.descrizione}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 	   								<span><i class="ion-ios-menu"></i></span>
 	   							</a>
-	   							<%if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
 	   							<a href="addpcart?tip=${prodotto.tipo}" class="buy-now d-flex justify-content-center align-items-center mx-1">
 	   								<span><i class="ion-ios-cart"></i></span>
-	   							</a>} <%}%>
+	   							</a>
 	   							<a href="#" class="heart d-flex justify-content-center align-items-center ">
 	   								<span><i class="ion-ios-heart"></i></span>
 	   							</a>

@@ -1,6 +1,8 @@
 package controller.user;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,35 +28,46 @@ public class AddProdottoToCart extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		// DBManager.getInstance().getDAOFactory().getProdottoDao().updatesetdisponibile(Integer.parseInt(request.getParameter("idp")),false);
-		Integer idord = DBManager.getInstance().getDAOFactory().getOrdineDao().retrieveIdOrder((Integer) request.getSession().getAttribute("userId"));
-		if(idord==null) {
-			OrdineDao O = DBManager.getInstance().getDAOFactory().getOrdineDao();
-			Ordine o = new Ordine();
-			o.setIdUtente((Integer) request.getSession().getAttribute("userId"));
-			o.setPagato(false);
-			O.save(o);
+		PrintWriter out = response.getWriter();
+		if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))) {
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Effettua l accesso prima');");
+			out.println("location='login-registration.jsp';");
+			out.println("</script>");
 		}
-		idord = DBManager.getInstance().getDAOFactory().getOrdineDao().retrieveIdOrder((Integer) request.getSession().getAttribute("userId"));
+		else {
+			// DBManager.getInstance().getDAOFactory().getProdottoDao().updatesetdisponibile(Integer.parseInt(request.getParameter("idp")),false);
+			Integer idord = DBManager.getInstance().getDAOFactory().getOrdineDao().retrieveIdOrder((Integer) request.getSession().getAttribute("userId"));
+			if(idord==null) {
+				OrdineDao O = DBManager.getInstance().getDAOFactory().getOrdineDao();
+				Ordine o = new Ordine();
+				o.setIdUtente((Integer) request.getSession().getAttribute("userId"));
+				o.setPagato(false);
+				O.save(o);
+			}
+			idord = DBManager.getInstance().getDAOFactory().getOrdineDao().retrieveIdOrder((Integer) request.getSession().getAttribute("userId"));
+			
+				
 		
 			
-	
-		
-		String tipo = request.getParameter("tip");
-		Integer idprod = null;
-		java.util.List<Prodotto> p = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveAll();
-		for (int i = 0; i < p.size(); i++) {
-			if (p.get(i).getTipo().equals(tipo) && p.get(i).getDisponibile().equals(true)) {
-				idprod = p.get(i).getIdprodotto();
-				// System.out.println(idprod);
-				break;
+			String tipo = request.getParameter("tip");
+			Integer idprod = null;
+			java.util.List<Prodotto> p = DBManager.getInstance().getDAOFactory().getProdottoDao().retrieveAll();
+			for (int i = 0; i < p.size(); i++) {
+				if (p.get(i).getTipo().equals(tipo) && p.get(i).getDisponibile().equals(true)) {
+					idprod = p.get(i).getIdprodotto();
+					// System.out.println(idprod);
+					break;
+				}
 			}
+			
+			//DBManager.getInstance().getDAOFactory().getProdottoDao().updatesetdisponibile(idprod, false);
+			DBManager.getInstance().getDAOFactory().getProdottoDao().updatesetordine(idprod, idord);
+
+			request.getRequestDispatcher("addcart").forward(request, response);
 		}
 		
-		//DBManager.getInstance().getDAOFactory().getProdottoDao().updatesetdisponibile(idprod, false);
-		DBManager.getInstance().getDAOFactory().getProdottoDao().updatesetordine(idprod, idord);
-
-		request.getRequestDispatcher("addcart").forward(request, response);
+		
 	}
 
 	@Override

@@ -63,7 +63,7 @@
 				<button class="ghost" id="signIn">Accedi</button>
 			</div>
 			<div class="overlay-panel overlay-right">
-				<h1>Benvenuto!</h1>
+				<h1>Registrati!</h1>
 				<p>Crea delle nuove credenziali di accesso</p>
 				<button class="ghost" id="signUp">Inzia</button>
 			</div>
