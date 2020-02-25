@@ -468,7 +468,7 @@
    						
 	   					<div class="bottoni d-flex px-3">
 	   						<div class="m-auto d-flex">
-	   							<a href="singolo?tipo=${prodotto.tipo}&category=${prodotto.descrizione}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+	   							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 	   								<span><i class="ion-ios-menu"></i></span>
 	   							</a>
 	   							<a href="addpcart?tip=${prodotto.tipo}" class="buy-now d-flex justify-content-center align-items-center mx-1">

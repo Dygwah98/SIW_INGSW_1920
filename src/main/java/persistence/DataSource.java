@@ -3,9 +3,9 @@ package persistence;
 import java.sql.*;
 
 public class DataSource {
-	private String dbURL; // = "jdbc:postgresql://sarella.cqenbowd50kg.eu-central-1.rds.amazonaws.com";
-	private String userName; // = "riuzaki9797";
-	private String password; // = "*Francesco1.,";
+	private String dbURL; 
+	private String userName; 
+	private String password; 
 	private Connection connection;
 
 	public DataSource(String dbURI, String userName, String password) {
