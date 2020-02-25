@@ -32,16 +32,19 @@ public class UpdateProdotto extends HttpServlet {
     		String tipo = req.getParameter("Tipo1");
             String descrizione = req.getParameter("Descrizione1");
             String prezzo= req.getParameter("Prezzo1");
-            String immagine = ("images/shop/").concat(req.getParameter("Img1"));
+            String img = req.getParameter("Img1");
+            String immagine = "images/shop/";
         
             Prodotto p = new Prodotto();
             p.setIdprodotto(Integer.parseInt(id));
             
             boolean ID = DBManager.getInstance().getDAOFactory().getProdottoDao().exists(p);
-            if(!ID) {
-            	 resp.setStatus(401);
+            if(!ID||tipo==null||tipo.equals("Tipologia:")||descrizione==null||descrizione.equals("Categoria:")||prezzo==null||prezzo.equals("")||img==null||img.equals("Immagine:"))
+				resp.setStatus(401);    
             
-            } else {
+            else {
+            	
+            	immagine = immagine.concat(img);
             	tipo = tipo.toLowerCase();
             	p.setTipo(tipo);    
             	p.setDescrizione(descrizione);

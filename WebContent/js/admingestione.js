@@ -39,7 +39,7 @@ function addp(event){
     	  
        },
         error : function () {
-            alert("il prodotto non è stato inserimento corretamente");
+            alert("Aggiunta fallita; Riempire tutti i campi.");
      	   window.location.replace("gestioneProdotti.jsp");
 
         }
@@ -64,7 +64,7 @@ function updatep(event){
     	  
        },
         error : function () {
-            alert("il prodotto non è stato aggiornato corretamente o id prodotto non corretto");
+            alert("Aggiornamento fallito; Riempire tutti i campi.");
      	   window.location.replace("gestioneProdotti.jsp");
 
         }
@@ -84,7 +84,7 @@ function deletep(event){
     	  
        },
         error : function () {
-            alert("il prodotto non è stato eliminato corretamente o id prodotto non corretto");
+            alert("Rimozione fallita; Riempire tutti i campi.");
      	   window.location.replace("gestioneProdotti.jsp");
 
         }
@@ -235,7 +235,7 @@ function addPost(event){
 	    	  
 	       },
 	        error : function () {
-	            alert("Post inserito correttamente");
+	            alert("Inserimento fallito; Riempire tutti i campi.");
 	     	   window.location.replace("gestionePost.jsp");
 
 	        }
@@ -260,7 +260,7 @@ function updatePost(event){
     	  
        },
         error : function () {
-            alert("Il post non è stato aggiornato corretamente o l'id post non corretto");
+            alert("Aggiornamento fallito; Riempire tutti i campi.");
      	   window.location.replace("gestionePost.jsp");
 
         }
@@ -280,7 +280,7 @@ function deletePost(event){
     	  
        },
         error : function () {
-            alert("Il Post non  e stato eliminato corretamente o l'id post non corretto");
+            alert("Rimozione fallita; Riempire tutti i campi.");
      	   window.location.replace("gestionePost.jsp");
 
         }

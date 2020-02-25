@@ -46,10 +46,10 @@ public class updatePost extends HttpServlet {
             p.setidPost(Integer.parseInt(id));
 		
 			 boolean ID = DBManager.getInstance().getDAOFactory().getPostDao().exists(p);
-	            if(!ID) {
-	            	 response.setStatus(401);
-	            
-	            } else {
+	        	if(!ID||titolo.equals("")||titolo==null||testo.equals("")||testo==null||img.equals("Immagine:")||img==null||categoria.equals("Categoria:")||categoria==null) 
+	        		response.setStatus(401);
+	            	 
+	            else {
 						p.setTitolo(titolo);
 						immagine = immagine.concat(img);
 						p.setImg(immagine);

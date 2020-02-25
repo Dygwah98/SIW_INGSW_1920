@@ -2,6 +2,7 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -38,10 +39,14 @@ public class ImageServlet extends HttpServlet {
 		String[] tokens = contentDisp.split(";");
 		for (String token : tokens) {
 			if (token.trim().startsWith("filename")) {
-				return token.substring(token.indexOf("=") + 2, token.length() - 1);
+				if(token.substring(token.indexOf("=") + 2, token.length() - 1).equals("")){
+					return "avatar.png";
+				}
+				else
+					return token.substring(token.indexOf("=") + 2, token.length() - 1);
 			}
 		}
-		return "";
+		return "avatar.png";
 	}
 
 	@Override
@@ -80,6 +85,7 @@ public class ImageServlet extends HttpServlet {
 		System.out.println("Upload File Directory=" + fileSaveDir.getAbsolutePath());
 
 		String fileName = null;
+		
 		// Get all the parts from request and write it to the file on server
 		for (Part part : request.getParts()) {
 			fileName = getFileName(part);
@@ -87,30 +93,40 @@ public class ImageServlet extends HttpServlet {
 			break;
 		}
 
-		request.setAttribute("message", fileName + " File uploaded successfully!");
-		request.setAttribute("img", UPLOAD_DIR + File.separator + fileName);
+		PrintWriter out = response.getWriter();
+		String immagine = "images/";		
+		immagine = immagine.concat(fileName);
 		String name = request.getParameter("name");
 		String cognome = request.getParameter("cognome");
 		String data = request.getParameter("data");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
-		String immagine = "images/";		
-		immagine = immagine.concat(fileName);
+		
+		if(name==null||name.equals("")||cognome==null||cognome.equals("")||data==null||data.equals("")||username==null||username.equals("")||password==null||password.equals("")||email==null||email.equals("")||immagine==null||immagine.equals("")) {
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Registrazione fallita');");
+			out.println("location='login-registration.jsp';");
+			out.println("</script>");
+		}
+		else {
+			request.setAttribute("message", fileName + " File uploaded successfully!");
+			request.setAttribute("img", UPLOAD_DIR + File.separator + fileName);
+			
+			User u = new User();
+			u.SetName(name);
+			u.SetSurname(cognome);
+			u.SetNascita(data);
+			u.setUsername(username);
+			u.setPassword(password);
+			u.setEmail(email);
+			u.setImage(immagine);
 
-		User u = new User();
-		u.SetName(name);
-		u.SetSurname(cognome);
-		u.SetNascita(data);
-		u.setUsername(username);
-		u.setPassword(password);
-		u.setEmail(email);
-		u.setImage(immagine);
+			Dao<User> userdao = DBManager.getInstance().getDAOFactory().getUtenteDao();
+			userdao.save(u);
 
-		Dao<User> userdao = DBManager.getInstance().getDAOFactory().getUtenteDao();
-		userdao.save(u);
-
-		response.sendRedirect("login-registration.jsp");
-
+			response.sendRedirect("login-registration.jsp");
+		}
+			
 	}
 }

@@ -39,25 +39,29 @@ public class CreateProduct extends HttpServlet {
 			String immagine = "images/shop/";
 			String img = req.getParameter("Img");
 			
-			immagine = immagine.concat(img);
+			if(tipo==null||tipo.equals("Tipologia:")||descrizione==null||descrizione.equals("Categoria:")||prezzo==null||prezzo.equals("")||img==null||img.equals("Immagine:"))
+				resp.setStatus(401);
+			else {
+				immagine = immagine.concat(img);
 
-			p = new Prodotto();
+				p = new Prodotto();
 
-			tipo = tipo.toLowerCase();
-			p.setTipo(tipo);
+				tipo = tipo.toLowerCase();
+				p.setTipo(tipo);
 
-			p.setDescrizione(descrizione);
+				p.setDescrizione(descrizione);
 
-			String costo = prezzo;
-			int intero = Integer.parseInt(costo);
-			p.setPrezzo(intero);
+				String costo = prezzo;
+				int intero = Integer.parseInt(costo);
+				p.setPrezzo(intero);
 
-			p.setDisponibile(true);
+				p.setDisponibile(true);
 
-			p.setImg(immagine);
+				p.setImg(immagine);
 
-			P.save(p);
-			resp.setStatus(201);
+				P.save(p);
+				resp.setStatus(201);
+			}
 			
 		} catch(Exception e) {
 			

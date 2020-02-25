@@ -89,21 +89,24 @@ public class NewPost extends HttpServlet {
         	java.sql.Date sDate = new java.sql.Date(uDate.getTime());
         	String categoria = request.getParameter("Categoria");
         	
-        	
-	        p=new Post();
-	        p.setTitolo(titolo);
-	        immagine = immagine.concat(img);
-	        p.setImg(immagine);
-	        p.setMessaggio(testo);
-	        p.setData(sDate);
-	        p.setCategoria(categoria);
-	    
-	        posts.save(p);
-	        
-	        emailSender(titolo); 
-	        response.setStatus(201);
-
-
+        	if(titolo.equals("")||titolo==null||testo.equals("")||testo==null||img.equals("Immagine:")||img==null||categoria.equals("Categoria:")||categoria==null) {
+        		response.setStatus(401);
+        	}
+        	else {
+        		p=new Post();
+     	        p.setTitolo(titolo);
+     	        immagine = immagine.concat(img);
+     	        p.setImg(immagine);
+     	        p.setMessaggio(testo);
+     	        p.setData(sDate);
+     	        p.setCategoria(categoria);
+     	    
+     	        posts.save(p);
+     	        
+     	        emailSender(titolo); 
+     	        response.setStatus(201);
+        	}
+       
     	} catch(Exception e) {
     		response.setStatus(401);
     	}

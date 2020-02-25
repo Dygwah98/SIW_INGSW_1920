@@ -57,7 +57,7 @@
 				    <option value="spa">Spa</option>
   				 </select>  
   				  <select name="Categoria2" id="Categoria2" >
-      			 	<option >Immagine:</option>
+      			 	<option >Categoria:</option>
 				    <option value="servizi">servizi</option>
 				    <option value="stanze">stanze</option>
 				    <option value="ristorante">ristorante</option>
