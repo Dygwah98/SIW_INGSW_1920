@@ -28,6 +28,12 @@
 	}
 </style>
 <script src="js/checkout.js"></script>
+<script type="text/javascript">
+	function f1(){
+		alert("messaggio inviato");
+		window.location.reload();
+	}
+</script>
 
 </head>
 <body>
@@ -203,7 +209,7 @@
 								</div>
 								<div class="input_container"><input type="text" class="contact_input" placeholder="Oggetto"></div>
 								<div class="input_container"><textarea class="contact_input contact_textarea" placeholder="Messaggio" required="required"></textarea></div>
-								<button class="button">Invia</button>
+								<button class="button" onclick="f1()" >Invia</button>
 							</form>
 						</div>
 			</div>
