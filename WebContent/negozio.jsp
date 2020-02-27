@@ -29,6 +29,7 @@
 <script src="plugins/OwlCarousel2-2.3.4/owl.carousel.js"></script>
 <script src="js/custom.js"></script>
 <script src="js/menuATendina.js"></script>
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
 <script src="js/checkout.js"></script>
 <style>
@@ -39,6 +40,47 @@
 		color: #ff7514;
 	}
 </style>
+<script type="text/javascript">
+
+paypal.Button.render({
+    // Configure environment
+    env: 'sandbox',
+    client: {
+      sandbox: 'demo_sandbox_client_id',
+      production: 'demo_production_client_id'
+    },
+    // Customize button (optional)
+    locale: 'it_IT',
+    style: {
+      size: 'small',
+      color: 'gold',
+      shape: 'pill',
+    },
+
+    // Enable Pay Now checkout flow (optional)
+    commit: true,
+
+    // Set up a payment
+    payment: function(data, actions) {
+      return actions.payment.create({
+        transactions: [{
+          amount: {
+            total: '0.01',
+            currency: 'EUR'
+          }
+        }]
+      });
+    },
+    // Execute the payment
+    onAuthorize: function(data, actions) {
+      return actions.payment.execute().then(function() {
+        // Show a confirmation message to the buyer
+        window.alert('Thank you for your purchase!');
+      });
+    }
+  }, '#paypal-button');
+
+</script>
 
 </head>
 
@@ -431,6 +473,9 @@
             </div>
             <!-- Checkout -->
             <button class="btn famie-btn checkout-btn mt-30 w-100" type="submit" id="btnchk" onclick="ckout(event)">CHECKOUT</button>
+            <br> <br>
+                  <div style="text-align: center;" id="paypal-button"></div>
+            
           </div>
 
 

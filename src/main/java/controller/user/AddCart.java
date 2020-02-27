@@ -45,6 +45,7 @@ public class AddCart extends HttpServlet {
 					session.setAttribute("idordine", idord);
 					session.setAttribute("prodc", prodc);
 					request.setAttribute("prodc", prodc);
+					session.setAttribute("elementi", 0);
 					session.setAttribute("totale", 0);
 				}
 				else {
@@ -63,6 +64,7 @@ public class AddCart extends HttpServlet {
 				session.setAttribute("prodc", prodc);
 				request.setAttribute("prodc", prodc);
 				session.setAttribute("idordine", null);
+				session.setAttribute("elementi", 0);
 				session.setAttribute("totale", 0);
 			}
 			response.sendRedirect("negozio.jsp");

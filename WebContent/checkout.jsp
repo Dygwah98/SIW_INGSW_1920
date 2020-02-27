@@ -29,48 +29,8 @@
   src="https://pay.google.com/gp/p/js/pay.js"
   onload="onGooglePayLoaded()">
 </script>
-<script src="https://www.paypalobjects.com/api/checkout.js"></script>
-<script type="text/javascript">
 
-paypal.Button.render({
-    // Configure environment
-    env: 'sandbox',
-    client: {
-      sandbox: 'demo_sandbox_client_id',
-      production: 'demo_production_client_id'
-    },
-    // Customize button (optional)
-    locale: 'it_IT',
-    style: {
-      size: 'small',
-      color: 'gold',
-      shape: 'pill',
-    },
 
-    // Enable Pay Now checkout flow (optional)
-    commit: true,
-
-    // Set up a payment
-    payment: function(data, actions) {
-      return actions.payment.create({
-        transactions: [{
-          amount: {
-            total: '0.01',
-            currency: 'EUR'
-          }
-        }]
-      });
-    },
-    // Execute the payment
-    onAuthorize: function(data, actions) {
-      return actions.payment.execute().then(function() {
-        // Show a confirmation message to the buyer
-        window.alert('Thank you for your purchase!');
-      });
-    }
-  }, '#paypal-button');
-
-</script>
 
 <style>
 	#check{
@@ -267,7 +227,7 @@ paypal.Button.render({
       
     </div>
   </div>
-  <div class="col-25">
+  <div  class="col-25">
     <div class="container1">
       <h4 style="font-weight: bold;">Carrello <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b><c:out  value="${elementi}" /></b></span></h4>
       <c:forEach var="prodc" items="${prodc}">
@@ -280,17 +240,9 @@ paypal.Button.render({
       <p style="font-weight: bold; font-size: 25px;">Totale <span class="price" style="color:black"><b><c:out  value="${totp} euro" default="Prezzo!" escapeXml="false"/></b></span></p>
       <br>
       <div style="text-align: center;"  id="buy-now"></div>
-      <br>
-      <!-- Se lasciamo jquery.js non funziona -->
-      <!-- Se lasciamo jquery.js non funziona -->
-      <!-- Se lasciamo jquery.js non funziona -->
-      <!-- Se lasciamo jquery.js non funziona -->
-      <div style="text-align: center;" id="paypal-button"></div>
     </div>
   </div>
   
-      
-     
 
 </div>
     	
